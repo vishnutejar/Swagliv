@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.activities.HelpAndFaqActivity">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/common_header" />
+
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:gravity="center"
+                android:text="@string/title_help"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp20" />
+        </LinearLayout>-->
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/feedBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp25"
+                android:layout_marginVertical="@dimen/dp20"
+                android:background="@drawable/search_frame"
+                android:gravity="center"
+                android:padding="@dimen/dp20"
+                android:text="@string/txt_feedback"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp15" />
+
+            <TextView
+                android:id="@+id/complaint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp25"
+                android:layout_marginVertical="@dimen/dp10"
+                android:background="@drawable/search_frame"
+                android:gravity="center"
+                android:padding="@dimen/dp20"
+                android:text="@string/txt_complaint"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp15" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp25"
+                android:layout_marginVertical="@dimen/dp10"
+                android:background="@drawable/search_frame"
+                android:gravity="center"
+                android:padding="@dimen/dp20"
+                android:text="@string/txt_term_and_policy"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp15" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp25"
+                android:layout_marginVertical="@dimen/dp10"
+                android:background="@drawable/search_frame"
+                android:gravity="center"
+                android:padding="@dimen/dp20"
+                android:text="@string/txt_track_complaint"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp15" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp25"
+                android:layout_marginVertical="@dimen/dp10"
+                android:background="@drawable/search_frame"
+                android:gravity="center"
+                android:padding="@dimen/dp20"
+                android:text="@string/txt_app_info"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp15" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

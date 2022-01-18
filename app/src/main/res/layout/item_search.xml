@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="crushInfo"
+            type="com.app.swagliv.model.login.pojo.User" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="@dimen/dp90"
+        android:layout_height="@dimen/dp120"
+        android:layout_marginHorizontal="@dimen/dp8"
+
+        android:layout_marginVertical="@dimen/dp8"
+        android:orientation="vertical">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pictures"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/pictures"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
+
+        <LinearLayout
+             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+             android:background="@color/transparant_light_gray"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/crush_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{crushInfo.name}"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:text="dhoni" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/crush_name"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/crush_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:text="@{String.valueOf(crushInfo.userAge)}"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:text="22" />
+
+                <TextView
+                    android:id="@+id/crush_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:text="@{crushInfo.gender}"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:text="Male" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

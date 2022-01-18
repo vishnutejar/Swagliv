@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.app.swagliv.view.fragment.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_like"
+        android:name="com.app.swagliv.view.fragment.LikeFragment"
+        android:label="@string/menu_like"
+        tools:layout="@layout/fragment_like" />
+
+    <fragment
+        android:id="@+id/navigation_message"
+        android:name="com.app.swagliv.view.fragment.MessageFragment"
+        android:label="@string/menu_msg"
+        tools:layout="@layout/fragment_message" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.app.swagliv.view.fragment.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
+
+
+</navigation>

@@ -1,0 +1,76 @@
+{
+  "status": 200,
+  "Message": "Data Fetch successfully",
+  "Data": [
+    {
+      "id": "1",
+      "userName": "ravi",
+      "lastMessage": "hello ravi fgjk fgghlsf fglskdfg fdigh mdnfg dfngkf  jfd bskdfb ",
+      "profileImage": "https://english.cdn.zeenews.com/sites/default/files/2021/11/15/987821-ravi-shastri.jpg",
+      "timeSpan": "11:30"
+    },
+    {
+      "id": "2",
+      "userName": "Dhoni",
+      "lastMessage": "hello dhoni",
+      "profileImage": "",
+      "timeSpan": "4:30"
+    },
+    {
+      "id": "3",
+      "userName": "Rohit",
+      "lastMessage": "hello rohit",
+      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOy92ygyFYRu_gjeN3tCJo9WPRo0YEuzXLyg&usqp=CAU̥̥",
+      "timeSpan": "11:00"
+    },
+    {
+      "id": "1",
+      "userName": "ravi",
+      "lastMessage": "hello ravi fgjk fgghlsf fglskdfg fdigh mdnfg dfngkf  jfd bskdfb ",
+      "profileImage": "https://english.cdn.zeenews.com/sites/default/files/2021/11/15/987821-ravi-shastri.jpg",
+      "timeSpan": "11:30"
+    },
+    {
+      "id": "2",
+      "userName": "Dhoni",
+      "lastMessage": "hello dhoni",
+      "profileImage": "https://images.indianexpress.com/2020/10/148841-clraytzonv-1602133322.jpg",
+      "timeSpan": "4:30"
+    },
+    {
+      "id": "3",
+      "userName": "Rohit",
+      "lastMessage": "hello rohit",
+      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOy92ygyFYRu_gjeN3tCJo9WPRo0YEuzXLyg&usqp=CAU̥̥",
+      "timeSpan": "11:00"
+    },
+    {
+      "id": "1",
+      "userName": "ravi",
+      "lastMessage": "hello ravi fgjk fgghlsf fglskdfg fdigh mdnfg dfngkf  jfd bskdfb ",
+      "profileImage": "https://english.cdn.zeenews.com/sites/default/files/2021/11/15/987821-ravi-shastri.jpg",
+      "timeSpan": "11:30"
+    },
+    {
+      "id": "2",
+      "userName": "Dhoni",
+      "lastMessage": "hello dhoni",
+      "profileImage": "https://images.indianexpress.com/2020/10/148841-clraytzonv-1602133322.jpg",
+      "timeSpan": "4:30"
+    },
+    {
+      "id": "3",
+      "userName": "Rohit",
+      "lastMessage": "hello rohit",
+      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOy92ygyFYRu_gjeN3tCJo9WPRo0YEuzXLyg&usqp=CAU̥̥",
+      "timeSpan": "11:00"
+    },
+    {
+      "id": "4",
+      "userName": "Virat",
+      "lastMessage": "hello virat",
+      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOGpO5tNI3HCljvisM0NC_U1hEECgGMQtxiA&usqp=CAU",
+      "timeSpan": "4:15"
+    }
+  ]
+}

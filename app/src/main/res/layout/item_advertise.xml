@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="Subscription"
+            type="com.app.swagliv.model.profile.pojo.Subscription" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/goldtxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/robot_font"
+            android:gravity="center"
+            android:text="@{Subscription.subscriptionName}"
+            android:textColor="#CDB38B0D"
+            android:textSize="@dimen/dp29"
+            android:textStyle="bold"
+            tools:text="Gold" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/dp66"
+            android:layout_height="@dimen/dp66"
+            android:layout_below="@+id/goldtxt"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="13dp">
+
+            <!-- <ImageView
+                 android:id="@+id/like_ic"
+                 android:layout_width="@dimen/size_18"
+                 android:layout_height="@dimen/size_18"
+                 android:layout_centerInParent="true"
+                 android:src="@drawable/like_icon" />-->
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <TextView
+            android:id="@+id/liketxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="@{Subscription.description}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_20"
+            android:textStyle="bold"
+            tools:text="Unlimited like" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/liketxt"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp15"
+            tools:text="@string/text" />
+    </LinearLayout>
+</layout>

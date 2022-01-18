@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="passion"
+            type="com.app.swagliv.model.home.pojo.Passions" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="@dimen/dp5"
+        android:layout_marginLeft="@dimen/dp12"
+        tools:ignore="MissingDefaultResource">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/user_data_bg_unselected"
+            android:gravity="center"
+            android:maxLines="1"
+            android:minWidth="80dp"
+            android:paddingHorizontal="@dimen/dp15"
+            android:paddingVertical="@dimen/dp8"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/sp15"
+            tools:text="Programming" />
+
+    </LinearLayout>
+
+</layout>

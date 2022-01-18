@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp350"
+        android:background="@drawable/top_sheet_view"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp12"
+            android:layout_marginTop="@dimen/dp8">
+
+            <ImageView
+                android:id="@+id/filter_back_btn"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:text="@string/filter"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp20" />
+
+            <ImageView
+                android:id="@+id/filter_check_btn"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_check_24"
+                app:tint="@color/white" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp20"
+            android:text="@string/distance"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp15" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp30"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/profile_text_frame"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp8">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_weight="1"
+                android:hint="0km-100km"
+                android:textColor="@color/white"
+                android:textColorHint="@color/pink1"
+                android:textSize="@dimen/sp15" />
+
+            <ImageView
+                android:id="@+id/ic_drop"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:background="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:backgroundTint="@color/white" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp20"
+            android:text="@string/gender"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp15" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/male_unselected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/unselected_left"
+                android:gravity="center"
+                android:hint="@string/male"
+                android:padding="@dimen/dp8"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/sp15" />
+
+            <TextView
+                android:id="@+id/female_unselected_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/uselected_middle"
+                android:gravity="center"
+                android:hint="@string/female"
+                android:padding="@dimen/dp8"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/sp15" />
+
+            <TextView
+                android:id="@+id/shemale_unselected_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/uselected_right"
+                android:gravity="center"
+                android:hint="@string/shemale"
+                android:padding="@dimen/dp8"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/sp15" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp25"
+            android:layout_marginTop="@dimen/dp10"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/age"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp15" />
+
+
+            <com.google.android.material.slider.RangeSlider
+                android:id="@+id/sliderRange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/MySliderTheme"
+                android:valueFrom="0"
+                android:valueTo="100"
+                app:values="@array/rangeSliderValues" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

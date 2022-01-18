@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="purple">#9100EB</color>
+    <color name="screen_background">#130F45</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="darkpink" tools:keep="@color/darkpink">#E1E445EF</color>
+    <color name="dark_voilate1" tools:keep="@color/darkpink">#8800DC</color>
+    <color name="transparant_gray" tools:keep="@color/transparant_gray">#B9726F6F</color>
+    <color name="transparant_light_gray" tools:keep="@color/transparant_light_gray">#39F8F5F5
+    </color>
+    <color name="transparant_black" tools:keep="@color/transparant_black">#242424</color>
+    <color name="transparant_background">#901B146E</color>
+    <color name="transparant">#00ffffff</color>
+    <color name="light_voilet">#B75CCC</color>
+    <color name="voilate_100" tools:keep="@color/voilate_100">#9366E8</color>
+    <color name="light_pink">#D128B5</color>
+    <color name="pink1">#FF00F5</color>
+    <color name="gold">#E8C8990E</color>
+    <color name="light_gray">#DFDFDF</color>
+    <color name="voilet">#AA3FEC</color>
+    <color name="faint_voilet">#B44CF4</color>
+    <color name="dark_voilet">#7A29AC</color>
+    <color name="violate100">#9100EB</color>
+    <color name="violate200">#8F30C9</color>
+    <color name="pink" tools:keep="@color/pink">#F381ED</color>
+
+    <color name="blue">#276CB8</color>
+    <color name="voilate_txt_color">#247DCF</color>
+    <color name="grey">#8E8E8E</color>
+</resources>

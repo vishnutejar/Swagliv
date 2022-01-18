@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.LikeFragment">
+
+
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <include
+                android:id="@+id/common_header"
+                layout="@layout/common_header" />
+
+            <TextView
+                android:id="@+id/like_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_18"
+                android:layout_marginTop="@dimen/size_18"
+                android:text="@string/title_Likes"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp18" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dp25">
+
+                <LinearLayout
+                    android:id="@+id/picture_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp10">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/profile_who_like"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/see_Likes_Btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="@dimen/dp25"
+            android:layout_marginVertical="@dimen/dp25"
+            android:background="@drawable/gold_button"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/size_41"
+            android:paddingVertical="@dimen/size_15"
+            android:text="@string/title_Likes_view"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_18" />
+
+    </FrameLayout>
+</layout>

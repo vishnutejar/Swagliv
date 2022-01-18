@@ -1,0 +1,276 @@
+{
+  "common": {
+    "message": "data retrived successfully",
+    "responseCode": 200
+  },
+  "data": {
+    "peoples": [
+      {
+        "photos": [
+          "https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875",
+          "https://www.pinkvilla.com/imageresize/neha-dhupia-main.jpg?width=752&format=webp&t=pvorg"
+        ],
+        "name": "Neha Sharma 1",
+        "about": "Simplicity is the key to happiness.",
+        "location": "4 km away",
+        "passions": [
+          "film",
+          "music"
+        ],
+        "profession": "actor",
+        "address": "nagpur",
+        "age": 22,
+        "userId": "1"
+      },
+      {
+        "photos": [
+          "https://www.espncricinfo.com/db/PICTURES/CMS/280500/280586.13.jpg",
+          "https://pbs.twimg.com/profile_images/1455439930428047363/fv34BaHQ_400x400.jpg"
+        ],
+        "name": "Rohit Sharma 2",
+        "about": "actor",
+        "location": "7 km away",
+        "passions": [
+          "film",
+          "sport"
+        ],
+        "profession": "actor",
+        "address": "pune",
+        "age": 30,
+        "userId": "2"
+      },
+      {
+        "photos": [
+          "https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875",
+          "https://www.pinkvilla.com/imageresize/neha-dhupia-main.jpg?width=752&format=webp&t=pvorg"
+        ],
+        "name": "Neha Sharma 3",
+        "about": "Simplicity is the key to happiness.",
+        "location": "4 km away",
+        "passions": [
+          "film",
+          "music"
+        ],
+        "profession": "actor",
+        "address": "nagpur",
+        "age": 22,
+        "userId": "3"
+      },
+      {
+        "photos": [
+          "https://www.espncricinfo.com/db/PICTURES/CMS/280500/280586.13.jpg",
+          "https://pbs.twimg.com/profile_images/1455439930428047363/fv34BaHQ_400x400.jpg"
+        ],
+        "name": "Rohit Sharma 4",
+        "about": "actor",
+        "location": "7 km away",
+        "passions": [
+          "film",
+          "sport"
+        ],
+        "profession": "actor",
+        "address": "pune",
+        "age": 30,
+        "userId": "4"
+      },{
+        "photos": [
+          "https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875",
+          "https://www.pinkvilla.com/imageresize/neha-dhupia-main.jpg?width=752&format=webp&t=pvorg"
+        ],
+        "name": "Neha Sharma 5",
+        "about": "Simplicity is the key to happiness.",
+        "location": "4 km away",
+        "passions": [
+          "film",
+          "music"
+        ],
+        "profession": "actor",
+        "address": "nagpur",
+        "age": 22,
+        "userId": "5"
+      },
+      {
+        "photos": [
+          "https://www.espncricinfo.com/db/PICTURES/CMS/280500/280586.13.jpg",
+          "https://pbs.twimg.com/profile_images/1455439930428047363/fv34BaHQ_400x400.jpg"
+        ],
+        "name": "Rohit Sharma 6",
+        "about": "actor",
+        "location": "7 km away",
+        "passions": [
+          "film",
+          "sport"
+        ],
+        "profession": "actor",
+        "address": "pune",
+        "age": 30,
+        "userId": "6"
+      },{
+        "photos": [
+          "https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875",
+          "https://www.pinkvilla.com/imageresize/neha-dhupia-main.jpg?width=752&format=webp&t=pvorg"
+        ],
+        "name": "Neha Sharma 7",
+        "about": "Simplicity is the key to happiness.",
+        "location": "4 km away",
+        "passions": [
+          "film",
+          "music"
+        ],
+        "profession": "actor",
+        "address": "nagpur",
+        "age": 22,
+        "userId": "7"
+      },
+      {
+        "photos": [
+          "https://www.espncricinfo.com/db/PICTURES/CMS/280500/280586.13.jpg",
+          "https://pbs.twimg.com/profile_images/1455439930428047363/fv34BaHQ_400x400.jpg"
+        ],
+        "name": "Rohit Sharma 8",
+        "about": "actor",
+        "location": "7 km away",
+        "passions": [
+          "film",
+          "sport"
+        ],
+        "profession": "actor",
+        "address": "pune",
+        "age": 30,
+        "userId": "8"
+      },{
+        "photos": [
+          "https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875",
+          "https://www.pinkvilla.com/imageresize/neha-dhupia-main.jpg?width=752&format=webp&t=pvorg"
+        ],
+        "name": "Neha Sharma 9",
+        "about": "Simplicity is the key to happiness.",
+        "location": "4 km away",
+        "passions": [
+          "film",
+          "music"
+        ],
+        "profession": "actor",
+        "address": "nagpur",
+        "age": 22,
+        "userId": "9"
+      },
+      {
+        "photos": [
+          "https://www.espncricinfo.com/db/PICTURES/CMS/280500/280586.13.jpg",
+          "https://pbs.twimg.com/profile_images/1455439930428047363/fv34BaHQ_400x400.jpg"
+        ],
+        "name": "Rohit Sharma 10",
+        "about": "actor",
+        "location": "7 km away",
+        "passions": [
+          "film",
+          "sport"
+        ],
+        "profession": "actor",
+        "address": "pune",
+        "age": 30,
+        "userId": "10"
+      },{
+        "photos": [
+          "https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875",
+          "https://www.pinkvilla.com/imageresize/neha-dhupia-main.jpg?width=752&format=webp&t=pvorg"
+        ],
+        "name": "Neha Sharma 11",
+        "about": "Simplicity is the key to happiness.",
+        "location": "4 km away",
+        "passions": [
+          "film",
+          "music"
+        ],
+        "profession": "actor",
+        "address": "nagpur",
+        "age": 22,
+        "userId": "11"
+      },
+      {
+        "photos": [
+          "https://www.espncricinfo.com/db/PICTURES/CMS/280500/280586.13.jpg",
+          "https://pbs.twimg.com/profile_images/1455439930428047363/fv34BaHQ_400x400.jpg"
+        ],
+        "name": "Rohit Sharma 12",
+        "about": "actor",
+        "location": "7 km away",
+        "passions": [
+          "film",
+          "sport"
+        ],
+        "profession": "actor",
+        "address": "pune",
+        "age": 30,
+        "userId": "12"
+      },{
+        "photos": [
+          "https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875",
+          "https://www.pinkvilla.com/imageresize/neha-dhupia-main.jpg?width=752&format=webp&t=pvorg"
+        ],
+        "name": "Neha Sharma 13",
+        "about": "Simplicity is the key to happiness.",
+        "location": "4 km away",
+        "passions": [
+          "film",
+          "music"
+        ],
+        "profession": "actor",
+        "address": "nagpur",
+        "age": 22,
+        "userId": "13"
+      },
+      {
+        "photos": [
+          "https://www.espncricinfo.com/db/PICTURES/CMS/280500/280586.13.jpg",
+          "https://pbs.twimg.com/profile_images/1455439930428047363/fv34BaHQ_400x400.jpg"
+        ],
+        "name": "Rohit Sharma 14",
+        "about": "actor",
+        "location": "7 km away",
+        "passions": [
+          "film",
+          "sport"
+        ],
+        "profession": "actor",
+        "address": "pune",
+        "age": 30,
+        "userId": "14"
+      },{
+        "photos": [
+          "https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875",
+          "https://www.pinkvilla.com/imageresize/neha-dhupia-main.jpg?width=752&format=webp&t=pvorg"
+        ],
+        "name": "Neha Sharma 15",
+        "about": "Simplicity is the key to happiness.",
+        "location": "4 km away",
+        "passions": [
+          "film",
+          "music"
+        ],
+        "profession": "actor",
+        "address": "nagpur",
+        "age": 22,
+        "userId": "15"
+      },
+      {
+        "photos": [
+          "https://www.espncricinfo.com/db/PICTURES/CMS/280500/280586.13.jpg",
+          "https://pbs.twimg.com/profile_images/1455439930428047363/fv34BaHQ_400x400.jpg"
+        ],
+        "name": "Rohit Sharma 16",
+        "about": "actor",
+        "location": "7 km away",
+        "passions": [
+          "film",
+          "sport"
+        ],
+        "profession": "actor",
+        "address": "pune",
+        "age": 30,
+        "userId": "16"
+      }
+    ]
+  }
+}

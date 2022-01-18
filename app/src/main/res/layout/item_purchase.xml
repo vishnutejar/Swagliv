@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="purchase"
+            type="com.app.swagliv.model.profile.pojo.Subscription" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp10"
+        android:orientation="vertical"
+        android:shadowRadius="5"
+        app:cardCornerRadius="@dimen/dp25"
+        app:cardElevation="@dimen/dp20">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/dp2"
+            android:paddingLeft="@dimen/dp20">
+
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dp5"
+                android:fontFamily="@font/robot_font"
+                android:text="@{purchase.subscriptionName}"
+                android:textAllCaps="true"
+                android:textColor="@color/pink1"
+                android:textSize="@dimen/sp20"
+                android:textStyle="bold"
+                tools:text="@string/txt_product_name" />
+
+            <TextView
+                android:id="@+id/rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robot_font"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp20"
+                tools:text="@string/txt_rate" />
+
+            <TextView
+                android:id="@+id/purchase_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:textColor="@color/black"
+                android:textSize="@dimen/sp15"
+                android:textStyle="bold"
+                tools:text="@string/txt_delivery_date" />
+
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{purchase.expiryDate}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp15"
+                tools:text="@string/txt_delivery_date" />-->
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

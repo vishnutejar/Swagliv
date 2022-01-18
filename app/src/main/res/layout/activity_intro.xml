@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <RelativeLayout
+        android:id="@+id/parent_layout_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        tools:context=".view.activities.IntroActivity">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager2"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_centerHorizontal="true" />
+
+        <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+            android:id="@+id/wormDotsIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="250dp"
+            app:dotsColor="@color/purple_200"
+            app:dotsCornerRadius="@dimen/dp8"
+            app:dotsSize="@dimen/dp16"
+            app:dotsSpacing="@dimen/dp4"
+            app:dotsStrokeColor="@color/black"
+            app:dotsStrokeWidth="@dimen/dp2" />
+
+
+        <TextView
+            android:id="@+id/next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_pager2"
+            android:layout_marginHorizontal="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp40"
+            android:background="@drawable/rounded_btn"
+            android:gravity="center"
+            android:paddingVertical="@dimen/dp10"
+            android:text="@string/next_btn"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_18" />
+
+        <TextView
+            android:id="@+id/skip_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/next_btn"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"
+            android:text="@string/skip_btn"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_15" />
+    </RelativeLayout>
+
+</layout>

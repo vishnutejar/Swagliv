@@ -1,0 +1,8 @@
+<resources>
+
+    <style name="ProgressBarDefault" parent="android:Theme.DeviceDefault.Light.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">Loading…</item>
+        <item name="DialogCount">5</item>
+    </style>
+</resources>

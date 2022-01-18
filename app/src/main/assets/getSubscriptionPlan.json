@@ -1,0 +1,27 @@
+{
+  "status": 200,
+  "Message": "3 likes for your profile",
+  "Data": [
+    {
+      "subscriptionName": "GOLD",
+      "durationInMonths": 6,
+      "pricePerMonth": 10,
+      "description": "Unlimited likes",
+      "subscriptionImageURL": "asdds"
+    },
+    {
+      "subscriptionName": "SILVER",
+      "durationInMonths": 12,
+      "pricePerMonth": 5,
+      "description": "Limited likes",
+      "subscriptionImageURL": "asdds"
+    },
+    {
+      "subscriptionName": "BASIC",
+      "durationInMonths": 5,
+      "pricePerMonth": 15,
+      "description": "No likes",
+      "subscriptionImageURL": "asdds"
+    }
+  ]
+}

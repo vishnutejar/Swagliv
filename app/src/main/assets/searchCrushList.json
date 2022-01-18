@@ -1,0 +1,161 @@
+{
+  "status": 200,
+  "Message": "Data Fetch Sucessfully",
+  "Data": [
+    {
+      "id": "1",
+      "name": "ravi",
+      "gender":"male",
+      "userAge":"22",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOy92ygyFYRu_gjeN3tCJo9WPRo0YEuzXLyg&usqp=CAU̥̥"
+    },
+    {
+      "id": "3",
+      "name": "virat",
+      "gender":"male",
+      "userAge":"27",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOy92ygyFYRu_gjeN3tCJo9WPRo0YEuzXLyg&usqp=CAU̥̥"
+    },
+    {
+      "id": "4",
+      "name": "rohit 1",
+      "gender":"male",
+      "userAge":"52",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOy92ygyFYRu_gjeN3tCJo9WPRo0YEuzXLyg&usqp=CAU̥̥"
+    },
+    {
+      "id": "5",
+      "name": "raina 2",
+      "gender":"male",
+      "userAge":"54",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOy92ygyFYRu_gjeN3tCJo9WPRo0YEuzXLyg&usqp=CAU̥̥"
+    },
+    {
+      "id": "6",
+      "name": "yuvara 3",
+      "gender":"male",
+      "userAge":"78",
+      "profileImages":"https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875"
+    },
+    {
+      "id": "7",
+      "name": "hardik 4",
+      "gender":"male",
+      "userAge":"45",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOGpO5tNI3HCljvisM0NC_U1hEECgGMQtxiA&usqp=CAU"
+    },
+    {
+      "id": "8",
+      "name": "krunal 5",
+      "gender":"male",
+      "userAge":"45",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOGpO5tNI3HCljvisM0NC_U1hEECgGMQtxiA&usqp=CAU"
+    },
+    {
+      "id": "9",
+      "name": "bhuneshwar 6",
+      "gender":"male",
+      "userAge":"25",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOGpO5tNI3HCljvisM0NC_U1hEECgGMQtxiA&usqp=CAU"
+    },
+    {
+      "id": "10",
+      "name": "shami 7",
+      "gender":"male",
+      "userAge":"78",
+      "profileImages":"https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875"
+    },
+    {
+      "id": "11",
+      "name": "chahal 8",
+      "gender":"male",
+      "userAge":"45",
+      "profileImages":"https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875"
+    },
+    {
+      "id": "1",
+      "name": "ravi 9",
+      "gender":"male",
+      "userAge":"22",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOy92ygyFYRu_gjeN3tCJo9WPRo0YEuzXLyg&usqp=CAU̥̥"
+    },
+    {
+      "id": "2",
+      "name": "dhoni 10",
+      "gender":"male",
+      "userAge":"25",
+      "profileImages":"https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875"
+    },
+    {
+      "id": "3",
+      "name": "virat 11",
+      "gender":"male",
+      "userAge":"27",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOy92ygyFYRu_gjeN3tCJo9WPRo0YEuzXLyg&usqp=CAU̥̥"
+    },
+    {
+      "id": "4",
+      "name": "rohit 12",
+      "gender":"male",
+      "userAge":"52",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOy92ygyFYRu_gjeN3tCJo9WPRo0YEuzXLyg&usqp=CAU̥̥"
+    },
+    {
+      "id": "5",
+      "name": "raina 13",
+      "gender":"male",
+      "userAge":"54",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOy92ygyFYRu_gjeN3tCJo9WPRo0YEuzXLyg&usqp=CAU̥̥"
+    },
+    {
+      "id": "6",
+      "name": "yuvara 14",
+      "gender":"male",
+      "userAge":"78",
+      "profileImages":"https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875"
+    },
+    {
+      "id": "7",
+      "name": "hardik 15",
+      "gender":"male",
+      "userAge":"45",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOGpO5tNI3HCljvisM0NC_U1hEECgGMQtxiA&usqp=CAU"
+    },
+    {
+      "id": "8",
+      "name": "krunal 16",
+      "gender":"male",
+      "userAge":"45",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOGpO5tNI3HCljvisM0NC_U1hEECgGMQtxiA&usqp=CAU"
+    },
+    {
+      "id": "9",
+      "name": "bhuneshwar 17",
+      "gender":"male",
+      "userAge":"25",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOGpO5tNI3HCljvisM0NC_U1hEECgGMQtxiA&usqp=CAU"
+    },
+    {
+      "id": "10",
+      "name": "shami 18",
+      "gender":"male",
+      "userAge":"78",
+      "profileImages":"https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875"
+    },
+    {
+      "id": "11",
+      "name": "chahal 19",
+      "gender":"male",
+      "userAge":"45",
+      "profileImages":"https://i.scdn.co/image/ab6761610000e5eb2eb3676d6d03d8872feb0875"
+    },
+    {
+      "id": "12",
+      "name": "samson 20",
+      "gender":"male",
+      "userAge":"45",
+      "profileImages":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOGpO5tNI3HCljvisM0NC_U1hEECgGMQtxiA&usqp=CAU"
+    }
+
+  ]
+}

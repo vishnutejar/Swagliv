@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.activities.SubscriptionActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".EditActivity">
+
+            <include
+                android:id="@+id/common_header"
+                layout="@layout/common_header" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/size_10"
+                android:layout_marginVertical="@dimen/size_10"
+                android:backgroundTint="@color/violate100"
+                app:cardCornerRadius="@dimen/size_10"
+                app:cardElevation="@dimen/dp2">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/size_20"
+                    android:paddingVertical="@dimen/dp25">
+
+                    <TextView
+                        android:id="@+id/current_plan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/current_plan_text"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_18"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Free"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/free"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_18" />
+
+                    <TextView
+                        android:id="@+id/Time_period"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/current_plan"
+                        android:layout_marginTop="@dimen/size_20"
+                        android:text="@string/time"
+
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_18"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Free"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginLeft="@dimen/size_10"
+                        android:layout_marginTop="@dimen/size_23"
+                        android:text="@string/date_show"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/unsubscribe_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Time_period"
+                        android:layout_marginTop="@dimen/dp29"
+                        android:layout_marginRight="@dimen/dp30"
+                        android:background="@drawable/user_data_bg_unselected"
+                        android:paddingHorizontal="@dimen/size_18"
+                        android:paddingVertical="@dimen/dp15"
+                        android:text="@string/unsubscribe"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/time"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="@dimen/size_30"
+                        android:layout_marginEnd="@dimen/dp8"
+                        android:layout_toRightOf="@+id/unsubscribe_label"
+                        android:background="@drawable/rounded_voilet_btn"
+                        android:backgroundTint="@color/pink1"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/size_15"
+                        android:text="@string/upgrade"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/size_10"
+                android:layout_marginBottom="@dimen/dp25"
+                app:cardCornerRadius="@dimen/size_15"
+                app:cardElevation="@dimen/dp2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/violate100"
+                    android:orientation="vertical">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"></androidx.viewpager.widget.ViewPager>
+
+                    <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                        android:id="@+id/worm_dots_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/dp25"
+                        app:dotsColor="@color/gold"
+                        app:dotsCornerRadius="@dimen/dp8"
+                        app:dotsSize="@dimen/sp15"
+                        app:dotsSpacing="@dimen/dp4"
+                        app:dotsStrokeColor="@color/light_gray"
+                        app:dotsStrokeWidth="@dimen/dp1" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/subscription_continue_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/layout"
+                        android:layout_marginHorizontal="@dimen/size_10"
+                        android:layout_marginVertical="@dimen/size_20"
+                        android:background="@drawable/gold_button"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/size_41"
+                        android:paddingVertical="@dimen/size_15"
+                        android:text="@string/continue_btn"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_18" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

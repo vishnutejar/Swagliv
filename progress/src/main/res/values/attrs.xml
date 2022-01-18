@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Dialog">
+        <attr name="DialogTitleAppearance" format="reference" />
+        <attr name="DialogTitleText" format="reference|string" />
+        <attr name="DialogColor" format="reference|color"/>
+        <attr name="DialogCount" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="CradleBallBounce">
+        <attr name="cradle_ball_color" format="color" />
+    </declare-styleable>
+</resources>

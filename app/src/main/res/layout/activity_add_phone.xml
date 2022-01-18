@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".PhoneActivity">
+
+        <include
+            layout="@layout/common_header"
+            android:id="@+id/back_hedder" />
+
+        <TextView
+            android:id="@+id/no_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp25"
+            android:layout_marginTop="@dimen/dp45"
+            android:text="My number is"
+            android:textColor="@color/pink1"
+            android:textSize="@dimen/dp25"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp25">
+
+            <EditText
+                android:id="@+id/edit_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp25"
+                android:layout_weight="3"
+                android:backgroundTint="@color/purple_500"
+                android:hint="IN +91"
+                android:textColorHint="@color/white" />
+
+            <EditText
+                android:id="@+id/phone_no"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/sp15"
+                android:layout_marginRight="@dimen/dp25"
+                android:layout_weight="1"
+                android:textColorHint="@color/white"
+                android:maxLength="10"
+                android:backgroundTint="@color/faint_voilet"
+                android:inputType="phone"
+                android:textColor="@color/white"
+                android:hint="Phone number" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/terms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginLeft="@dimen/dp25"
+            android:layout_marginTop="@dimen/dp25"
+            android:layout_marginRight="@dimen/dp25"
+            android:text="@string/info_2" />
+
+        <TextView
+            android:id="@+id/btn_continue"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="@dimen/dp25"
+            android:layout_marginTop="@dimen/dp45"
+            android:layout_marginRight="@dimen/dp25"
+            android:background="@drawable/colorbtn"
+            android:backgroundTint="@color/pink1"
+            android:gravity="center"
+            android:text="Continue"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp15" />
+
+    </LinearLayout>
+</layout>

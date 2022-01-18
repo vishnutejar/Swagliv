@@ -1,0 +1,164 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Swagliv</string>
+    <string name="facebook_app_id">659451061882333</string>
+    <string name="fb_login_protocol_scheme">fb659451061882333</string>
+
+    <string name="info_2">By clicking Log In, you agree with our Terms.  Learn how process your data in our Privacy  Policy and Cookies Policy. By clicking Log In, you agree with our Terms.  <b>Learn how process your data in our Privacy  Policy and Cookies</b></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="api_failure_error_msg">Something went wrong ..</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_like">Like</string>
+    <string name="menu_msg">Message</string>
+    <string name="menu_profile">Profile</string>
+
+
+    <string name="msg_oops">Oops</string>
+    <string name="err_gps_off" tools:keep="@string/err_gps_off">Please Turn on your GPS for better experience.</string>
+    <string name="dashboard_peoples_loading_msg">Finding peoplesInfos near you ...</string>
+    <string name="after_profile_disappered_msg">Theres no one around you.Expand your profile setting to see more peoplesInfo.</string>
+    <string name="profile_empty_msg">No more peoplesInfo are available around you.Expand your profile setting to see more peoplesInfo.</string>
+    <string name="err_gps_enable_msg">Please Turn on your GPS (Location) for better experience.</string>
+    <string name="enable_location_title">Enable location</string>
+    <string name="enable_location_detail_msg">You will need to enable your location permission in order to use Tinder</string>
+    <string name="enable_location_detail_msg_android11" tools:keep="@string/enable_location_detail_msg_android11">You will need to enable your location permission in order to use Tinder \n\n Go to App Settings > Permission > Location Permission</string>
+    <string name="btn_open_setting" tools:keep="@string/btn_open_setting">OPEN SETTING</string>
+    <string name="btn_allow">Allow Location</string>
+    <string name="btn_enable_gps">Turn On GPS</string>
+
+    <string name="sign_in_with">Or Sign In with</string>
+    <string name="passion_activity_txt">Let everyone know what you’re passionate about by adding it to your
+profile.</string>
+    <string name="sign_in">Sign In </string>
+    <string name="sign_out">Sign Out </string>
+    <string name="show_me_txt">Show me </string>
+    <string name="men_txt">Men </string>
+    <string name="Women_txt">Women</string>
+    <string name="sign_up_name">Sign Up</string>
+    <string name="conform_password">Conform password</string>
+    <string name="profile_setting">Profile Setting</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="welcome">Welcome</string>
+    <string name="send" tools:keep="@string/send">Send as many likes as you want</string>
+    <string name="message" tools:keep="@string/message">Send a message</string>
+    <string name="sign_up_text">Sign Up</string>
+    <string name="appointment" tools:keep="@string/appointment">Make Appointment</string>
+    <string name="full_name">Full Name</string>
+    <string name="about">About Me-</string>
+    <string name="save_btn">Save</string>
+    <string name="passion">Passion</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="shemale">Shemale</string>
+    <string name="free">Free</string>
+    <string name="filter">Filter</string>
+    <string name="jenny">Jenny</string>
+    <string name="resend">Resend</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="continue_btn">Continue</string>
+    <string name="continue_passion_btn">Continue(0/5)</string>
+    <string name="unsubscribe">unsubscribe</string>
+    <string name="google" tools:keep="@string/google">Login with google</string>
+    <string name="swiping" tools:keep="@string/swiping">Keep Swiping</string>
+    <string name="facebook" tools:keep="@string/facebook">Login with facebook</string>
+    <string name="date_show">12/04/2020 - 12/04/2021</string>
+    <string name="phone_login" tools:keep="@string/phone_login">Login with phone</string>
+    <string name="time">Time Period</string>
+    <string name="phone_no_error_msg">Please enter valid Phone Number</string>
+    <string name="email_error_msg">Please enter valid email</string>
+    <string name="password_error_msg">Please enter valid password</string>
+    <string name="name_text_error_msg">Please enter the name</string>
+    <string name="gender_text__error_msg">Please enter gender</string>
+    <string name="date_error_msg">Please select the date of birth</string>
+    <string name="conform_password_error_msg">Please conform password</string>
+    <string name="check_password">Conform password should be same as password</string>
+    <string name="current_plan_text">Current Plan</string>
+    <string name="phone">Phone Number</string>
+    <string name="subscription" tools:keep="@string/subscription">Manage Subscription</string>
+    <string name="date">DD/MM/YY</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="match">Its a Match</string>
+    <string name="send_message_txt">send a message</string>
+    <string name="keep_swiping">keep swiping</string>
+    <string name="text">you and lili have killed each other</string>
+    <string name="please_wait">Please wait...</string>
+
+    <string name="title">Account Settings</string>
+    <string name="txt_edit_profile">Edit Profile</string>
+    <string name="txt_search_filter">Search &amp; Filter</string>
+    <string name="txt_go_premium">Go Premium</string>
+    <string name="title_edit">Edit</string>
+    <string name="title_wallet">Wallet</string>
+    <string name="title_help">HELP/FAQ</string>
+    <string name="txt_feedback">Feedback</string>
+    <string name="txt_complaint">Complaint</string>
+    <string name="txt_term_and_policy">Terms and Privacy Policy</string>
+    <string name="txt_app_info">App info</string>
+    <string name="txt_product_name">Product Name</string>
+    <string name="txt_rate">Rate</string>
+    <string name="txt_chat">Chat</string>
+    <string name="txt_delivery_date">Delivery Date</string>
+    <string name="txt_track_complaint">Track Complaint</string>
+    <string name="txt_search_crush">Search Crush</string>
+    <string name="txt_purchase_history">Purchase History</string>
+    <string name="txt_balance">Current Balance</string>
+    <string name="price_100"> 100</string>
+    <string name="price_0"> 0</string>
+    <string name="rupees">\u20B9</string>
+    <string name="per_month">/mo</string>
+    <string name="txt_add"> ADD</string>
+    <string name="txt_connect_to_partner"> Connect to Partner</string>
+    <string name="txt_Amount_to_add">Amount to add</string>
+    <string name="title_Likes">Likes</string>
+    <string name="title_Likes_view">SEE WHO LIKES YOU</string>
+    <string name="txt_name">Name</string>
+    <string name="txt_plan">Plan Settings</string>
+    <string name="txt_setting">Discovery Settings</string>
+    <string name="txt_location">Location</string>
+    <string name="txt_current_location">My Current Location</string>
+    <string name="txt_show_me">Show Me</string>
+    <string name="txt_age">Age Range</string>
+    <string name="age">Age</string>
+    <string name="distance">Distance</string>
+    <string name="txt_max_distance">Maximun Distance</string>
+    <string name="btn_logout">Logout</string>
+    <string name="btn_delete">Delete Account</string>
+    <string name="txt_profile">Profile</string>
+    <string name="err_logout_failed">Session not close.</string>
+    <string name="like_you_too">like you too</string>
+
+    <!--IntroActivity-->
+    <string name="title1">Make your profile</string>
+    <string name="title2">Meet new friends</string>
+    <string name="title3">Meet your perfect match</string>
+    <string name="title4">Celebrate with your friends</string>
+    <string name="skip_btn">Skip</string>
+    <string name="next_btn">Next</string>
+    <string name="des">Please read our privacy policy and policy regarding before registering</string>
+
+    <!-- Error messages -->
+    <string name="err_payment_details_invalid">Payment details are invalid, Please check and try again.</string>
+    <string name="err_network_connection">Hey %1$s, \n it seems your internet connection is off, Kindly turn it on.</string>
+    <string name="err_payment_un_successfull">Payment Failed</string>
+    <string name="err_select_package">Please select package</string>
+
+
+    <!--Range for RangeSlider-->
+    <string-array name="rangeSliderValues">
+        <item>22</item>
+        <item>34</item>
+    </string-array>
+
+    <string name="upload_success">Upload Success</string>
+    <string name="upload_failed">Upload Failed</string>
+    <string name="mobile_number">Mobile</string>
+    <string name="feedback">Feedback</string>
+    <string name="later">Later</string>
+    <string name="submit">Submit</string>
+    <string name="complaint">Complaint</string>
+    <string name="hint_write_feedback_here">Write feedback here...</string>
+    <string name="hint_write_comments_here">Write comments here...</string>
+
+</resources>

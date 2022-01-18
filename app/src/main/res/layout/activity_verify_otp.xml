@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.activities.OtpVerifyActivity">
+
+        <include
+            android:id="@+id/hedderback"
+            layout="@layout/common_header" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp25"
+            android:text="Enter OTP"
+            android:textColor="@color/pink1"
+            android:textSize="@dimen/dp25" />
+
+         <!--<com.app.swagliv.custome_view.otpview.OtpView
+             android:id="@+id/otp_view"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:inputType="number"
+             android:layout_marginTop="@dimen/dp30"
+             android:layout_marginLeft="@dimen/dp20"
+             android:itemBackground="@drawable/otp_background_view"
+             android:textAllCaps="true"
+             android:textColor="@android:color/white"
+             app:OtpHideLineWhenFilled="true"
+             app:OtpItemCount="6"
+             app:OtpState_filled="true"
+             app:OtpItemSpacing="6dp"
+             app:OtpLineColor="@color/dark_voilate1"
+             app:OtpViewType="line" />-->
+        <com.app.swagliv.custome_view.otpview.OtpEditText
+            android:id="@+id/input_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp30"
+            android:layout_marginVertical="@dimen/dp20"
+            android:cursorVisible="false"
+            android:digits="1234567890"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/sp20"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp8"
+            android:gravity="end"
+            android:text="@string/resend"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp15"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/verificationbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp30"
+            android:background="@drawable/colorbtn"
+            android:backgroundTint="@color/pink1"
+            android:gravity="center"
+            android:paddingVertical="@dimen/sp15"
+            android:text="@string/continue_btn"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp18" />
+
+    </LinearLayout>
+</layout>

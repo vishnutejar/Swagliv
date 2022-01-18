@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.app.common.utils.Utility" />
+
+        <import type="com.app.common.constant.AppCommonConstants" />
+
+        <variable
+            name="user"
+            type="com.app.swagliv.model.login.pojo.User" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.ProfileFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp270">
+
+                <RelativeLayout
+                    android:id="@+id/lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_250"
+                    android:background="@drawable/profile_hedder"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/common_hedder"
+                        layout="@layout/common_header" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/layout_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/common_hedder"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:gravity="center">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profile_image"
+                            android:layout_width="@dimen/dp125"
+                            android:layout_height="@dimen/dp125"
+                            android:src="@drawable/ic_blank_user_profile">
+
+                        </de.hdodenhof.circleimageview.CircleImageView>
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dimen_30"
+                            android:layout_height="@dimen/dimen_30"
+                            android:layout_marginLeft="-45dp"
+                            android:layout_toRightOf="@+id/profile_image"
+                            android:background="@drawable/circle"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/btnEditPofile"
+                                android:layout_width="@dimen/dimen_15"
+                                android:layout_height="@dimen/dimen_15"
+                                android:layout_gravity="center"
+                                android:src="@drawable/vector" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layout_profile"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:text="@{user.name}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_20"
+                        android:textStyle="bold"
+                        tools:text="@string/jenny" />
+
+
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp50"
+                        android:layout_height="@dimen/dp50"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/dp50"
+                        android:src="@drawable/ic_baseline_circle_24" />
+
+                    <ImageView
+                        android:id="@+id/ic_camera"
+                        android:layout_width="@dimen/dp20"
+                        android:layout_height="@dimen/dp20"
+                        android:layout_marginLeft="@dimen/dp120"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:src="@drawable/photo_camera" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp50"
+                        android:layout_height="@dimen/dp50"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dp50"
+                        android:src="@drawable/ic_baseline_circle_24" />
+
+                    <ImageView
+                        android:id="@+id/ic_video"
+                        android:layout_width="@dimen/dp20"
+                        android:layout_height="@dimen/dp20"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_marginRight="@dimen/dp120"
+                        android:src="@drawable/video" />
+                </FrameLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/otherImagesParentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp5"
+                android:background="@drawable/profile_text_frame"
+                android:visibility="gone">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/pictures_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp10" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/lay"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginRight="@dimen/dimen_10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title"
+                        android:textColor="@color/pink1"
+                        android:textSize="@dimen/size_20"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/profile_edit_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="@string/title_edit"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/size_18"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/lay2"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:layout_marginRight="@dimen/dimen_10"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/profile_text_frame"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp15">
+
+                    <TextView
+                        android:id="@+id/profile_name_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/txt_name"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="@{user.name}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15"
+                        tools:text="@string/jenny" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:background="@drawable/profile_text_frame"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/phone"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15" />
+
+                    <TextView
+                        android:id="@+id/mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:inputType="phone"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15"
+                        tools:text="9875641233" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:background="@drawable/profile_text_frame"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/date_of_birth"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="@{Utility.convertDate(user.dob,AppCommonConstants.API_DATE_FORMAT,AppCommonConstants.DATE_FORMAT_SHOW_UI)}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15"
+                        tools:text="02-05-1999" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lay6"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="@string/txt_plan"
+                        android:textColor="@color/pink1"
+                        android:textSize="@dimen/sp15"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:background="@drawable/profile_text_frame"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/current_plan_text"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15" />
+
+                    <TextView
+                        android:id="@+id/current_plan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="@string/free"
+                        android:textColor="@color/voilate_txt_color"
+                        android:textSize="@dimen/sp15" />
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lay8"
+                    android:layout_marginLeft="@dimen/dimen_15"
+                    android:layout_marginTop="@dimen/dimen_20"
+                    android:layout_marginRight="@dimen/dimen_15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="@string/txt_setting"
+                        android:textColor="@color/pink1"
+                        android:textSize="@dimen/sp15"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:background="@drawable/profile_text_frame"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/txt_location"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15" />
+
+                    <TextView
+                        android:id="@+id/current_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="@string/txt_current_location"
+                        android:textColor="@color/voilate_txt_color"
+                        android:textSize="@dimen/sp15" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:background="@drawable/profile_text_frame"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/txt_show_me"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15" />
+
+                    <TextView
+                        android:id="@+id/show_me_men_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="@string/men_txt"
+                        android:textColor="@color/voilate_txt_color"
+                        android:textSize="@dimen/sp15" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:background="@drawable/profile_text_frame"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/dp25">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp15">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/txt_age"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp15" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="22-34"
+                            android:textColor="@color/voilet"
+                            android:textSize="@dimen/sp15"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!--                    <com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar-->
+                    <!--                        absoluteMaxValue="150"-->
+                    <!--                        absoluteMinValue="20"-->
+                    <!--                        singleThumb="true"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:paddingHorizontal="@dimen/dp8" />-->
+                    <com.google.android.material.slider.RangeSlider
+                        android:id="@+id/sliderRange"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/MySliderTheme"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        app:values="@array/rangeSliderValues" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:background="@drawable/profile_text_frame"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/dp25">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp15">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/txt_max_distance"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp15" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="100 km"
+                            android:textColor="@color/voilet"
+                            android:textSize="@dimen/sp15"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <com.google.android.material.slider.RangeSlider
+                        android:id="@+id/distance_range_slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/MySliderTheme" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp1"
+                    android:layout_marginHorizontal="@dimen/dp40"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:background="@color/grey" />
+
+
+                <LinearLayout
+                    android:id="@+id/passion_btn_continue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:background="@drawable/textbutton"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp10">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/btn_logout"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:layout_marginBottom="@dimen/dp30"
+                    android:background="@drawable/textbutton"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/dp10"
+                        android:text="@string/btn_delete"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>
+
+
+
+

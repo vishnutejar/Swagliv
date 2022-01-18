@@ -1,0 +1,31 @@
+{
+  "status": 200,
+  "Message": "Message fetched",
+  "Data": [
+    {
+      "purchaseDate": "7 jan 2022",
+      "subscriptionName": "BRONZE",
+      "totalAmountInRupees": 123
+    },
+    {
+      "purchaseDate": "9 jan 2012",
+      "subscriptionName": "ACE",
+      "totalAmountInRupees": 150
+    },
+    {
+      "purchaseDate": "5 feb 2011",
+      "subscriptionName": "PLATINUM",
+      "totalAmountInRupees": 150
+    },
+    {
+      "purchaseDate": "9 may 2008",
+      "subscriptionName": "SILVER",
+      "totalAmountInRupees": 157
+    },
+    {
+      "purchaseDate": "24 dec 2000",
+      "subscriptionName": "GOLD",
+      "totalAmountInRupees": 156
+    }
+  ]
+}
