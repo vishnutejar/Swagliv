@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.app.common.utils.Utility" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <variable
+            name="comment"
+            type="com.app.swagliv.model.chat.pojo.chat.Message" />
+
+        <variable
+            name="viewModel"
+            type="com.app.swagliv.viewmodel.chats.ChatsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/chat_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp5"
+            android:background="@drawable/rounded_voilet_btn"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/ivChatImage"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="12dp"
+                android:scaleType="fitCenter"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvChatMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:paddingLeft="@dimen/dp10"
+                android:text="@{comment.message}"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvChatTimestamp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_marginTop="@dimen/dp10"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/dp10"
+                android:text="@{Utility.getTimeAgo(comment.time)}"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

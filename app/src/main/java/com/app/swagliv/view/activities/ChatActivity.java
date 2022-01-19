@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.app.swagliv.R;
 import com.app.swagliv.databinding.ActivityChatBinding;
-import com.app.swagliv.viewmodel.chats.repository.ChatsViewModel;
+import com.app.swagliv.viewmodel.chats.ChatsViewModel;
 
 public class ChatActivity extends AppCompatActivity {
     private ActivityChatBinding mBinding;

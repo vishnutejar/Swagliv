@@ -1,4 +1,4 @@
-package com.app.swagliv.model.chat.pojo;
+package com.app.swagliv.model.chat.pojo.chatlist;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

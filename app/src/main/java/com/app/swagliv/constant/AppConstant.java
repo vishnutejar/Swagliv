@@ -58,4 +58,14 @@ public class AppConstant {
 
     }
 
+    public class CHAT {
+        public static final int MESSAGE_TYPE_IMAGE = 101;
+        public static final int MESSAGE_TYPE_TEXT = 100;
+        public static final int MESSAGE_TYPE_LOCATION = 102;
+        public static final int MESSAGE_RECEIVED_CODE_LEFT = 0;
+        public static final int MESSAGE_RECEIVED_CODE_RIGHT = 1;
+
+    }
+
+
 }

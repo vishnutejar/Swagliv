@@ -53,7 +53,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
@@ -70,8 +69,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import okhttp3.ResponseBody;
-import okio.BufferedSource;
-import okio.Okio;
 
 /**
  * This class is used to define the common functions to be used in the application
@@ -463,7 +460,8 @@ public class Utility {
         return result;
     }
 
-    public static String getTimeAgo(Date date) {
+    public static String getTimeAgo(long timeStamp) {
+         Date  date = new Date(timeStamp);
 
         long time = date.getTime();
 

@@ -17,16 +17,16 @@ import com.app.common.utils.Utility;
 import com.app.common.utils.api_response_handler.APIResponse;
 import com.app.swagliv.R;
 import com.app.swagliv.databinding.FragmentMessageBinding;
-import com.app.swagliv.model.chat.pojo.UserChats;
-import com.app.swagliv.view.adaptor.ChatAdapter;
-import com.app.swagliv.viewmodel.chats.repository.ChatsViewModel;
+import com.app.swagliv.model.chat.pojo.chatlist.UserChats;
+import com.app.swagliv.view.adaptor.ChatListUserAdapter;
+import com.app.swagliv.viewmodel.chats.ChatsViewModel;
 
 import java.util.ArrayList;
 
 public class MessageFragment extends Fragment implements View.OnClickListener, APIResponseHandler {
     private FragmentMessageBinding mBinding;
     private ChatsViewModel mViewModel;
-    private ChatAdapter mAdapter;
+    private ChatListUserAdapter mAdapter;
     private ArrayList<UserChats> userChatsArrayList;
 
     public MessageFragment() {
@@ -50,7 +50,7 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
         });
 
         mBinding.chatView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mAdapter = new ChatAdapter(getContext(), userChatsArrayList);
+        mAdapter = new ChatListUserAdapter(getContext(), userChatsArrayList);
         mBinding.chatView.setAdapter(mAdapter);
         mViewModel.getChatList(getContext(), "getChatDetail.json", AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
         return mBinding.getRoot();

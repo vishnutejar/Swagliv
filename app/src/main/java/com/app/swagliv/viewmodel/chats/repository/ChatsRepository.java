@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.app.common.interfaces.APIResponseListener;
 import com.app.common.utils.Utility;
-import com.app.swagliv.model.chat.pojo.ChatBaseModel;
+import com.app.swagliv.model.chat.pojo.chatlist.ChatBaseModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

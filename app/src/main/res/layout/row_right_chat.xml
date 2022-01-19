@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.app.common.utils.Utility" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <variable
+            name="comment"
+            type="com.app.swagliv.model.chat.pojo.chat.Message" />
+
+        <variable
+            name="viewModel"
+            type="com.app.swagliv.viewmodel.chats.ChatsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/chat_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp5"
+            android:background="@drawable/rounded_rectangle_btn_gredent"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivChatImage"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="12dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="12dp"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvChatMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|right"
+                    android:paddingRight="@dimen/dp10"
+                    android:text="@{comment.message}"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/tvChatTimestamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|right"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:gravity="center|right"
+                    android:paddingRight="@dimen/dp10"
+                    android:text="@{Utility.getTimeAgo(comment.time)}"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

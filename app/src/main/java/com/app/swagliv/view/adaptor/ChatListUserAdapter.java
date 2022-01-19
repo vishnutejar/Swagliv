@@ -10,17 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.swagliv.R;
 import com.app.swagliv.databinding.ItemChatBinding;
-import com.app.swagliv.model.chat.pojo.UserChats;
+import com.app.swagliv.model.chat.pojo.chatlist.UserChats;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
+public class ChatListUserAdapter extends RecyclerView.Adapter<ChatListUserAdapter.ChatListUsers> {
     private Context context;
     private ArrayList<UserChats> mUserChats;
 
 
-    public ChatAdapter(Context context, ArrayList<UserChats> mUserChats) {
+    public ChatListUserAdapter(Context context, ArrayList<UserChats> mUserChats) {
         this.context = context;
         this.mUserChats = mUserChats;
     }
@@ -28,13 +28,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
     @NonNull
     @Override
-    public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ChatListUsers onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemChatBinding itemChatBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_chat, parent, false);
-        return new ChatViewHolder(itemChatBinding);
+        return new ChatListUsers(itemChatBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ChatListUsers holder, int position) {
         UserChats userChats = mUserChats.get(position);
         holder.itemChatBinding.setChats(userChats);
         Glide.with(context).load(userChats.getProfileImage()).placeholder(R.drawable.ic_blank_user_profile).into(holder.itemChatBinding.imgProfile);
@@ -47,10 +47,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     }
 
 
-    public class ChatViewHolder extends RecyclerView.ViewHolder {
+    public class ChatListUsers extends RecyclerView.ViewHolder {
         ItemChatBinding itemChatBinding;
 
-        public ChatViewHolder(@NonNull ItemChatBinding itemView) {
+        public ChatListUsers(@NonNull ItemChatBinding itemView) {
             super(itemView.getRoot());
             itemChatBinding = itemView;
         }

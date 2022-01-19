@@ -1,4 +1,4 @@
-package com.app.swagliv.viewmodel.chats.repository;
+package com.app.swagliv.viewmodel.chats;
 
 import android.content.Context;
 
@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.app.common.interfaces.APIResponseListener;
 import com.app.common.utils.api_response_handler.APIResponse;
+import com.app.swagliv.viewmodel.chats.repository.ChatsRepository;
 
 public class ChatsViewModel extends ViewModel implements APIResponseListener {
     public MutableLiveData<APIResponse> mutableLiveData;

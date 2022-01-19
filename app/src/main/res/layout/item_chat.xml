@@ -6,7 +6,7 @@
 
         <variable
             name="chats"
-            type="com.app.swagliv.model.chat.pojo.UserChats" />
+            type="com.app.swagliv.model.chat.pojo.chatlist.UserChats" />
     </data>
 
     <LinearLayout
