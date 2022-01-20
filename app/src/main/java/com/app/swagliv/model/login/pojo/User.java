@@ -53,7 +53,7 @@ public class User  implements Parcelable {
     private String password;
     private String aboutMe;
 
-    public User(Parcel in) {
+    protected User(Parcel in) {
         name = in.readString();
         email = in.readString();
         if (in.readByte() == 0) {

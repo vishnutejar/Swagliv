@@ -6,46 +6,49 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/dp10"
         android:orientation="vertical"
         tools:context=".view.activities.PassionSelectionActivity">
 
-        <ImageView
+        <include
+            android:id="@+id/common_header"
+            layout="@layout/common_header" />
+
+        <!--<ImageView
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp10"
             android:src="@drawable/ic_baseline_arrow_back_24"
-            app:tint="@color/white" />
+            app:tint="@color/white" />-->
 
         <LinearLayout
-            android:layout_below="@+id/btn_back"
             android:id="@+id/passion_text_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/sp20"
+            android:layout_marginTop="@dimen/dp45"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp20"
                 android:text="@string/passion"
-                android:textColor="@color/pink1"
+                android:textColor="@color/sky_blue"
                 android:textSize="@dimen/sp18" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/passion_activity_txt"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <com.app.chiprecycleview.MultiChipsRecyclerView
-            android:layout_above="@+id/passion_btn_continue"
             android:id="@+id/passion_chips_recycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/passion_btn_continue"
             android:layout_below="@+id/passion_text_layout"
             android:layout_marginHorizontal="@dimen/dp10"
             android:layout_marginTop="@dimen/dp15"
@@ -59,10 +62,10 @@
             android:layout_marginHorizontal="@dimen/dp15"
             android:layout_marginTop="@dimen/dp8"
             android:layout_marginBottom="@dimen/dp45"
-            android:background="@drawable/textbutton"
-            android:backgroundTint="@color/pink1"
+            android:background="@drawable/colorbtn"
+            android:backgroundTint="@color/dark_pink"
             android:orientation="horizontal"
-            android:padding="@dimen/dp10">
+            android:padding="@dimen/dp15">
 
             <TextView
                 android:id="@+id/number_count"

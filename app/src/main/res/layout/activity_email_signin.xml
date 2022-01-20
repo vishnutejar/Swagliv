@@ -23,8 +23,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp12"
                 android:layout_marginTop="@dimen/dp50"
-                android:text="@string/sign_up_text"
-                android:textColor="@color/pink"
+                android:text="@string/sign_in"
+                android:textColor="@color/sky_blue"
                 android:textSize="@dimen/dp30" />
 
             <EditText
@@ -34,11 +34,11 @@
                 android:layout_marginTop="@dimen/size_20"
                 android:background="@drawable/colorbtn"
                 android:backgroundTint="@color/dark_voilate1"
-                android:singleLine="true"
                 android:hint="@string/email"
-                android:textColor="@color/white"
                 android:paddingVertical="@dimen/dp15"
                 android:paddingLeft="@dimen/dp20"
+                android:singleLine="true"
+                android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="@dimen/dp15" />
 
@@ -53,8 +53,8 @@
                 android:inputType="textPassword"
                 android:paddingVertical="@dimen/dp15"
                 android:paddingLeft="@dimen/dp20"
-                android:textColorHint="@color/white"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="@dimen/dp15" />
 
             <TextView
@@ -63,7 +63,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp25"
                 android:background="@drawable/colorbtn"
-                android:backgroundTint="@color/pink1"
                 android:gravity="center"
                 android:paddingHorizontal="@dimen/dp20"
                 android:paddingVertical="@dimen/dp15"
@@ -83,7 +82,7 @@
             android:paddingVertical="@dimen/dp15"
             android:paddingLeft="@dimen/dp20"
             android:text="@string/sign_in_with"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/sp15" />
 
         <LinearLayout

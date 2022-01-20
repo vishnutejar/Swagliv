@@ -11,7 +11,7 @@
             android:id="@+id/headerLayout"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/dark_voilate1"
+            android:background="@color/dark_pink"
             android:orientation="horizontal">
 
             <ImageView

@@ -66,7 +66,7 @@ public class PassionSelectionActivity extends AppCompatActivity implements View.
             viewModel.doGetPassionsList(AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
         }
 
-        mBinding.btnBack.setOnClickListener(this);
+        mBinding.commonHeader.backBtn.setOnClickListener(this);
         mBinding.passionBtnContinue.setOnClickListener(this);
     }
 
@@ -92,7 +92,7 @@ public class PassionSelectionActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_back:
+            case R.id.back_btn:
                 finish();
                 break;
             case R.id.passion_btn_continue:

@@ -24,7 +24,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/size_10"
                 android:layout_marginVertical="@dimen/size_10"
-                android:backgroundTint="@color/violate100"
                 app:cardCornerRadius="@dimen/size_10"
                 app:cardElevation="@dimen/dp2">
 
@@ -40,7 +39,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/current_plan_text"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/size_18"
                         android:textStyle="bold" />
 
@@ -50,7 +49,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:text="@string/free"
-                        android:textColor="@color/white"
+                        android:textColor="@color/dark_pink"
                         android:textSize="@dimen/size_18" />
 
                     <TextView
@@ -60,8 +59,7 @@
                         android:layout_below="@+id/current_plan"
                         android:layout_marginTop="@dimen/size_20"
                         android:text="@string/time"
-
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/size_18"
                         android:textStyle="bold" />
 
@@ -74,7 +72,7 @@
                         android:layout_marginLeft="@dimen/size_10"
                         android:layout_marginTop="@dimen/size_23"
                         android:text="@string/date_show"
-                        android:textColor="@color/white"
+                        android:textColor="@color/dark_pink"
                         android:textStyle="bold" />
 
 
@@ -90,7 +88,7 @@
                         android:paddingVertical="@dimen/dp15"
                         android:text="@string/unsubscribe"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
@@ -101,8 +99,8 @@
                         android:layout_marginTop="@dimen/size_30"
                         android:layout_marginEnd="@dimen/dp8"
                         android:layout_toRightOf="@+id/unsubscribe_label"
-                        android:background="@drawable/rounded_voilet_btn"
-                        android:backgroundTint="@color/pink1"
+                        android:background="@drawable/colorbtn"
+                        android:backgroundTint="@color/dark_pink"
                         android:gravity="center"
                         android:paddingVertical="@dimen/size_15"
                         android:text="@string/upgrade"
@@ -123,7 +121,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/violate100"
                     android:orientation="vertical">
 
                     <androidx.viewpager.widget.ViewPager
@@ -137,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="@dimen/dp25"
-                        app:dotsColor="@color/gold"
+                        app:dotsColor="@color/dark_pink"
                         app:dotsCornerRadius="@dimen/dp8"
                         app:dotsSize="@dimen/sp15"
                         app:dotsSpacing="@dimen/dp4"
@@ -158,7 +155,8 @@
                         android:layout_below="@id/layout"
                         android:layout_marginHorizontal="@dimen/size_10"
                         android:layout_marginVertical="@dimen/size_20"
-                        android:background="@drawable/gold_button"
+                        android:background="@drawable/colorbtn"
+                        android:backgroundTint="@color/dark_pink"
                         android:gravity="center"
                         android:paddingHorizontal="@dimen/size_41"
                         android:paddingVertical="@dimen/size_15"

@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp10"
                 android:text="@{chats.userName}"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/sp15"
                 tools:text="@string/jenny" />
 
@@ -54,7 +54,7 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="@{chats.lastMessage}"
-                    android:textColor="@color/white"
+                    android:textColor="@color/grey"
                     android:textSize="@dimen/sp15"
                     tools:text="hello" />
 

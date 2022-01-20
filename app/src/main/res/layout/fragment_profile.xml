@@ -81,7 +81,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:text="@{user.name}"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/size_20"
                         android:textStyle="bold"
                         tools:text="@string/jenny" />
@@ -209,7 +209,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/txt_name"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15" />
 
                     <TextView
@@ -218,7 +218,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="@{user.name}"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15"
                         tools:text="@string/jenny" />
                 </LinearLayout>
@@ -237,7 +237,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/phone"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15" />
 
                     <TextView
@@ -247,7 +247,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:inputType="phone"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15"
                         tools:text="9875641233" />
                 </LinearLayout>
@@ -266,7 +266,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/date_of_birth"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15" />
 
                     <TextView
@@ -275,7 +275,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="@{Utility.convertDate(user.dob,AppCommonConstants.API_DATE_FORMAT,AppCommonConstants.DATE_FORMAT_SHOW_UI)}"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15"
                         tools:text="02-05-1999" />
                 </LinearLayout>
@@ -312,7 +312,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/current_plan_text"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15" />
 
                     <TextView
@@ -359,7 +359,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/txt_location"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15" />
 
                     <TextView
@@ -387,7 +387,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/txt_show_me"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15" />
 
                     <TextView
@@ -419,7 +419,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/txt_age"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/sp15" />
 
                         <TextView
@@ -469,7 +469,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/txt_max_distance"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/sp15" />
 
                         <TextView
@@ -504,7 +504,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/textbutton"
+                    android:background="@drawable/colorbtn"
+                    android:backgroundTint="@color/dark_pink"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp10">
 
@@ -524,7 +525,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
                     android:layout_marginBottom="@dimen/dp30"
-                    android:background="@drawable/textbutton"
+                    android:background="@drawable/colorbtn"
+                    android:backgroundTint="@color/dark_pink"
                     android:orientation="horizontal">
 
                     <TextView

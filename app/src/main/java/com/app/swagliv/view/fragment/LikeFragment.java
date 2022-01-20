@@ -63,7 +63,7 @@ public class LikeFragment extends Fragment implements View.OnClickListener, APIR
         mBinding.seeLikesBtn.setVisibility(mSubscription == null ? View.VISIBLE : View.GONE);
         mBinding.seeLikesBtn.setOnClickListener(this);
         mBinding.commonHeader.headerTitle.setText(R.string.title_Likes);
-        mBinding.commonHeader.headerLayout.setBackgroundResource(R.color.screen_background);
+        mBinding.commonHeader.headerLayout.setBackgroundResource(R.color.dark_pink);
         mBinding.commonHeader.backBtn.setVisibility(View.GONE);
         //----
         mBinding.profileWhoLike.setLayoutManager(new GridLayoutManager(getContext(), 2));

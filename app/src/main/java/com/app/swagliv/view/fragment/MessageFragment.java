@@ -40,7 +40,7 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_message, container, false);
         mViewModel = new ViewModelProvider(this).get(ChatsViewModel.class);
         mBinding.commonHeader.headerTitle.setText(R.string.txt_chat);
-        mBinding.commonHeader.headerLayout.setBackgroundResource(R.color.screen_background);
+        mBinding.commonHeader.headerLayout.setBackgroundResource(R.color.dark_pink);
         mBinding.commonHeader.backBtn.setVisibility(View.GONE);
         mViewModel.mutableLiveData.observe(getActivity(), new Observer<APIResponse>() {
             @Override

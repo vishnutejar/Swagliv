@@ -18,8 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp25"
             android:layout_marginTop="@dimen/dp45"
-            android:text="My number is"
-            android:textColor="@color/pink1"
+            android:text="@string/number_is"
+            android:textColor="@color/sky_blue"
             android:textSize="@dimen/dp25"
             android:textStyle="bold" />
 
@@ -71,9 +71,9 @@
             android:layout_marginTop="@dimen/dp45"
             android:layout_marginRight="@dimen/dp25"
             android:background="@drawable/colorbtn"
-            android:backgroundTint="@color/pink1"
+            android:backgroundTint="@color/dark_pink"
             android:gravity="center"
-            android:text="Continue"
+            android:text="@string/continue_btn"
             android:textColor="@color/white"
             android:textSize="@dimen/sp15" />
 

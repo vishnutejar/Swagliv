@@ -66,7 +66,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.save_btn:
                 if (!mBinding.editNameText.getText().toString().trim().isEmpty()) {
-                    if (!mBinding.editMobileTxt.getText().toString().trim().isEmpty()) {
+                    if (!mBinding.editMobileTxt.getText().toString().trim().isEmpty() && Utility.checkContactNo(mBinding.editMobileTxt.getText().toString())) {
                         mUser.setName(mBinding.editNameText.getText().toString());
                         mUser.setContactNumber(mBinding.editMobileTxt.getText().toString());
                         mUser.setDob(mBinding.birthDateText.getText().toString());

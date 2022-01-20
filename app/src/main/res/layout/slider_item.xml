@@ -23,19 +23,19 @@
         android:gravity="center"
         android:text="@string/title1"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/sky_blue"
         android:textSize="@dimen/dp25"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp10"
         android:layout_marginHorizontal="@dimen/size_20"
+        android:layout_marginTop="@dimen/dp10"
         android:gravity="center"
         android:padding="@dimen/size_20"
         android:text="@string/des"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="@dimen/size_15" />
 </LinearLayout>

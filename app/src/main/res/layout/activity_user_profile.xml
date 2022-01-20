@@ -28,7 +28,6 @@
                 android:id="@+id/lay_profile"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_250"
-                android:background="@drawable/profile_hedder"
                 android:orientation="vertical">
 
                 <include
@@ -80,8 +79,8 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/dimen_10"
                     android:text="@{user.name}"
-                    android:textColor="@color/white"
                     android:textSize="@dimen/size_20"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     tools:text="@string/jenny" />
             </LinearLayout>
@@ -108,7 +107,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/txt_name"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15" />
 
                     <EditText
@@ -119,7 +118,6 @@
                         android:background="@null"
                         android:gravity="end"
                         android:text="@{user.name}"
-                        android:textColor="@color/white"
                         android:textColorHint="@color/white"
                         android:textSize="@dimen/sp15"
                         tools:text="@string/jenny" />
@@ -138,8 +136,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/black"
                         android:text="@string/phone"
-                        android:textColor="@color/white"
                         android:textSize="@dimen/sp15" />
 
                     <TextView
@@ -150,7 +148,6 @@
                         android:background="@null"
                         android:gravity="end"
                         android:inputType="phone"
-                        android:textColor="@color/white"
                         android:textColorHint="@color/white"
                         android:textSize="@dimen/sp15"
                         tools:text="9656986598" />
@@ -170,7 +167,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/date_of_birth"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15" />
 
                     <TextView
@@ -182,7 +179,6 @@
                         android:gravity="end"
                         android:inputType="date"
                         android:text="@{Utility.convertDate(user.dob,AppCommonConstants.API_DATE_FORMAT,AppCommonConstants.DATE_FORMAT_SHOW_UI)}"
-                        android:textColor="@color/white"
                         android:textSize="@dimen/sp15"
                         tools:text="02-05-1999" />
                 </LinearLayout>
@@ -201,7 +197,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/txt_location"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15" />
 
                     <TextView
@@ -210,7 +206,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="@string/txt_current_location"
-                        android:textColor="@color/pink1"
+                        android:textColor="@color/grey"
                         android:textSize="@dimen/sp15" />
                 </LinearLayout>
 
@@ -228,7 +224,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/gender"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15" />
 
                     <TextView
@@ -238,7 +234,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="@{user.gender}"
-                        android:textColor="@color/pink1"
+                        android:textColor="@color/grey"
                         android:textSize="@dimen/sp15"
                         tools:text="@string/Women_txt" />
                 </LinearLayout>
@@ -261,18 +257,18 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/age"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/sp15" />
 
-                        <TextView
+                        <!--<TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="end"
                             android:text="22"
-                            android:textColor="@color/pink1"
+                            android:textColor="@color/grey"
                             android:textSize="@dimen/sp15"
-                            android:textStyle="bold" />
+                            android:textStyle="bold" />-->
                     </LinearLayout>
 
                     <com.google.android.material.slider.RangeSlider
@@ -303,7 +299,7 @@
                         android:hint="@string/about"
                         android:maxHeight="@dimen/dp200"
                         android:maxLength="500"
-                        android:textColor="@color/white"
+                        tools:text="@string/about"
                         android:textColorHint="@color/white"
                         android:textSize="@dimen/sp15" />
 
@@ -329,7 +325,7 @@
                             android:layout_weight="1"
                             android:paddingBottom="@dimen/dp25"
                             android:text="@string/passion"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/sp15" />
 
                         <TextView
@@ -349,8 +345,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
                     android:layout_marginBottom="@dimen/dp25"
-                    android:background="@drawable/textbutton"
-                    android:backgroundTint="@color/pink1"
+                    android:background="@drawable/colorbtn"
+                    android:backgroundTint="@color/dark_pink"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp10">
 
