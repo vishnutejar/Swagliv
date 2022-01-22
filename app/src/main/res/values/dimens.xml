@@ -42,4 +42,7 @@
     <dimen name="sp15">15sp</dimen>
     <dimen name="sp18">18sp</dimen>
     <dimen name="sp20">20sp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>

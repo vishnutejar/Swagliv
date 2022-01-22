@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "137615379536",
-    "project_id": "swagliv-1638960292943",
-    "storage_bucket": "swagliv-1638960292943.appspot.com"
+    "project_number": "598144241164",
+    "project_id": "dateflu-6bcc2",
+    "storage_bucket": "dateflu-6bcc2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:137615379536:android:f65d01e7f4976223d8d555",
+        "mobilesdk_app_id": "1:598144241164:android:72b4773df95eaab116e829",
         "android_client_info": {
           "package_name": "com.app.swagliv"
         }
       },
       "oauth_client": [
         {
-          "client_id": "137615379536-etkej9s64tikkq328u807cio3aamt5hp.apps.googleusercontent.com",
+          "client_id": "598144241164-o9iqdmufvmugdduqv291rofmhi8crt22.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyARlCZe-oTX2X1vytpVbMSs3rvX3VtZaRo"
+          "current_key": "AIzaSyDyvB7kdQz-59DUERWLUTmIdw0jvyc7wx4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "137615379536-etkej9s64tikkq328u807cio3aamt5hp.apps.googleusercontent.com",
+              "client_id": "598144241164-o9iqdmufvmugdduqv291rofmhi8crt22.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

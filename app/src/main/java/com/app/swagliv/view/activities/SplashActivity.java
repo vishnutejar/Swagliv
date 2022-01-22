@@ -10,6 +10,7 @@ import com.app.common.preference.AppPreferencesManager;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.databinding.ActivitySplashBinding;
+import com.app.swagliv.twiliovoice.VoiceActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -28,6 +29,10 @@ public class SplashActivity extends AppCompatActivity {
         mCurrentUserProfileStatus = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_PROFILE_STATUS, this);
         mIsAppAlreadyOpen = AppPreferencesManager.getBoolean(AppConstant.PREFERENCE_KEYS.IS_APP_ALREADY_OPEN, this);
 
+        if (true) {
+            startActivity(new Intent(this, VoiceActivity.class));
+            return;
+        }
         Thread timer = new Thread() {
             public void run() {
                 try {
