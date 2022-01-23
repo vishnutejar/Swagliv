@@ -39,8 +39,10 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.app.common.preference.AppPreferencesManager;
 import com.app.swagliv.BuildConfig;
 import com.app.swagliv.R;
+import com.app.swagliv.constant.AppConstant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -74,7 +76,8 @@ public class VoiceActivity extends AppCompatActivity {
     // emulator
 //    private String accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2Q0NTBhMTM4OGRiYzY5ZGI5MjY5N2ZkZGUzMzY1ODZkLTE2NDI4NDcyMzAiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJlbXVsYXRvciIsInZvaWNlIjp7ImluY29taW5nIjp7ImFsbG93Ijp0cnVlfSwib3V0Z29pbmciOnsiYXBwbGljYXRpb25fc2lkIjoiQVAwMWFkNDQ0N2U4ZjIzMGNkMjc5NWNiMDUwNDM0MDM1NSJ9LCJwdXNoX2NyZWRlbnRpYWxfc2lkIjoiQ1I5ZTM4OWYzODQ3ZTY5MGIzNzQwMGQ0YTExODZmODU4MiJ9fSwiaWF0IjoxNjQyODQ3MjMwLCJleHAiOjE2NDI4NTA4MzAsImlzcyI6IlNLZDQ1MGExMzg4ZGJjNjlkYjkyNjk3ZmRkZTMzNjU4NmQiLCJzdWIiOiJBQzE2ZGJjMWQyZWUyMDM1ZmE2ODVmOWM2MGI4ZDBjNjlkIn0.AkXu2tOwTwsMNjN7KJ30T83NuwvGEhkwEACIT0474xs";
     // device
-    private String accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2Q0NTBhMTM4OGRiYzY5ZGI5MjY5N2ZkZGUzMzY1ODZkLTE2NDI4NDc0MTgiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJkZXZpY2UiLCJ2b2ljZSI6eyJpbmNvbWluZyI6eyJhbGxvdyI6dHJ1ZX0sIm91dGdvaW5nIjp7ImFwcGxpY2F0aW9uX3NpZCI6IkFQMDFhZDQ0NDdlOGYyMzBjZDI3OTVjYjA1MDQzNDAzNTUifSwicHVzaF9jcmVkZW50aWFsX3NpZCI6IkNSOWUzODlmMzg0N2U2OTBiMzc0MDBkNGExMTg2Zjg1ODIifX0sImlhdCI6MTY0Mjg0NzQxOCwiZXhwIjoxNjQyODUxMDE4LCJpc3MiOiJTS2Q0NTBhMTM4OGRiYzY5ZGI5MjY5N2ZkZGUzMzY1ODZkIiwic3ViIjoiQUMxNmRiYzFkMmVlMjAzNWZhNjg1ZjljNjBiOGQwYzY5ZCJ9.45euNcpmcIJIqTdVrBvOywxIBHMplTn1HwYwpYAlUeE";
+//    private String accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2Q0NTBhMTM4OGRiYzY5ZGI5MjY5N2ZkZGUzMzY1ODZkLTE2NDI4NDc0MTgiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJkZXZpY2UiLCJ2b2ljZSI6eyJpbmNvbWluZyI6eyJhbGxvdyI6dHJ1ZX0sIm91dGdvaW5nIjp7ImFwcGxpY2F0aW9uX3NpZCI6IkFQMDFhZDQ0NDdlOGYyMzBjZDI3OTVjYjA1MDQzNDAzNTUifSwicHVzaF9jcmVkZW50aWFsX3NpZCI6IkNSOWUzODlmMzg0N2U2OTBiMzc0MDBkNGExMTg2Zjg1ODIifX0sImlhdCI6MTY0Mjg0NzQxOCwiZXhwIjoxNjQyODUxMDE4LCJpc3MiOiJTS2Q0NTBhMTM4OGRiYzY5ZGI5MjY5N2ZkZGUzMzY1ODZkIiwic3ViIjoiQUMxNmRiYzFkMmVlMjAzNWZhNjg1ZjljNjBiOGQwYzY5ZCJ9.45euNcpmcIJIqTdVrBvOywxIBHMplTn1HwYwpYAlUeE";
+    private String accessToken = "";
 
     /*
      * Audio device management
@@ -102,7 +105,6 @@ public class VoiceActivity extends AppCompatActivity {
     private Call activeCall;
     private int activeCallNotificationId;
 
-    RegistrationListener registrationListener = registrationListener();
     Call.Listener callListener = callListener();
 
     @Override
@@ -130,6 +132,8 @@ public class VoiceActivity extends AppCompatActivity {
         muteActionFab.setOnClickListener(muteActionFabClickListener());
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        accessToken = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.TWILIO_ACCESS_TOKEN, this);
 
         /*
          * Setup the broadcast receiver to be notified of FCM Token updates
@@ -508,6 +512,7 @@ public class VoiceActivity extends AppCompatActivity {
      * Register your FCM token with Twilio to receive incoming call invites
      */
     private void registerForCallInvites() {
+        RegistrationListener registrationListener = registrationListener();
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
                     public void onComplete(@NonNull Task<String> task) {
