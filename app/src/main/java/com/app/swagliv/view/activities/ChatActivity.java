@@ -1,12 +1,8 @@
 package com.app.swagliv.view.activities;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -16,7 +12,7 @@ import com.app.common.preference.AppPreferencesManager;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.databinding.ActivityChatBinding;
-import com.app.swagliv.model.call.api.TokenService;
+import com.app.swagliv.model.call.api.TwilioTokenService;
 import com.app.swagliv.model.call.pojo.TokenResponseBaseModel;
 import com.app.swagliv.network.ApplicationRetrofitServices;
 import com.app.swagliv.twiliovoice.VoiceActivity;
@@ -39,24 +35,18 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public void getTwilioToken() {
-        Log.e("Twilio API error", "001");
         String userId = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, this);
-        userId = "61d3f261fd08988490de3c51";
-        TokenService tokenService = ApplicationRetrofitServices.getInstance().getTwilioTokenService();
-        Log.e("Twilio API error", "002");
+        TwilioTokenService twilioTokenService = ApplicationRetrofitServices.getInstance().getTwilioTokenService();
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("_id", userId);
-        Log.e("Twilio API error", "003");
-        Call<TokenResponseBaseModel> call = tokenService.getTwilioAccessToken(jsonObject);
+        Call<TokenResponseBaseModel> call = twilioTokenService.getTwilioAccessToken(jsonObject);
         call.enqueue(new Callback<TokenResponseBaseModel>() {
             @Override
             public void onResponse(Call<TokenResponseBaseModel> call, Response<TokenResponseBaseModel> response) {
                 TokenResponseBaseModel tokenResponse = response.body();
                 if (response.isSuccessful() && tokenResponse != null) {
-                    Log.e("Twilio API error", "004");
                     if (tokenResponse.getStatus() == AppCommonConstants.API_SUCCESS_STATUS_CODE) {
-                        Log.e("Twilio API error", "005");
-                        //createConfirmDialog(tokenResponse.getAccessToken());
+                        AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.TWILIO_ACCESS_TOKEN, tokenResponse.getAccessToken(), ChatActivity.this);
                         startActivity(new Intent(ChatActivity.this, VoiceActivity.class));
                     }
                 }
@@ -64,24 +54,8 @@ public class ChatActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<TokenResponseBaseModel> call, Throwable t) {
-                Log.e("Twilio API error", "006");
                 Log.e("Twilio API error", t.getMessage());
             }
         });
-    }
-
-    private void createConfirmDialog(final String accessToken) {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setIcon(R.drawable.ic_call_black_24dp);
-        alertDialogBuilder.setTitle("Confirm call?");
-        Toast.makeText(this, accessToken, Toast.LENGTH_SHORT).show();
-        alertDialogBuilder.setPositiveButton("Call", (dialogInterface, i) -> {
-            dialogInterface.dismiss();
-            AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.TWILIO_ACCESS_TOKEN, accessToken, ChatActivity.this);
-            startActivity(new Intent(ChatActivity.this, VoiceActivity.class));
-        });
-        alertDialogBuilder.setNegativeButton("Cancel", (dialogInterface, i) -> dialogInterface.dismiss());
-        alertDialogBuilder.setCancelable(false);
-        alertDialogBuilder.create().show();
     }
 }

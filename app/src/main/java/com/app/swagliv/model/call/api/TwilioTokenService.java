@@ -8,7 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
-public interface TokenService {
+public interface TwilioTokenService {
     @POST(AppConstant.API.GET_TWILIO_ACCESS_TOKEN)
     Call<TokenResponseBaseModel> getTwilioAccessToken(
             @Body JsonObject jsonObject
