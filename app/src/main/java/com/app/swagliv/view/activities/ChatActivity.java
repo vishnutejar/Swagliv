@@ -12,8 +12,8 @@ import com.app.common.preference.AppPreferencesManager;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.databinding.ActivityChatBinding;
-import com.app.swagliv.model.call.api.TwilioTokenService;
-import com.app.swagliv.model.call.pojo.TokenResponseBaseModel;
+import com.app.swagliv.model.call.api.TwilioVoiceTokenService;
+import com.app.swagliv.model.call.pojo.TwilioVoiceTokenResponseBaseModel;
 import com.app.swagliv.network.ApplicationRetrofitServices;
 import com.app.swagliv.twiliovoice.VoiceActivity;
 import com.app.swagliv.viewmodel.chats.ChatsViewModel;
@@ -36,14 +36,14 @@ public class ChatActivity extends AppCompatActivity {
 
     public void getTwilioToken() {
         String userId = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, this);
-        TwilioTokenService twilioTokenService = ApplicationRetrofitServices.getInstance().getTwilioTokenService();
+        TwilioVoiceTokenService twilioVoiceTokenService = ApplicationRetrofitServices.getInstance().getTwilioTokenService();
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("_id", userId);
-        Call<TokenResponseBaseModel> call = twilioTokenService.getTwilioAccessToken(jsonObject);
-        call.enqueue(new Callback<TokenResponseBaseModel>() {
+        Call<TwilioVoiceTokenResponseBaseModel> call = twilioVoiceTokenService.getTwilioAccessToken(jsonObject);
+        call.enqueue(new Callback<TwilioVoiceTokenResponseBaseModel>() {
             @Override
-            public void onResponse(Call<TokenResponseBaseModel> call, Response<TokenResponseBaseModel> response) {
-                TokenResponseBaseModel tokenResponse = response.body();
+            public void onResponse(Call<TwilioVoiceTokenResponseBaseModel> call, Response<TwilioVoiceTokenResponseBaseModel> response) {
+                TwilioVoiceTokenResponseBaseModel tokenResponse = response.body();
                 if (response.isSuccessful() && tokenResponse != null) {
                     if (tokenResponse.getStatus() == AppCommonConstants.API_SUCCESS_STATUS_CODE) {
                         AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.TWILIO_ACCESS_TOKEN, tokenResponse.getAccessToken(), ChatActivity.this);
@@ -53,7 +53,7 @@ public class ChatActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<TokenResponseBaseModel> call, Throwable t) {
+            public void onFailure(Call<TwilioVoiceTokenResponseBaseModel> call, Throwable t) {
                 Log.e("Twilio API error", t.getMessage());
             }
         });

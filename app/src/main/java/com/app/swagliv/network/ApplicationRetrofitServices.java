@@ -7,7 +7,7 @@ import com.app.common.utils.Utility;
 import com.app.swagliv.SwagLivApplication;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.model.Payment.api.PaymentService;
-import com.app.swagliv.model.call.api.TwilioTokenService;
+import com.app.swagliv.model.call.api.TwilioVoiceTokenService;
 import com.app.swagliv.model.home.api.DashboardService;
 import com.app.swagliv.model.home.api.ProfileService;
 import com.app.swagliv.model.login.api.LoginService;
@@ -48,8 +48,8 @@ public class ApplicationRetrofitServices {
         return RetrofitClient.getInstance().getRetrofit().create(PaymentService.class);
     }
 
-    public TwilioTokenService getTwilioTokenService() {
-        return RetrofitClient.getInstance().getRetrofit().create(TwilioTokenService.class);
+    public TwilioVoiceTokenService getTwilioTokenService() {
+        return RetrofitClient.getInstance().getRetrofit().create(TwilioVoiceTokenService.class);
     }
 
 }

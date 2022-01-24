@@ -3,7 +3,7 @@ package com.app.swagliv.model.call.pojo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class TokenResponseBaseModel {
+public class TwilioVoiceTokenResponseBaseModel {
 
     @SerializedName("status")
     @Expose
