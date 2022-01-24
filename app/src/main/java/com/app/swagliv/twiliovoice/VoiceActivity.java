@@ -134,6 +134,14 @@ public class VoiceActivity extends AppCompatActivity {
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         accessToken = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.TWILIO_ACCESS_TOKEN, this);
+        //emulator
+        //accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2Q0NTBhMTM4OGRiYzY5ZGI5MjY5N2ZkZGUzMzY1ODZkLTE2NDI5OTA1OTEiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJlbXVsYXRvciIsInZvaWNlIjp7ImluY29taW5nIjp7ImFsbG93Ijp0cnVlfSwib3V0Z29pbmciOnsiYXBwbGljYXRpb25fc2lkIjoiQVAwMWFkNDQ0N2U4ZjIzMGNkMjc5NWNiMDUwNDM0MDM1NSJ9LCJwdXNoX2NyZWRlbnRpYWxfc2lkIjoiQ1I5ZTM4OWYzODQ3ZTY5MGIzNzQwMGQ0YTExODZmODU4MiJ9fSwiaWF0IjoxNjQyOTkwNTkxLCJleHAiOjE2NDI5OTQxOTEsImlzcyI6IlNLZDQ1MGExMzg4ZGJjNjlkYjkyNjk3ZmRkZTMzNjU4NmQiLCJzdWIiOiJBQzE2ZGJjMWQyZWUyMDM1ZmE2ODVmOWM2MGI4ZDBjNjlkIn0.PfleLKWTy84yNvf8tGsmWih1GotrV9qHHXm_CMh-s3w";
+        //device
+        //accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2Q0NTBhMTM4OGRiYzY5ZGI5MjY5N2ZkZGUzMzY1ODZkLTE2NDI5OTA0MTQiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJkZXZpY2UiLCJ2b2ljZSI6eyJpbmNvbWluZyI6eyJhbGxvdyI6dHJ1ZX0sIm91dGdvaW5nIjp7ImFwcGxpY2F0aW9uX3NpZCI6IkFQMDFhZDQ0NDdlOGYyMzBjZDI3OTVjYjA1MDQzNDAzNTUifSwicHVzaF9jcmVkZW50aWFsX3NpZCI6IkNSOWUzODlmMzg0N2U2OTBiMzc0MDBkNGExMTg2Zjg1ODIifX0sImlhdCI6MTY0Mjk5MDQxNCwiZXhwIjoxNjQyOTk0MDE0LCJpc3MiOiJTS2Q0NTBhMTM4OGRiYzY5ZGI5MjY5N2ZkZGUzMzY1ODZkIiwic3ViIjoiQUMxNmRiYzFkMmVlMjAzNWZhNjg1ZjljNjBiOGQwYzY5ZCJ9.7HOlbbwFUFN5z7WpYtjQbPlvdiGpio4mz-MgXO53K5w";
+       //server1 - 61d3f261fd08988490de3c51
+        //accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzcwNGIwZjQ3NzFmMmIwZDIyOTUxMjNkNjQ2OGE4OTk4LTE2NDMwMTQzMTciLCJncmFudHMiOnsiaWRlbnRpdHkiOiI2MWQzZjI2MWZkMDg5ODg0OTBkZTNjNTEiLCJ2b2ljZSI6eyJpbmNvbWluZyI6eyJhbGxvdyI6dHJ1ZX0sIm91dGdvaW5nIjp7ImFwcGxpY2F0aW9uX3NpZCI6IkFQMWRhODkyMjc3OTEzOTNjNjJkNWM1Y2ZjMjgzZjZiYzIifSwicHVzaF9jcmVkZW50aWFsX3NpZCI6IkNSYzhjNDVmNWQyZmE4MGEzZGRkOGYxYTE3NmFhOWEyMTkifX0sImlhdCI6MTY0MzAxNDMxNywiZXhwIjoxNjQzMDE3OTE3LCJpc3MiOiJTSzcwNGIwZjQ3NzFmMmIwZDIyOTUxMjNkNjQ2OGE4OTk4Iiwic3ViIjoiQUMxNmRiYzFkMmVlMjAzNWZhNjg1ZjljNjBiOGQwYzY5ZCJ9.6Dvz6FVD5Oqjl_DRg13-1elPjUS1LU0_WqbEyXE7KwM";
+       //server2 - 61d3f2a1fd08988490de3c61
+        accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzcwNGIwZjQ3NzFmMmIwZDIyOTUxMjNkNjQ2OGE4OTk4LTE2NDMwMTQyMzQiLCJncmFudHMiOnsiaWRlbnRpdHkiOiI2MWQzZjJhMWZkMDg5ODg0OTBkZTNjNjEiLCJ2b2ljZSI6eyJpbmNvbWluZyI6eyJhbGxvdyI6dHJ1ZX0sIm91dGdvaW5nIjp7ImFwcGxpY2F0aW9uX3NpZCI6IkFQMWRhODkyMjc3OTEzOTNjNjJkNWM1Y2ZjMjgzZjZiYzIifSwicHVzaF9jcmVkZW50aWFsX3NpZCI6IkNSYzhjNDVmNWQyZmE4MGEzZGRkOGYxYTE3NmFhOWEyMTkifX0sImlhdCI6MTY0MzAxNDIzNCwiZXhwIjoxNjQzMDE3ODM0LCJpc3MiOiJTSzcwNGIwZjQ3NzFmMmIwZDIyOTUxMjNkNjQ2OGE4OTk4Iiwic3ViIjoiQUMxNmRiYzFkMmVlMjAzNWZhNjg1ZjljNjBiOGQwYzY5ZCJ9.pJ4crj5p2PhS8_XV3NYIvnjGLnMWeXViSTlsbwZpdXw";
 
         /*
          * Setup the broadcast receiver to be notified of FCM Token updates
@@ -467,6 +475,7 @@ public class VoiceActivity extends AppCompatActivity {
         return (dialog, which) -> {
             // Place a call
             EditText contact = ((AlertDialog) dialog).findViewById(R.id.contact);
+            //contact.setText("61d3f261fd08988490de3c51");
             params.put("to", contact.getText().toString());
             ConnectOptions connectOptions = new ConnectOptions.Builder(accessToken)
                     .params(params)

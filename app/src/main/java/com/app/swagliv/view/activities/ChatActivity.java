@@ -39,27 +39,33 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public void getTwilioToken() {
+        Log.e("Twilio API error", "001");
         String userId = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, this);
+        userId = "61d3f261fd08988490de3c51";
         TokenService tokenService = ApplicationRetrofitServices.getInstance().getTwilioTokenService();
-
+        Log.e("Twilio API error", "002");
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("_id", userId);
-
+        Log.e("Twilio API error", "003");
         Call<TokenResponseBaseModel> call = tokenService.getTwilioAccessToken(jsonObject);
         call.enqueue(new Callback<TokenResponseBaseModel>() {
             @Override
             public void onResponse(Call<TokenResponseBaseModel> call, Response<TokenResponseBaseModel> response) {
                 TokenResponseBaseModel tokenResponse = response.body();
                 if (response.isSuccessful() && tokenResponse != null) {
+                    Log.e("Twilio API error", "004");
                     if (tokenResponse.getStatus() == AppCommonConstants.API_SUCCESS_STATUS_CODE) {
-                        createConfirmDialog(tokenResponse.getAccessToken());
+                        Log.e("Twilio API error", "005");
+                        //createConfirmDialog(tokenResponse.getAccessToken());
+                        startActivity(new Intent(ChatActivity.this, VoiceActivity.class));
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<TokenResponseBaseModel> call, Throwable t) {
-                Log.e("error", t.getMessage());
+                Log.e("Twilio API error", "006");
+                Log.e("Twilio API error", t.getMessage());
             }
         });
     }
