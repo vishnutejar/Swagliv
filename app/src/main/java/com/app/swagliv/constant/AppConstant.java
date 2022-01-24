@@ -22,6 +22,7 @@ public class AppConstant {
         public static final String CURRENT_USER_ID = "CURRENT_USER_ID";
         public static final String IS_APP_ALREADY_OPEN = "IS_FIRST_TIME_APP_OPEN";
         public static final String APP_TOKEN = "APP_TOKEN";
+        public static final String TWILIO_ACCESS_TOKEN = "TWILIO_ACCESS_TOKEN";
     }
 
     public class PROFILE_STATUS {
@@ -49,6 +50,7 @@ public class AppConstant {
         public static final String GET_SUBSCRIPTION_PLAN = "getAllSubscriptionPlans";
         public static final String CREATE_ORDER = "createOrder";
         public static final String VERIFY_ORDER = "verifyOrder";
+        public static final String GET_TWILIO_ACCESS_TOKEN = "getTwilioAccessToken";
     }
 
     public class SWIPE {

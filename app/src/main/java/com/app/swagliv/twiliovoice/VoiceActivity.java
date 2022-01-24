@@ -39,8 +39,10 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.app.common.preference.AppPreferencesManager;
 import com.app.swagliv.BuildConfig;
 import com.app.swagliv.R;
+import com.app.swagliv.constant.AppConstant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -62,6 +64,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 
 import kotlin.Unit;
@@ -71,12 +74,7 @@ public class VoiceActivity extends AppCompatActivity {
     private static final String TAG = "VoiceActivity";
     private static final int MIC_PERMISSION_REQUEST_CODE = 1;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
-    // emulator
-    private String accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2Q0NTBhMTM4OGRiYzY5ZGI5MjY5N2ZkZGUzMzY1ODZkLTE2NDI5OTA1OTEiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJlbXVsYXRvciIsInZvaWNlIjp7ImluY29taW5nIjp7ImFsbG93Ijp0cnVlfSwib3V0Z29pbmciOnsiYXBwbGljYXRpb25fc2lkIjoiQVAwMWFkNDQ0N2U4ZjIzMGNkMjc5NWNiMDUwNDM0MDM1NSJ9LCJwdXNoX2NyZWRlbnRpYWxfc2lkIjoiQ1I5ZTM4OWYzODQ3ZTY5MGIzNzQwMGQ0YTExODZmODU4MiJ9fSwiaWF0IjoxNjQyOTkwNTkxLCJleHAiOjE2NDI5OTQxOTEsImlzcyI6IlNLZDQ1MGExMzg4ZGJjNjlkYjkyNjk3ZmRkZTMzNjU4NmQiLCJzdWIiOiJBQzE2ZGJjMWQyZWUyMDM1ZmE2ODVmOWM2MGI4ZDBjNjlkIn0.PfleLKWTy84yNvf8tGsmWih1GotrV9qHHXm_CMh-s3w";
-    // device
-   // private String accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2Q0NTBhMTM4OGRiYzY5ZGI5MjY5N2ZkZGUzMzY1ODZkLTE2NDI5OTA0MTQiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJkZXZpY2UiLCJ2b2ljZSI6eyJpbmNvbWluZyI6eyJhbGxvdyI6dHJ1ZX0sIm91dGdvaW5nIjp7ImFwcGxpY2F0aW9uX3NpZCI6IkFQMDFhZDQ0NDdlOGYyMzBjZDI3OTVjYjA1MDQzNDAzNTUifSwicHVzaF9jcmVkZW50aWFsX3NpZCI6IkNSOWUzODlmMzg0N2U2OTBiMzc0MDBkNGExMTg2Zjg1ODIifX0sImlhdCI6MTY0Mjk5MDQxNCwiZXhwIjoxNjQyOTk0MDE0LCJpc3MiOiJTS2Q0NTBhMTM4OGRiYzY5ZGI5MjY5N2ZkZGUzMzY1ODZkIiwic3ViIjoiQUMxNmRiYzFkMmVlMjAzNWZhNjg1ZjljNjBiOGQwYzY5ZCJ9.7HOlbbwFUFN5z7WpYtjQbPlvdiGpio4mz-MgXO53K5w";
-    //server
-   // private String accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzcwNGIwZjQ3NzFmMmIwZDIyOTUxMjNkNjQ2OGE4OTk4LTE2NDI5OTAxMDUiLCJncmFudHMiOnsiaWRlbnRpdHkiOiI2MWQzZjI2MWZkMDg5ODg0OTBkZTNjNTEiLCJ2b2ljZSI6eyJpbmNvbWluZyI6eyJhbGxvdyI6dHJ1ZX0sIm91dGdvaW5nIjp7ImFwcGxpY2F0aW9uX3NpZCI6IkFQMWExYzZlODE0MWM0YzFkNzEzMDQ1NjY1NjBhMzlkYzMifSwicHVzaF9jcmVkZW50aWFsX3NpZCI6IkFBQUFpMFFzemd3OkFQQTkxYkZBZGhaZHhxRkRVdU0zZWNRempfdGpKSFdRLWpOczFVcGRNOUFnZTBvdXlpNnk1QjdFS3RpZ0tjYVhGa3lYSG95QUlTdU4ybEExLXJUbFNINUpvcDZCS1J1LVJNY2xFak1pTUpiLTQzWTZ2ZllETG5IWnBfOHZzaXo1Q2NQbkhZRGFjd184In19LCJpYXQiOjE2NDI5OTAxMDUsImV4cCI6MTY0Mjk5MzcwNSwiaXNzIjoiU0s3MDRiMGY0NzcxZjJiMGQyMjk1MTIzZDY0NjhhODk5OCIsInN1YiI6IkFDMTZkYmMxZDJlZTIwMzVmYTY4NWY5YzYwYjhkMGM2OWQifQ.UuEZrxUZgMa2H50dY9M_N2jBECICUs1_nSSE_nd2_-U";
+    private String accessToken = "";
 
     /*
      * Audio device management
@@ -132,6 +130,8 @@ public class VoiceActivity extends AppCompatActivity {
         muteActionFab.setOnClickListener(muteActionFabClickListener());
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        accessToken = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.TWILIO_ACCESS_TOKEN, this);
 
         /*
          * Setup the broadcast receiver to be notified of FCM Token updates
@@ -466,6 +466,7 @@ public class VoiceActivity extends AppCompatActivity {
             // Place a call
             EditText contact = ((AlertDialog) dialog).findViewById(R.id.contact);
             params.put("to", contact.getText().toString());
+//            params.put("name", "Custom value");
             ConnectOptions connectOptions = new ConnectOptions.Builder(accessToken)
                     .params(params)
                     .build();
@@ -780,6 +781,9 @@ public class VoiceActivity extends AppCompatActivity {
     private void showIncomingCallDialog() {
         SoundPoolManager.getInstance(this).playRinging();
         if (activeCallInvite != null) {
+/*            if (activeCallInvite.getCustomParameters().containsKey("name")) {
+                Toast.makeText(this, activeCallInvite.getCustomParameters().get("naam"), Toast.LENGTH_LONG).show();
+            }*/
             alertDialog = createIncomingCallDialog(VoiceActivity.this,
                     activeCallInvite,
                     answerCallClickListener(),

@@ -95,6 +95,7 @@ public class EmailSignInActivity extends AppCompatActivity implements APIRespons
                                 AppInstance.getAppInstance().setAppUserInstance(loginResponse.getUser(), this);
                                 AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_PROFILE_STATUS, AppConstant.PROFILE_STATUS.PROFILE_COMPLETED, this);
                                 AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.APP_TOKEN, loginResponse.getUser().getToken(), this);
+                                AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, loginResponse.getUser().getId(), this);
                                 Intent intent = new Intent(EmailSignInActivity.this, DashboardActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
