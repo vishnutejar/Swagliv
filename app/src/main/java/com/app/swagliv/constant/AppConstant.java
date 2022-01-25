@@ -2,6 +2,8 @@ package com.app.swagliv.constant;
 
 public class AppConstant {
 
+    public static final String CHAT_SERVER_URL = "http://swaglivchat-env.eba-mcta3mmt.ap-south-1.elasticbeanstalk.com/";
+
     public static final String USER = "USER";
     public static final String USER_SUBSCRIPTION_PLAN = "USER_SUBSCRIPTION_PLAN";
     public static final String PERSONAL_IMAGES = "personalImages";
@@ -66,6 +68,8 @@ public class AppConstant {
         public static final int MESSAGE_TYPE_LOCATION = 102;
         public static final int MESSAGE_RECEIVED_CODE_LEFT = 0;
         public static final int MESSAGE_RECEIVED_CODE_RIGHT = 1;
+        public static final String ADD_USER = "addUser";
+        public static final String USER_STATUS = "userStatus";
 
     }
 

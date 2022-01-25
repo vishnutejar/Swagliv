@@ -104,15 +104,15 @@
 
             <EditText
                 android:id="@+id/inputMessage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="337dp"
+                android:layout_height="29dp"
                 android:layout_weight="8"
                 android:hint="Type something..." />
 
             <ImageView
                 android:id="@+id/ivSendMessage"
                 android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_height="24dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_send_white"
                 android:tint="@color/purple_700" />

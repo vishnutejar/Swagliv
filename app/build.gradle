@@ -4,7 +4,7 @@ plugins {
 }
 
 ext.playCustomRingback = {
-    def playCustomRingback  = System.getenv("playCustomRingback");
+    def playCustomRingback = System.getenv("playCustomRingback");
 
     if (playCustomRingback == null) {
         logger.log(LogLevel.INFO, "Could not locate playCustomRingback environment variable. " +
@@ -51,7 +51,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-	        buildConfigField("boolean", "playCustomRingback", "${playCustomRingback()}")
+            buildConfigField("boolean", "playCustomRingback", "${playCustomRingback()}")
         }
         debug {
             buildConfigField("boolean", "playCustomRingback", "${playCustomRingback()}")
@@ -143,4 +143,13 @@ dependencies {
     //twilio
     implementation "com.twilio:audioswitch:1.1.4"
     implementation "com.twilio:voice-android:6.0.2"
+
+
+    //lottie Animation
+    implementation "com.airbnb.android:lottie:4.2.2"
+
+    implementation('io.socket:socket.io-client:2.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
+
 }
