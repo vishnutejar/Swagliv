@@ -19,7 +19,6 @@ public class FeedbackActivity extends AppCompatActivity implements View.OnClickL
         viewDataBinding = DataBindingUtil.setContentView(this, R.layout.app_feedback);
         viewDataBinding.backHedder.backBtn.setOnClickListener(this);
         viewDataBinding.backHedder.headerTitle.setText(R.string.feedback);
-        viewDataBinding.backHedder.headerLayout.setBackgroundResource(R.color.screen_background);
 
     }
 

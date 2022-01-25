@@ -3,6 +3,8 @@ package com.app.swagliv.view.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -36,10 +38,10 @@ public class IntroActivity extends AppCompatActivity {
 
         //-------------
         mViewPager2 = findViewById(R.id.view_pager2);
-        mIntroModelList.add(new IntroModel(R.drawable.img1, getString(R.string.title1)));
-        mIntroModelList.add(new IntroModel(R.drawable.intro_img_4, getString(R.string.title2)));
-        mIntroModelList.add(new IntroModel(R.drawable.img3, getString(R.string.title3)));
-        mIntroModelList.add(new IntroModel(R.drawable.img2, getString(R.string.title4)));
+        mIntroModelList.add(new IntroModel(mCurrentPosition, getString(R.string.title1)));
+        mIntroModelList.add(new IntroModel(mCurrentPosition, getString(R.string.title2)));
+        mIntroModelList.add(new IntroModel(mCurrentPosition, getString(R.string.title3)));
+        mIntroModelList.add(new IntroModel(mCurrentPosition, getString(R.string.title4)));
 
         mSliderAdapter = new SliderAdapter(mIntroModelList, IntroActivity.this);
         mViewPager2.setAdapter(mSliderAdapter);
@@ -51,11 +53,13 @@ public class IntroActivity extends AppCompatActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels);
             }
+
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 mCurrentPosition = position;
             }
+
             @Override
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);

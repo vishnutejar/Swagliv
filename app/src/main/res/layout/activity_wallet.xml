@@ -1,124 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".view.activities.WalletActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp5"
-        android:layout_marginTop="@dimen/dp10">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.activities.WalletActivity">
 
-        <ImageView
-            android:layout_width="@dimen/dp30"
-            android:layout_height="@dimen/dp30"
-            android:layout_weight="1"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            app:tint="@color/white" />
+        <include
+            android:id="@+id/common_header"
+            layout="@layout/common_header" />
+
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_marginTop="@dimen/dp10">
+
+            <ImageView
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_weight="8"
+                android:gravity="center"
+                android:text="@string/title_wallet"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp20" />
+        </LinearLayout>-->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
             android:layout_marginRight="@dimen/dp10"
-            android:layout_weight="8"
             android:gravity="center"
-            android:text="@string/title_wallet"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp20" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp15"
-        android:layout_marginRight="@dimen/dp10"
-        android:gravity="center"
-        android:text="@string/txt_Amount_to_add"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sp20" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/dp20"
-        android:background="@drawable/frame_white_stroke">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
-            android:paddingVertical="@dimen/dp5"
-            android:paddingLeft="@dimen/dp10"
-            android:paddingRight="@dimen/dp20"
-            android:text="@string/price_100"
-            android:textColor="@color/white"
+            android:text="@string/txt_Amount_to_add"
+            android:textColor="@color/sky_blue"
             android:textSize="@dimen/sp20" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp20"
-        android:layout_marginTop="@dimen/dp20"
-        android:background="@drawable/frame_white_stroke">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingVertical="@dimen/dp10"
-            android:paddingLeft="@dimen/dp10"
-            android:paddingRight="@dimen/dp20"
-            android:text="@string/txt_add"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp20" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="@dimen/dp20"
-        android:background="@color/black" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp5"
-        android:layout_marginTop="@dimen/dp10">
-
-        <ImageView
-            android:layout_width="@dimen/dp30"
-            android:layout_height="@dimen/dp30"
-            android:layout_marginTop="@dimen/dp5"
-            android:src="@drawable/wallet_ic" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp20"
+            android:background="@drawable/frame_white_stroke">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
+                android:paddingVertical="@dimen/dp5"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp20"
+                android:text="@string/price_100"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp20" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp20"
-            android:layout_weight="@integer/material_motion_duration_long_1"
-            android:text="@string/txt_balance"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp15" />
+            android:layout_marginTop="@dimen/dp20"
+            android:background="@drawable/colorbtn"
+            android:backgroundTint="@color/dark_pink">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="@dimen/dp10"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp20"
+                android:text="@string/txt_add"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp20" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="@dimen/dp20"
+            android:background="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
-            android:drawableTint="@color/grey"
-            android:paddingVertical="@dimen/dp5"
-            android:text="@string/price_0"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp20" />
+            android:layout_marginHorizontal="@dimen/dp5"
+            android:layout_marginTop="@dimen/dp10">
+
+            <ImageView
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginTop="@dimen/dp5"
+                android:src="@drawable/wallet_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp20"
+                android:layout_weight="@integer/material_motion_duration_long_1"
+                android:text="@string/txt_balance"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/sp15" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_currency_rupee_24"
+                android:drawableTint="@color/grey"
+                android:paddingVertical="@dimen/dp5"
+                android:text="@string/price_0"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/sp20" />
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
-</LinearLayout>
+</layout>

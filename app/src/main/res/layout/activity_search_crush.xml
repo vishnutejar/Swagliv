@@ -18,7 +18,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp25"
             android:layout_marginVertical="@dimen/dp20"
-            android:background="@drawable/search_frame"
+            android:background="@drawable/search_bar"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:maxLines="1"
             android:drawableRight="@drawable/ic_baseline_search_24"
             android:padding="@dimen/dp10" />
 

@@ -35,8 +35,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title"
-                android:textColor="@color/white"
                 android:textSize="@dimen/size_20"
+                android:textColor="@color/sky_blue"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -50,12 +50,12 @@
                 android:id="@+id/edit_name_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/profile_text_frame"
+                android:background="@drawable/profile_drawable"
                 android:padding="@dimen/dp10"
                 android:singleLine="true"
                 android:text="@{user.name}"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="@dimen/sp15"
                 tools:text="Jenny" />
 
@@ -64,13 +64,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp10"
-                android:background="@drawable/profile_text_frame"
+                android:background="@drawable/profile_drawable"
                 android:inputType="phone"
                 android:maxLength="10"
                 android:padding="@dimen/dp10"
                 android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="@dimen/sp15"
                 tools:text="9865478956" />
 
@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp10"
-                android:background="@drawable/profile_text_frame"
+                android:background="@drawable/profile_drawable"
                 android:orientation="horizontal"
                 android:paddingHorizontal="@dimen/dp10">
 
@@ -89,8 +89,8 @@
                     android:layout_weight="1"
                     android:padding="@dimen/dp10"
                     android:text="@{Utility.convertDate(user.dob,AppCommonConstants.API_DATE_FORMAT,AppCommonConstants.DATE_FORMAT_SHOW_UI)}"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="@dimen/sp15"
                     tools:text="2-5-1997" />
 
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp5"
                     android:src="@drawable/ic_baseline_date_range_24"
-                    app:tint="@color/white" />
+                    app:tint="@color/black" />
             </LinearLayout>
 
         </LinearLayout>
@@ -111,8 +111,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp25"
             android:layout_marginTop="@dimen/dp10"
-            android:background="@drawable/seconddrawable"
-            android:backgroundTint="@color/dark_voilate1"
+            android:background="@drawable/colorbtn"
+            android:backgroundTint="@color/dark_pink"
             android:gravity="center"
             android:paddingVertical="@dimen/sp15"
             android:text="@string/save_btn"

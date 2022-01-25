@@ -37,12 +37,13 @@
                         android:focusable="true"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:src="@drawable/swagliv_logo"></ImageView>
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/animationView"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp270"
+                            app:lottie_autoPlay="true"
+                            app:lottie_loop="true"
+                            app:lottie_rawRes="@raw/feedback" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -89,7 +90,7 @@
                                     android:layout_width="@dimen/dp0"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:background="@drawable/rounded_btn"
+                                    android:background="@drawable/colorbtn"
                                     android:gravity="center"
                                     android:text="@string/later"
                                     android:textAllCaps="true"
@@ -101,7 +102,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginLeft="@dimen/dp4"
                                     android:layout_weight="1"
-                                    android:background="@drawable/rounded_btn"
+                                    android:background="@drawable/colorbtn"
                                     android:gravity="center"
                                     android:text="@string/submit"
                                     android:textAllCaps="true"

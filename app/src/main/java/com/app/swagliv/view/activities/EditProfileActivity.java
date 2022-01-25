@@ -50,7 +50,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 onAPIResponseHandler(apiResponse);
             }
         });
-        mBinding.EditHeader.headerLayout.setBackgroundResource(R.color.screen_background);
+        mBinding.EditHeader.headerLayout.setBackgroundResource(R.color.dark_pink);
         mBinding.EditHeader.headerTitle.setText(getString(R.string.title_edit));
     }
 

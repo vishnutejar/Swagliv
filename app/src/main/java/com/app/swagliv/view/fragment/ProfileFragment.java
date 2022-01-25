@@ -79,9 +79,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
         mBinding.icVideo.setOnClickListener(this);
         mBinding.currentLocation.setOnClickListener(this);
 
-        mBinding.commonHedder.headerTitle.setText(getString(R.string.txt_profile));
+      /*  mBinding.commonHedder.headerTitle.setText(getString(R.string.txt_profile));
         mBinding.commonHedder.headerLayout.setBackgroundResource(R.color.violate200);
-        mBinding.commonHedder.backBtn.setVisibility(View.GONE);
+        mBinding.commonHedder.backBtn.setVisibility(View.GONE);*/
 
         //ToDo set string value in current plan
 

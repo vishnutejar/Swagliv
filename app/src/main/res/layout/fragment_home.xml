@@ -48,7 +48,7 @@
                 android:layout_marginTop="@dimen/dp8"
                 android:gravity="center"
                 android:text="@string/dashboard_peoples_loading_msg"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/profile_setting_btn"
@@ -72,6 +72,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <include
+                android:id="@+id/background_latout"
+                layout="@layout/background_layout"
+                android:visibility="gone" />
+
             <RelativeLayout
                 android:id="@+id/actionBarHeader"
                 android:layout_width="match_parent"
@@ -86,7 +91,7 @@
                     android:layout_width="@dimen/dp29"
                     android:layout_height="@dimen/dp29"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_blank_user_profile" />
+                    android:src="@drawable/ic_baseline_menu_24" />
 
                 <ImageView
                     android:id="@+id/filter_icon"

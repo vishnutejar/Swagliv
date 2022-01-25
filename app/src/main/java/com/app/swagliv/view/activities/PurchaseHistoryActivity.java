@@ -45,7 +45,6 @@ public class PurchaseHistoryActivity extends AppCompatActivity implements APIRes
         mAdapter = new PurchaseHistoryAdapter(this, mPurchaseArrayList);
         mBinding.purchaseHistoryView.setAdapter(mAdapter);
         mBinding.purchaseHistoryHeader.headerTitle.setText(getString(R.string.txt_purchase_history));
-        mBinding.purchaseHistoryHeader.headerLayout.setBackgroundResource(R.color.screen_background);
     }
 
     @Override

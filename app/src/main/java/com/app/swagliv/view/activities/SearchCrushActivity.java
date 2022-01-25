@@ -34,7 +34,6 @@ public class SearchCrushActivity extends AppCompatActivity implements APIRespons
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_search_crush);
         mBinding.commonHeader.backBtn.setOnClickListener(this);
         mBinding.commonHeader.headerTitle.setText(R.string.txt_search_crush);
-        mBinding.commonHeader.headerLayout.setBackgroundResource(R.color.screen_background);
         mViewModel = new ViewModelProvider(this).get(SearchCrushViewModel.class);
         mViewModel.mutableLiveData.observe(this, new Observer<APIResponse>() {
             @Override

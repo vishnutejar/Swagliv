@@ -9,8 +9,8 @@
         tools:context=".PhoneActivity">
 
         <include
-            layout="@layout/common_header"
-            android:id="@+id/back_hedder" />
+            android:id="@+id/back_hedder"
+            layout="@layout/common_header" />
 
         <TextView
             android:id="@+id/no_text"
@@ -36,7 +36,7 @@
                 android:layout_weight="3"
                 android:backgroundTint="@color/purple_500"
                 android:hint="IN +91"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/black" />
 
             <EditText
                 android:id="@+id/phone_no"
@@ -45,23 +45,23 @@
                 android:layout_marginLeft="@dimen/sp15"
                 android:layout_marginRight="@dimen/dp25"
                 android:layout_weight="1"
-                android:textColorHint="@color/white"
-                android:maxLength="10"
                 android:backgroundTint="@color/faint_voilet"
+                android:hint="Phone number"
                 android:inputType="phone"
-                android:textColor="@color/white"
-                android:hint="Phone number" />
+                android:maxLength="10"
+                android:textColor="@color/black"
+                android:textColorHint="@color/white" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/terms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:layout_marginLeft="@dimen/dp25"
             android:layout_marginTop="@dimen/dp25"
             android:layout_marginRight="@dimen/dp25"
-            android:text="@string/info_2" />
+            android:text="@string/info_2"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/btn_continue"

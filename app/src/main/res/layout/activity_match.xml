@@ -12,11 +12,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp120"
+            android:layout_marginTop="@dimen/dp30"
             android:fontFamily="@font/dancing_script"
             android:gravity="center"
             android:text="@string/match"
-            android:textColor="@color/white"
+            android:textColor="@color/dark_pink"
             android:textSize="@dimen/dp50" />
 
         <TextView
@@ -24,8 +24,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             tools:text="lucky like you too" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/match" />
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -53,7 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp50"
             android:layout_marginTop="@dimen/dp20"
-            android:background="@drawable/btn_gradient"
+            android:background="@drawable/colorbtn"
+            android:backgroundTint="@color/dark_pink"
             android:gravity="center"
             android:padding="@dimen/dp15"
             android:text="@string/send_message_txt"
@@ -66,12 +74,12 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp50"
             android:layout_marginTop="@dimen/dp15"
-            android:background="@drawable/strock_btn"
+            android:background="@drawable/blue_strock_btn"
             android:gravity="center"
             android:padding="@dimen/dp15"
             android:text="@string/keep_swiping"
             android:textAllCaps="true"
-            android:textColor="@color/white" />
+            android:textColor="@color/sky_blue" />
 
     </LinearLayout>
 </layout>

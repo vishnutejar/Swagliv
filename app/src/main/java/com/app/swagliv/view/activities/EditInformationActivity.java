@@ -22,7 +22,7 @@ public class EditInformationActivity extends AppCompatActivity implements View.O
         mbinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_information);
         mbinding.datePickIc.setOnClickListener(this);
         mbinding.editBackIcon.setOnClickListener(this);
-        mbinding.saveBtn.setOnClickListener(this);
+        mbinding.saveBtnTxt.setOnClickListener(this);
     }
 
     @Override

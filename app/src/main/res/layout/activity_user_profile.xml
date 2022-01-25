@@ -34,19 +34,29 @@
                     android:id="@+id/common_header"
                     layout="@layout/common_header" />
 
+                <TextView
+                    android:id="@+id/profile_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/txt_profile"
+                    android:textColor="@color/sky_blue"
+                    android:textSize="@dimen/dp25" />
+
                 <RelativeLayout
                     android:id="@+id/layout_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/hedder_layout"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginTop="@dimen/dp5"
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profile_image"
                         android:layout_width="@dimen/dp125"
                         android:layout_height="@dimen/dp125"
+                        android:background="@drawable/profile_baground"
                         android:src="@drawable/ic_blank_user_profile">
 
                     </de.hdodenhof.circleimageview.CircleImageView>
@@ -64,7 +74,8 @@
                             android:layout_width="@dimen/dimen_15"
                             android:layout_height="@dimen/dimen_15"
                             android:layout_gravity="center"
-                            android:src="@drawable/vector" />
+                            android:background="@drawable/vector"
+                            android:backgroundTint="@color/black" />
                     </LinearLayout>
 
 
@@ -77,10 +88,9 @@
                     android:layout_below="@+id/DP"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/dimen_10"
                     android:text="@{user.name}"
-                    android:textSize="@dimen/size_20"
                     android:textColor="@color/black"
+                    android:textSize="@dimen/size_20"
                     android:textStyle="bold"
                     tools:text="@string/jenny" />
             </LinearLayout>
@@ -98,7 +108,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp15">
 
@@ -116,6 +126,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@null"
+                        android:singleLine="true"
                         android:gravity="end"
                         android:text="@{user.name}"
                         android:textColorHint="@color/white"
@@ -128,7 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp15">
 
@@ -136,8 +147,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
                         android:text="@string/phone"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp15" />
 
                     <TextView
@@ -158,7 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp15">
 
@@ -188,7 +199,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp15">
 
@@ -215,7 +226,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp15">
 
@@ -243,7 +254,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="vertical"
                     android:paddingBottom="@dimen/dp25">
 
@@ -286,7 +297,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="vertical"
                     android:padding="@dimen/dp15">
 
@@ -299,9 +310,9 @@
                         android:hint="@string/about"
                         android:maxHeight="@dimen/dp200"
                         android:maxLength="500"
-                        tools:text="@string/about"
-                        android:textColorHint="@color/white"
-                        android:textSize="@dimen/sp15" />
+                        android:textColorHint="@color/black"
+                        android:textSize="@dimen/sp15"
+                        tools:text="@string/about" />
 
                 </LinearLayout>
 
@@ -309,7 +320,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="vertical"
                     android:padding="@dimen/dp15">
 
@@ -333,10 +344,30 @@
                             android:layout_width="@dimen/dp20"
                             android:layout_height="@dimen/dp20"
                             android:background="@drawable/ic_baseline_add_circle_24"
-                            android:backgroundTint="@color/pink1" />
+                            android:backgroundTint="@color/dark_pink" />
 
                     </LinearLayout>
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/change_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:background="@drawable/profile_drawable"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+                        android:drawableTint="@color/dark_pink"
+                        android:text="@string/change_password"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp15" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -348,7 +379,7 @@
                     android:background="@drawable/colorbtn"
                     android:backgroundTint="@color/dark_pink"
                     android:orientation="horizontal"
-                    android:padding="@dimen/dp10">
+                    android:padding="@dimen/dp15">
 
                     <TextView
                         android:layout_width="match_parent"

@@ -17,6 +17,14 @@
                 android:id="@+id/hedder_back"
                 layout="@layout/common_header" />
 
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp270"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/sign_up" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,43 +36,27 @@
                     android:layout_marginLeft="@dimen/size_15"
                     android:layout_marginTop="@dimen/dp15"
                     android:text="@string/sign_up_text"
-                    android:textColor="@color/pink1"
+                    android:textColor="@color/dark_pink"
                     android:textSize="@dimen/sp39"
                     android:textStyle="bold" />
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size_15"
-                    android:layout_marginTop="@dimen/dp25"
-                    android:layout_marginRight="@dimen/size_15"
-                    android:backgroundTint="@color/dark_voilate1"
-                    android:padding="@dimen/size_20"
-                    app:cardCornerRadius="@dimen/dp25"
-                    app:cardElevation="@dimen/dp2">
-
+                    android:layout_marginHorizontal="@dimen/dp10"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:orientation="vertical">
 
                     <EditText
                         android:id="@+id/name_text"
                         style="@style/EditTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dp10"
                         android:hint="@string/full_name"
-                        android:maxLines="1"
                         android:inputType="text"
+                        android:maxLines="1"
                         android:padding="@dimen/size_15" />
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size_15"
-                    android:layout_marginTop="@dimen/dp25"
-                    android:layout_marginRight="@dimen/size_15"
-                    android:backgroundTint="@color/dark_voilate1"
-                    android:padding="@dimen/size_20"
-                    app:cardCornerRadius="@dimen/dp25"
-                    app:cardElevation="@dimen/dp2">
 
 
                     <TextView
@@ -72,21 +64,16 @@
                         style="@style/EditTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dp10"
+                        android:layout_marginLeft="@dimen/dp8"
                         android:hint="@string/gender"
-                        android:padding="@dimen/size_15" />
+                        android:padding="@dimen/dp5" />
 
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size_15"
-                    android:layout_marginTop="@dimen/dp25"
-                    android:layout_marginRight="@dimen/size_15"
-                    android:backgroundTint="@color/dark_voilate1"
-                    android:padding="@dimen/size_20"
-                    app:cardCornerRadius="@dimen/dp25"
-                    app:cardElevation="@dimen/dp2">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:layout_marginLeft="@dimen/dp5"
+                        android:background="@color/grey" />
 
 
                     <TextView
@@ -94,22 +81,17 @@
                         style="@style/EditTextView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginVertical="@dimen/dp10"
+                        android:layout_marginLeft="@dimen/dp8"
+                        android:drawableRight="@drawable/calendar"
                         android:hint="@string/date"
-                        android:padding="@dimen/size_15" />
+                        android:padding="@dimen/dp5" />
 
-                </androidx.cardview.widget.CardView>
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size_15"
-                    android:layout_marginTop="@dimen/dp25"
-                    android:layout_marginRight="@dimen/size_15"
-                    android:backgroundTint="@color/dark_voilate1"
-                    android:padding="@dimen/size_20"
-                    app:cardCornerRadius="@dimen/dp25"
-                    app:cardElevation="@dimen/dp2">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:layout_marginLeft="@dimen/dp5"
+                        android:background="@color/grey" />
 
 
                     <EditText
@@ -117,23 +99,11 @@
                         style="@style/EditTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dp10"
                         android:hint="@string/email"
                         android:inputType="text"
                         android:maxLines="1"
                         android:padding="@dimen/size_15" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size_15"
-                    android:layout_marginTop="@dimen/dp25"
-                    android:layout_marginRight="@dimen/size_15"
-                    android:backgroundTint="@color/dark_voilate1"
-                    android:padding="@dimen/size_20"
-                    app:cardCornerRadius="@dimen/dp25"
-                    app:cardElevation="@dimen/dp2">
 
 
                     <EditText
@@ -141,23 +111,11 @@
                         style="@style/EditTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dp10"
                         android:hint="@string/password"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:padding="@dimen/size_15" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size_15"
-                    android:layout_marginTop="@dimen/dp25"
-                    android:layout_marginRight="@dimen/size_15"
-                    android:backgroundTint="@color/dark_voilate1"
-                    android:padding="@dimen/size_20"
-                    app:cardCornerRadius="@dimen/dp25"
-                    app:cardElevation="@dimen/dp2">
 
 
                     <EditText
@@ -165,12 +123,12 @@
                         style="@style/EditTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dp10"
                         android:hint="@string/conform_password"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:padding="@dimen/size_15" />
-
-                </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/signup"

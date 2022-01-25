@@ -19,6 +19,16 @@
                 android:id="@+id/common_header"
                 layout="@layout/common_header" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/manage_subscription"
+                android:textColor="@color/sky_blue"
+                android:textSize="@dimen/sp20"
+                android:layout_marginVertical="@dimen/dp8"
+                android:layout_marginHorizontal="@dimen/dp8"
+                android:textStyle="bold"/>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

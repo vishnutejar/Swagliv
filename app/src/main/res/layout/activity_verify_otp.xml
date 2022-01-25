@@ -18,7 +18,7 @@
             android:layout_marginHorizontal="@dimen/dp10"
             android:layout_marginTop="@dimen/dp25"
             android:text="Enter OTP"
-            android:textColor="@color/pink1"
+            android:textColor="@color/sky_blue"
             android:textSize="@dimen/dp25" />
 
          <!--<com.app.swagliv.custome_view.otpview.OtpView
@@ -54,11 +54,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp15"
-            android:layout_marginTop="@dimen/dp8"
             android:gravity="end"
             android:text="@string/resend"
             android:textAllCaps="true"
-            android:textColor="@color/white"
+            android:textColor="@color/grey"
             android:textSize="@dimen/sp15"
             android:textStyle="bold" />
 
@@ -69,7 +68,7 @@
             android:layout_marginHorizontal="@dimen/dp20"
             android:layout_marginTop="@dimen/dp30"
             android:background="@drawable/colorbtn"
-            android:backgroundTint="@color/pink1"
+            android:backgroundTint="@color/dark_pink"
             android:gravity="center"
             android:paddingVertical="@dimen/sp15"
             android:text="@string/continue_btn"

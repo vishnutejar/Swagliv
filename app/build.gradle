@@ -112,4 +112,7 @@ dependencies {
 
     //multidex
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    //lottie Animation
+    implementation "com.airbnb.android:lottie:4.2.2"
 }

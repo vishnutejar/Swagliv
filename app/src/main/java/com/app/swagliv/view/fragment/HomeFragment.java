@@ -211,7 +211,7 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
             case R.id.filter_icon:
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 ViewGroup viewGroup = getView().findViewById(R.id.content);
-                View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.top_sheet, viewGroup, false);
+                View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.layout_filter, viewGroup, false);
                 builder.setView(dialogView);
                 AlertDialog alertDialog = builder.create();
                 alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -250,6 +250,7 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
                                 mCardStackAdapter.updateData(mNearByPeoples);
                                 mBinding.peoplesEmptyDataView.setVisibility(View.GONE);
                                 mBinding.buttonContainer.setVisibility(View.VISIBLE);
+                                mBinding.backgroundLatout.setVisibility(View.VISIBLE);
                             } else {
                                 mBinding.peoplesProfile.setVisibility(View.GONE);
                                 mBinding.peoplesEmptyDataView.setVisibility(View.VISIBLE);

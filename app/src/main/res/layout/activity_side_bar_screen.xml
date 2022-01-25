@@ -38,14 +38,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/welcome"
-                        android:textColor="@color/grey" />
+                        android:textSize="@dimen/sp20"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/name_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/grey"
+                        android:textColor="@color/sky_blue"
                         android:textStyle="bold"
+                        android:textSize="@dimen/sp15"
                         tools:text="@string/jenny" />
 
                 </LinearLayout>
@@ -72,7 +74,7 @@
                     android:layout_marginLeft="@dimen/dp20"
                     android:gravity="center|left"
                     android:text="@string/txt_edit_profile"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/sp20" />
             </LinearLayout>
 
@@ -95,7 +97,7 @@
                     android:layout_marginLeft="@dimen/dp20"
                     android:gravity="center|left"
                     android:text="@string/txt_search_filter"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/sp20" />
             </LinearLayout>
 
@@ -118,7 +120,7 @@
                     android:layout_marginLeft="@dimen/dp20"
                     android:gravity="center|left"
                     android:text="@string/txt_go_premium"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/sp20" />
             </LinearLayout>
 
@@ -141,7 +143,7 @@
                     android:layout_marginLeft="@dimen/dp20"
                     android:gravity="center|left"
                     android:text="@string/txt_purchase_history"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/sp20" />
             </LinearLayout>
 
@@ -169,7 +171,7 @@
                     android:layout_marginLeft="@dimen/dp20"
                     android:gravity="center|left"
                     android:text="Help/FAQ"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/sp20" />
             </LinearLayout>
 
@@ -192,7 +194,7 @@
                     android:layout_marginLeft="@dimen/dp20"
                     android:gravity="center|left"
                     android:text="@string/sign_out"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/sp20" />
             </LinearLayout>
 

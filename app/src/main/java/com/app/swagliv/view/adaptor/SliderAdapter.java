@@ -10,8 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.app.swagliv.R;
 import com.app.swagliv.model.IntroModel;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -35,7 +37,21 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         IntroModel model = models.get(position);
-        holder.image.setImageDrawable(context.getDrawable(model.getIcon()));
+//        holder.image.setAnimation(model.getIcon());
+        switch (position) {
+            case 0:
+                holder.image.setAnimation(R.raw.make_your_profile);
+                break;
+            case 1:
+                holder.image.setAnimation(R.raw.meetfriends);
+                break;
+            case 2:
+                holder.image.setAnimation(R.raw.meet_perfect_match);
+                break;
+            case 3:
+                holder.image.setAnimation(R.raw.celebrate_friends);
+                break;
+        }
         holder.title.setText(model.getTitle());
     }
 
@@ -45,12 +61,12 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
+        LottieAnimationView image;
         TextView title;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.image);
+            image = itemView.findViewById(R.id.animation);
             title = itemView.findViewById(R.id.into_title);
         }
     }

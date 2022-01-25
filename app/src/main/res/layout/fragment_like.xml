@@ -28,7 +28,7 @@
                 android:layout_marginLeft="@dimen/size_18"
                 android:layout_marginTop="@dimen/size_18"
                 android:text="@string/title_Likes"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/sp18" />
 
 

@@ -73,7 +73,7 @@ public class SubscriptionActivity extends AppCompatActivity implements PriceAdap
         header_back = findViewById(R.id.edit_back_icon);
         mBinding.subscriptionContinueBtn.setOnClickListener(this);
         mBinding.commonHeader.backBtn.setOnClickListener(this);
-        mBinding.commonHeader.headerLayout.setBackgroundResource(R.color.screen_background);
+        mBinding.commonHeader.headerLayout.setBackgroundResource(R.color.dark_pink);
         mBinding.commonHeader.headerTitle.setText(R.string.subscription);
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         profileViewModel.mutableLiveData.observe(this, new Observer<APIResponse>() {

@@ -39,6 +39,8 @@ profile.</string>
     <string name="profile_setting">Profile Setting</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="change_password">Change Password</string>
     <string name="welcome">Welcome</string>
     <string name="send" tools:keep="@string/send">Send as many likes as you want</string>
     <string name="message" tools:keep="@string/message">Send a message</string>
@@ -76,7 +78,9 @@ profile.</string>
     <string name="check_password">Conform password should be same as password</string>
     <string name="current_plan_text">Current Plan</string>
     <string name="phone">Phone Number</string>
-    <string name="subscription" tools:keep="@string/subscription">Manage Subscription</string>
+    <string name="subscription" tools:keep="@string/subscription">Subscription Plan</string>
+    <string name="manage_subscription">Manage Subscription</string>
+    <string name="manage_connection">Manage Connection</string>
     <string name="date">DD/MM/YY</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="match">Its a Match</string>

@@ -19,7 +19,6 @@ public class ComplaintActivity extends AppCompatActivity implements View.OnClick
         viewDataBinding = DataBindingUtil.setContentView(this, R.layout.app_complaint);
         viewDataBinding.backHedder.backBtn.setOnClickListener(this);
         viewDataBinding.backHedder.headerTitle.setText(R.string.complaint);
-        viewDataBinding.backHedder.headerLayout.setBackgroundResource(R.color.screen_background);
     }
 
     @Override

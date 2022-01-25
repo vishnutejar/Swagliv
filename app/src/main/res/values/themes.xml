@@ -3,7 +3,8 @@
 
     <style name="MySliderTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Add attributes here -->
-        <item name="colorPrimary">@color/pink1</item>
+        <item name="colorPrimary">@color/dark_pink</item>
+        <item name="trackColor">@color/sky_blue</item>
 
         <!--        <item name="android:progressBackgroundTint">@color/pink1</item>-->
     </style>
@@ -24,17 +25,16 @@
     </style>
 
     <style name="EditTextView">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textColorHint">@color/grey</item>
         <item name="android:textSize">@dimen/sp15</item>
-        <item name="android:background">@null</item>
     </style>
 
     <!--Date picker theme -->
 
     <!--Rounded corner image view -->
     <style name="ShapeAppearanceOverlay.App.CornerSize10Percent" parent="">
-        <item name="cornerSize">8%</item>
+        <item name="cornerSize">10%</item>
     </style>
 
 </resources>

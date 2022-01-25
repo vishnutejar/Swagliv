@@ -27,6 +27,7 @@ public class SideBarActivity extends AppCompatActivity implements View.OnClickLi
         mBinding.help.setOnClickListener(this);
         mBinding.search.setOnClickListener(this);
         mBinding.goPremium.setOnClickListener(this);
+        mBinding.editProfile.setOnClickListener(this);
 
         mUser = AppInstance.getAppInstance().getAppUserInstance(this);
         mBinding.nameText.setText(mUser.getName());
@@ -51,6 +52,10 @@ public class SideBarActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.goPremium:
                 i = new Intent(this, SubscriptionActivity.class);
+                startActivity(i);
+                break;
+            case R.id.editProfile:
+                i = new Intent(this, SearchScreenActivity.class);
                 startActivity(i);
                 break;
         }

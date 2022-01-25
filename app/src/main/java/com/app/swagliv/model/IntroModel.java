@@ -1,5 +1,7 @@
 package com.app.swagliv.model;
 
+import android.view.animation.Animation;
+
 public class IntroModel {
 
     private int icon;

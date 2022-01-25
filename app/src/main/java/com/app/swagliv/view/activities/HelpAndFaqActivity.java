@@ -23,7 +23,6 @@ public class HelpAndFaqActivity extends AppCompatActivity implements View.OnClic
         viewDataBinding.complaint.setOnClickListener(this);
         viewDataBinding.header.backBtn.setOnClickListener(this);
         viewDataBinding.header.headerTitle.setText(R.string.title_help);
-        viewDataBinding.header.headerLayout.setBackgroundResource(R.color.screen_background);
     }
 
     @Override

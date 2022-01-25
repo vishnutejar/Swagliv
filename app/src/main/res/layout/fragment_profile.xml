@@ -32,27 +32,38 @@
                     android:id="@+id/lay"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_250"
-                    android:background="@drawable/profile_hedder"
+                    android:background="@drawable/profile_header"
                     android:orientation="vertical">
 
-                    <include
+                    <!--  <include
                         android:id="@+id/common_hedder"
-                        layout="@layout/common_header" />
+                        layout="@layout/common_header" />-->
+
+                    <TextView
+                        android:id="@+id/profile_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dp20"
+                        android:text="@string/txt_profile"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dp20" />
 
 
                     <RelativeLayout
                         android:id="@+id/layout_profile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/common_hedder"
+                        android:layout_below="@+id/profile_text"
                         android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginTop="@dimen/sp22"
                         android:gravity="center">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/profile_image"
                             android:layout_width="@dimen/dp125"
                             android:layout_height="@dimen/dp125"
+                            android:background="@drawable/profile_baground"
                             android:src="@drawable/ic_blank_user_profile">
 
                         </de.hdodenhof.circleimageview.CircleImageView>
@@ -171,7 +182,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/title"
-                        android:textColor="@color/pink1"
+                        android:textColor="@color/sky_blue"
                         android:textSize="@dimen/size_20"
                         android:textStyle="bold" />
 
@@ -199,7 +210,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp15">
 
@@ -228,7 +239,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp15">
 
@@ -257,7 +268,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp15">
 
@@ -293,7 +304,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:text="@string/txt_plan"
-                        android:textColor="@color/pink1"
+                        android:textColor="@color/sky_blue"
                         android:textSize="@dimen/sp15"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -303,7 +314,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp15">
 
@@ -322,7 +333,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="@string/free"
-                        android:textColor="@color/voilate_txt_color"
+                        android:textColor="@color/grey"
                         android:textSize="@dimen/sp15" />
                 </LinearLayout>
 
@@ -340,7 +351,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:text="@string/txt_setting"
-                        android:textColor="@color/pink1"
+                        android:textColor="@color/sky_blue"
                         android:textSize="@dimen/sp15"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -350,7 +361,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp15">
 
@@ -369,7 +380,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="@string/txt_current_location"
-                        android:textColor="@color/voilate_txt_color"
+                        android:textColor="@color/grey"
                         android:textSize="@dimen/sp15" />
                 </LinearLayout>
 
@@ -378,7 +389,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="horizontal"
                     android:padding="@dimen/dp15">
 
@@ -397,7 +408,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="@string/men_txt"
-                        android:textColor="@color/voilate_txt_color"
+                        android:textColor="@color/grey"
                         android:textSize="@dimen/sp15" />
                 </LinearLayout>
 
@@ -405,7 +416,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="vertical"
                     android:paddingBottom="@dimen/dp25">
 
@@ -428,7 +439,7 @@
                             android:layout_weight="1"
                             android:gravity="end"
                             android:text="22-34"
-                            android:textColor="@color/voilet"
+                            android:textColor="@color/grey"
                             android:textSize="@dimen/sp15"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -455,7 +466,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
-                    android:background="@drawable/profile_text_frame"
+                    android:background="@drawable/profile_drawable"
                     android:orientation="vertical"
                     android:paddingBottom="@dimen/dp25">
 
@@ -478,7 +489,7 @@
                             android:layout_weight="1"
                             android:gravity="end"
                             android:text="100 km"
-                            android:textColor="@color/voilet"
+                            android:textColor="@color/grey"
                             android:textSize="@dimen/sp15"
                             android:textStyle="bold" />
                     </LinearLayout>

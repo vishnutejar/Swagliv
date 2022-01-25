@@ -27,7 +27,7 @@
             android:minWidth="80dp"
             android:paddingHorizontal="@dimen/dp15"
             android:paddingVertical="@dimen/dp8"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/black"
             android:textSize="@dimen/sp15"
             tools:text="Programming" />
 
