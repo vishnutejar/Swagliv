@@ -21,126 +21,134 @@
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/sign_up" />
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
+                style="@style/CustomCardViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size_15"
-                    android:layout_marginTop="@dimen/dp15"
-                    android:text="@string/sign_up_text"
-                    android:textColor="@color/dark_pink"
-                    android:textSize="@dimen/sp39"
-                    android:textStyle="bold" />
+                android:theme="@style/Theme.MaterialComponents.DayNight"
+                app:cardElevation="@dimen/dp10">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/dp10"
-                    android:layout_marginTop="@dimen/dp10"
                     android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/name_text"
-                        style="@style/EditTextView"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/size_15"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:text="@string/sign_up_text"
+                        android:textColor="@color/dark_pink"
+                        android:textSize="@dimen/sp39"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/dp10"
-                        android:hint="@string/full_name"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:padding="@dimen/size_15" />
+                        android:layout_marginHorizontal="@dimen/dp10"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:orientation="vertical">
 
+                        <EditText
+                            android:id="@+id/name_text"
+                            style="@style/EditTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dp10"
+                            android:hint="@string/full_name"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:padding="@dimen/size_15" />
+
+
+                        <TextView
+                            android:id="@+id/gender_text"
+                            style="@style/EditTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dp10"
+                            android:layout_marginLeft="@dimen/dp8"
+                            android:hint="@string/gender"
+                            android:padding="@dimen/dp5" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp1"
+                            android:layout_marginLeft="@dimen/dp5"
+                            android:background="@color/grey" />
+
+
+                        <TextView
+                            android:id="@+id/date_click"
+                            style="@style/EditTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginVertical="@dimen/dp10"
+                            android:layout_marginLeft="@dimen/dp8"
+                            android:drawableRight="@drawable/calendar"
+                            android:hint="@string/date"
+                            android:padding="@dimen/dp5" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp1"
+                            android:layout_marginLeft="@dimen/dp5"
+                            android:background="@color/grey" />
+
+
+                        <EditText
+                            android:id="@+id/email_text"
+                            style="@style/EditTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dp10"
+                            android:hint="@string/email"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:padding="@dimen/size_15" />
+
+
+                        <EditText
+                            android:id="@+id/txt_password"
+                            style="@style/EditTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dp10"
+                            android:hint="@string/password"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:padding="@dimen/size_15" />
+
+
+                        <EditText
+                            android:id="@+id/txt_conform_password"
+                            style="@style/EditTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dp10"
+                            android:hint="@string/conform_password"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:padding="@dimen/size_15" />
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/gender_text"
-                        style="@style/EditTextView"
+                        android:id="@+id/signup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/dp10"
-                        android:layout_marginLeft="@dimen/dp8"
-                        android:hint="@string/gender"
-                        android:padding="@dimen/dp5" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp1"
-                        android:layout_marginLeft="@dimen/dp5"
-                        android:background="@color/grey" />
-
-
-                    <TextView
-                        android:id="@+id/date_click"
-                        style="@style/EditTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginVertical="@dimen/dp10"
-                        android:layout_marginLeft="@dimen/dp8"
-                        android:drawableRight="@drawable/calendar"
-                        android:hint="@string/date"
-                        android:padding="@dimen/dp5" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp1"
-                        android:layout_marginLeft="@dimen/dp5"
-                        android:background="@color/grey" />
-
-
-                    <EditText
-                        android:id="@+id/email_text"
-                        style="@style/EditTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/dp10"
-                        android:hint="@string/email"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:padding="@dimen/size_15" />
-
-
-                    <EditText
-                        android:id="@+id/txt_password"
-                        style="@style/EditTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/dp10"
-                        android:hint="@string/password"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:padding="@dimen/size_15" />
-
-
-                    <EditText
-                        android:id="@+id/txt_conform_password"
-                        style="@style/EditTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/dp10"
-                        android:hint="@string/conform_password"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:padding="@dimen/size_15" />
+                        android:layout_marginLeft="@dimen/size_15"
+                        android:layout_marginTop="@dimen/dp25"
+                        android:layout_marginRight="@dimen/size_15"
+                        android:layout_marginBottom="@dimen/size_39"
+                        android:background="@drawable/colorbtn"
+                        android:gravity="center"
+                        android:padding="@dimen/size_15"
+                        android:text="@string/sign_up_text"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp15" />
                 </LinearLayout>
-
-                <TextView
-                    android:id="@+id/signup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size_15"
-                    android:layout_marginTop="@dimen/dp25"
-                    android:layout_marginRight="@dimen/size_15"
-                    android:layout_marginBottom="@dimen/size_39"
-                    android:background="@drawable/colorbtn"
-                    android:gravity="center"
-                    android:padding="@dimen/size_15"
-                    android:text="@string/sign_up_text"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp15" />
-            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>
 </layout>

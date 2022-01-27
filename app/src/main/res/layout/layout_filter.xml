@@ -6,8 +6,7 @@
         android:id="@+id/filter"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp350"
-        android:background="@drawable/top_sheet_view"
-        android:backgroundTint="@color/gray_white"
+        android:background="@drawable/filter_background"
         android:orientation="vertical">
 
         <LinearLayout

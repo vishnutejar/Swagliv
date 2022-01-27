@@ -5,7 +5,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context=".view.activities.MatchActivity">
 
@@ -29,7 +29,7 @@
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp120"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/match" />
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp50"
-            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
             android:background="@drawable/colorbtn"
             android:backgroundTint="@color/dark_pink"
             android:gravity="center"
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp50"
-            android:layout_marginTop="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
             android:background="@drawable/blue_strock_btn"
             android:gravity="center"
             android:padding="@dimen/dp15"
