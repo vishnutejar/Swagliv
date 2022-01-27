@@ -26,7 +26,6 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
         mCurrentUserProfileStatus = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_PROFILE_STATUS, this);
-        mIsAppAlreadyOpen = AppPreferencesManager.getBoolean(AppConstant.PREFERENCE_KEYS.IS_APP_ALREADY_OPEN, this);
 
         Thread timer = new Thread() {
             public void run() {
@@ -49,12 +48,7 @@ public class SplashActivity extends AppCompatActivity {
                                 break;
                         }
                     } else {
-                        if (!mIsAppAlreadyOpen) {
-                            AppPreferencesManager.putBoolean(AppConstant.PREFERENCE_KEYS.IS_APP_ALREADY_OPEN, true, SplashActivity.this);
-                            startActivity(new Intent(SplashActivity.this, IntroActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                        } else {
-                            startActivity(new Intent(SplashActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                        }
+                        startActivity(new Intent(SplashActivity.this, IntroActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                     }
                 }
             }

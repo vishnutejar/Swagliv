@@ -66,14 +66,6 @@ public class EmailSignInActivity extends AppCompatActivity implements APIRespons
             }
         });
 
-        mbinding.headerLayout.backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        mbinding.headerLayout.headerTitle.setVisibility(View.GONE);
     }
 
     @Override

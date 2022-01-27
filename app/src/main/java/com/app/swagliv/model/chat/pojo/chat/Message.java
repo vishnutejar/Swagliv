@@ -46,4 +46,15 @@ public class Message {
     public void setMessageReceivedCode(int messageSenderID) {
         this.messageReceivedCode = messageSenderID;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "message='" + message + '\'' +
+                ", time=" + time +
+                ", messageId='" + messageId + '\'' +
+                ", messageReceivedCode=" + messageReceivedCode +
+                ", messageType=" + messageType +
+                '}';
+    }
 }

@@ -34,7 +34,7 @@ public class ChatMessagesAdapter extends RecyclerView.Adapter<ChatMessagesAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (viewType == AppConstant.CHAT.MESSAGE_RECEIVED_CODE_RIGHT) {
+        if (viewType == AppConstant.CHAT.MESSAGE_RECEIVED_CODE_LEFT) {
 
             RowRightChatBinding rowRightChatBinding = DataBindingUtil.inflate(
                     LayoutInflater.from(context),

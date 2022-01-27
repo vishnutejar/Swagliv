@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.app.common.constant.AppCommonConstants;
 import com.app.common.preference.AppPreferencesManager;
+import com.app.common.utils.Utility;
 import com.app.swagliv.R;
 import com.app.swagliv.SocketChatApplication;
 import com.app.swagliv.constant.AppConstant;
@@ -18,14 +21,19 @@ import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.ActivityChatBinding;
 import com.app.swagliv.model.call.api.TwilioVoiceTokenService;
 import com.app.swagliv.model.call.pojo.TwilioVoiceTokenResponseBaseModel;
+import com.app.swagliv.model.chat.pojo.chat.Message;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.network.ApplicationRetrofitServices;
 import com.app.swagliv.twiliovoice.VoiceActivity;
+import com.app.swagliv.view.adaptor.ChatMessagesAdapter;
 import com.app.swagliv.viewmodel.chats.ChatsViewModel;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
@@ -40,6 +48,9 @@ public class ChatActivity extends AppCompatActivity {
     private ChatsViewModel chatsViewModel;
     private Socket mSocket;
     private User mUser;
+
+    private ChatMessagesAdapter chatMessagesAdapter;
+    private ArrayList<Message> messageArrayList = new ArrayList<>();
 
 
     @Override
@@ -60,22 +71,35 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setStackFromEnd(true);
+        mBinding.chatRecyclerView.setLayoutManager(linearLayoutManager);
+        chatMessagesAdapter = new ChatMessagesAdapter(this, messageArrayList, chatsViewModel);
+        mBinding.chatRecyclerView.setAdapter(chatMessagesAdapter);
+
     }
 
     private void attemptSend() {
-        String message = mBinding.inputMessage.getText().toString();
-        try {
 
-            JSONObject data = new JSONObject();
-            data.put("username", mUser.getName());
-            data.put("message", message);
-            // perform the sending message attempt.
-            Emitter addUser = mSocket.emit(AppConstant.CHAT.ADD_USER, mUser.getId());
-        } catch (JSONException e) {
-            Log.e("test", "msg exepction");
-            e.printStackTrace();
-        }
+        Message messageObj = new Message();
+        messageObj.setMessage(mBinding.inputMessage.getText().toString());
+        messageObj.setMessageId("" + System.currentTimeMillis());
+        messageObj.setMessageId("" + System.currentTimeMillis());
+        messageObj.setMessageType(0);
+        messageObj.setMessageReceivedCode(0);
+
+        addMessage(messageObj);
+
+        // perform the sending message attempt.
+        Emitter addUser = mSocket.emit(AppConstant.CHAT.ADD_USER, new Gson().toJson(messageObj));
+
     }
+
+    private void addMessage(Message messageObj) {
+        messageArrayList.add(messageObj);
+        scrollToBottom();
+    }
+
 
     public void getTwilioToken() {
         String userId = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, this);
@@ -119,22 +143,26 @@ public class ChatActivity extends AppCompatActivity {
     private Emitter.Listener onTyping = new Emitter.Listener() {
         @Override
         public void call(final Object... args) {
-            Log.e("test", "" + args);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    JSONObject data = (JSONObject) args[0];
-                    String username;
-                    try {
-                        username = data.getString("username");
-                    } catch (JSONException e) {
-                        Log.e(TAG, e.getMessage());
-                        return;
-                    }
-
+                    Message messageObj = new Message();
+                    messageObj.setMessage(mBinding.inputMessage.getText().toString());
+                    messageObj.setMessageId("" + System.currentTimeMillis());
+                    messageObj.setTime(System.currentTimeMillis());
+                    messageObj.setMessageType(1);
+                    messageObj.setMessageReceivedCode(1);
+                    // JsonObject data = (JsonObject) args[0];
+                    // Message message = new Gson().fromJson(data, Message.class);
+                    Utility.printLogs("dataa", messageObj.toString());
+                    messageArrayList.add(messageObj);
+                    scrollToBottom();
                 }
             });
         }
     };
 
+    private void scrollToBottom() {
+        mBinding.chatRecyclerView.scrollToPosition(chatMessagesAdapter.getItemCount() - 1);
+    }
 }

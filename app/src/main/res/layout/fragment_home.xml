@@ -124,78 +124,85 @@
                 android:visibility="gone"
                 tools:visibility="visible">
 
-                <RelativeLayout
-                    android:id="@+id/undo_button"
-                    android:layout_width="@dimen/dp52"
-                    android:layout_height="@dimen/dp52"
-                    android:layout_marginLeft="@dimen/dp20">
-
-                    <ImageView
-                        android:layout_width="@dimen/dp52"
-                        android:layout_height="@dimen/dp52"
-                        android:src="@drawable/ic_rewind_border" />
-
-                    <ImageView
-                        android:layout_width="@dimen/dp52"
-                        android:layout_height="@dimen/dp52"
-                        android:layout_marginStart="@dimen/dp10"
-                        android:layout_marginTop="@dimen/dp10"
-                        android:layout_marginEnd="@dimen/dp10"
-                        android:layout_marginBottom="@dimen/dp10"
-                        android:src="@drawable/ic_rewind" />
-
-                </RelativeLayout>
-
                 <LinearLayout
                     android:id="@+id/skip_button"
                     android:layout_width="@dimen/dp75"
                     android:layout_height="@dimen/dp75"
                     android:layout_marginLeft="@dimen/dp20"
-                    android:background="@drawable/like_btn_background"
+                    android:background="@drawable/dislike_btn"
                     android:elevation="@dimen/dp8">
 
                     <ImageView
-                        android:layout_width="@dimen/dp72"
-                        android:layout_height="@dimen/dp72"
+                        android:layout_width="@dimen/dp50"
+                        android:layout_height="@dimen/dp50"
+                        android:layout_marginLeft="@dimen/dp12"
+                        android:layout_marginTop="@dimen/dp10"
                         android:padding="@dimen/dp8"
                         android:src="@drawable/ic_baseline_close_24" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/like_button"
-                    android:layout_width="@dimen/dp62"
-                    android:layout_height="@dimen/dp62"
-                    android:layout_marginLeft="@dimen/dp20"
-                    android:elevation="@dimen/dp8">
+                <RelativeLayout
+                    android:id="@+id/undo_button"
+                    android:layout_width="@dimen/dp75"
+                    android:layout_height="@dimen/dp75"
+                    android:layout_marginLeft="@dimen/dp5">
 
                     <ImageView
-                        android:layout_width="@dimen/dp62"
-                        android:layout_height="@dimen/dp62"
-                        android:padding="@dimen/dp5"
-                        android:src="@drawable/ic_like_new" />
-                </LinearLayout>
+                        android:layout_width="@dimen/dp80"
+                        android:layout_height="@dimen/dp80"
+                        android:src="@drawable/rewind_btn" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp30"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginStart="@dimen/sp22"
+                        android:layout_marginTop="@dimen/dp20"
+                        android:layout_marginEnd="@dimen/dp10"
+                        android:layout_marginBottom="@dimen/dp10"
+                        android:src="@drawable/rewind_ic" />
+
+                </RelativeLayout>
+
 
                 <RelativeLayout
                     android:id="@+id/super_like_button"
-                    android:layout_width="@dimen/dp52"
-                    android:layout_height="@dimen/dp52"
-                    android:layout_marginLeft="@dimen/dp20">
+                    android:layout_width="@dimen/dp75"
+                    android:layout_height="@dimen/dp75"
+                    android:layout_marginLeft="@dimen/dp5">
 
                     <ImageView
-                        android:layout_width="@dimen/dp57"
-                        android:layout_height="@dimen/dp57"
-                        android:src="@drawable/ic_super_like_rounded_border" />
+                        android:layout_width="@dimen/dp75"
+                        android:layout_height="@dimen/dp75"
+                        android:src="@drawable/supperlike_btn" />
 
                     <ImageView
-                        android:layout_width="@dimen/dp52"
-                        android:layout_height="@dimen/dp52"
-                        android:layout_marginStart="@dimen/dp10"
-                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_width="@dimen/dp30"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginStart="@dimen/sp22"
+                        android:layout_marginTop="@dimen/sp18"
                         android:layout_marginEnd="@dimen/dp10"
-                        android:layout_marginBottom="@dimen/dp10"
-                        android:src="@drawable/ic_super_like" />
+                        android:layout_marginBottom="@dimen/dp20"
+                        android:src="@drawable/supper_like_ic" />
 
                 </RelativeLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/like_button"
+                    android:layout_width="@dimen/dp75"
+                    android:layout_height="@dimen/dp75"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:background="@drawable/like_btn"
+                    android:elevation="@dimen/dp8">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp45"
+                        android:layout_height="@dimen/dp45"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginTop="@dimen/dp12"
+                        android:padding="@dimen/dp8"
+                        android:src="@drawable/like_ic" />
+                </LinearLayout>
 
 
             </LinearLayout>

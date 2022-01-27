@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -23,11 +24,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dp5"
+        android:layout_marginRight="@dimen/dp50">
+
+
 
         <LinearLayout
             android:id="@+id/chat_layout"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp5"
             android:background="@drawable/rounded_voilet_btn"
@@ -49,10 +54,10 @@
                 android:id="@+id/tvChatMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|left"
+                android:layout_gravity="center"
                 android:paddingLeft="@dimen/dp10"
                 android:text="@{comment.message}"
-                android:textColor="@color/white" />
+                android:textColor="@color/sky_blue" />
 
             <TextView
                 android:id="@+id/tvChatTimestamp"
@@ -60,10 +65,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|left"
                 android:layout_marginTop="@dimen/dp10"
-                android:gravity="center|left"
+                android:gravity="center|right"
                 android:paddingLeft="@dimen/dp10"
                 android:text="@{Utility.getTimeAgo(comment.time)}"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
 
         </LinearLayout>
 

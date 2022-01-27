@@ -79,15 +79,25 @@
 
         </androidx.appcompat.widget.Toolbar>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linearLayout2"
+            android:layout_below="@+id/toolbar" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_margin="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
             android:background="#ffffff"
             android:orientation="horizontal"
+            android:paddingVertical="@dimen/dp5"
             android:weightSum="10">
 
 
@@ -97,7 +107,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="start"
                 android:layout_weight="1"
-                android:padding="5dp"
+                android:padding="8dp"
                 android:src="@drawable/ic_attach_file_white"
                 android:visibility="gone"
                 app:tint="@color/purple_700" />
@@ -105,26 +115,27 @@
             <EditText
                 android:id="@+id/inputMessage"
                 android:layout_width="337dp"
-                android:layout_height="29dp"
-                android:layout_weight="8"
-                android:hint="Type something..." />
+                android:layout_height="@dimen/size_39"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp30"
+                android:layout_weight="15"
+                android:background="@drawable/search_bar"
+                android:backgroundTint="@color/black"
+                android:hint="Type something..."
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10" />
 
             <ImageView
                 android:id="@+id/ivSendMessage"
                 android:layout_width="40dp"
                 android:layout_height="24dp"
+                android:layout_marginTop="@dimen/dp5"
                 android:layout_weight="1"
                 android:src="@drawable/ic_send_white"
-                android:tint="@color/purple_700" />
+                app:tint="@color/purple_700" />
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/chatRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/linearLayout2"
-            android:layout_below="@+id/toolbar" />
 
     </RelativeLayout>
 </layout>

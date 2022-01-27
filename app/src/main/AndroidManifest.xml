@@ -11,9 +11,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/date_flu_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/date_flu_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Swagliv.NoActionBar"
         android:usesCleartextTraffic="true"
@@ -151,10 +151,10 @@
             android:name=".image_upload_service.UserDocumentUploadService"
             android:exported="false" />
 
-	<!-- Twilio -->
+        <!-- Twilio -->
         <activity
             android:name="com.app.swagliv.twiliovoice.VoiceActivity"
-            android:exported="true"/>
+            android:exported="true" />
 
         <service
             android:name="com.app.swagliv.twiliovoice.IncomingCallNotificationService"
@@ -164,8 +164,8 @@
                 <action android:name="ACTION_ACCEPT" />
                 <action android:name="ACTION_REJECT" />
             </intent-filter>
-        </service> 
-	<!-- [START fcm_listener] -->
+        </service>
+        <!-- [START fcm_listener] -->
         <service
             android:name="com.app.swagliv.twiliovoice.fcm.VoiceFirebaseMessagingService"
             android:exported="false"

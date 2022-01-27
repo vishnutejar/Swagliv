@@ -3,99 +3,107 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animationView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/signin_signup" />
-
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/login_signin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp25"
-            android:layout_marginTop="@dimen/dp12"
-            android:background="@drawable/seconddrawable"
-            android:backgroundTint="@color/dark_pink"
-            android:gravity="center"
-            android:paddingVertical="@dimen/sp15"
-            android:text="@string/sign_in"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp15" />
-
-        <TextView
-            android:id="@+id/login_signup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp25"
-            android:layout_marginTop="@dimen/dp25"
-            android:background="@drawable/ic_button"
-            android:backgroundTint="@color/sky_blue"
-            android:gravity="center"
-            android:paddingVertical="@dimen/dp20"
-            android:text="@string/sign_up_name"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp15" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dp15"
-            android:backgroundTint="@color/pink1"
-            android:paddingVertical="@dimen/dp15"
-            android:paddingLeft="@dimen/dp20"
-            android:text="@string/sign_in_with"
-            android:textColor="@color/black"
-            android:textSize="@dimen/sp15" />
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:orientation="vertical"
+            android:gravity="center"
+            tools:context=".MainActivity">
 
-            <LinearLayout
-                android:id="@+id/facebook_signin_btn"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp15"
-                    android:layout_marginRight="@dimen/dp15"
-                    android:src="@drawable/ic_fb" />
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp350"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/signin_signup" />
 
-                <com.facebook.login.widget.LoginButton
-                    android:id="@+id/login_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp50"
-                    android:layout_gravity="center_horizontal"
-                    android:visibility="gone" />
+            </RelativeLayout>
 
+            <TextView
+                android:id="@+id/login_signin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp25"
+                android:layout_marginTop="@dimen/dp12"
+                android:background="@drawable/seconddrawable"
+                android:backgroundTint="@color/dark_pink"
+                android:gravity="center"
+                android:paddingVertical="@dimen/sp15"
+                android:text="@string/sign_in"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp15" />
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/login_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp25"
+                android:layout_marginTop="@dimen/dp25"
+                android:background="@drawable/ic_button"
+                android:backgroundTint="@color/sky_blue"
+                android:gravity="center"
+                android:paddingVertical="@dimen/dp20"
+                android:text="@string/sign_up_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp15" />
 
-            <ImageView
-                android:id="@+id/google_signin_btn"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_google" />
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp15"
+                android:backgroundTint="@color/pink1"
+                android:paddingVertical="@dimen/dp15"
+                android:paddingLeft="@dimen/dp20"
+                android:text="@string/sign_in_with"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp15" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/facebook_signin_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginRight="@dimen/dp15"
+                        android:src="@drawable/ic_fb" />
+
+                    <com.facebook.login.widget.LoginButton
+                        android:id="@+id/login_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp50"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/google_signin_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_google" />
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 </layout>

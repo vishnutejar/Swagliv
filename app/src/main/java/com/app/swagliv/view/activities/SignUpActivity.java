@@ -60,8 +60,7 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
         mSignupbinding.dateClick.setOnClickListener(this);
         mSignupbinding.genderText.setOnClickListener(this);
         mSignupbinding.signup.setOnClickListener(this);
-        mSignupbinding.hedderBack.backBtn.setOnClickListener(this);
-    }
+     }
 
 
     @Override
@@ -141,8 +140,7 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
 
                 alertDialog.show();
                 break;
-            case R.id.hedder_back:
-            case R.id.back_btn:
+             case R.id.back_btn:
                 finish();
                 break;
             default:

@@ -13,10 +13,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include
-                android:id="@+id/hedder_back"
-                layout="@layout/common_header" />
-
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animationView"
                 android:layout_width="match_parent"
