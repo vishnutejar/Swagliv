@@ -3,7 +3,6 @@ package net.alhazmy13.mediapicker.Video;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Environment;
 
 import java.lang.ref.WeakReference;
 

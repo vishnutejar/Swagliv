@@ -3,7 +3,6 @@ package com.app.swagliv;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,14 +13,11 @@ import androidx.lifecycle.OnLifecycleEvent;
 
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.constant.AppInstance;
-import com.app.swagliv.model.login.pojo.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.gson.Gson;
 
 import io.socket.client.Socket;
-import io.socket.emitter.Emitter;
 
 
 public class SwagLivApplication extends Application implements LifecycleEventObserver {

@@ -4,9 +4,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Environment;
-
-import net.alhazmy13.mediapicker.Video.VideoTags;
 
 import java.lang.ref.WeakReference;
 

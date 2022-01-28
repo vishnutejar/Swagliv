@@ -1,6 +1,5 @@
 package com.app.swagliv;
 
-import com.app.common.network.RetrofitClient;
 import com.app.swagliv.constant.AppConstant;
 
 import java.net.URISyntaxException;

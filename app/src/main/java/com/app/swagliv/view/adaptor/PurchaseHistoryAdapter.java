@@ -1,7 +1,5 @@
 package com.app.swagliv.view.adaptor;
 
-import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -13,11 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.swagliv.R;
 import com.app.swagliv.databinding.ItemPurchaseBinding;
 import com.app.swagliv.model.profile.pojo.Subscription;
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-
-import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class PurchaseHistoryAdapter extends RecyclerView.Adapter<PurchaseHistoryAdapter.ViewHolder> {
     private Context mContext;

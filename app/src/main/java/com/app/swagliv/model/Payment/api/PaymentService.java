@@ -1,7 +1,6 @@
 package com.app.swagliv.model.Payment.api;
 
 import com.app.swagliv.constant.AppConstant;
-import com.app.swagliv.model.Payment.pojo.OrderCreatedBaseModel;
 import com.app.swagliv.model.Payment.pojo.OrderVerifyBaseModel;
 import com.app.swagliv.model.profile.pojo.OrderResponse;
 import com.google.gson.JsonObject;

@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.app.common.interfaces.APIResponseListener;
 import com.app.common.utils.api_response_handler.APIResponse;
-import com.app.swagliv.model.Payment.pojo.OrderVerifyBaseModel;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.model.profile.pojo.Subscription;
 import com.razorpay.PaymentData;

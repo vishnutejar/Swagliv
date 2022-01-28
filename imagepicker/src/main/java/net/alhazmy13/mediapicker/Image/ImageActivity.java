@@ -1,5 +1,7 @@
 package net.alhazmy13.mediapicker.Image;
 
+import static android.content.DialogInterface.BUTTON_POSITIVE;
+
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -13,12 +15,13 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.FileProvider;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 
 import net.alhazmy13.mediapicker.FileProcessing;
 import net.alhazmy13.mediapicker.R;
@@ -37,8 +40,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static android.content.DialogInterface.BUTTON_POSITIVE;
 
 /**
  * Created by Alhazmy13 on 10/26/15.
