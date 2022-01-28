@@ -3,6 +3,7 @@ package com.app.swagliv;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,9 +12,16 @@ import androidx.lifecycle.LifecycleEventObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
 
+import com.app.swagliv.constant.AppConstant;
+import com.app.swagliv.constant.AppInstance;
+import com.app.swagliv.model.login.pojo.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.gson.Gson;
+
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
 
 
 public class SwagLivApplication extends Application implements LifecycleEventObserver {
@@ -24,6 +32,8 @@ public class SwagLivApplication extends Application implements LifecycleEventObs
     private static SwagLivApplication ourInstance;
     private static boolean isAppInForeground;
     private GoogleSignInClient googleSignInClient;
+    private Socket mSocket;
+
     public static SwagLivApplication getInstance() {
         return ourInstance;
     }
@@ -33,6 +43,11 @@ public class SwagLivApplication extends Application implements LifecycleEventObs
         super.onCreate();
         ourInstance = this;
         isAppInForeground = true;
+        mSocket = SocketChatApplication.getInstance();
+        mSocket.connect();
+        if (AppInstance.getAppInstance().getAppUserInstance(this) != null) {
+            mSocket.emit(AppConstant.CHAT.ADD_USER, AppInstance.getAppInstance().getAppUserInstance(this).getId());
+        }
 
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
@@ -86,6 +101,7 @@ public class SwagLivApplication extends Application implements LifecycleEventObs
         }
         return googleSignInClient;
     }
+
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void onAppBackgrounded() {

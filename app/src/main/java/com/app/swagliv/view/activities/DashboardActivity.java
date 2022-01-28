@@ -24,14 +24,20 @@ import androidx.navigation.ui.NavigationUI;
 import com.app.common.interfaces.GPSUtilsGetGPSStatus;
 import com.app.common.utils.Utility;
 import com.app.swagliv.R;
+import com.app.swagliv.SocketChatApplication;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.databinding.ActivityDashboadBinding;
+import com.app.swagliv.model.chat.pojo.chat.Message;
+import com.google.gson.Gson;
 
 import net.alhazmy13.mediapicker.Image.ImagePicker;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
 
 public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetGPSStatus, LocationListener {
 
@@ -41,6 +47,8 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
     private Location mCurrentLocation = null;
     public static SelectLocationImage selectLocationImage;
 
+    private Socket mSocket;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +56,8 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
 
         //----------
         setUpBottomNavigation();
+
+
     }
 
     private void setUpBottomNavigation() {
@@ -121,7 +131,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
             for (String path : mPaths) {
                 uriList.add(Uri.fromFile(new File(path)));
             }
-            selectLocationImage.getSelectedLocationImage(uriList,requestCode);
+            selectLocationImage.getSelectedLocationImage(uriList, requestCode);
         }
     }
 
@@ -133,4 +143,5 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
     public static void initializeListener(SelectLocationImage listener) {
         selectLocationImage = listener;
     }
+
 }

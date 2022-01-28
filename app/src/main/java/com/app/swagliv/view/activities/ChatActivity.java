@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -30,9 +28,6 @@ import com.app.swagliv.viewmodel.chats.ChatsViewModel;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 import io.socket.client.Socket;
@@ -48,6 +43,7 @@ public class ChatActivity extends AppCompatActivity {
     private ChatsViewModel chatsViewModel;
     private Socket mSocket;
     private User mUser;
+    private Message message;
 
     private ChatMessagesAdapter chatMessagesAdapter;
     private ArrayList<Message> messageArrayList = new ArrayList<>();
@@ -59,11 +55,12 @@ public class ChatActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_chat);
         findViewById(R.id.call_btn).setOnClickListener(view -> getTwilioToken());
         mUser = AppInstance.getAppInstance().getAppUserInstance(this);
-        SocketChatApplication socketChatApplication = SocketChatApplication.getSocketChatApplication();
-        mSocket = socketChatApplication.getSocket();
-        mSocket.on(AppConstant.CHAT.ADD_USER, onNewMessage);
-        mSocket.on(AppConstant.CHAT.USER_STATUS, onTyping);
-        mSocket.connect();
+        mSocket = SocketChatApplication.getInstance();
+
+        mSocket.on(AppConstant.CHAT.SET_UP_CONVERSATION_STATUS, onConversationStatus);
+        mSocket.on(AppConstant.CHAT.GET_MESSAGE, onMessage);
+        mSocket.on(AppConstant.CHAT.TYPING_STATUS, onTyping);
+        
         mBinding.ivSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,28 +74,38 @@ public class ChatActivity extends AppCompatActivity {
         chatMessagesAdapter = new ChatMessagesAdapter(this, messageArrayList, chatsViewModel);
         mBinding.chatRecyclerView.setAdapter(chatMessagesAdapter);
 
+        doConfigureSocket();
+    }
+
+    private void doConfigureSocket() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("senderId", mUser.getId());
+        jsonObject.addProperty("receiverId", "61eeaa70a6dcf7ad009e8459");
+
+        mSocket.emit(AppConstant.CHAT.SET_UP_CONVERSATION_ID, jsonObject);
+
     }
 
     private void attemptSend() {
 
-        Message messageObj = new Message();
-        messageObj.setMessage(mBinding.inputMessage.getText().toString());
-        messageObj.setMessageId("" + System.currentTimeMillis());
-        messageObj.setMessageId("" + System.currentTimeMillis());
-        messageObj.setMessageType(0);
-        messageObj.setMessageReceivedCode(0);
+        JsonObject data = new JsonObject();
+        data.addProperty("senderId", mUser.getId());
+        data.addProperty("receiverId", "61eeaa70a6dcf7ad009e8459");
+        data.addProperty("conversationId", "");
+        data.addProperty("chatType", 101);
+        data.addProperty("text", mBinding.inputMessage.getText().toString());
 
-        addMessage(messageObj);
+//        addMessage(data);
 
         // perform the sending message attempt.
-        Emitter addUser = mSocket.emit(AppConstant.CHAT.ADD_USER, new Gson().toJson(messageObj));
+        Emitter addUser = mSocket.emit(AppConstant.CHAT.SEND_MESSAGE, new Gson().toJson(data));
 
     }
 
-    private void addMessage(Message messageObj) {
-        messageArrayList.add(messageObj);
+    /*private void addMessage(JsonObject data) {
+        messageArrayList.add(data);
         scrollToBottom();
-    }
+    }*/
 
 
     public void getTwilioToken() {
@@ -126,7 +133,8 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
-    private Emitter.Listener onNewMessage = new Emitter.Listener() {
+
+    private Emitter.Listener onConversationStatus = new Emitter.Listener() {
         @Override
         public void call(final Object... args) {
             Log.e("test", "" + args);
@@ -134,6 +142,22 @@ public class ChatActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Log.e("test", "" + args[0]);
+                    JsonObject jsonObject = (JsonObject) args[0];
+
+                }
+            });
+        }
+    };
+    private Emitter.Listener onMessage = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            Log.e("test", "" + args);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Log.e("test", "" + args[0]);
+                    JsonObject jsonObject = (JsonObject) args[0];
+
 
                 }
             });

@@ -71,6 +71,11 @@ public class AppConstant {
         public static final int MESSAGE_RECEIVED_CODE_RIGHT = 1;
         public static final String ADD_USER = "addUser";
         public static final String USER_STATUS = "userStatus";
+        public static final String SET_UP_CONVERSATION_ID = "setUpConversationId";
+        public static final String SET_UP_CONVERSATION_STATUS = "setupConversation_status";
+        public static final String TYPING_STATUS = "typingStatus";
+        public static final String SEND_MESSAGE = "sendMessage";
+        public static final String GET_MESSAGE = "getMessage";
 
     }
 

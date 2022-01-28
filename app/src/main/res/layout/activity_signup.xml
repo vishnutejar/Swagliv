@@ -15,8 +15,9 @@
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animationView"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/dp270"
                 android:layout_height="@dimen/dp270"
+                android:layout_gravity="center"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/sign_up" />
@@ -37,7 +38,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/size_15"
-                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_marginTop="@dimen/dp10"
                         android:text="@string/sign_up_text"
                         android:textColor="@color/dark_pink"
                         android:textSize="@dimen/sp39"
@@ -47,7 +48,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dp10"
-                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginTop="@dimen/dp7"
                         android:orientation="vertical">
 
                         <EditText
@@ -101,12 +102,13 @@
                             android:id="@+id/email_text"
                             style="@style/EditTextView"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginVertical="@dimen/dp10"
                             android:hint="@string/email"
-                            android:inputType="text"
+                            android:inputType="textEmailAddress"
                             android:maxLines="1"
-                            android:padding="@dimen/size_15" />
+                            android:padding="@dimen/dp15" />
+
 
 
                         <EditText

@@ -1,11 +1,49 @@
 package com.app.swagliv.model.chat.pojo.chat;
 
 public class Message {
+    private int status;
     private String message;
+    private String conversationId;
+    private String senderID;
+    private String _id;
     private long time;
     private String messageId;
     private int messageReceivedCode;// 0 -> left message , 1-> right message
     private int messageType;// 0 -> left message , 1-> right message
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getConversationId() {
+        return conversationId;
+    }
+
+    public void setConversationId(String conversationId) {
+        this.conversationId = conversationId;
+    }
+
+    public String getSenderID() {
+        return senderID;
+    }
+
+    public void setSenderID(String senderID) {
+        this.senderID = senderID;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+
 
     public String getMessage() {
         return message;

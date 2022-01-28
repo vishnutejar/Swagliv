@@ -199,6 +199,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void callDashboardActivity() {
         AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, mUserID, this);
-        startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+        Intent i = new Intent(LoginActivity.this, SignUpActivity.class);
+        i.putExtra("name", mName);
+        i.putExtra("email", mEmail);
+        startActivity(i);
     }
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,7 +61,19 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
         mSignupbinding.dateClick.setOnClickListener(this);
         mSignupbinding.genderText.setOnClickListener(this);
         mSignupbinding.signup.setOnClickListener(this);
-     }
+
+        String email = getIntent().getStringExtra("email");
+
+        if (email != null) {
+            mSignupbinding.nameText.setText(getIntent().getStringExtra("name"));
+            mSignupbinding.emailText.setText(email);
+            mSignupbinding.emailText.setEnabled(false);
+        } else {
+            mSignupbinding.emailText.setEnabled(true);
+        }
+
+
+    }
 
 
     @Override
@@ -140,7 +153,7 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
 
                 alertDialog.show();
                 break;
-             case R.id.back_btn:
+            case R.id.back_btn:
                 finish();
                 break;
             default:
