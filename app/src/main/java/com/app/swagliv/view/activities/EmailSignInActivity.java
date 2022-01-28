@@ -22,11 +22,26 @@ import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.ActivityEmailSigninBinding;
 import com.app.swagliv.model.login.pojo.LoginResponseBaseModel;
 import com.app.swagliv.viewmodel.login.LoginViewModel;
+import com.facebook.CallbackManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 
 public class EmailSignInActivity extends AppCompatActivity implements APIResponseHandler {
+    //constant
+    private static final int RC_SIGN_IN = 234;
+
+
     private ActivityEmailSigninBinding mbinding;
     private LoginViewModel loginViewModel;
     private AlertDialog mProgressbar;
+    private GoogleSignInClient mGoogleSignInClient;
+    private CallbackManager mCallbackManager;
+    private String mEmail, mName, mProfile, mUserID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +81,19 @@ public class EmailSignInActivity extends AppCompatActivity implements APIRespons
             }
         });
 
+        mbinding.googleSigninBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
     }
 
     @Override
@@ -103,5 +131,52 @@ public class EmailSignInActivity extends AppCompatActivity implements APIRespons
                 Utility.showToast(this, getString(R.string.api_failure_error_msg));
                 break;
         }
+    }
+
+    private void signIn() {
+        //getting the google sign in intent
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        } else
+            mCallbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        mProgressbar.dismiss();
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            // Signed in successfully, show authenticated UI.
+            try {
+                mUserID = account.getId();
+                mName = account.getDisplayName();
+                mEmail = account.getEmail();
+                mProfile = account.getPhotoUrl().toString();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+//                Utility.showToast(this, "Login Success, Welcome" + account.getDisplayName());
+                callDashboardActivity();
+            }
+        } catch (ApiException e) {
+            Utility.showToast(EmailSignInActivity.this, "Authentication failed." + e.getStatusCode());
+        }
+    }
+
+    private void callDashboardActivity() {
+        AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, mUserID, this);
+        Intent i = new Intent(EmailSignInActivity.this, SignUpActivity.class);
+        i.putExtra("name", mName);
+        i.putExtra("email", mEmail);
+        startActivity(i);
     }
 }

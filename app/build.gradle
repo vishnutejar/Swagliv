@@ -38,7 +38,7 @@ android {
         android.applicationVariants.all { variant ->
             variant.outputs.all {
                 def today = new Date().format('ddMMyyyy').toString()
-                outputFileName = "SwagLiv_" + variant.name + "_" + today + ".apk"
+                outputFileName = "Dateflu_" + variant.name + "_" + today + ".apk"
             }
         }
     }

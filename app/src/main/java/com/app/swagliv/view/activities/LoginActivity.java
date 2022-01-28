@@ -157,7 +157,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                Utility.showToast(this, "Login Success, Welcome" + account.getDisplayName());
+//                Utility.showToast(this, "Login Success, Welcome" + account.getDisplayName());
                 callDashboardActivity();
             }
         } catch (ApiException e) {
