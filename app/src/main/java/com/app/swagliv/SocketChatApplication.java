@@ -21,7 +21,10 @@ public class SocketChatApplication {
         }
     }
 
-    public static synchronized Socket getInstance() {
+    public static synchronized Socket doConnect() {
+        if (!socket.connected()) {
+            socket = socket.connect();
+        }
         return socket;
     }
 

@@ -10,6 +10,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,16 +25,22 @@ import androidx.navigation.ui.NavigationUI;
 import com.app.common.interfaces.GPSUtilsGetGPSStatus;
 import com.app.common.utils.Utility;
 import com.app.swagliv.R;
+import com.app.swagliv.SocketChatApplication;
 import com.app.swagliv.constant.AppConstant;
+import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.ActivityDashboadBinding;
+import com.google.gson.JsonObject;
 
 import net.alhazmy13.mediapicker.Image.ImagePicker;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
 
 public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetGPSStatus, LocationListener {
 
@@ -52,8 +59,14 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
 
         //----------
         setUpBottomNavigation();
+        mSocket = SocketChatApplication.doConnect();
 
+        if (AppInstance.getAppInstance().getAppUserInstance(this) != null) {
+            Utility.printLogs("APP", "firede event");
+            mSocket.emit(AppConstant.CHAT.ADD_USER, AppInstance.getAppInstance().getAppUserInstance(this).getId());
 
+        }
+        mSocket.on(AppConstant.CHAT.USER_STATUS, OnUserStatus);
     }
 
     private void setUpBottomNavigation() {
@@ -139,5 +152,20 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
     public static void initializeListener(SelectLocationImage listener) {
         selectLocationImage = listener;
     }
+
+    Emitter.Listener OnUserStatus = new io.socket.emitter.Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            Log.e("test", "" + args);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    JSONObject jsonObject = (JSONObject) args[0];
+                    Log.e("test", "" + jsonObject);
+
+                }
+            });
+        }
+    };
 
 }

@@ -40,12 +40,12 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:orientation="vertical">
 
-                <ImageView
+                <!--<ImageView
                     android:id="@+id/ivChatImage"
                     android:layout_width="250dp"
                     android:layout_height="250dp"
@@ -54,27 +54,29 @@
                     android:paddingRight="20dp"
                     android:paddingBottom="12dp"
                     android:scaleType="fitCenter"
-                    android:visibility="gone" />
+                    android:visibility="gone" />-->
 
                 <TextView
                     android:id="@+id/tvChatMessage"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="center|right"
+                    android:gravity="center"
                     android:paddingRight="@dimen/dp10"
                     android:text="@{comment.message}"
                     android:textColor="@color/dark_pink" />
 
                 <TextView
                     android:id="@+id/tvChatTimestamp"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center|right"
-                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginTop="@dimen/dp2"
                     android:gravity="center|right"
-                    android:paddingRight="@dimen/dp10"
+                    android:paddingRight="@dimen/dp5"
                     android:text="@{Utility.getTimeAgo(comment.time)}"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 

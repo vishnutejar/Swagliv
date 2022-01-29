@@ -4,11 +4,10 @@ public class Message {
     private int status;
     private String message;
     private String conversationId;
-    private String senderID;
-    private String _id;
+    private String senderId;
+    private String receiverId;
     private long time;
     private String messageId;
-    private int messageReceivedCode;// 0 -> left message , 1-> right message
     private int messageType;// 0 -> left message , 1-> right message
 
     public int getStatus() {
@@ -27,23 +26,13 @@ public class Message {
         this.conversationId = conversationId;
     }
 
-    public String getSenderID() {
-        return senderID;
+    public String getSenderId() {
+        return senderId;
     }
 
-    public void setSenderID(String senderID) {
-        this.senderID = senderID;
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
     }
-
-    public String get_id() {
-        return _id;
-    }
-
-    public void set_id(String _id) {
-        this._id = _id;
-    }
-
-
 
     public String getMessage() {
         return message;
@@ -77,21 +66,25 @@ public class Message {
         this.messageId = messageId;
     }
 
-    public int getMessageReceivedCode() {
-        return messageReceivedCode;
+
+    public String getReceiverId() {
+        return receiverId;
     }
 
-    public void setMessageReceivedCode(int messageSenderID) {
-        this.messageReceivedCode = messageSenderID;
+    public void setReceiverId(String receiverId) {
+        this.receiverId = receiverId;
     }
 
     @Override
     public String toString() {
         return "Message{" +
-                "message='" + message + '\'' +
-                ", time=" + time +
+                "status=" + status +
+                ", message='" + message + '\'' +
+                ", conversationId='" + conversationId + '\'' +
+                ", senderID='" + senderId + '\'' +
+                ", receiverId='" + receiverId + '\'' +
+                ", time='" + time + '\'' +
                 ", messageId='" + messageId + '\'' +
-                ", messageReceivedCode=" + messageReceivedCode +
                 ", messageType=" + messageType +
                 '}';
     }

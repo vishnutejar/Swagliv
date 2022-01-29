@@ -64,8 +64,8 @@ public class AppConstant {
     }
 
     public class CHAT {
-        public static final int MESSAGE_TYPE_IMAGE = 101;
-        public static final int MESSAGE_TYPE_TEXT = 100;
+        public static final int MESSAGE_TYPE_IMAGE = 100;
+        public static final int MESSAGE_TYPE_TEXT = 101;
         public static final int MESSAGE_TYPE_LOCATION = 102;
         public static final int MESSAGE_RECEIVED_CODE_LEFT = 0;
         public static final int MESSAGE_RECEIVED_CODE_RIGHT = 1;
@@ -74,6 +74,7 @@ public class AppConstant {
         public static final String SET_UP_CONVERSATION_ID = "setUpConversationId";
         public static final String SET_UP_CONVERSATION_STATUS = "setupConversation_status";
         public static final String TYPING_STATUS = "typingStatus";
+        public static final String IS_TYPING = "isTyping";
         public static final String SEND_MESSAGE = "sendMessage";
         public static final String GET_MESSAGE = "getMessage";
 

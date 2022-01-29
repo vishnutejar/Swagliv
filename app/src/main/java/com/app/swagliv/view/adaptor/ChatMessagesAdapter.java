@@ -8,11 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.app.common.utils.Utility;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.databinding.RowLeftChatBinding;
 import com.app.swagliv.databinding.RowRightChatBinding;
 import com.app.swagliv.model.chat.pojo.chat.Message;
+import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.viewmodel.chats.ChatsViewModel;
 
 import java.text.SimpleDateFormat;
@@ -24,11 +26,13 @@ public class ChatMessagesAdapter extends RecyclerView.Adapter<ChatMessagesAdapte
     private ChatsViewModel chatViewModel;
     Context context;
     List<Message> modelChatList;
+    private User mUser;
 
-    public ChatMessagesAdapter(Context context, List<Message> modelChatList, ChatsViewModel chatViewModel) {
+    public ChatMessagesAdapter(Context context, List<Message> modelChatList, ChatsViewModel chatViewModel, User mUser) {
         this.context = context;
         this.modelChatList = modelChatList;
         this.chatViewModel = chatViewModel;
+        this.mUser = mUser;
     }
 
     @NonNull
@@ -95,7 +99,7 @@ public class ChatMessagesAdapter extends RecyclerView.Adapter<ChatMessagesAdapte
     @Override
     public int getItemViewType(int position) {
         Message message = modelChatList.get(position);
-        if (message.getMessageReceivedCode() == AppConstant.CHAT.MESSAGE_RECEIVED_CODE_RIGHT) {
+        if (!mUser.getId().equalsIgnoreCase(message.getSenderId())) {
             return AppConstant.CHAT.MESSAGE_RECEIVED_CODE_RIGHT;
         } else {
             return AppConstant.CHAT.MESSAGE_RECEIVED_CODE_LEFT;

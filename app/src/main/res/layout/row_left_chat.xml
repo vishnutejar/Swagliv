@@ -28,13 +28,13 @@
         android:layout_marginRight="@dimen/dp50">
 
 
-
         <LinearLayout
             android:id="@+id/chat_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp5"
             android:background="@drawable/rounded_voilet_btn"
+            android:gravity="end"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -53,21 +53,22 @@
                 android:id="@+id/tvChatMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center|left"
                 android:paddingLeft="@dimen/dp10"
                 android:text="@{comment.message}"
                 android:textColor="@color/sky_blue" />
 
             <TextView
                 android:id="@+id/tvChatTimestamp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|left"
                 android:layout_marginTop="@dimen/dp10"
-                android:gravity="center|right"
+                android:gravity="bottom|left"
                 android:paddingLeft="@dimen/dp10"
                 android:text="@{Utility.getTimeAgo(comment.time)}"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
