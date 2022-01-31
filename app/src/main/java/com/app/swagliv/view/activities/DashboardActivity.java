@@ -10,12 +10,14 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -26,6 +28,7 @@ import com.app.common.utils.Utility;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.databinding.ActivityDashboadBinding;
+import com.google.android.material.navigation.NavigationView;
 
 import net.alhazmy13.mediapicker.Image.ImagePicker;
 
@@ -42,6 +45,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
     private boolean mIsLocationPermissionGranted, isGPS, mIsNeedToCheckGPS = true;
     private Location mCurrentLocation = null;
     public static SelectLocationImage selectLocationImage;
+    private AppBarConfiguration mAppBarConfiguration;
 
     private Socket mSocket;
 
@@ -50,6 +54,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboad);
 
+        setupNavDrawer();
         //----------
         setUpBottomNavigation();
 
@@ -66,6 +71,37 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
         // NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navigation, navController);
     }
+
+    private void setupNavDrawer() {
+        DrawerLayout drawer = binding.drawerLayout;
+        NavigationView navigationView = binding.navView;
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                .setOpenableLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        //NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+        navigationView.setItemIconTintList(null);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.dasboard_nav_drawer, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
+
+
 
     @Override
     protected void onResume() {

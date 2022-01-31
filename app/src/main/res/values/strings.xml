@@ -12,6 +12,14 @@
     <string name="menu_msg">Message</string>
     <string name="menu_profile">Profile</string>
 
+    <string name="nav_edit_profile">Edit Profile</string>
+    <string name="nav_search_filter">Search and Filter</string>
+    <string name="nav_go_premium">Go Premium</string>
+    <string name="nav_purchase_history">Purchase History</string>
+    <string name="nav_dark_mode">Dark Mode</string>
+    <string name="nav_help_faq">Help/FAQ</string>
+    <string name="nav_sign_out">Sign Out</string>
+
 
     <string name="msg_oops">Oops</string>
     <string name="err_gps_off" tools:keep="@string/err_gps_off">Please Turn on your GPS for better experience.</string>
@@ -173,5 +181,14 @@ profile.</string>
     <string name="decline">Decline</string>
     <string name="callHint">Dial a client name or phone number. Leaving the field empty results in an automated response.</string>
     <string name="select_device">Select Audio Device</string>
+    <string name="title_activity_dasboard_nav_drawer">DasboardNavDrawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Welcome</string>
+    <string name="nav_header_subtitle">Rex</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 
 </resources>

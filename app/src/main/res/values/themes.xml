@@ -48,4 +48,19 @@
         <item name="cornerSizeTopLeft">@dimen/sp39</item>
     </style>
 
+    <style name="Theme.Swagliv.NoActionBar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Swagliv.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Swagliv.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--font for nav drawer items-->
+    <style name="NavFontStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/salsa_regular</item>
+    </style>
+
+
 </resources>
