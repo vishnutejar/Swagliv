@@ -8,19 +8,18 @@
         android:layout_height="@dimen/dp108"
         android:layout_marginHorizontal="@dimen/dp8"
         android:layout_marginVertical="@dimen/dp8"
-        android:paddingHorizontal="@dimen/dp10"
-        android:paddingVertical="@dimen/dp10"
         android:background="@drawable/picturecard"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dp10"
+        android:paddingVertical="@dimen/dp10">
 
         <ImageView
             android:id="@+id/pictures"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp100"
             android:layout_gravity="center"
-            android:layout_marginVertical="@dimen/dp5"
             android:layout_marginHorizontal="@dimen/dp5"
-            android:src="@drawable/pictures" />
+            android:layout_marginVertical="@dimen/dp5" />
 
     </LinearLayout>
 
@@ -29,8 +28,8 @@
         android:layout_width="@dimen/dp25"
         android:layout_height="@dimen/dp25"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="@dimen/dp2"
         android:layout_marginTop="@dimen/dp2"
+        android:layout_marginRight="@dimen/dp2"
         android:background="@drawable/ic_baseline_cancel_24"
         android:backgroundTint="@color/pink1" />
 </RelativeLayout>

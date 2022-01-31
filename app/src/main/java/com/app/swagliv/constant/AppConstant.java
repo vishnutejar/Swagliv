@@ -8,7 +8,7 @@ public class AppConstant {
     public static final String USER = "USER";
     public static final String USER_SUBSCRIPTION_PLAN = "USER_SUBSCRIPTION_PLAN";
     public static final String PERSONAL_IMAGES = "personalImages";
-    public static final String OTHER_IMAGES = "otherImages";
+    public static final String PROFILE_IMAGES = "profileImages";
     public static final int MAX_PASSION_SELECTION_COUNT = 5;
     public static final String MEN = "Men";
     public static final String WOMEN = "Women";

@@ -24,11 +24,13 @@ import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.FragmentProfileBinding;
 import com.app.swagliv.image_upload_service.UserDocumentUploadService;
 import com.app.swagliv.model.login.pojo.User;
+import com.app.swagliv.model.profile.pojo.PersonalImages;
 import com.app.swagliv.view.activities.DashboardActivity;
 import com.app.swagliv.view.activities.EditProfileActivity;
 import com.app.swagliv.view.activities.LoginActivity;
 import com.app.swagliv.view.activities.SubscriptionActivity;
 import com.app.swagliv.view.adaptor.PicturesAttachmentAdapter;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
@@ -36,6 +38,7 @@ import net.alhazmy13.mediapicker.Image.ImagePicker;
 import net.alhazmy13.mediapicker.Video.VideoPicker;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -43,7 +46,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
 
     private FragmentProfileBinding mBinding;
     private User mUser;
-     private PicturesAttachmentAdapter picturesAttachmentAdapter;
+    private PicturesAttachmentAdapter picturesAttachmentAdapter;
 
 
     public ProfileFragment() {
@@ -63,11 +66,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
 
 
     private void initialize() {
+
+
         //------------
 
         mUser = AppInstance.getAppInstance().getAppUserInstance(getContext());
         mBinding.setUser(mUser);
         mBinding.mobile.setText(String.valueOf(mUser.getContactNumber()));
+        mBinding.picturesView.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
         DashboardActivity.initializeListener(this);
         mBinding.currentPlan.setOnClickListener(this);
@@ -90,6 +96,21 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
         } else {
             mBinding.currentPlan.setText(peoplesInfo.getCurrentSubscribedPlan().getSubscriptionName());
         }*/
+        if (mUser.getProfileImages() != null) {
+            Glide.with(this).load(mUser.getProfileImages()).into(mBinding.profileImage);
+        }
+
+        ArrayList<String> personalImage = mUser.getPersonalImage();
+        if (!personalImage.isEmpty()) {
+            List<PersonalImages> personalImagesList = new ArrayList<>();
+            for (String urlOfImages : personalImage) {
+                PersonalImages p = new PersonalImages();
+                p.setImagesURI(null);
+                p.setUrl(urlOfImages);
+                personalImagesList.add(p);
+            }
+            setPersonalImages(null, personalImagesList, 1);
+        }
 
     }
 
@@ -189,29 +210,50 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
                             .putExtra(UserDocumentUploadService.REFERENCE_FILE_NAME, file.toString())
                             .setAction(UserDocumentUploadService.ACTION_UPLOAD_DOCUMENTS));
                 } else {
-                    mBinding.picturesView.setLayoutManager(new GridLayoutManager(getContext(), 3));
-                    if (picturesAttachmentAdapter == null) {
-                        picturesAttachmentAdapter = new PicturesAttachmentAdapter(getContext(), list, this);
-                        mBinding.picturesView.setAdapter(this.picturesAttachmentAdapter);
-                        mBinding.otherImagesParentLayout.setVisibility(picturesAttachmentAdapter.getSelectedPhotosList().isEmpty() ? View.GONE : View.VISIBLE);
-                    } else {
-                        list.addAll(picturesAttachmentAdapter.getSelectedPhotosList());
-                        picturesAttachmentAdapter.updateSelectedPhotosList(list, null);
-                    }
-                    for (Uri uri :
+                    setPersonalImages(list, null, 0);
+
+                    for (PersonalImages uri :
                             picturesAttachmentAdapter.getSelectedPhotosList()) {
-                        File file = FileUtils.getFile(getActivity(), uri);
-                        getActivity().startService(new Intent(getContext(), UserDocumentUploadService.class)
-                                .putExtra(UserDocumentUploadService.EXTRA_FILE_URI, uri)
-                                .putExtra(UserDocumentUploadService.IMAGE_TYPE, requestCode)
-                                .putExtra(UserDocumentUploadService.REFERENCE_FILE_NAME, file.toString())
-                                .setAction(UserDocumentUploadService.ACTION_UPLOAD_DOCUMENTS));
+                        if (uri.getImagesURI() != null) {
+                            File file = FileUtils.getFile(getActivity(), uri.getImagesURI());
+                            getActivity().startService(new Intent(getContext(), UserDocumentUploadService.class)
+                                    .putExtra(UserDocumentUploadService.EXTRA_FILE_URI, uri.getImagesURI())
+                                    .putExtra(UserDocumentUploadService.IMAGE_TYPE, requestCode)
+                                    .putExtra(UserDocumentUploadService.REFERENCE_FILE_NAME, file.toString())
+                                    .setAction(UserDocumentUploadService.ACTION_UPLOAD_DOCUMENTS));
+                        }
+
                     }
                 }
                 // Start MyUploadService to upload the file, so that the file is uploaded
                 // even if this Activity is killed or put in the background
 
                 break;
+        }
+    }
+
+
+    // type 0 -> URI, 1-> images
+    public void setPersonalImages(List<Uri> list, List<PersonalImages> personalImagesList, int type) {
+
+        if (type == 0) {
+            personalImagesList = new ArrayList<>();
+            for (Uri obj :
+                    list) {
+                PersonalImages p = new PersonalImages();
+                p.setImagesURI(obj);
+                p.setUrl(null);
+                personalImagesList.add(p);
+            }
+        }
+
+        if (picturesAttachmentAdapter == null) {
+            picturesAttachmentAdapter = new PicturesAttachmentAdapter(getContext(), personalImagesList, this);
+            mBinding.picturesView.setAdapter(this.picturesAttachmentAdapter);
+            mBinding.otherImagesParentLayout.setVisibility(picturesAttachmentAdapter.getSelectedPhotosList().isEmpty() ? View.GONE : View.VISIBLE);
+        } else {
+            personalImagesList.addAll(picturesAttachmentAdapter.getSelectedPhotosList());
+            picturesAttachmentAdapter.updateSelectedPhotosList(personalImagesList, null);
         }
     }
 

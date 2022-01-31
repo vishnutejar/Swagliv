@@ -9,6 +9,7 @@ import com.app.swagliv.model.common.Common;
 import com.app.swagliv.model.home.api.ProfileService;
 import com.app.swagliv.model.home.pojo.PassionListBaseModel;
 import com.app.swagliv.model.home.pojo.Passions;
+import com.app.swagliv.model.home.pojo.UploadImageBaseModel;
 import com.app.swagliv.model.login.pojo.LoginResponseBaseModel;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.model.profile.pojo.Subscription;
@@ -16,6 +17,7 @@ import com.app.swagliv.model.profile.pojo.SubscriptionBaseModel;
 import com.app.swagliv.network.ApplicationRetrofitServices;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
@@ -62,21 +64,23 @@ public class ProfileRepository {
         MultipartBody.Part imageFileBody = MultipartBody.Part.createFormData("file", imagePath.getName(), requestBody);
 
         ProfileService profileService = ApplicationRetrofitServices.getInstance().getProfileService();
-        Call<Common> call = profileService.updatePhoto(imageUploadTypeReqBody, imageFileBody);
-        call.enqueue(new Callback<Common>() {
+        Call<JsonObject> call = profileService.updatePhoto(imageUploadTypeReqBody, imageFileBody);
+        call.enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(Call<Common> call, Response<Common> response) {
-                Common passionListResponse = response.body();
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                JsonObject passionListResponse = response.body();
 
-                if (passionListResponse != null) {
-                    apiResponseListener.onSuccess(passionListResponse, requestID);
+                String imgURL = passionListResponse.get("Data").getAsJsonObject().get(imageUploadType).getAsString();
+
+                if (imgURL != null) {
+                    apiResponseListener.onSuccess(imgURL, requestID);
                 } else {
                     apiResponseListener.onFailure(new Exception(Utility.getApiFailureErrorMsg(response.errorBody())), requestID);
                 }
             }
 
             @Override
-            public void onFailure(Call<Common> call, Throwable t) {
+            public void onFailure(Call<JsonObject> call, Throwable t) {
                 apiResponseListener.onFailure(new Exception(), requestID);
             }
         });

@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.swagliv.R;
+import com.app.swagliv.model.profile.pojo.PersonalImages;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +23,9 @@ public class PicturesAttachmentAdapter extends RecyclerView.Adapter<PicturesAtta
 
     private OnImageSelectedListener onImageSelectedListener;
     private Context context;
-    private List<Uri> photos;
+    private List<PersonalImages> photos;
 
-    public PicturesAttachmentAdapter(Context context, List<Uri> uriList, OnImageSelectedListener onImageSelectedListener) {
+    public PicturesAttachmentAdapter(Context context, List<PersonalImages> uriList, OnImageSelectedListener onImageSelectedListener) {
         this.context = context;
         this.onImageSelectedListener = onImageSelectedListener;
         this.photos = new ArrayList<>(uriList);
@@ -38,9 +40,14 @@ public class PicturesAttachmentAdapter extends RecyclerView.Adapter<PicturesAtta
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Uri uri = photos.get(position);
+        PersonalImages personalImages = photos.get(position);
+
 //      Picasso.get().load(uri).into(holder.imageView);
-        holder.imageView.setImageURI(uri);
+        if (personalImages.getImagesURI() != null)
+            holder.imageView.setImageURI(personalImages.getImagesURI());
+        else {
+            Glide.with(context).load(personalImages.getUrl()).into(holder.imageView);
+        }
         holder.removeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +72,7 @@ public class PicturesAttachmentAdapter extends RecyclerView.Adapter<PicturesAtta
         }
     }
 
-    public void updateSelectedPhotosList(List<Uri> uriList, String positionToRemoveItem) {
+    public void updateSelectedPhotosList(List<PersonalImages> uriList, String positionToRemoveItem) {
         if (positionToRemoveItem != null) {
             photos.remove(Integer.parseInt(positionToRemoveItem));
         } else {
@@ -75,7 +82,7 @@ public class PicturesAttachmentAdapter extends RecyclerView.Adapter<PicturesAtta
         notifyDataSetChanged();
     }
 
-    public List<Uri> getSelectedPhotosList() {
+    public List<PersonalImages> getSelectedPhotosList() {
         return photos;
     }
 

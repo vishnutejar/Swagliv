@@ -13,10 +13,13 @@ import com.app.common.constant.AppCommonConstants;
 import com.app.common.interfaces.APIResponseListener;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppConstant;
+import com.app.swagliv.constant.AppInstance;
+import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.view.activities.DashboardActivity;
 import com.app.swagliv.viewmodel.profile.repository.ProfileRepository;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -47,6 +50,7 @@ public class UserDocumentUploadService extends ForegroundServiceBaseTask impleme
     private HashSet<String> mUnUploadDriverDocuments;
     private Uri mFileUri;
     private int mImageType;
+    private String mUploadedImageType;
     // [END declare_ref]
 
     @Override
@@ -118,15 +122,31 @@ public class UserDocumentUploadService extends ForegroundServiceBaseTask impleme
     private void doUploadImage() {
         ProfileRepository profileRepository = new ProfileRepository();
 
-        String type = mImageType == AppConstant.RequestCodes.PROFILE ? AppConstant.PERSONAL_IMAGES : AppConstant.OTHER_IMAGES;
+        mUploadedImageType = mImageType == AppConstant.RequestCodes.PROFILE ? AppConstant.PROFILE_IMAGES : AppConstant.PERSONAL_IMAGES;
 
-        profileRepository.doUploadImage(mFileName, type, this, AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
+        profileRepository.doUploadImage(mFileName, mUploadedImageType, this, AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
+
     }
 
     @Override
     public void onSuccess(Object callResponse, Integer requestID) {
         boolean success = mFileUri != null;
         String action = success ? DOCUMENT_UPLOAD_COMPLETED : DOCUMENT_UPLOAD_ERROR;
+        if (action.equalsIgnoreCase(DOCUMENT_UPLOAD_COMPLETED)) {
+            String data = (String) callResponse;
+            User appUserInstance = AppInstance.getAppInstance().getAppUserInstance(getApplicationContext());
+            if (mUploadedImageType.equalsIgnoreCase(AppConstant.PROFILE_IMAGES))
+                appUserInstance.setProfileImages(data);
+            else {
+                ArrayList<String> personalImage = appUserInstance.getPersonalImage();
+                if (personalImage == null) {
+                    personalImage = new ArrayList<>();
+                }
+                personalImage.add(data);
+                appUserInstance.setPersonalImage(personalImage);
+            }
+            AppInstance.getAppInstance().setAppUserInstance(appUserInstance, getApplicationContext());
+        }
         showUploadFinishedNotification(mFileUri, mFileUri);
     }
 
