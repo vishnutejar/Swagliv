@@ -58,7 +58,6 @@ public class ChatActivity extends AppCompatActivity {
     private String mReceivedConversationId;
 
     private Handler mTypingHandler = new Handler();
-
     private boolean mTyping = false;
 
 
@@ -105,14 +104,12 @@ public class ChatActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
                 if (!mTyping) {
                     mTyping = true;
+                    JSONObject data = new JSONObject();
                     try {
-                        JSONObject data = new JSONObject();
                         data.put("senderId", mUser.getId());
-                        data.put("receiverId", "61f0047ca6dcf7ad009e8679");
-                        // perform the sending message attempt.
+                        data.put("receiverId", "61d9697cc828379036175d9b");
                         mSocket.emit(AppConstant.CHAT.IS_TYPING, data);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -134,7 +131,7 @@ public class ChatActivity extends AppCompatActivity {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("senderId", mUser.getId());
-            jsonObject.put("receiverId", "61d97006c828379036175e0b");
+            jsonObject.put("receiverId", "61d9697cc828379036175d9b");
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -147,12 +144,19 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void attemptSend() {
+        mTyping = false;
         String message = mBinding.inputMessage.getText().toString().trim();
+        if (message.isEmpty()) {
+            mBinding.inputMessage.requestFocus();
+            return;
+        }
+
+        mBinding.inputMessage.setText("");
 
         Message messageObj = new Message();
         messageObj.setConversationId(mReceivedConversationId);
         messageObj.setMessageType(AppConstant.CHAT.MESSAGE_TYPE_TEXT);
-        messageObj.setReceiverId("61d97006c828379036175e0b");
+        messageObj.setReceiverId("61d9697cc828379036175d9b");
         messageObj.setSenderId(mUser.getId());
         messageObj.setMessage(message);
         messageObj.setTime(System.currentTimeMillis());
@@ -162,7 +166,7 @@ public class ChatActivity extends AppCompatActivity {
         try {
             ob.put("conversationId", mReceivedConversationId);
             ob.put("senderId", mUser.getId());
-            ob.put("receiverId", "61d97006c828379036175e0b");
+            ob.put("receiverId", "61d9697cc828379036175d9b");
             ob.put("messageType", 101);
             ob.put("message", message);
             mSocket.emit(AppConstant.CHAT.SEND_MESSAGE, ob);
@@ -170,7 +174,7 @@ public class ChatActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mBinding.inputMessage.setText("");
+
 
         addMessage(messageObj);
 
@@ -255,6 +259,7 @@ public class ChatActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    Log.e("onTyping", "" + args[0]);
                     JSONObject data = (JSONObject) args[0];
 
                 }

@@ -63,8 +63,8 @@ public class EmailSignInActivity extends AppCompatActivity implements APIRespons
         mbinding.emailSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!mbinding.email.getText().toString().isEmpty() && Utility.checkEmail(mbinding.email.getText().toString())) {
-                    if (!mbinding.password.getText().toString().isEmpty()) {
+                if (!mbinding.email.getText().toString().trim().isEmpty() && Utility.checkEmail(mbinding.email.getText().toString())) {
+                    if (!mbinding.password.getText().toString().trim().isEmpty()) {
                         if (Utility.isNetworkAvailable(EmailSignInActivity.this)) {
                             loginViewModel.doLoginWithEmail(mbinding.email.getText().toString(), mbinding.password.getText().toString(), AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
                         }
