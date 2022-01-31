@@ -101,7 +101,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
         }
 
         ArrayList<String> personalImage = mUser.getPersonalImage();
-        if (!personalImage.isEmpty()) {
+        if (personalImage != null && !personalImage.isEmpty()) {
             List<PersonalImages> personalImagesList = new ArrayList<>();
             for (String urlOfImages : personalImage) {
                 PersonalImages p = new PersonalImages();
