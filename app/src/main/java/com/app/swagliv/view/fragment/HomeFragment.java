@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 
 import com.app.common.constant.AppCommonConstants;
 import com.app.common.interfaces.APIResponseHandler;
+import com.app.common.preference.AppPreferencesManager;
 import com.app.common.utils.Utility;
 import com.app.common.utils.api_response_handler.APIResponse;
 import com.app.swagliv.R;
@@ -34,8 +35,10 @@ import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.FragmentHomeBinding;
 import com.app.swagliv.model.home.pojo.DashboardBaseModel;
 import com.app.swagliv.model.login.pojo.User;
+import com.app.swagliv.view.activities.DashboardActivity;
 import com.app.swagliv.view.activities.MatchActivity;
 import com.app.swagliv.view.activities.SideBarActivity;
+import com.app.swagliv.view.activities.SubscriptionActivity;
 import com.app.swagliv.view.adaptor.CardStackAdapter;
 import com.app.swagliv.viewmodel.dashboard.DashboardViewModel;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
@@ -48,7 +51,11 @@ import com.yuyakaido.android.cardstackview.StackFrom;
 import com.yuyakaido.android.cardstackview.SwipeAnimationSetting;
 import com.yuyakaido.android.cardstackview.SwipeableMethod;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment implements CardStackListener, View.OnClickListener, APIResponseHandler, MatchActivity.OnMatchButtonClickListener {
 
@@ -73,7 +80,6 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
-
         initialize();
         return mBinding.getRoot();
     }
@@ -150,6 +156,13 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
 
     @Override
     public void onCardAppeared(View view, int position) {
+        if (AppInstance.getAppInstance().getAppUserCurrentSubscriptionPlan(getActivity()) == null) {
+            if (position == AppConstant.SWIPE_LIMIT) {
+                AppPreferencesManager.putString(AppConstant.SWIPE_LIMIT_EXCEED, Utility.convertDateToString(new Date(), AppCommonConstants.DATE_FORMAT_DEFAULT), getActivity());
+                startActivity(new Intent(getContext(), SubscriptionActivity.class));
+                getActivity().finish();
+            }
+        }
         mSelectedUser = mNearByPeoples.get(position);
         isProfileSuperLiked = false;
     }
@@ -258,7 +271,7 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
 //                              mBinding.profileSettingBtn.setVisibility(View.VISIBLE);
                             }
                         }
-
+                        checkTotalLikedDoneForDay();
                         break;
                 }
                 break;
@@ -274,5 +287,18 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
     @Override
     public void onKeepSwiping() {
         mViewModel.doGetNearByPeoples(true, false, AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
+    }
+
+    private void checkTotalLikedDoneForDay() {
+        if (AppInstance.getAppInstance().getAppUserCurrentSubscriptionPlan(getActivity()) == null) {
+            String dateStored = AppPreferencesManager.getString(AppConstant.SWIPE_LIMIT_EXCEED, getContext());
+            if (dateStored != null) {
+                Date lastDate = Utility.convertStringToDate(dateStored, AppCommonConstants.DATE_FORMAT_DEFAULT);
+                Date latestDate = Utility.convertStringToDate(Utility.convertDateToString(new Date(), AppCommonConstants.DATE_FORMAT_DEFAULT), AppCommonConstants.DATE_FORMAT_DEFAULT);
+                if (latestDate.compareTo(lastDate) == 0) {
+                    startActivity(new Intent(getContext(), SubscriptionActivity.class));
+                }
+            }
+        }
     }
 }

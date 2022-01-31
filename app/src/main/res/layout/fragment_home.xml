@@ -98,7 +98,7 @@
                     android:layout_width="@dimen/dp29"
                     android:layout_height="@dimen/dp29"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/ic_filter" />
+                    android:src="@drawable/filter_ic" />
 
             </RelativeLayout>
 

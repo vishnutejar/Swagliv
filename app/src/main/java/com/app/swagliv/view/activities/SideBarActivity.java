@@ -55,8 +55,6 @@ public class SideBarActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(i);
                 break;
             case R.id.editProfile:
-                i = new Intent(this, SearchScreenActivity.class);
-                startActivity(i);
                 break;
         }
     }

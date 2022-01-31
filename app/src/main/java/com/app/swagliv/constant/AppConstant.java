@@ -80,5 +80,7 @@ public class AppConstant {
 
     }
 
+    public static final int SWIPE_LIMIT = 5;
+    public static final String SWIPE_LIMIT_EXCEED = "SWIPE_LIMIT_EXCEED";
 
 }

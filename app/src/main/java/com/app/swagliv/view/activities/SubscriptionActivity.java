@@ -125,7 +125,7 @@ public class SubscriptionActivity extends AppCompatActivity implements PriceAdap
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.back_btn:
-                finish();
+                callDashboard();
                 break;
             case R.id.subscription_continue_btn:
                 if (Utility.isNetworkAvailable(SubscriptionActivity.this)) {
@@ -195,8 +195,7 @@ public class SubscriptionActivity extends AppCompatActivity implements PriceAdap
                         break;
                     case AppCommonConstants.API_REQUEST.REQUEST_ID_1003:
                         OrderVerifyBaseModel orderVerifyBaseModel = (OrderVerifyBaseModel) apiResponse.data;
-                        Intent i = new Intent(SubscriptionActivity.this, DashboardActivity.class);
-                        startActivity(i);
+                        callDashboard();
                         break;
                 }
                 break;
@@ -208,4 +207,14 @@ public class SubscriptionActivity extends AppCompatActivity implements PriceAdap
     }
 
 
+    private void callDashboard() {
+        Intent i = new Intent(SubscriptionActivity.this, DashboardActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+        callDashboard();
+    }
 }
