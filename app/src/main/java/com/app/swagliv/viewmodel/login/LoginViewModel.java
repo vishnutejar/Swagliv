@@ -18,9 +18,9 @@ public class LoginViewModel extends ViewModel implements APIResponseListener {
         loginRepository = new LoginRepository();
     }
 
-    public void doUserRegistration(User user, Integer requestID) {
+    public void doUserRegistration(User user, int type, Integer requestID) {
         responseMutableLiveData.setValue(APIResponse.loading(requestID));
-        loginRepository.doUserRegistration(user, this, requestID);
+        loginRepository.doUserRegistration(user, type, this, requestID);
 
     }
 
@@ -29,14 +29,14 @@ public class LoginViewModel extends ViewModel implements APIResponseListener {
         loginRepository.doUpdateMobileNumber(mobileNumber, this, requestID);
     }
 
-    public void toVerifyOtp(String otp,String mobileNo, Integer requestID) {
+    public void toVerifyOtp(String otp, String mobileNo, Integer requestID) {
         responseMutableLiveData.setValue(APIResponse.loading(requestID));
-        loginRepository.toVerifyOtp(otp,mobileNo, this, requestID);
+        loginRepository.toVerifyOtp(otp, mobileNo, this, requestID);
     }
 
-    public void doLoginWithEmail(String email, String password, Integer requestID) {
+    public void doLoginWithEmail(String email, String password, int type, String socialId, Integer requestID) {
         responseMutableLiveData.setValue(APIResponse.loading(requestID));
-        loginRepository.doLoginWithEmail(email, password, this, requestID);
+        loginRepository.doLoginWithEmail(email, password, type, socialId, this, requestID);
     }
 
     @Override

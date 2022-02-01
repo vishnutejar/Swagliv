@@ -95,7 +95,7 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
                                             user.setPassword(mSignupbinding.txtPassword.getText().toString());
 
                                             if (Utility.isNetworkAvailable(this)) {
-                                                loginViewModel.doUserRegistration(user, AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
+                                                loginViewModel.doUserRegistration(user, AppCommonConstants.LOGIN_TYPE.NORMAL, AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
                                             }
                                         } else {
                                             Utility.showToast(SignUpActivity.this, getString(R.string.check_password));

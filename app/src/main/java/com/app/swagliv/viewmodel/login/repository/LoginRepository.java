@@ -18,7 +18,7 @@ import retrofit2.Response;
 public class LoginRepository {
 
 
-    public void doUserRegistration(User user, APIResponseListener apiResponseListener, Integer requestID) {
+    public void doUserRegistration(User user,int type, APIResponseListener apiResponseListener, Integer requestID) {
         LoginService loginServices = ApplicationRetrofitServices.getInstance().getLoginService();
 
         JsonObject jsonObject = new JsonObject();
@@ -28,7 +28,7 @@ public class LoginRepository {
         jsonObject.addProperty("dob", user.getDob());
         jsonObject.addProperty("email", user.getEmail());
         jsonObject.addProperty("password", user.getPassword());
-        jsonObject.addProperty("type", AppCommonConstants.LOGIN_TYPE.NORMAL);
+        jsonObject.addProperty("type", type);
 
         Utility.printLogs("RequestJSON", jsonObject.toString());
 
@@ -121,13 +121,16 @@ public class LoginRepository {
         });
     }
 
-    public void doLoginWithEmail(String email, String password, APIResponseListener apiResponseListener, Integer requestID) {
+    public void doLoginWithEmail(String email, String password, int type, String socialId, APIResponseListener apiResponseListener, Integer requestID) {
         LoginService loginServices = ApplicationRetrofitServices.getInstance().getLoginService();
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("email", email);
         jsonObject.addProperty("password", password);
-        jsonObject.addProperty("type", AppCommonConstants.LOGIN_TYPE.NORMAL);
+        jsonObject.addProperty("socialId", socialId);
+        jsonObject.addProperty("type",type);
+
+        Utility.printLogs("loginRequestJSON", jsonObject.toString());
 
         Call<LoginResponseBaseModel> call = loginServices.doLogin(jsonObject);
         call.enqueue(new Callback<LoginResponseBaseModel>() {

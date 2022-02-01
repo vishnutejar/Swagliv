@@ -18,6 +18,7 @@ import com.app.common.utils.api_response_handler.APIResponse;
 import com.app.swagliv.R;
 import com.app.swagliv.databinding.FragmentMessageBinding;
 import com.app.swagliv.model.chat.pojo.chatlist.UserChats;
+import com.app.swagliv.view.activities.DashboardActivity;
 import com.app.swagliv.view.adaptor.ChatListUserAdapter;
 import com.app.swagliv.viewmodel.chats.ChatsViewModel;
 
@@ -38,6 +39,8 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_message, container, false);
+        DashboardActivity activity = (DashboardActivity) getActivity();
+        activity.getDrawer().close();
         mViewModel = new ViewModelProvider(this).get(ChatsViewModel.class);
         mBinding.commonHeader.headerTitle.setText(R.string.txt_chat);
         mBinding.commonHeader.headerLayout.setBackgroundResource(R.color.dark_pink);

@@ -26,6 +26,8 @@ public class PhoneActivity extends AppCompatActivity implements View.OnClickList
     private ActivityAddPhoneBinding mBinding;
     private LoginViewModel mViewModel;
     private AlertDialog mProgressbar;
+    private LoginViewModel loginViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

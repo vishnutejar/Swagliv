@@ -66,7 +66,7 @@ public class EmailSignInActivity extends AppCompatActivity implements APIRespons
                 if (!mbinding.email.getText().toString().trim().isEmpty() && Utility.checkEmail(mbinding.email.getText().toString())) {
                     if (!mbinding.password.getText().toString().trim().isEmpty()) {
                         if (Utility.isNetworkAvailable(EmailSignInActivity.this)) {
-                            loginViewModel.doLoginWithEmail(mbinding.email.getText().toString(), mbinding.password.getText().toString(), AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
+                            loginViewModel.doLoginWithEmail(mbinding.email.getText().toString(), mbinding.password.getText().toString(), AppCommonConstants.LOGIN_TYPE.NORMAL, null, AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
                         }
 /*
                         Intent intent = new Intent(EmailSignInActivity.this, UserProfileActivity.class);

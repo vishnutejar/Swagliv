@@ -7,15 +7,22 @@ import android.view.View;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.app.common.constant.AppCommonConstants;
+import com.app.common.interfaces.APIResponseHandler;
 import com.app.common.preference.AppPreferencesManager;
 import com.app.common.utils.Utility;
+import com.app.common.utils.api_response_handler.APIResponse;
 import com.app.progressbar.LoadingProgressBarDialog;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.ActivityLoginBinding;
+import com.app.swagliv.model.login.pojo.LoginResponseBaseModel;
 import com.app.swagliv.model.login.pojo.User;
+import com.app.swagliv.viewmodel.login.LoginViewModel;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -35,7 +42,7 @@ import org.json.JSONException;
 import java.util.Arrays;
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, APIResponseHandler {
 
     //constant
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -51,11 +58,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     // widgets
     private LoginButton mFacebookLoginBtn;
     private AlertDialog mProgressDialog;
+    private LoginViewModel loginViewModel;
+    private int mUserType;
+    private AlertDialog mProgressbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
         //--------------------
         mBinding.googleSigninBtn.setOnClickListener(this);
@@ -101,6 +112,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Utility.showToast(LoginActivity.this, "failure");
             }
         });
+
+        loginViewModel.responseMutableLiveData.observe(this, new Observer<APIResponse>() {
+            @Override
+            public void onChanged(APIResponse apiResponse) {
+                onAPIResponseHandler(apiResponse);
+            }
+        });
+
+
+        mProgressbar = new LoadingProgressBarDialog.Builder()
+                .setContext(this)
+                .setMessage(getString(R.string.please_wait))
+                .build();
+
     }
 
     @Override
@@ -152,6 +177,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
             try {
+                mUserType = AppCommonConstants.LOGIN_TYPE.GMAIL;
                 mUserID = account.getId();
                 mName = account.getDisplayName();
                 mEmail = account.getEmail();
@@ -183,7 +209,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         mName = object.getString("name");
                         mProfile = object.getString("picture");
                         mEmail = object.getString("email") != null ? object.getString("email") : "";
-
+                        mUserType = AppCommonConstants.LOGIN_TYPE.FACEBOOK;
                         Utility.showToast(LoginActivity.this, "Welcome " + mName + " email: " + mEmail);
                         callDashboardActivity();
                     } catch (JSONException e) {
@@ -200,15 +226,54 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void callDashboardActivity() {
-        AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, mUserID, this);
-        User mUser = new User();
-        mUser.setName(mName);
-        mUser.setEmail(mEmail);
+        User user = new User();
+        user.setName(mName);
+        user.setEmail(mEmail);
+
         if (mProfile != null) {
-            mUser.setProfileImages(mProfile);
+            user.setProfileImages(mProfile);
         }
-        AppInstance.getAppInstance().setAppUserInstance(mUser, this);
-        Intent i = new Intent(LoginActivity.this, UserProfileActivity.class);
-        startActivity(i);
+        user.setId(mUserID);
+
+        if (Utility.isNetworkAvailable(this)) {
+            loginViewModel.doLoginWithEmail(mEmail, null, mUserType, mUserID, AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
+        }
+    }
+
+
+    @Override
+    public void onAPIResponseHandler(APIResponse apiResponse) {
+        switch (apiResponse.status) {
+            case LOADING:
+                mProgressbar.show();
+                break;
+            case SUCCESS:
+                mProgressbar.dismiss();
+                switch (apiResponse.requestID) {
+                    case AppCommonConstants.API_REQUEST.REQUEST_ID_1001:
+                        if (apiResponse.data instanceof String) {
+                            String message = (String) apiResponse.data;
+                            Utility.showToast(this, message);
+                        } else {
+                            LoginResponseBaseModel registrationResponse = (LoginResponseBaseModel) apiResponse.data;
+                            AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_PROFILE_STATUS, AppConstant.PROFILE_STATUS.SIGN_UP, this);
+                            AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, registrationResponse.getUser().getId(), this);
+                            AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.APP_TOKEN, registrationResponse.getUser().getToken(), this);
+                            AppInstance.getAppInstance().setAppUserInstance(registrationResponse.getUser(), this);
+                            //Utility.showToast(this, registrationResponse.getMessage());
+                            //--------
+                            Intent intent = new Intent(this, PhoneActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+
+                        }
+                        break;
+                }
+                break;
+            case ERROR:
+                mProgressbar.dismiss();
+                Utility.showToast(this, getString(R.string.api_failure_error_msg));
+                break;
+        }
     }
 }

@@ -59,6 +59,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
         // Inflate the layout for this fragment
 
         mBinding = DataBindingUtil.inflate(LayoutInflater.from(container.getContext()), R.layout.fragment_profile, container, false);
+        DashboardActivity activity = (DashboardActivity) getActivity();
+        activity.getDrawer().close();
         initialize();
         return mBinding.getRoot();
 

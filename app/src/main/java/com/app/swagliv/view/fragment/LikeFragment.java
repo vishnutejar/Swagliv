@@ -21,6 +21,7 @@ import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.FragmentLikeBinding;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.model.profile.pojo.Subscription;
+import com.app.swagliv.view.activities.DashboardActivity;
 import com.app.swagliv.view.activities.SubscriptionActivity;
 import com.app.swagliv.view.adaptor.LikeAdapter;
 import com.app.swagliv.viewmodel.dashboard.DashboardViewModel;
@@ -45,6 +46,8 @@ public class LikeFragment extends Fragment implements View.OnClickListener, APIR
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_like, container, false);
+        DashboardActivity activity = (DashboardActivity) getActivity();
+        activity.getDrawer().close();
         initialize();
         return mBinding.getRoot();
     }
