@@ -10,11 +10,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
- import android.util.Log;
- import android.view.Menu;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,8 +32,6 @@ import com.app.swagliv.SocketChatApplication;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.ActivityDashboadBinding;
- import com.google.gson.JsonObject;
- import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 
 import net.alhazmy13.mediapicker.Image.ImagePicker;
@@ -95,7 +91,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_edit_profile, R.id.nav_search_filter, R.id.nav_go_premium, R.id.nav_purchase_history,R.id.nav_dark_mode, R.id.nav_help_faq, R.id.nav_sign_out)
+                R.id.nav_edit_profile, R.id.nav_search_filter, R.id.nav_go_premium, R.id.nav_purchase_history, R.id.nav_dark_mode, R.id.nav_help_faq, R.id.nav_sign_out)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
@@ -145,7 +141,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
     }
 
 
-        @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.dasboard_nav_drawer, menu);
@@ -158,7 +154,6 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 
 
     @Override
