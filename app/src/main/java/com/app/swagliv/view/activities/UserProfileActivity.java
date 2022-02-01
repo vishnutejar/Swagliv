@@ -56,10 +56,7 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_profile);
-        String alreadyLoginUser = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, this);
-        if (alreadyLoginUser == mUser.getId()) {
 
-        }
         mUser = AppInstance.getAppInstance().getAppUserInstance(this);
         mProfileBinding.setUser(mUser);
         mProfileBinding.profileMobileNo.setText(String.valueOf(mUser.getContactNumber()));

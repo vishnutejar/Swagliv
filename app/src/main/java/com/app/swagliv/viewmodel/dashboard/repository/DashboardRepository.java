@@ -107,7 +107,36 @@ public class DashboardRepository {
                 apiResponseListener.onFailure(t, requestID);
             }
         });
+    }
 
+    public void doRemoveMatchProfile(String userID, String MatchUserId, APIResponseListener apiResponseListener, Integer requestID) {
+        DashboardService dashboardService = ApplicationRetrofitServices.getInstance().getDashboardService();
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("matchedUserid", MatchUserId);
+        jsonObject.addProperty("userId",userID );
+        /*Call<GetLikeBaseModel> call = dashboardService.getUserLikes();
+        call.enqueue(new Callback<GetLikeBaseModel>() {
+            @Override
+            public void onResponse(Call<GetLikeBaseModel> call, Response<GetLikeBaseModel> response) {
+                GetLikeBaseModel getLikeBaseModel = response.body();
+                if (response.isSuccessful() && getLikeBaseModel != null) {
+                    if (getLikeBaseModel.getStatus() == AppCommonConstants.API_SUCCESS_STATUS_CODE) {
+                        apiResponseListener.onSuccess(getLikeBaseModel.getPeopleLikes(), requestID);
+                    } else {
+
+                    }
+                } else {
+                    apiResponseListener.onSuccess(Utility.getApiFailureErrorMsg(response.errorBody()), requestID);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<GetLikeBaseModel> call, Throwable t) {
+                apiResponseListener.onFailure(t, requestID);
+            }
+        });*/
 
     }
 }

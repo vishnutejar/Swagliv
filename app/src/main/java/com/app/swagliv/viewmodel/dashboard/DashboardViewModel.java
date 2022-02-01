@@ -34,6 +34,10 @@ public class DashboardViewModel extends ViewModel implements APIResponseListener
         mDashboardRepository.getUserLikes(this, requestId);
     }
 
+    public void doRemoveMatchProfile(String userID, String MatchUserId, Integer requestID) {
+         mDashboardRepository.doRemoveMatchProfile(userID, MatchUserId, this, requestID);
+    }
+
 
     @Override
     public void onSuccess(Object callResponse, Integer requestID) {

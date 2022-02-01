@@ -26,6 +26,7 @@ public class Subscription implements Parcelable {
     @Expose
     private String subscriptionImageURL;
 
+
     public boolean isSelected() {
         return isSelected;
     }

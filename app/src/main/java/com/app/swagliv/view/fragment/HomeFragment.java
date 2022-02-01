@@ -36,7 +36,7 @@ import com.app.swagliv.databinding.FragmentHomeBinding;
 import com.app.swagliv.model.home.pojo.DashboardBaseModel;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.view.activities.DashboardActivity;
-import com.app.swagliv.view.activities.MatchActivity;
+import com.app.swagliv.view.activities.MatchedProfileDialog;
 import com.app.swagliv.view.activities.SubscriptionActivity;
 import com.app.swagliv.view.adaptor.CardStackAdapter;
 import com.app.swagliv.viewmodel.dashboard.DashboardViewModel;
@@ -53,7 +53,7 @@ import com.yuyakaido.android.cardstackview.SwipeableMethod;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class HomeFragment extends Fragment implements CardStackListener, View.OnClickListener, APIResponseHandler, MatchActivity.OnMatchButtonClickListener {
+public class HomeFragment extends Fragment implements CardStackListener, View.OnClickListener, APIResponseHandler, MatchedProfileDialog.OnMatchButtonClickListener {
 
     //widgets
     private CardStackView mCardStackView;
@@ -256,7 +256,7 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
                         mNearByPeoples = dashboardBaseModel.getProfiles();
                         ArrayList<User> matchUser = dashboardBaseModel.getMatchedProfile();
                         if (matchUser != null && !matchUser.isEmpty()) {
-                            MatchActivity.newInstance(getActivity(), matchUser.get(0), this).show();
+                            MatchedProfileDialog.newInstance(getActivity(), matchUser.get(0), this, mViewModel).show();
                         } else {
                             if (mNearByPeoples != null && !mNearByPeoples.isEmpty()) {
                                 mCardStackAdapter.updateData(mNearByPeoples);

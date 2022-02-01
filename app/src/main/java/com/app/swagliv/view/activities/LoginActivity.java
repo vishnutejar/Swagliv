@@ -204,6 +204,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         User mUser = new User();
         mUser.setName(mName);
         mUser.setEmail(mEmail);
+        if (mProfile != null) {
+            mUser.setProfileImages(mProfile);
+        }
         AppInstance.getAppInstance().setAppUserInstance(mUser, this);
         Intent i = new Intent(LoginActivity.this, UserProfileActivity.class);
         startActivity(i);

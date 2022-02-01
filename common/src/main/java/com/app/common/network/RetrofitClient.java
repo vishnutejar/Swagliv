@@ -39,8 +39,7 @@ public class RetrofitClient {
                 Request request = chain.request().newBuilder()
                         .addHeader("Accept", "application/json")
                         .addHeader("Content-Type", "application/json")
-                        .addHeader("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWQzZjI2MWZkMDg5ODg0OTBkZTNjNTEiLCJpYXQiOjE2NDIyNDk1NzJ9.UhmvMldx_NugWp2Yr6Wu6c6sTXj_eEKMt4jM2t59-Gc")
-                        // .addHeader("Authorization", mToken != null ? mToken : "")
+                        .addHeader("Authorization", mToken != null ? mToken : "")
                         .build();
 
                 Utility.printLogs("BEARER", "" + mToken);

@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:context=".view.activities.MatchActivity">
+            tools:context=".view.activities.MatchedProfileDialog">
 
             <TextView
                 android:layout_width="match_parent"

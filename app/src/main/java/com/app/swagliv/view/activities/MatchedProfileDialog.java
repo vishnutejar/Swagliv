@@ -13,13 +13,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 
+import com.app.common.constant.AppCommonConstants;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.ActivityMatchBinding;
 import com.app.swagliv.model.login.pojo.User;
+import com.app.swagliv.viewmodel.dashboard.DashboardViewModel;
 import com.bumptech.glide.Glide;
 
-public class MatchActivity {
+public class MatchedProfileDialog {
     private ActivityMatchBinding matchBinding;
     private User user;
     private Context mContext;
@@ -27,12 +29,14 @@ public class MatchActivity {
     private AlertDialog alertDialog;
     private TextView sendMsgBtn, keepSwipingBtn;
     private OnMatchButtonClickListener mOnMatchButtonClickListener;
+    private DashboardViewModel dashboardViewModel;
 
-    public static MatchActivity newInstance(Context mContext, User matchedUser, OnMatchButtonClickListener onMatchButtonClickListener) {
-        MatchActivity dialog = new MatchActivity();
+    public static MatchedProfileDialog newInstance(Context mContext, User matchedUser, OnMatchButtonClickListener onMatchButtonClickListener, DashboardViewModel dashboardViewModel) {
+        MatchedProfileDialog dialog = new MatchedProfileDialog();
         dialog.mContext = mContext;
         dialog.mMatchUser = matchedUser;
         dialog.mOnMatchButtonClickListener = onMatchButtonClickListener;
+        dialog.dashboardViewModel = dashboardViewModel;
         return dialog;
     }
 
@@ -67,7 +71,7 @@ public class MatchActivity {
             public void onClick(View view) {
                 alertDialog.dismiss();
                 mContext.startActivity(new Intent(mContext, ChatActivity.class));
-
+                dashboardViewModel.doRemoveMatchProfile(user.getId(), mMatchUser.getId(), AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
             }
         });
         keepSwipingBtn.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +79,7 @@ public class MatchActivity {
             public void onClick(View view) {
                 alertDialog.dismiss();
                 mOnMatchButtonClickListener.onKeepSwiping();
-
+                dashboardViewModel.doRemoveMatchProfile(user.getId(), mMatchUser.getId(), AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
             }
         });
     }

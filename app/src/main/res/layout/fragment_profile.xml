@@ -100,50 +100,52 @@
 
                 </RelativeLayout>
 
-                <FrameLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
+                    android:layout_marginHorizontal="@dimen/dp50"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="@dimen/dp50"
-                        android:layout_height="@dimen/dp50"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="@dimen/dp50"
-                        android:src="@drawable/ic_baseline_circle_24" />
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
 
-                    <ImageView
-                        android:id="@+id/ic_camera"
-                        android:layout_width="@dimen/dp20"
-                        android:layout_height="@dimen/dp20"
-                        android:layout_marginLeft="@dimen/dp120"
-                        android:layout_marginTop="@dimen/dp15"
-                        android:src="@drawable/photo_camera" />
-                </FrameLayout>
+                        <ImageView
+                            android:layout_width="@dimen/dp50"
+                            android:layout_height="@dimen/dp50"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_baseline_circle_24" />
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/ic_camera"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"
+                            android:layout_gravity="center"
+                            android:src="@drawable/photo_camera" />
+                    </FrameLayout>
 
-                    <ImageView
-                        android:layout_width="@dimen/dp50"
-                        android:layout_height="@dimen/dp50"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/dp50"
-                        android:src="@drawable/ic_baseline_circle_24" />
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/ic_video"
-                        android:layout_width="@dimen/dp20"
-                        android:layout_height="@dimen/dp20"
-                        android:layout_gravity="end"
-                        android:layout_marginTop="@dimen/dp15"
-                        android:layout_marginRight="@dimen/dp120"
-                        android:src="@drawable/video" />
-                </FrameLayout>
+                        <ImageView
+                            android:layout_width="@dimen/dp50"
+                            android:layout_height="@dimen/dp50"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_baseline_circle_24" />
+
+                        <ImageView
+                            android:id="@+id/ic_video"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"
+                            android:layout_gravity="center"
+                            android:src="@drawable/video" />
+                    </FrameLayout>
+                </LinearLayout>
 
             </RelativeLayout>
 
