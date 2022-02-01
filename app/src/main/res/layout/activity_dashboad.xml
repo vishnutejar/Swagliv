@@ -46,18 +46,18 @@
             android:fitsSystemWindows="true"
             tools:openDrawer="start">
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/nav_header_dasboard_nav_drawer"
-            app:menu="@menu/activity_main_drawer"
-            app:itemTextAppearance="@style/NavFontStyle"
-            app:itemIconPadding="@dimen/dimen_30"
-            app:itemTextColor="@color/pink"/>
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/nav_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:layout_marginTop="40dp"
+                android:fitsSystemWindows="true"
+                app:headerLayout="@layout/nav_header_dasboard_nav_drawer"
+                app:itemIconPadding="@dimen/dimen_30"
+                app:itemTextAppearance="@style/NavFontStyle"
+                app:itemTextColor="@color/pink"
+                app:menu="@menu/activity_main_drawer" />
         </androidx.drawerlayout.widget.DrawerLayout>
     </RelativeLayout>
 </layout>

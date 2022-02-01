@@ -13,42 +13,42 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <RelativeLayout
+        android:id="@+id/rl_profile"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rl_profile">
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:contentDescription="@string/nav_header_desc"
-        android:padding="@dimen/nav_header_vertical_spacing"
-        android:background="@drawable/profile_baground"
-        app:srcCompat="@drawable/nav_drawer_pofile" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/profile_baground"
+            android:contentDescription="@string/nav_header_desc"
+            android:padding="@dimen/nav_header_vertical_spacing"
+            app:srcCompat="@drawable/nav_drawer_pofile" />
     </RelativeLayout>
 
     <TextView
         android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:paddingLeft="@dimen/nav_header_vertical_spacing"
         android:layout_marginTop="@dimen/dimen_20"
-        android:textColor="@color/black"
-        android:textSize="22dp"
         android:layout_toRightOf="@+id/rl_profile"
+        android:paddingLeft="@dimen/nav_header_vertical_spacing"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Welcome"
-        android:textAppearance="@style/NavFontStyle" />
+        android:textAppearance="@style/NavFontStyle"
+        android:textColor="@color/black"
+        android:textSize="22dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/welcome_text"
-        android:textColor="@color/sky_blue"
+        android:layout_toRightOf="@+id/rl_profile"
         android:paddingLeft="@dimen/nav_header_vertical_spacing"
         android:text="Rex"
-        android:textSize="22dp"
-        android:layout_toRightOf="@+id/rl_profile"
-        android:textAppearance="@style/NavFontStyle" />
+        android:textAppearance="@style/NavFontStyle"
+        android:textColor="@color/sky_blue"
+        android:textSize="22dp" />
 </RelativeLayout>
