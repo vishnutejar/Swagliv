@@ -13,7 +13,9 @@ import com.app.common.utils.Utility;
 import com.app.progressbar.LoadingProgressBarDialog;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppConstant;
+import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.ActivityLoginBinding;
+import com.app.swagliv.model.login.pojo.User;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -199,9 +201,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void callDashboardActivity() {
         AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, mUserID, this);
-        Intent i = new Intent(LoginActivity.this, SignUpActivity.class);
-        i.putExtra("name", mName);
-        i.putExtra("email", mEmail);
+        User mUser = new User();
+        mUser.setName(mName);
+        mUser.setEmail(mEmail);
+        AppInstance.getAppInstance().setAppUserInstance(mUser, this);
+        Intent i = new Intent(LoginActivity.this, UserProfileActivity.class);
         startActivity(i);
     }
 }

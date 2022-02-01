@@ -92,7 +92,7 @@ public class LoginRepository {
         LoginService loginServices = ApplicationRetrofitServices.getInstance().getLoginService();
 
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("mobileOtp", mobileOtp);
+        jsonObject.addProperty("mobileOtp", Integer.parseInt(mobileOtp));
         jsonObject.addProperty("mobileNumber", mobileNo);
 
         Utility.printLogs("toVerifyOtp", jsonObject.toString());

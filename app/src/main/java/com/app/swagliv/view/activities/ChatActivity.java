@@ -243,6 +243,7 @@ public class ChatActivity extends AppCompatActivity {
                 public void run() {
                     JSONObject jsonObject = (JSONObject) args[0];
                     Log.e("onMessage", "" + jsonObject);
+                    mBinding.userStatus.setText("");
                     Message message = new Gson().fromJson(String.valueOf(jsonObject), Message.class);
                     Log.e("message", "" + message);
                     if (!mUser.getId().equalsIgnoreCase(message.getSenderId()))
@@ -261,7 +262,8 @@ public class ChatActivity extends AppCompatActivity {
                 public void run() {
                     Log.e("onTyping", "" + args[0]);
                     JSONObject data = (JSONObject) args[0];
-
+                    
+                    mBinding.userStatus.setText("typing..");
                 }
             });
         }

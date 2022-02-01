@@ -20,8 +20,8 @@
     <string name="profile_empty_msg">No more peoplesInfo are available around you.Expand your profile setting to see more peoplesInfo.</string>
     <string name="err_gps_enable_msg">Please Turn on your GPS (Location) for better experience.</string>
     <string name="enable_location_title">Enable location</string>
-    <string name="enable_location_detail_msg">You will need to enable your location permission in order to use Tinder</string>
-    <string name="enable_location_detail_msg_android11" tools:keep="@string/enable_location_detail_msg_android11">You will need to enable your location permission in order to use Tinder \n\n Go to App Settings > Permission > Location Permission</string>
+    <string name="enable_location_detail_msg">You will need to enable your location permission in order to use DateFlu</string>
+    <string name="enable_location_detail_msg_android11" tools:keep="@string/enable_location_detail_msg_android11">You will need to enable your location permission in order to use DateFlu \n\n Go to App Settings > Permission > Location Permission</string>
     <string name="btn_open_setting" tools:keep="@string/btn_open_setting">OPEN SETTING</string>
     <string name="btn_allow">Allow Location</string>
     <string name="btn_enable_gps">Turn On GPS</string>

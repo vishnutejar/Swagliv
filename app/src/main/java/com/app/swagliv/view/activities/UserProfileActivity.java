@@ -56,9 +56,14 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_profile);
+        String alreadyLoginUser = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, this);
+        if (alreadyLoginUser == mUser.getId()) {
+
+        }
         mUser = AppInstance.getAppInstance().getAppUserInstance(this);
         mProfileBinding.setUser(mUser);
         mProfileBinding.profileMobileNo.setText(String.valueOf(mUser.getContactNumber()));
+
         mProfileBinding.commonHeader.backBtn.setOnClickListener(this);
         mProfileBinding.addPasssionBtn.setOnClickListener(this);
         mProfileBinding.genderTxt.setOnClickListener(this);
@@ -73,6 +78,7 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
                 onAPIResponseHandler(apiResponse);
             }
         });
+
     }
 
     @Override
@@ -196,6 +202,10 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
                             Utility.showToast(this, message);
                         } else {
                             LoginResponseBaseModel profileUpdate = (LoginResponseBaseModel) apiResponse.data;
+                            User appUserInstance = AppInstance.getAppInstance().getAppUserInstance(this);
+                            if (appUserInstance.getProfileImages() != null) {
+                                profileUpdate.getUser().setProfileImages(appUserInstance.getProfileImages());
+                            }
                             AppInstance.getAppInstance().setAppUserInstance(profileUpdate.getUser(), this);
                             Intent intent = new Intent(UserProfileActivity.this, DashboardActivity.class);
                             startActivity(intent);

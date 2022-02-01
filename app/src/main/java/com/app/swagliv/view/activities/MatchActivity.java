@@ -54,7 +54,7 @@ public class MatchActivity {
         DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
         int width = metrics.widthPixels;
         alertDialog = mBuilder.create();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         alertDialog.getWindow().setLayout((6 * width) / 7, WindowManager.LayoutParams.WRAP_CONTENT);
         alertDialog.show();
 
@@ -67,6 +67,7 @@ public class MatchActivity {
             public void onClick(View view) {
                 alertDialog.dismiss();
                 mContext.startActivity(new Intent(mContext, ChatActivity.class));
+
             }
         });
         keepSwipingBtn.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +75,7 @@ public class MatchActivity {
             public void onClick(View view) {
                 alertDialog.dismiss();
                 mOnMatchButtonClickListener.onKeepSwiping();
+
             }
         });
     }

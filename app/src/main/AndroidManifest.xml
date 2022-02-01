@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Swagliv.NoActionBar"
         android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
         tools:replace="android:theme">
         <activity
             android:name=".view.activities.ChatActivity"

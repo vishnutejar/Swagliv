@@ -82,7 +82,7 @@
                 </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/below_mobile_name_txt"
+                    android:id="@+id/hedder_profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/DP"

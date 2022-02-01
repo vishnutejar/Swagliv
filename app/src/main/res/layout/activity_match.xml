@@ -3,83 +3,93 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context=".view.activities.MatchActivity">
+        app:cardCornerRadius="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp20"
+        app:cardElevation="@dimen/dp20">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp30"
-            android:fontFamily="@font/dancing_script"
-            android:gravity="center"
-            android:text="@string/match"
-            android:textColor="@color/dark_pink"
-            android:textSize="@dimen/dp50" />
+            android:orientation="vertical"
+            tools:context=".view.activities.MatchActivity">
 
-        <TextView
-            android:id="@+id/name_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/black"
-            tools:text="lucky like you too" />
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animationView"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp120"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/match" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp20"
+                android:fontFamily="@font/dancing_script"
+                android:gravity="center"
+                android:text="@string/match"
+                android:textColor="@color/dark_pink"
+                android:textSize="@dimen/dp50" />
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dp15">
+            <TextView
+                android:id="@+id/name_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/black"
+                tools:text="lucky like you too" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_1"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/ic_blank_user_profile" />
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp120"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/match" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_2"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginLeft="@dimen/dp96"
-                android:background="@drawable/ic_blank_user_profile" />
-        </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp15">
 
-        <TextView
-            android:id="@+id/send_msg_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp50"
-            android:layout_marginTop="@dimen/dp10"
-            android:background="@drawable/colorbtn"
-            android:backgroundTint="@color/dark_pink"
-            android:gravity="center"
-            android:padding="@dimen/dp15"
-            android:text="@string/send_message_txt"
-            android:textAllCaps="true"
-            android:textColor="@color/white" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_1"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/ic_blank_user_profile" />
 
-        <TextView
-            android:id="@+id/keep_swiping_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp50"
-            android:layout_marginTop="@dimen/dp10"
-            android:background="@drawable/blue_strock_btn"
-            android:gravity="center"
-            android:padding="@dimen/dp15"
-            android:text="@string/keep_swiping"
-            android:textAllCaps="true"
-            android:textColor="@color/sky_blue" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_2"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="@dimen/dp96"
+                    android:background="@drawable/ic_blank_user_profile" />
+            </FrameLayout>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/send_msg_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp50"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@drawable/colorbtn"
+                android:backgroundTint="@color/dark_pink"
+                android:gravity="center"
+                android:padding="@dimen/dp15"
+                android:text="@string/send_message_txt"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/keep_swiping_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp50"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp15"
+                android:background="@drawable/blue_strock_btn"
+                android:gravity="center"
+                android:padding="@dimen/dp15"
+                android:text="@string/keep_swiping"
+                android:textAllCaps="true"
+                android:textColor="@color/sky_blue" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </layout>
