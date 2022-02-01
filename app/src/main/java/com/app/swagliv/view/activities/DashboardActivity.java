@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,6 +56,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
     private AppBarConfiguration mAppBarConfiguration;
 
     private Socket mSocket;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +88,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
     }
 
     private void setupNavDrawer() {
-        DrawerLayout drawer = binding.drawerLayout;
+        drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -137,7 +139,27 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
                         return true;
                     }
                 });
+        drawer.setVisibility(View.GONE);
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+                Utility.printLogs("adasd", "" + slideOffset);
+            }
 
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) {
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+                drawer.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
     }
 
 
@@ -244,4 +266,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
         }
     };
 
+    public DrawerLayout getDrawer() {
+        return drawer;
+    }
 }

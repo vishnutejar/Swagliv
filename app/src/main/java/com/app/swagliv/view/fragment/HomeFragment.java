@@ -37,7 +37,6 @@ import com.app.swagliv.model.home.pojo.DashboardBaseModel;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.view.activities.DashboardActivity;
 import com.app.swagliv.view.activities.MatchActivity;
-import com.app.swagliv.view.activities.SideBarActivity;
 import com.app.swagliv.view.activities.SubscriptionActivity;
 import com.app.swagliv.view.adaptor.CardStackAdapter;
 import com.app.swagliv.viewmodel.dashboard.DashboardViewModel;
@@ -51,11 +50,8 @@ import com.yuyakaido.android.cardstackview.StackFrom;
 import com.yuyakaido.android.cardstackview.SwipeAnimationSetting;
 import com.yuyakaido.android.cardstackview.SwipeableMethod;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 public class HomeFragment extends Fragment implements CardStackListener, View.OnClickListener, APIResponseHandler, MatchActivity.OnMatchButtonClickListener {
 
@@ -234,8 +230,11 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
                 alertDialog.show();
                 break;
             case R.id.drawerIcon:
-                Intent i = new Intent(getActivity(), SideBarActivity.class);
-                startActivity(i);
+                DashboardActivity activity = (DashboardActivity) getActivity();
+                activity.getDrawer().open();
+                activity.getDrawer().setVisibility(View.VISIBLE);
+                //Intent i = new Intent(getActivity(), SideBarActivity.class);
+                //startActivity(i);
                 break;
             case R.id.filter_back_btn:
 
@@ -301,4 +300,6 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
             }
         }
     }
+
+
 }
