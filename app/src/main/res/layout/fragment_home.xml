@@ -72,10 +72,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include
-                android:id="@+id/background_latout"
-                layout="@layout/background_layout"
-                android:visibility="gone" />
+            <LinearLayout
+                android:id="@+id/backgroundLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp350"
+                android:background="@drawable/home_screen_background"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/actionBarHeader"

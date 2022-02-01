@@ -262,7 +262,7 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
                                 mCardStackAdapter.updateData(mNearByPeoples);
                                 mBinding.peoplesEmptyDataView.setVisibility(View.GONE);
                                 mBinding.buttonContainer.setVisibility(View.VISIBLE);
-                                //mBinding.backgroundLatout.setVisibility(View.VISIBLE);
+                                mBinding.backgroundLayout.setVisibility(View.VISIBLE);
                             } else {
                                 mBinding.peoplesProfile.setVisibility(View.GONE);
                                 mBinding.peoplesEmptyDataView.setVisibility(View.VISIBLE);
