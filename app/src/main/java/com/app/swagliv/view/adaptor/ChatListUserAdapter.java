@@ -20,9 +20,9 @@ public class ChatListUserAdapter extends RecyclerView.Adapter<ChatListUserAdapte
     private ArrayList<UserChats> mUserChats;
 
 
-    public ChatListUserAdapter(Context context, ArrayList<UserChats> mUserChats) {
+    public ChatListUserAdapter(Context context, ArrayList<UserChats> userChats) {
         this.context = context;
-        this.mUserChats = mUserChats;
+        this.mUserChats = userChats;
     }
 
 
@@ -37,7 +37,7 @@ public class ChatListUserAdapter extends RecyclerView.Adapter<ChatListUserAdapte
     public void onBindViewHolder(@NonNull ChatListUsers holder, int position) {
         UserChats userChats = mUserChats.get(position);
         holder.itemChatBinding.setChats(userChats);
-        Glide.with(context).load(userChats.getProfileImage()).placeholder(R.drawable.ic_blank_user_profile).into(holder.itemChatBinding.imgProfile);
+        Glide.with(context).load("https://english.cdn.zeenews.com/sites/default/files/2021/11/15/987821-ravi-shastri.jpg").placeholder(R.drawable.ic_blank_user_profile).into(holder.itemChatBinding.imgProfile);
 
     }
 

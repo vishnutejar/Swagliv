@@ -51,20 +51,39 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/dp66"
-                    android:ellipsize="end"
+                    android:maxLength="20"
                     android:maxLines="1"
                     android:text="@{chats.lastMessage}"
                     android:textColor="@color/grey"
                     android:textSize="@dimen/sp15"
                     tools:text="hello" />
 
-                <TextView
+               <!-- <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text="@{chats.timeSpan}"
                     android:textColor="@color/black"
-                    tools:text="11" />
+                    tools:text="11" />-->
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_call_pink"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/chat_call"/>
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_videocam_pink"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="60dp"
+                    android:id="@+id/chat_video"/>
+
             </RelativeLayout>
 
         </LinearLayout>

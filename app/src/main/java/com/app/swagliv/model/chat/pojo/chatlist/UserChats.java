@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class UserChats {
-    @SerializedName("id")
+    @SerializedName("_id")
     @Expose
     private String id;
     @SerializedName("userName")
@@ -13,10 +13,10 @@ public class UserChats {
     @SerializedName("lastMessage")
     @Expose
     private String lastMessage;
-    @SerializedName("profileImage")
+    @SerializedName("profileImages")
     @Expose
     private String profileImage;
-    @SerializedName("timeSpan")
+    @SerializedName("time")
     @Expose
     private String timeSpan;
 
@@ -45,6 +45,9 @@ public class UserChats {
     }
 
     public String getProfileImage() {
+        if (profileImage == null) {
+            return "https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png";
+        }
         return profileImage;
     }
 

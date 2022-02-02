@@ -1,7 +1,5 @@
 package com.app.swagliv.viewmodel.chats;
 
-import android.content.Context;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -19,9 +17,10 @@ public class ChatsViewModel extends ViewModel implements APIResponseListener {
     }
 
 
-    public void getChatList(Context context, String filePath, Integer requestID) {
+    public void getChatList(Integer requestID) {
         mutableLiveData.setValue(APIResponse.loading(requestID));
-        chatsRepository.getChatList(context, filePath, this, requestID);
+        //chatsRepository.getChatList(context, filePath, this, requestID);
+        chatsRepository.getChatList(this, requestID);
     }
 
     @Override
