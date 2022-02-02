@@ -3,6 +3,7 @@ package com.app.swagliv.model.home.api;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.model.common.Common;
 import com.app.swagliv.model.home.pojo.PassionListBaseModel;
+import com.app.swagliv.model.home.pojo.ProfileActionBaseModel;
 import com.app.swagliv.model.home.pojo.UploadImageBaseModel;
 import com.app.swagliv.model.login.pojo.LoginResponseBaseModel;
 import com.app.swagliv.model.profile.pojo.SubscriptionBaseModel;
@@ -32,5 +33,10 @@ public interface ProfileService {
 
     @PUT(AppConstant.API.UPDATE_PROFILE)
     Call<LoginResponseBaseModel> doUpdateProfile(@Body JsonObject jsonObject);
+
+    @POST(AppConstant.API.REMOVE_IMAGE)
+    Call<LoginResponseBaseModel> doRemoveImage(
+            @Body JsonObject jsonObject
+    );
 
 }

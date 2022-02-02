@@ -54,6 +54,7 @@ public class AppConstant {
         public static final String CREATE_ORDER = "createOrder";
         public static final String VERIFY_ORDER = "verifyOrder";
         public static final String GET_TWILIO_ACCESS_TOKEN = "getTwilioAccessToken";
+        public static final String REMOVE_IMAGE = "removeImage";
     }
 
     public class SWIPE {

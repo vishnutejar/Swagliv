@@ -73,12 +73,14 @@ public class PicturesAttachmentAdapter extends RecyclerView.Adapter<PicturesAtta
     }
 
     public void updateSelectedPhotosList(List<PersonalImages> uriList, String positionToRemoveItem) {
+        PersonalImages personalImages = null;
         if (positionToRemoveItem != null) {
+            personalImages = photos.get(Integer.parseInt(positionToRemoveItem));
             photos.remove(Integer.parseInt(positionToRemoveItem));
         } else {
             this.photos = new ArrayList<>(uriList);
         }
-        onImageSelectedListener.imageListUpdated();
+        onImageSelectedListener.imageListUpdated(personalImages);
         notifyDataSetChanged();
     }
 
@@ -87,6 +89,6 @@ public class PicturesAttachmentAdapter extends RecyclerView.Adapter<PicturesAtta
     }
 
     public interface OnImageSelectedListener {
-        public void imageListUpdated();
+        public void imageListUpdated(PersonalImages personalImages);
     }
 }

@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 import com.app.common.interfaces.APIResponseListener;
 import com.app.common.utils.api_response_handler.APIResponse;
 import com.app.swagliv.model.login.pojo.User;
+import com.app.swagliv.model.profile.pojo.PersonalImages;
 import com.app.swagliv.viewmodel.profile.repository.ProfileRepository;
 
 public class ProfileViewModel extends ViewModel implements APIResponseListener {
@@ -41,6 +42,12 @@ public class ProfileViewModel extends ViewModel implements APIResponseListener {
     public void getPurchaseHistory(Context context, String filePath, Integer requestID) {
         mutableLiveData.setValue(APIResponse.loading(requestID));
         profileRepository.getPurchaseHistory(context, filePath, this, requestID);
+
+    }
+
+    public void removeImage(PersonalImages personalImages, Integer requestID) {
+        mutableLiveData.setValue(APIResponse.loading(requestID));
+        profileRepository.removeImage(personalImages, this, requestID);
 
     }
 

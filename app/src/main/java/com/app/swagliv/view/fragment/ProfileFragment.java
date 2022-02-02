@@ -14,23 +14,33 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.app.common.constant.AppCommonConstants;
+import com.app.common.interfaces.APIResponseHandler;
 import com.app.common.preference.AppPreferencesManager;
 import com.app.common.utils.FileUtils;
 import com.app.common.utils.Utility;
+import com.app.common.utils.api_response_handler.APIResponse;
+import com.app.progressbar.LoadingProgressBarDialog;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.FragmentProfileBinding;
 import com.app.swagliv.image_upload_service.UserDocumentUploadService;
+import com.app.swagliv.model.login.pojo.LoginResponseBaseModel;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.model.profile.pojo.PersonalImages;
 import com.app.swagliv.view.activities.DashboardActivity;
 import com.app.swagliv.view.activities.EditProfileActivity;
 import com.app.swagliv.view.activities.LoginActivity;
+import com.app.swagliv.view.activities.PhoneActivity;
+import com.app.swagliv.view.activities.SignUpActivity;
 import com.app.swagliv.view.activities.SubscriptionActivity;
 import com.app.swagliv.view.adaptor.PicturesAttachmentAdapter;
+import com.app.swagliv.viewmodel.profile.ProfileViewModel;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -43,11 +53,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProfileFragment extends Fragment implements View.OnClickListener, DashboardActivity.SelectLocationImage, PicturesAttachmentAdapter.OnImageSelectedListener {
+public class ProfileFragment extends Fragment implements View.OnClickListener, DashboardActivity.SelectLocationImage, PicturesAttachmentAdapter.OnImageSelectedListener, APIResponseHandler {
 
     private FragmentProfileBinding mBinding;
     private User mUser;
     private PicturesAttachmentAdapter picturesAttachmentAdapter;
+    private ProfileViewModel profileViewModel;
+    private AlertDialog mProgressbar;
 
 
     public ProfileFragment() {
@@ -87,18 +99,19 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
         mBinding.icCamera.setOnClickListener(this);
         mBinding.icVideo.setOnClickListener(this);
         mBinding.currentLocation.setOnClickListener(this);
+        mProgressbar = new LoadingProgressBarDialog.Builder()
+                .setContext(getActivity())
+                .setMessage(getString(R.string.please_wait))
+                .build();
+        profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
+        profileViewModel.mutableLiveData.observe(getActivity(), new Observer<APIResponse>() {
+            @Override
+            public void onChanged(APIResponse apiResponse) {
+                onAPIResponseHandler(apiResponse);
+            }
+        });
 
-      /*  mBinding.commonHedder.headerTitle.setText(getString(R.string.txt_profile));
-        mBinding.commonHedder.headerLayout.setBackgroundResource(R.color.violate200);
-        mBinding.commonHedder.backBtn.setVisibility(View.GONE);*/
 
-        //ToDo set string value in current plan
-
-       /* if (peoplesInfo.getCurrentSubscribedPlan() == null) {
-            mBinding.currentPlan.setText(getString(R.string.free));
-        } else {
-            mBinding.currentPlan.setText(peoplesInfo.getCurrentSubscribedPlan().getSubscriptionName());
-        }*/
         if (mUser.getProfileImages() != null) {
             Glide.with(this).load(mUser.getProfileImages()).into(mBinding.profileImage);
         }
@@ -261,9 +274,35 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
     }
 
     @Override
-    public void imageListUpdated() {
+    public void imageListUpdated(PersonalImages personalImages) {
+
         mBinding.otherImagesParentLayout.setVisibility(picturesAttachmentAdapter.getSelectedPhotosList().isEmpty() ? View.GONE : View.VISIBLE);
+        // if (personalImages.getUrl() != null)
+        // profileViewModel.removeImage(personalImages, AppCommonConstants.API_REQUEST.REQUEST_ID_1008);
     }
 
 
+    @Override
+    public void onAPIResponseHandler(APIResponse apiResponse) {
+        switch (apiResponse.status) {
+            case LOADING:
+                mProgressbar.show();
+                break;
+            case SUCCESS:
+                mProgressbar.dismiss();
+                switch (apiResponse.requestID) {
+                    case AppCommonConstants.API_REQUEST.REQUEST_ID_1008:
+                        LoginResponseBaseModel registrationResponse = (LoginResponseBaseModel) apiResponse.data;
+                        if (registrationResponse != null) {
+                            AppInstance.getAppInstance().setAppUserInstance(registrationResponse.getUser(), getActivity());
+                        }
+                        break;
+                }
+                break;
+            case ERROR:
+                mProgressbar.dismiss();
+                Utility.showToast(getActivity(), getString(R.string.api_failure_error_msg));
+                break;
+        }
+    }
 }

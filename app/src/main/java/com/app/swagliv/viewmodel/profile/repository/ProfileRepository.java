@@ -7,11 +7,13 @@ import com.app.common.interfaces.APIResponseListener;
 import com.app.common.utils.Utility;
 import com.app.swagliv.model.common.Common;
 import com.app.swagliv.model.home.api.ProfileService;
+import com.app.swagliv.model.home.pojo.DashboardBaseModel;
 import com.app.swagliv.model.home.pojo.PassionListBaseModel;
 import com.app.swagliv.model.home.pojo.Passions;
 import com.app.swagliv.model.home.pojo.UploadImageBaseModel;
 import com.app.swagliv.model.login.pojo.LoginResponseBaseModel;
 import com.app.swagliv.model.login.pojo.User;
+import com.app.swagliv.model.profile.pojo.PersonalImages;
 import com.app.swagliv.model.profile.pojo.Subscription;
 import com.app.swagliv.model.profile.pojo.SubscriptionBaseModel;
 import com.app.swagliv.network.ApplicationRetrofitServices;
@@ -179,6 +181,34 @@ public class ProfileRepository {
             apiResponseListener.onSuccess(subscriptionArrayList, requestID);
         } else
             apiResponseListener.onFailure(new Exception(), requestID);
+    }
+
+    public void removeImage(PersonalImages personalImages, APIResponseListener apiResponseListener, Integer requestID) {
+        ProfileService profileService = ApplicationRetrofitServices.getInstance().getProfileService();
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("image", personalImages.getUrl());
+        Call<LoginResponseBaseModel> call = profileService.doRemoveImage(jsonObject);
+        call.enqueue(new Callback<LoginResponseBaseModel>() {
+            @Override
+            public void onResponse(Call<LoginResponseBaseModel> call, Response<LoginResponseBaseModel> response) {
+                LoginResponseBaseModel loginResponseBaseModel = response.body();
+                if (response.isSuccessful() && loginResponseBaseModel != null) {
+                    if (loginResponseBaseModel.getStatus() == AppCommonConstants.API_SUCCESS_STATUS_CODE) {
+                        apiResponseListener.onSuccess(loginResponseBaseModel, requestID);
+                    } else {
+                    }
+
+                } else {
+                    apiResponseListener.onSuccess(Utility.getApiFailureErrorMsg(response.errorBody()), requestID);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponseBaseModel> call, Throwable t) {
+                apiResponseListener.onFailure(new Exception(), requestID);
+            }
+        });
+
     }
 
 }
