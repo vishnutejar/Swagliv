@@ -17,6 +17,7 @@ import com.app.common.utils.Utility;
 import com.app.common.utils.api_response_handler.APIResponse;
 import com.app.swagliv.R;
 import com.app.swagliv.databinding.FragmentMessageBinding;
+import com.app.swagliv.model.chat.pojo.chatlist.ChatBaseModel;
 import com.app.swagliv.model.chat.pojo.chatlist.UserChats;
 import com.app.swagliv.view.adaptor.ChatListUserAdapter;
 import com.app.swagliv.viewmodel.chats.ChatsViewModel;
@@ -42,6 +43,7 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
         mBinding.commonHeader.headerTitle.setText(R.string.txt_chat);
         mBinding.commonHeader.headerLayout.setBackgroundResource(R.color.dark_pink);
         mBinding.commonHeader.backBtn.setVisibility(View.GONE);
+        //mViewModel.getChatList(AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
         mViewModel.mutableLiveData.observe(getActivity(), new Observer<APIResponse>() {
             @Override
             public void onChanged(APIResponse apiResponse) {
@@ -50,9 +52,9 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
         });
 
         mBinding.chatView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mAdapter = new ChatListUserAdapter(getContext(), userChatsArrayList);
-        mBinding.chatView.setAdapter(mAdapter);
-        mViewModel.getChatList(getContext(), "getChatDetail.json", AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
+
+        //mViewModel.getChatList(getContext(), "getChatDetail.json", AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
+        mViewModel.getChatList(AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
         return mBinding.getRoot();
     }
 
@@ -70,6 +72,8 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
                 switch (apiResponse.requestID) {
                     case AppCommonConstants.API_REQUEST.REQUEST_ID_1001:
                         userChatsArrayList = (ArrayList<UserChats>) apiResponse.data;
+                        mAdapter = new ChatListUserAdapter(getContext(), userChatsArrayList);
+                        mBinding.chatView.setAdapter(mAdapter);
                         mAdapter.updateData(userChatsArrayList);
                 }
                 break;
