@@ -59,13 +59,12 @@
                 android:textStyle="bold"
                 tools:text="@string/txt_delivery_date" />
 
-            <!--<TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{purchase.expiryDate}"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sp15"
-                tools:text="@string/txt_delivery_date" />-->
+                tools:text="@string/txt_delivery_date" />
         </LinearLayout>
 
 
