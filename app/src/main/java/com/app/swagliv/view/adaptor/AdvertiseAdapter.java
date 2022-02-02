@@ -1,6 +1,7 @@
 package com.app.swagliv.view.adaptor;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class AdvertiseAdapter extends PagerAdapter {
 
         //Variable Set
         itemAdvertiseBinding.setSubscription(subscription);
+        itemAdvertiseBinding.likeText.setText(Html.fromHtml(subscription.getDescription()));
         Glide.with(context)
                 .load(subscription.getSubscriptionImageURL())
                 .into(itemAdvertiseBinding.icon);

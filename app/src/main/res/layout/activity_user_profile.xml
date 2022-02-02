@@ -126,8 +126,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:singleLine="true"
                         android:gravity="end"
+                        android:singleLine="true"
                         android:text="@{user.name}"
                         android:textColorHint="@color/white"
                         android:textSize="@dimen/sp15"
@@ -159,6 +159,7 @@
                         android:background="@null"
                         android:gravity="end"
                         android:inputType="phone"
+                        android:text="@{user.contactNumber.toString()}"
                         android:textColorHint="@color/white"
                         android:textSize="@dimen/sp15"
                         tools:text="9656986598" />
@@ -212,6 +213,7 @@
                         android:textSize="@dimen/sp15" />
 
                     <TextView
+                        android:id="@+id/CurrentLocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

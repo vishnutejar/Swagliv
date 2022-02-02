@@ -83,6 +83,7 @@ public class SubscriptionActivity extends AppCompatActivity implements PriceAdap
             }
         });
         profileViewModel.getSubscriptionPlan(AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
+
         adapter = new AdvertiseAdapter(this, subscriptionsTypeArrayList);
         viewPager.setAdapter(adapter);
         wormDotsIndicator.setViewPager(viewPager);

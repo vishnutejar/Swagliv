@@ -33,6 +33,7 @@ import com.app.swagliv.model.home.pojo.Passions;
 import com.app.swagliv.model.login.pojo.LoginResponseBaseModel;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.viewmodel.profile.ProfileViewModel;
+import com.bumptech.glide.Glide;
 
 import net.alhazmy13.mediapicker.Image.ImagePicker;
 
@@ -56,9 +57,27 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_profile);
+        User mSelectedUser = getIntent().getParcelableExtra("Selected_User");
         mUser = AppInstance.getAppInstance().getAppUserInstance(this);
-        mProfileBinding.setUser(mUser);
-        mProfileBinding.profileMobileNo.setText(String.valueOf(mUser.getContactNumber()));
+        if (mSelectedUser != null) {
+            mProfileBinding.setUser(mSelectedUser);
+            Glide.with(this).load(mSelectedUser.getProfileImages()).into(mProfileBinding.profileImage);
+            mProfileBinding.btnEditPofile.setVisibility(View.GONE);
+            mProfileBinding.profileContinueBtn.setVisibility(View.INVISIBLE);
+            mProfileBinding.addPasssionBtn.setVisibility(View.GONE);
+            mProfileBinding.changePassword.setVisibility(View.GONE);
+            mProfileBinding.hedderProfileName.setEnabled(false);
+            mProfileBinding.genderTxt.setEnabled(false);
+            mProfileBinding.profileDateSelected.setEnabled(false);
+            mProfileBinding.sliderRange.setEnabled(false);
+            mProfileBinding.CurrentLocation.setEnabled(false);
+            mProfileBinding.profileNameText.setEnabled(false);
+            mProfileBinding.profileDateSelected.setEnabled(false);
+            mProfileBinding.aboutMeTxt.setEnabled(false);
+
+        } else {
+            mProfileBinding.setUser(mUser);
+        }
 
 
         mProfileBinding.commonHeader.backBtn.setOnClickListener(this);

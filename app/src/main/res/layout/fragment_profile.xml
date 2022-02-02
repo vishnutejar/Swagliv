@@ -59,14 +59,24 @@
                         android:layout_marginTop="@dimen/sp22"
                         android:gravity="center">
 
+                        <ProgressBar
+                            android:id="@+id/progress_bar"
+                            style="?android:attr/progressBarStyleSmall"
+                            android:layout_width="@dimen/dp30"
+                            android:layout_height="@dimen/dp30"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp45"
+                            android:layout_marginTop="@dimen/dp45"
+                            android:indeterminateTint="@color/black"
+                            android:visibility="gone" />
+
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/profile_image"
                             android:layout_width="@dimen/dp125"
                             android:layout_height="@dimen/dp125"
                             android:background="@drawable/profile_baground"
-                            android:src="@drawable/ic_blank_user_profile">
+                            android:src="@drawable/ic_blank_user_profile"></de.hdodenhof.circleimageview.CircleImageView>
 
-                        </de.hdodenhof.circleimageview.CircleImageView>
 
                         <LinearLayout
                             android:layout_width="@dimen/dimen_30"

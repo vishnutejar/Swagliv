@@ -58,10 +58,9 @@ public class MatchedProfileDialog {
         DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
         int width = metrics.widthPixels;
         alertDialog = mBuilder.create();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.round_corner_view);
         alertDialog.getWindow().setLayout((6 * width) / 7, WindowManager.LayoutParams.WRAP_CONTENT);
         alertDialog.show();
-
         setClickListener();
     }
 

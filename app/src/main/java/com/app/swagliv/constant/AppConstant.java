@@ -80,6 +80,11 @@ public class AppConstant {
 
     }
 
+    public class IMAGE_UPLOAD_MESSAGE {
+        public static final String PROFILE_IMAGE_UPLOADED = "Profile image uploaded";
+        public static final String IMAGE_UPLOADED = "Image uploaded";
+    }
+
     public static final int SWIPE_LIMIT = 5;
     public static final String SWIPE_LIMIT_EXCEED = "SWIPE_LIMIT_EXCEED";
 

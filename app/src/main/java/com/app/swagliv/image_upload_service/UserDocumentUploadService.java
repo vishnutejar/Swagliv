@@ -11,6 +11,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.app.common.constant.AppCommonConstants;
 import com.app.common.interfaces.APIResponseListener;
+import com.app.common.utils.Utility;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.constant.AppInstance;
@@ -96,11 +97,11 @@ public class UserDocumentUploadService extends ForegroundServiceBaseTask impleme
     /**
      * Show a notification for a finished upload.
      */
-    private void showUploadFinishedNotification(@Nullable Uri downloadUrl, @Nullable Uri fileUri) {
+    private void showUploadFinishedNotification(@Nullable Uri downloadUrl, @Nullable Uri fileUri, String message) {
         // Hide the progress notification
         dismissProgressNotification();
-
         // Make Intent to MainActivity
+        Utility.showToast(this, message);
         Intent intent = new Intent(this, DashboardActivity.class)
                 .putExtra(EXTRA_DOWNLOAD_URL, downloadUrl)
                 .putExtra(EXTRA_FILE_URI, fileUri)
@@ -131,27 +132,31 @@ public class UserDocumentUploadService extends ForegroundServiceBaseTask impleme
     @Override
     public void onSuccess(Object callResponse, Integer requestID) {
         boolean success = mFileUri != null;
+        String message = null;
         String action = success ? DOCUMENT_UPLOAD_COMPLETED : DOCUMENT_UPLOAD_ERROR;
         if (action.equalsIgnoreCase(DOCUMENT_UPLOAD_COMPLETED)) {
             String data = (String) callResponse;
             User appUserInstance = AppInstance.getAppInstance().getAppUserInstance(getApplicationContext());
-            if (mUploadedImageType.equalsIgnoreCase(AppConstant.PROFILE_IMAGES))
+            if (mUploadedImageType.equalsIgnoreCase(AppConstant.PROFILE_IMAGES)) {
                 appUserInstance.setProfileImages(data);
-            else {
+                message = "Profile Image Uploaded";
+            } else {
                 ArrayList<String> personalImage = appUserInstance.getPersonalImage();
                 if (personalImage == null) {
                     personalImage = new ArrayList<>();
                 }
                 personalImage.add(data);
                 appUserInstance.setPersonalImage(personalImage);
+                message = "Image Uploaded";
+
             }
             AppInstance.getAppInstance().setAppUserInstance(appUserInstance, getApplicationContext());
         }
-        showUploadFinishedNotification(mFileUri, mFileUri);
+        showUploadFinishedNotification(mFileUri, mFileUri, message);
     }
 
     @Override
     public void onFailure(Throwable error, Integer requestID) {
-        showUploadFinishedNotification(null, mFileUri);
+        showUploadFinishedNotification(null, mFileUri, null);
     }
 }

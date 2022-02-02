@@ -38,6 +38,7 @@ import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.view.activities.DashboardActivity;
 import com.app.swagliv.view.activities.MatchedProfileDialog;
 import com.app.swagliv.view.activities.SubscriptionActivity;
+import com.app.swagliv.view.activities.UserProfileActivity;
 import com.app.swagliv.view.adaptor.CardStackAdapter;
 import com.app.swagliv.viewmodel.dashboard.DashboardViewModel;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
@@ -160,6 +161,14 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
             }
         }
         mSelectedUser = mNearByPeoples.get(position);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), UserProfileActivity.class);
+                i.putExtra("Selected_User", mSelectedUser);
+                startActivity(i);
+            }
+        });
         isProfileSuperLiked = false;
     }
 
