@@ -54,7 +54,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Free"
+                        android:id="@+id/plan_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -77,7 +77,7 @@
                         android:id="@+id/time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/Free"
+                        android:layout_below="@+id/plan_name"
                         android:layout_alignParentEnd="true"
                         android:layout_marginLeft="@dimen/size_10"
                         android:layout_marginTop="@dimen/size_23"

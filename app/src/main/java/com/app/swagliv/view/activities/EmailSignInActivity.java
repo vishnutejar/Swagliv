@@ -93,7 +93,8 @@ public class EmailSignInActivity extends AppCompatActivity implements APIRespons
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
+        mbinding.textOrSignIn.setVisibility(View.INVISIBLE);
+        mbinding.socialLogin.setVisibility(View.INVISIBLE);
     }
 
     @Override

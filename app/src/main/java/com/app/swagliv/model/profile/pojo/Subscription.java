@@ -25,6 +25,12 @@ public class Subscription implements Parcelable {
     @SerializedName("subscriptionImageURL")
     @Expose
     private String subscriptionImageURL;
+    @SerializedName("purchasedAt")
+    @Expose
+    private String purchasedAt;
+    @SerializedName("planExpiresAt")
+    @Expose
+    private String planExpiresAt;
 
 
     public boolean isSelected() {
@@ -115,6 +121,22 @@ public class Subscription implements Parcelable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPurchasedAt() {
+        return purchasedAt;
+    }
+
+    public void setPurchasedAt(String purchasedAt) {
+        this.purchasedAt = purchasedAt;
+    }
+
+    public String getPlanExpiresAt() {
+        return planExpiresAt;
+    }
+
+    public void setPlanExpiresAt(String planExpiresAt) {
+        this.planExpiresAt = planExpiresAt;
     }
 
     @Override

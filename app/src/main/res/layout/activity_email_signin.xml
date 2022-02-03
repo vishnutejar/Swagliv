@@ -26,6 +26,7 @@
                 style="@style/CustomCardViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
                 android:theme="@style/Theme.MaterialComponents.DayNight"
                 app:cardElevation="@dimen/dp10">
 
@@ -99,7 +100,7 @@
                     </LinearLayout>
 
                     <TextView
-
+                        android:id="@+id/text_or_signIn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -112,6 +113,7 @@
                         android:textSize="@dimen/sp15" />
 
                     <LinearLayout
+                        android:id="@+id/social_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center">

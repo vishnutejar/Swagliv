@@ -200,15 +200,21 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
         // logout from facebook
         // LoginManager.getInstance().logOut();
         // logout from gmail
-
-        GoogleSignIn.getClient(getContext(), GoogleSignInOptions.DEFAULT_SIGN_IN).signOut().addOnSuccessListener(aVoid -> {
-            //-----------
+        if (mUser.getType() == AppCommonConstants.LOGIN_TYPE.NORMAL) {
             AppPreferencesManager.clearSharedPref(getContext());
             Intent login = new Intent(getContext(), LoginActivity.class);
             login.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(login);
-        })
-                .addOnFailureListener(e -> Utility.showToast(getContext(), getString(R.string.err_logout_failed)));
+        } else if (mUser.getType() == AppCommonConstants.LOGIN_TYPE.GMAIL) {
+            GoogleSignIn.getClient(getContext(), GoogleSignInOptions.DEFAULT_SIGN_IN).signOut().addOnSuccessListener(aVoid -> {
+                //-----------
+                AppPreferencesManager.clearSharedPref(getContext());
+                Intent login = new Intent(getContext(), LoginActivity.class);
+                login.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(login);
+            })
+                    .addOnFailureListener(e -> Utility.showToast(getContext(), getString(R.string.err_logout_failed)));
+        }
 
     }
 
@@ -277,8 +283,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
     public void imageListUpdated(PersonalImages personalImages) {
 
         mBinding.otherImagesParentLayout.setVisibility(picturesAttachmentAdapter.getSelectedPhotosList().isEmpty() ? View.GONE : View.VISIBLE);
-        // if (personalImages.getUrl() != null)
-        // profileViewModel.removeImage(personalImages, AppCommonConstants.API_REQUEST.REQUEST_ID_1008);
+        if (personalImages.getUrl() != null)
+            profileViewModel.removeImage(personalImages, AppCommonConstants.API_REQUEST.REQUEST_ID_1008);
     }
 
 

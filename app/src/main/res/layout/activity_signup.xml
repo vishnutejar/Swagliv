@@ -26,6 +26,7 @@
                 style="@style/CustomCardViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
                 android:theme="@style/Theme.MaterialComponents.DayNight"
                 app:cardElevation="@dimen/dp10">
 
@@ -108,7 +109,6 @@
                             android:inputType="textEmailAddress"
                             android:maxLines="1"
                             android:padding="@dimen/dp15" />
-
 
 
                         <EditText
