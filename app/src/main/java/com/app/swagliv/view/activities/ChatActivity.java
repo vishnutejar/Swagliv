@@ -10,11 +10,15 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.app.common.constant.AppCommonConstants;
+import com.app.common.interfaces.APIResponseHandler;
 import com.app.common.preference.AppPreferencesManager;
 import com.app.common.utils.Utility;
+import com.app.common.utils.api_response_handler.APIResponse;
 import com.app.swagliv.R;
 import com.app.swagliv.SocketChatApplication;
 import com.app.swagliv.constant.AppConstant;
@@ -23,9 +27,11 @@ import com.app.swagliv.databinding.ActivityChatBinding;
 import com.app.swagliv.model.call.api.TwilioVoiceTokenService;
 import com.app.swagliv.model.call.pojo.TwilioVoiceTokenResponseBaseModel;
 import com.app.swagliv.model.chat.pojo.chat.Message;
+import com.app.swagliv.model.chat.pojo.chatlist.UserChats;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.network.ApplicationRetrofitServices;
 import com.app.swagliv.twiliovoice.VoiceActivity;
+import com.app.swagliv.view.adaptor.ChatListUserAdapter;
 import com.app.swagliv.view.adaptor.ChatMessagesAdapter;
 import com.app.swagliv.viewmodel.chats.ChatsViewModel;
 import com.google.gson.Gson;
@@ -42,7 +48,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity implements APIResponseHandler {
     private static final String TAG = "ChatActivity";
 
     private static final int TYPING_TIMER_LENGTH = 600;
@@ -85,8 +91,17 @@ public class ChatActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
         mBinding.chatRecyclerView.setLayoutManager(linearLayoutManager);
-        chatMessagesAdapter = new ChatMessagesAdapter(this, messageArrayList, chatsViewModel, mUser);
-        mBinding.chatRecyclerView.setAdapter(chatMessagesAdapter);
+        /*chatMessagesAdapter = new ChatMessagesAdapter(this, messageArrayList, chatsViewModel, mUser);
+        mBinding.chatRecyclerView.setAdapter(chatMessagesAdapter);*/
+
+        chatsViewModel = new ViewModelProvider(this).get(ChatsViewModel.class);
+        chatsViewModel.mutableLiveData.observe(this, new Observer<APIResponse>() {
+            @Override
+            public void onChanged(APIResponse apiResponse) {
+                onAPIResponseHandler(apiResponse);
+            }
+        });
+        //chatsViewModel.getPreviousChat("61fb782997cb15e782075e4d","61fba42e6edf1096191d0a4d",AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
 
         doConfigureSocket();
 
@@ -159,7 +174,7 @@ public class ChatActivity extends AppCompatActivity {
         messageObj.setReceiverId("61d9697cc828379036175d9b");
         messageObj.setSenderId(mUser.getId());
         messageObj.setMessage(message);
-        messageObj.setTime(System.currentTimeMillis());
+        messageObj.setTime(String.valueOf(System.currentTimeMillis()));
 
 
         JSONObject ob = new JSONObject();
@@ -202,7 +217,10 @@ public class ChatActivity extends AppCompatActivity {
                 if (response.isSuccessful() && tokenResponse != null) {
                     if (tokenResponse.getStatus() == AppCommonConstants.API_SUCCESS_STATUS_CODE) {
                         AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.TWILIO_ACCESS_TOKEN, tokenResponse.getAccessToken(), ChatActivity.this);
-                        startActivity(new Intent(ChatActivity.this, VoiceActivity.class));
+                        Intent intent = new Intent(ChatActivity.this, VoiceActivity.class);
+                        intent.putExtra("Receiver Id","61fb782997cb15e782075e4d");
+                        startActivity(intent);
+                        //startActivity(new Intent(ChatActivity.this, VoiceActivity.class));
                     }
                 }
             }
@@ -226,6 +244,7 @@ public class ChatActivity extends AppCompatActivity {
                     JSONObject jsonObject = (JSONObject) args[0];
                     try {
                         mReceivedConversationId = (String) jsonObject.get("conversationId");
+                        chatsViewModel.getPreviousChat("61fb782997cb15e782075e4d",mReceivedConversationId,AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -290,4 +309,31 @@ public class ChatActivity extends AppCompatActivity {
     private void scrollToBottom() {
         mBinding.chatRecyclerView.scrollToPosition(chatMessagesAdapter.getItemCount() - 1);
     }
+
+    @Override
+    public void onAPIResponseHandler(APIResponse apiResponse) {
+        switch (apiResponse.status) {
+            case LOADING:
+                break;
+            case SUCCESS:
+                switch (apiResponse.requestID) {
+                    case AppCommonConstants.API_REQUEST.REQUEST_ID_1001:
+                        messageArrayList = (ArrayList<Message>) apiResponse.data;
+                        chatMessagesAdapter = new ChatMessagesAdapter(this, messageArrayList, chatsViewModel, mUser);
+                        mBinding.chatRecyclerView.setAdapter(chatMessagesAdapter);
+                        //chatMessagesAdapter.updateData(messageArrayList);
+                        //return mBinding.getRoot();
+
+                       /* userChatsArrayList = (ArrayList<UserChats>) apiResponse.data;
+                        mAdapter = new ChatListUserAdapter(getContext(), userChatsArrayList);
+                        mBinding.chatView.setAdapter(mAdapter);
+                        mAdapter.updateData(userChatsArrayList);*/
+                }
+                break;
+            case ERROR:
+                Utility.showToast(getApplicationContext(), getString(R.string.api_failure_error_msg));
+                break;
+        }
+    }
+
 }

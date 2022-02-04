@@ -6,7 +6,7 @@ public class Message {
     private String conversationId;
     private String senderId;
     private String receiverId;
-    private long time;
+    private String time;
     private String messageId;
     private int messageType;// 0 -> left message , 1-> right message
 
@@ -50,11 +50,11 @@ public class Message {
         this.messageType = messageType;
     }
 
-    public long getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

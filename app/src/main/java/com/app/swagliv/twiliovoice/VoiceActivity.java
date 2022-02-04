@@ -99,6 +99,7 @@ public class VoiceActivity extends AppCompatActivity {
     private CallInvite activeCallInvite;
     private Call activeCall;
     private int activeCallNotificationId;
+    String receiverId;
 
     RegistrationListener registrationListener = registrationListener();
     Call.Listener callListener = callListener();
@@ -130,6 +131,9 @@ public class VoiceActivity extends AppCompatActivity {
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         accessToken = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.TWILIO_ACCESS_TOKEN, this);
+        Intent intent = getIntent();
+        receiverId = intent.getStringExtra("Receiver Id");
+        Snackbar.make(coordinatorLayout, "to call: "+receiverId, Snackbar.LENGTH_LONG).show();
 
         /*
          * Setup the broadcast receiver to be notified of FCM Token updates
