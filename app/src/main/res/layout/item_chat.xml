@@ -10,7 +10,7 @@
     </data>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp5"
         android:layout_marginVertical="@dimen/dp5">
@@ -20,6 +20,7 @@
             android:layout_width="@dimen/dp50"
             android:layout_height="@dimen/dp50"
             android:layout_marginTop="@dimen/dp15"
+            android:layout_margin="15dp"
             tools:background="@drawable/person_img" />
 
         <LinearLayout
@@ -36,11 +37,12 @@
                 android:layout_marginTop="@dimen/dp10"
                 android:text="@{chats.userName}"
                 android:textColor="@color/black"
+                android:fontFamily="@font/salsa_regular"
                 android:textSize="@dimen/sp15"
                 tools:text="@string/jenny" />
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp5"
                 android:layout_marginRight="@dimen/dp5"
@@ -51,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/dp66"
-                    android:maxLength="20"
+                    android:maxLength="10"
                     android:maxLines="1"
                     android:text="@{chats.lastMessage}"
                     android:textColor="@color/grey"
@@ -66,27 +68,30 @@
                     android:textColor="@color/black"
                     tools:text="11" />-->
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_call_pink"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="5dp"
-                    android:id="@+id/chat_call"/>
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginBottom="5dp"
-                    android:src="@drawable/ic_videocam_pink"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="60dp"
-                    android:id="@+id/chat_video"/>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_call_pink"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/chat_call"/>
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/ic_videocam_pink"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="60dp"
+                        android:id="@+id/chat_video"/>
 
             </RelativeLayout>
 
         </LinearLayout>
+
+
     </LinearLayout>
 </layout>
 

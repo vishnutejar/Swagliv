@@ -72,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|left"
                 android:paddingLeft="@dimen/dp10"
+                android:fontFamily="@font/salsa_regular"
                 android:textColor="@color/sky_blue" />
 
             <TextView

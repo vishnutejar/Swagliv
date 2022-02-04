@@ -64,6 +64,7 @@
                     android:layout_gravity="center|right"
                     android:gravity="center"
                     android:paddingRight="@dimen/dp10"
+                    android:fontFamily="@font/salsa_regular"
                     android:textColor="@color/dark_pink" />
 
                 <TextView
