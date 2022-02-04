@@ -1,8 +1,6 @@
 package com.app.swagliv.model.chat.api;
 
 import com.app.swagliv.constant.AppConstant;
-import com.app.swagliv.model.chat.pojo.chat.Message;
-import com.app.swagliv.model.chat.pojo.chatlist.ChatBaseModel;
 import com.app.swagliv.model.chat.pojo.chatlist.MessageBaseModel;
 import com.google.gson.JsonObject;
 

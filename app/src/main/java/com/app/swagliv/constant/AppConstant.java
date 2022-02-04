@@ -66,6 +66,7 @@ public class AppConstant {
 
     public class CHAT {
         public static final int MESSAGE_TYPE_IMAGE = 100;
+        public static final String GET_PREVIOUS_CHATS = "getPreviousChat";
         public static final int MESSAGE_TYPE_TEXT = 101;
         public static final int MESSAGE_TYPE_LOCATION = 102;
         public static final int MESSAGE_RECEIVED_CODE_LEFT = 0;
