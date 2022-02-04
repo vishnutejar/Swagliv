@@ -3,6 +3,7 @@ package com.app.swagliv.view.adaptor;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -63,15 +64,20 @@ public class ChatMessagesAdapter extends RecyclerView.Adapter<ChatMessagesAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+        Message message = modelChatList.get(position);
         final Message modelChat = modelChatList.get(position);
         if (holder.rowRightChatBinding != null) {
             holder.rowRightChatBinding.setPosition(position);
-            holder.rowRightChatBinding.setComment(modelChat);
-            holder.rowRightChatBinding.setViewModel(chatViewModel);
+            holder.tvChatMessage.setText(message.getMessage());
+            holder.tvChatTimestamp.setText(message.getTime());
+/*            holder.rowRightChatBinding.setComment(modelChat);
+            holder.rowRightChatBinding.setViewModel(chatViewModel);*/
         } else if (holder.rowLeftChatBinding != null) {
             holder.rowLeftChatBinding.setPosition(position);
-            holder.rowLeftChatBinding.setComment(modelChat);
-            holder.rowLeftChatBinding.setViewModel(chatViewModel);
+            holder.tvChatMessage.setText(message.getMessage());
+            holder.tvChatTimestamp.setText(message.getTime());
+            /*holder.rowLeftChatBinding.setComment(modelChat);
+            holder.rowLeftChatBinding.setViewModel(chatViewModel);*/
         }
     }
 
@@ -82,17 +88,23 @@ public class ChatMessagesAdapter extends RecyclerView.Adapter<ChatMessagesAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        TextView tvChatMessage;
+        TextView tvChatTimestamp;
         RowRightChatBinding rowRightChatBinding;
         RowLeftChatBinding rowLeftChatBinding;
 
         public ViewHolder(@NonNull RowRightChatBinding rowRightChatBinding) {
             super(rowRightChatBinding.getRoot());
             this.rowRightChatBinding = rowRightChatBinding;
+            tvChatMessage = rowRightChatBinding.getRoot().findViewById(R.id.tvChatMessage);
+            tvChatTimestamp = rowRightChatBinding.getRoot().findViewById(R.id.tvChatTimestamp);
         }
 
         public ViewHolder(@NonNull RowLeftChatBinding rowLeftChatBinding) {
             super(rowLeftChatBinding.getRoot());
             this.rowLeftChatBinding = rowLeftChatBinding;
+            tvChatMessage = rowLeftChatBinding.getRoot().findViewById(R.id.tvChatMessage);
+            tvChatTimestamp = rowLeftChatBinding.getRoot().findViewById(R.id.tvChatTimestamp);
         }
     }
 

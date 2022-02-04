@@ -46,7 +46,6 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
         mBinding.commonHeader.headerTitle.setText(R.string.txt_chat);
         mBinding.commonHeader.headerLayout.setBackgroundResource(R.color.dark_pink);
         mBinding.commonHeader.backBtn.setVisibility(View.GONE);
-        //mViewModel.getChatList(AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
         mViewModel.mutableLiveData.observe(getActivity(), new Observer<APIResponse>() {
             @Override
             public void onChanged(APIResponse apiResponse) {

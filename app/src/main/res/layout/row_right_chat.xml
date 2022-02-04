@@ -63,7 +63,6 @@
                     android:layout_gravity="center|right"
                     android:gravity="center"
                     android:paddingRight="@dimen/dp10"
-                    android:text="@{comment.message}"
                     android:textColor="@color/dark_pink" />
 
                 <TextView
@@ -74,9 +73,7 @@
                     android:layout_marginTop="@dimen/dp2"
                     android:gravity="center|right"
                     android:paddingRight="@dimen/dp5"
-                    android:text="@{Utility.getTimeAgo(comment.time)}"
-                    android:textColor="@color/black"
-                    android:visibility="gone"/>
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
 

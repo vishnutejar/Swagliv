@@ -19,8 +19,12 @@ public class ChatsViewModel extends ViewModel implements APIResponseListener {
 
     public void getChatList(Integer requestID) {
         mutableLiveData.setValue(APIResponse.loading(requestID));
-        //chatsRepository.getChatList(context, filePath, this, requestID);
         chatsRepository.getChatList(this, requestID);
+    }
+
+    public void getPreviousChat(String receiverId, String conversationId, Integer requestID) {
+        mutableLiveData.setValue(APIResponse.loading(requestID));
+        chatsRepository.getPreviousChat(receiverId, conversationId,this, requestID);
     }
 
     @Override
