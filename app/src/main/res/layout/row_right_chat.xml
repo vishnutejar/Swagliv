@@ -33,10 +33,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp5"
-            android:background="@drawable/rounded_voilet_btn"
             android:gravity="end"
             android:orientation="horizontal"
             android:padding="10dp"
+            android:background="@drawable/rounded_chat_background"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
             <LinearLayout
@@ -63,6 +64,7 @@
                     android:layout_gravity="center|right"
                     android:gravity="center"
                     android:paddingRight="@dimen/dp10"
+                    android:fontFamily="@font/salsa_regular"
                     android:textColor="@color/dark_pink" />
 
                 <TextView
@@ -73,6 +75,7 @@
                     android:layout_marginTop="@dimen/dp2"
                     android:gravity="center|right"
                     android:paddingRight="@dimen/dp5"
+                    android:textSize="12dp"
                     android:textColor="@color/black"/>
 
             </LinearLayout>

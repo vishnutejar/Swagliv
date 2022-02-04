@@ -7,6 +7,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -34,6 +36,7 @@ import com.app.swagliv.twiliovoice.VoiceActivity;
 import com.app.swagliv.view.adaptor.ChatListUserAdapter;
 import com.app.swagliv.view.adaptor.ChatMessagesAdapter;
 import com.app.swagliv.viewmodel.chats.ChatsViewModel;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -71,6 +74,14 @@ public class ChatActivity extends AppCompatActivity implements APIResponseHandle
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_chat);
+
+        Intent intent = getIntent();
+        String profileImgReceiver = intent.getStringExtra("Receiver Profile Image");
+        String userName = intent.getStringExtra("Receiver Name");
+        TextView tvUserName = findViewById(R.id.tvUserName);
+        tvUserName.setText(userName);
+        ImageView imageView = findViewById(R.id.userProfileImage);
+        Glide.with(this).load(profileImgReceiver).placeholder(R.drawable.ic_blank_user_profile).into(imageView);
 
         findViewById(R.id.call_btn).setOnClickListener(view -> getTwilioToken());
         mUser = AppInstance.getAppInstance().getAppUserInstance(this);
@@ -244,6 +255,7 @@ public class ChatActivity extends AppCompatActivity implements APIResponseHandle
                     JSONObject jsonObject = (JSONObject) args[0];
                     try {
                         mReceivedConversationId = (String) jsonObject.get("conversationId");
+                        mReceivedConversationId = "61fcd942a682feed228235ea";
                         chatsViewModel.getPreviousChat("61fb782997cb15e782075e4d",mReceivedConversationId,AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
                     } catch (JSONException e) {
                         e.printStackTrace();

@@ -80,6 +80,7 @@ public class AppConstant {
         public static final String SEND_MESSAGE = "sendMessage";
         public static final String GET_MESSAGE = "getMessage";
         public static final String GET_USER_CHATS = "allConversations";
+        public static final String GET_PREVIOUS_CHATS = "getPreviousChat";
 
     }
 
