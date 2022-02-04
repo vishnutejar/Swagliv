@@ -14,17 +14,25 @@
 
     <RelativeLayout
         android:id="@+id/rl_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        >
 
-        <ImageView
-            android:id="@+id/imageView"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView_navheader"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/profile_baground"/>
+
+       <!-- <ImageView
+            android:id="@+id/imageView_navheader"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:background="@drawable/profile_baground"
             android:contentDescription="@string/nav_header_desc"
             android:padding="@dimen/nav_header_vertical_spacing"
-            app:srcCompat="@drawable/nav_drawer_pofile" />
+            app:srcCompat="@drawable/nav_drawer_pofile" />-->
     </RelativeLayout>
 
     <TextView
@@ -41,7 +49,7 @@
         android:textSize="22dp" />
 
     <TextView
-        android:id="@+id/userName"
+        android:id="@+id/userName_navheader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/welcome_text"

@@ -244,6 +244,7 @@ public class ChatActivity extends AppCompatActivity implements APIResponseHandle
                     JSONObject jsonObject = (JSONObject) args[0];
                     try {
                         mReceivedConversationId = (String) jsonObject.get("conversationId");
+                        mReceivedConversationId = "61fcd942a682feed228235ea";
                         chatsViewModel.getPreviousChat("61fb782997cb15e782075e4d",mReceivedConversationId,AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
                     } catch (JSONException e) {
                         e.printStackTrace();

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -27,27 +28,43 @@
         android:layout_marginVertical="@dimen/dp5"
         android:layout_marginRight="@dimen/dp50">
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:id="@+id/rl_chat">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivChatImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/dp15"
+            android:layout_marginLeft="5dp"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/chat_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp5"
-            android:background="@drawable/rounded_voilet_btn"
+            android:background="@drawable/rounded_chat_background"
             android:gravity="end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rl_chat"
             android:orientation="vertical"
             android:padding="10dp">
 
-            <ImageView
+
+
+           <!-- <ImageView
                 android:id="@+id/ivChatImage"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="12dp"
-                android:scaleType="fitCenter"
-                android:visibility="gone" />
+                android:scaleType="fitCenter" />-->
 
             <TextView
                 android:id="@+id/tvChatMessage"
@@ -62,9 +79,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|left"
-                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginTop="2dp"
                 android:gravity="bottom|left"
                 android:paddingLeft="@dimen/dp10"
+                android:textSize="12dp"
                 android:textColor="@color/black"/>
 
         </LinearLayout>

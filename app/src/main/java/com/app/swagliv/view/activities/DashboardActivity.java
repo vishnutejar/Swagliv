@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,6 +35,7 @@ import com.app.swagliv.SocketChatApplication;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.ActivityDashboadBinding;
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 
 import net.alhazmy13.mediapicker.Image.ImagePicker;
@@ -43,6 +46,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
@@ -100,7 +104,15 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
         //NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         navigationView.setItemIconTintList(null);
-//        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+        View hView = navigationView.getHeaderView(0);
+        TextView nav_user = (TextView) hView.findViewById(R.id.userName_navheader);
+        nav_user.setText( AppInstance.getAppInstance().getAppUserInstance(this).getName());
+        CircleImageView img_nav_header = (CircleImageView)hView.findViewById(R.id.imageView_navheader);
+        Glide.with(this)
+                .load(AppInstance.getAppInstance().getAppUserInstance(this).getProfileImages())
+                .into(img_nav_header);
+
+
 
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
