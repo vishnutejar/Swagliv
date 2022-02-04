@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.app.common.utils.Utility;
 import com.app.swagliv.R;
 import com.app.swagliv.model.profile.pojo.PersonalImages;
 import com.bumptech.glide.Glide;
@@ -73,6 +74,7 @@ public class PicturesAttachmentAdapter extends RecyclerView.Adapter<PicturesAtta
     }
 
     public void updateSelectedPhotosList(List<PersonalImages> uriList, String positionToRemoveItem) {
+        Utility.printLogs("log1","adapterselectimag");
         PersonalImages personalImages = null;
         if (positionToRemoveItem != null) {
             personalImages = photos.get(Integer.parseInt(positionToRemoveItem));

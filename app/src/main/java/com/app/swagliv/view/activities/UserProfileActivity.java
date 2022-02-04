@@ -62,6 +62,17 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
         if (mSelectedUser != null) {
             mProfileBinding.setUser(mSelectedUser);
             Glide.with(this).load(mSelectedUser.getProfileImages()).into(mProfileBinding.profileImage);
+            ArrayList<Passions> passions = mSelectedUser.getPassions();
+            if (passions != null && !passions.isEmpty()) {
+                boolean isFirst = true;
+                StringBuilder stringBuilder = new StringBuilder();
+
+                for (Passions p : passions) {
+                    stringBuilder.append((isFirst ? "" : ", ") + p.getLabel());
+                    isFirst = false;
+                }
+                mProfileBinding.passionTxt.setText(stringBuilder);
+            }
             mProfileBinding.btnEditPofile.setVisibility(View.GONE);
             mProfileBinding.profileContinueBtn.setVisibility(View.INVISIBLE);
             mProfileBinding.addPasssionBtn.setVisibility(View.GONE);
@@ -79,6 +90,9 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
             mProfileBinding.setUser(mUser);
         }
 
+        if (mUser.getType() == AppCommonConstants.LOGIN_TYPE.GMAIL) {
+            mProfileBinding.changePassword.setVisibility(View.GONE);
+        }
 
         mProfileBinding.commonHeader.backBtn.setOnClickListener(this);
         mProfileBinding.addPasssionBtn.setOnClickListener(this);
@@ -119,7 +133,7 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
                 dialogView.findViewById(R.id.male_txt).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mProfileBinding.genderTxt.setText(AppCommonConstants.GENDER_MALE);
+                        mProfileBinding.genderSelect.setText(AppCommonConstants.GENDER_MALE);
                         alertDialog.dismiss();
                     }
                 });
@@ -127,7 +141,7 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
                 dialogView.findViewById(R.id.female_txt).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mProfileBinding.genderTxt.setText(AppCommonConstants.GENDER_FEMALE);
+                        mProfileBinding.genderSelect.setText(AppCommonConstants.GENDER_FEMALE);
                         alertDialog.dismiss();
                     }
                 });
@@ -144,9 +158,9 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
                 AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_PROFILE_STATUS, AppConstant.PROFILE_STATUS.PROFILE_COMPLETED, this);
                 if (!mProfileBinding.profileNameText.getText().toString().trim().isEmpty()) {
                     mUser.setName(mProfileBinding.profileNameText.getText().toString());
-                    mUser.setDob(mProfileBinding.profileDateSelected.getText().toString());
-                    mUser.setGender(mProfileBinding.genderTxt.getText().toString());
-                    mUser.setGender(mProfileBinding.genderTxt.getText().toString());
+                    mUser.setDob(mProfileBinding.selectedDate.getText().toString());
+                    mUser.setGender(mProfileBinding.genderSelect.getText().toString());
+                    mUser.setGender(mProfileBinding.genderSelect.getText().toString());
                     mUser.setPassions(mSelectedPassionList);
                     mUser.setAboutMe(mProfileBinding.aboutMeTxt.getText().toString());
                     mViewModel.doUpdateProfile(mUser, AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
@@ -238,6 +252,6 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
 
     @Override
     public void getSelectedDate(String selectedDate) {
-        mProfileBinding.profileDateSelected.setText(selectedDate);
+        mProfileBinding.selectedDate.setText(selectedDate);
     }
 }

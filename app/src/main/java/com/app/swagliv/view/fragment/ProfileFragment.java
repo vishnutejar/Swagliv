@@ -33,6 +33,7 @@ import com.app.swagliv.image_upload_service.UserDocumentUploadService;
 import com.app.swagliv.model.login.pojo.LoginResponseBaseModel;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.model.profile.pojo.PersonalImages;
+import com.app.swagliv.model.profile.pojo.Subscription;
 import com.app.swagliv.view.activities.DashboardActivity;
 import com.app.swagliv.view.activities.EditProfileActivity;
 import com.app.swagliv.view.activities.LoginActivity;
@@ -84,7 +85,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
 
 
         //------------
-
+        Subscription appUserCurrentSubscriptionPlan = AppInstance.getAppInstance().getAppUserCurrentSubscriptionPlan(getActivity());
         mUser = AppInstance.getAppInstance().getAppUserInstance(getContext());
         mBinding.setUser(mUser);
         mBinding.mobile.setText(String.valueOf(mUser.getContactNumber()));
@@ -127,7 +128,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
             }
             setPersonalImages(null, personalImagesList, 1);
         }
-
+        if (appUserCurrentSubscriptionPlan != null) {
+            mBinding.currentPlan.setText(appUserCurrentSubscriptionPlan.getSubscriptionName());
+        }
+        Utility.printLogs("log1", "onCreate");
     }
 
 
@@ -232,10 +236,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
                             .putExtra(UserDocumentUploadService.REFERENCE_FILE_NAME, file.toString())
                             .setAction(UserDocumentUploadService.ACTION_UPLOAD_DOCUMENTS));
                 } else {
+                    Utility.printLogs("log2", "onSetPersonalcallImage");
                     setPersonalImages(list, null, 0);
-
                     for (PersonalImages uri :
                             picturesAttachmentAdapter.getSelectedPhotosList()) {
+                        Utility.printLogs("log", "LoopToSetImg");
                         if (uri.getImagesURI() != null) {
                             File file = FileUtils.getFile(getActivity(), uri.getImagesURI());
                             getActivity().startService(new Intent(getContext(), UserDocumentUploadService.class)
@@ -257,7 +262,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
 
     // type 0 -> URI, 1-> images
     public void setPersonalImages(List<Uri> list, List<PersonalImages> personalImagesList, int type) {
-
+        Utility.printLogs("log", "SetPersonalImage");
         if (type == 0) {
             personalImagesList = new ArrayList<>();
             for (Uri obj :
@@ -270,10 +275,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
         }
 
         if (picturesAttachmentAdapter == null) {
+            Utility.printLogs("log", "setImagesInAdapter");
             picturesAttachmentAdapter = new PicturesAttachmentAdapter(getContext(), personalImagesList, this);
             mBinding.picturesView.setAdapter(this.picturesAttachmentAdapter);
             mBinding.otherImagesParentLayout.setVisibility(picturesAttachmentAdapter.getSelectedPhotosList().isEmpty() ? View.GONE : View.VISIBLE);
         } else {
+            Utility.printLogs("log", "setAllImagesInAdapter");
             personalImagesList.addAll(picturesAttachmentAdapter.getSelectedPhotosList());
             picturesAttachmentAdapter.updateSelectedPhotosList(personalImagesList, null);
         }
@@ -281,7 +288,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
 
     @Override
     public void imageListUpdated(PersonalImages personalImages) {
-
+        Utility.printLogs("log", "selectedImage");
         mBinding.otherImagesParentLayout.setVisibility(picturesAttachmentAdapter.getSelectedPhotosList().isEmpty() ? View.GONE : View.VISIBLE);
         if (personalImages.getUrl() != null)
             profileViewModel.removeImage(personalImages, AppCommonConstants.API_REQUEST.REQUEST_ID_1008);
@@ -300,6 +307,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
                     case AppCommonConstants.API_REQUEST.REQUEST_ID_1008:
                         LoginResponseBaseModel registrationResponse = (LoginResponseBaseModel) apiResponse.data;
                         if (registrationResponse != null) {
+                            Utility.printLogs("log4", "onResponce");
                             AppInstance.getAppInstance().setAppUserInstance(registrationResponse.getUser(), getActivity());
                         }
                         break;

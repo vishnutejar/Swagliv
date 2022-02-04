@@ -22,18 +22,19 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp8"
+                android:layout_marginVertical="@dimen/dp8"
                 android:text="@string/manage_subscription"
                 android:textColor="@color/sky_blue"
                 android:textSize="@dimen/sp20"
-                android:layout_marginVertical="@dimen/dp8"
-                android:layout_marginHorizontal="@dimen/dp8"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/size_10"
                 android:layout_marginVertical="@dimen/size_10"
+                android:backgroundTint="@color/white"
                 app:cardCornerRadius="@dimen/size_10"
                 app:cardElevation="@dimen/dp2">
 
@@ -93,7 +94,8 @@
                         android:layout_below="@+id/Time_period"
                         android:layout_marginTop="@dimen/dp29"
                         android:layout_marginRight="@dimen/dp30"
-                        android:background="@drawable/user_data_bg_unselected"
+                        android:background="@drawable/pink_strock"
+                        android:gravity="center"
                         android:paddingHorizontal="@dimen/size_18"
                         android:paddingVertical="@dimen/dp15"
                         android:text="@string/unsubscribe"
@@ -102,6 +104,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/upgrade_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/time"
@@ -114,6 +117,7 @@
                         android:gravity="center"
                         android:paddingVertical="@dimen/size_15"
                         android:text="@string/upgrade"
+                        android:textAllCaps="true"
                         android:textColor="@color/white" />
                 </RelativeLayout>
 
@@ -125,6 +129,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="@dimen/size_10"
                 android:layout_marginBottom="@dimen/dp25"
+                android:backgroundTint="@color/white"
                 app:cardCornerRadius="@dimen/size_15"
                 app:cardElevation="@dimen/dp2">
 
@@ -136,7 +141,8 @@
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/viewpager"
                         android:layout_width="match_parent"
-                        android:layout_height="170dp"></androidx.viewpager.widget.ViewPager>
+                        android:layout_height="170dp"
+                        android:background="@color/white"></androidx.viewpager.widget.ViewPager>
 
                     <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
                         android:id="@+id/worm_dots_indicator"

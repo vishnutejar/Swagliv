@@ -64,7 +64,7 @@ public class SubscriptionActivity extends AppCompatActivity implements PriceAdap
         super.onCreate(savedInstanceState);
 
         mRegisteredUser = AppInstance.getAppInstance().getAppUserInstance(this);
-
+        Subscription appUserCurrentSubscriptionPlan = AppInstance.getAppInstance().getAppUserCurrentSubscriptionPlan(this);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_subscription);
         Checkout.preload(getApplicationContext());
         wormDotsIndicator = (WormDotsIndicator) findViewById(R.id.worm_dots_indicator);
@@ -72,6 +72,7 @@ public class SubscriptionActivity extends AppCompatActivity implements PriceAdap
         recyclerView = findViewById(R.id.recyclerview);
         header_back = findViewById(R.id.edit_back_icon);
         mBinding.subscriptionContinueBtn.setOnClickListener(this);
+        mBinding.upgradeBtn.setOnClickListener(this);
         mBinding.commonHeader.backBtn.setOnClickListener(this);
         mBinding.commonHeader.headerLayout.setBackgroundResource(R.color.dark_pink);
         mBinding.commonHeader.headerTitle.setText(R.string.subscription);
@@ -82,6 +83,7 @@ public class SubscriptionActivity extends AppCompatActivity implements PriceAdap
                 onAPIResponseHandler(apiResponse);
             }
         });
+
         profileViewModel.getSubscriptionPlan(AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
 
         adapter = new AdvertiseAdapter(this, subscriptionsTypeArrayList);
@@ -105,6 +107,12 @@ public class SubscriptionActivity extends AppCompatActivity implements PriceAdap
             }
         });
 
+        if (appUserCurrentSubscriptionPlan != null) {
+            mBinding.planName.setText(appUserCurrentSubscriptionPlan.getSubscriptionName());
+            String purchase = Utility.convertDate(appUserCurrentSubscriptionPlan.getPurchasedAt(), AppCommonConstants.API_DATE_FORMAT, AppCommonConstants.DATE_FORMAT_SHOW_UI);
+            String expired = Utility.convertDate(appUserCurrentSubscriptionPlan.getPlanExpiresAt(), AppCommonConstants.API_DATE_FORMAT, AppCommonConstants.DATE_FORMAT_SHOW_UI);
+            mBinding.time.setText(purchase + " - " + expired);
+        }
     }
 
     @Override
@@ -129,6 +137,7 @@ public class SubscriptionActivity extends AppCompatActivity implements PriceAdap
                 callDashboard();
                 break;
             case R.id.subscription_continue_btn:
+            case R.id.upgrade_btn:
                 if (Utility.isNetworkAvailable(SubscriptionActivity.this)) {
                     if (mSubscription != null) {
                         paymentViewModel.getOrderEntity(mSubscription, mRegisteredUser, AppCommonConstants.API_REQUEST.REQUEST_ID_1002);

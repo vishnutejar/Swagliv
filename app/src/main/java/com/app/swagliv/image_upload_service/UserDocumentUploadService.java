@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.IBinder;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -100,8 +101,10 @@ public class UserDocumentUploadService extends ForegroundServiceBaseTask impleme
     private void showUploadFinishedNotification(@Nullable Uri downloadUrl, @Nullable Uri fileUri, String message) {
         // Hide the progress notification
         dismissProgressNotification();
+        Utility.printLogs("uploadmessage", message);
         // Make Intent to MainActivity
         Utility.showToast(this, message);
+
         Intent intent = new Intent(this, DashboardActivity.class)
                 .putExtra(EXTRA_DOWNLOAD_URL, downloadUrl)
                 .putExtra(EXTRA_FILE_URI, fileUri)
@@ -157,6 +160,6 @@ public class UserDocumentUploadService extends ForegroundServiceBaseTask impleme
 
     @Override
     public void onFailure(Throwable error, Integer requestID) {
-        showUploadFinishedNotification(null, mFileUri, null);
+        showUploadFinishedNotification(null, mFileUri, "");
     }
 }

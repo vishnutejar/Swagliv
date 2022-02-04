@@ -106,6 +106,7 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
         //--------------
         setUpCardStackAdaptor();
 
+
     }
 
     private void setUpCardStackAdaptor() {

@@ -27,6 +27,7 @@ public class SplashActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
         mCurrentUserProfileStatus = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_PROFILE_STATUS, this);
 
+
         Thread timer = new Thread() {
             public void run() {
                 try {
@@ -54,6 +55,5 @@ public class SplashActivity extends AppCompatActivity {
             }
         };
         timer.start();
-
     }
 }
