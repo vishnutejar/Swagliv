@@ -27,6 +27,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -99,7 +100,9 @@ public class VoiceActivity extends AppCompatActivity {
     private CallInvite activeCallInvite;
     private Call activeCall;
     private int activeCallNotificationId;
-    String receiverId;
+    static String receiver_id;
+    static String receiver_name;
+    static String receiver_img;
 
     RegistrationListener registrationListener = registrationListener();
     Call.Listener callListener = callListener();
@@ -132,8 +135,9 @@ public class VoiceActivity extends AppCompatActivity {
 
         accessToken = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.TWILIO_ACCESS_TOKEN, this);
         Intent intent = getIntent();
-        receiverId = intent.getStringExtra("Receiver Id");
-        Snackbar.make(coordinatorLayout, "to call: "+receiverId, Snackbar.LENGTH_LONG).show();
+        receiver_id = intent.getStringExtra("Receiver Id");
+        receiver_name = intent.getStringExtra("Receiver Name");
+        //Snackbar.make(coordinatorLayout, "to call: "+receiverId, Snackbar.LENGTH_LONG).show();
 
         /*
          * Setup the broadcast receiver to be notified of FCM Token updates
@@ -466,8 +470,8 @@ public class VoiceActivity extends AppCompatActivity {
     private DialogInterface.OnClickListener callClickListener() {
         return (dialog, which) -> {
             // Place a call
-            EditText contact = ((AlertDialog) dialog).findViewById(R.id.contact);
-            params.put("to", contact.getText().toString());
+            //EditText contact = ((AlertDialog) dialog).findViewById(R.id.contact);
+            params.put("to", receiver_id);
 //            params.put("name", "Custom value");
             ConnectOptions connectOptions = new ConnectOptions.Builder(accessToken)
                     .params(params)
@@ -762,7 +766,7 @@ public class VoiceActivity extends AppCompatActivity {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 
         alertDialogBuilder.setIcon(R.drawable.ic_call_black_24dp);
-        alertDialogBuilder.setTitle("Call");
+        alertDialogBuilder.setTitle("Call "+receiver_name);
         alertDialogBuilder.setPositiveButton("Call", callClickListener);
         alertDialogBuilder.setNegativeButton("Cancel", cancelClickListener);
         alertDialogBuilder.setCancelable(false);
@@ -772,8 +776,9 @@ public class VoiceActivity extends AppCompatActivity {
                 R.layout.dialog_call,
                 activity.findViewById(android.R.id.content),
                 false);
-        final EditText contact = dialogView.findViewById(R.id.contact);
-        contact.setHint(R.string.callee);
+        /*final TextView contact = dialogView.findViewById(R.id.contact);
+        contact.setText(receiver_name);*/
+        //contact.setHint(R.string.callee);
         alertDialogBuilder.setView(dialogView);
 
         return alertDialogBuilder.create();

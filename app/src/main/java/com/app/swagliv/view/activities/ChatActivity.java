@@ -76,14 +76,15 @@ public class ChatActivity extends AppCompatActivity implements APIResponseHandle
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_chat);
 
         Intent intent = getIntent();
-        String profileImgReceiver = intent.getStringExtra("Receiver Profile Image");
-        String userName = intent.getStringExtra("Receiver Name");
+        String receiver_profile_img = intent.getStringExtra("Receiver Profile Image");
+        String receiver_name = intent.getStringExtra("Receiver Name");
+        String receiver_id = intent.getStringExtra("Receiver Id");
         TextView tvUserName = findViewById(R.id.tvUserName);
-        tvUserName.setText(userName);
+        tvUserName.setText(receiver_name);
         ImageView imageView = findViewById(R.id.userProfileImage);
-        Glide.with(this).load(profileImgReceiver).placeholder(R.drawable.ic_blank_user_profile).into(imageView);
+        Glide.with(this).load(receiver_profile_img).placeholder(R.drawable.ic_blank_user_profile).into(imageView);
 
-        findViewById(R.id.call_btn).setOnClickListener(view -> getTwilioToken());
+        findViewById(R.id.call_btn).setOnClickListener(view -> getTwilioToken(receiver_id,receiver_name,receiver_profile_img));
         mUser = AppInstance.getAppInstance().getAppUserInstance(this);
         mSocket = SocketChatApplication.doConnect();
 
@@ -215,7 +216,7 @@ public class ChatActivity extends AppCompatActivity implements APIResponseHandle
     }
 
 
-    public void getTwilioToken() {
+    public void getTwilioToken(String receiver_id, String receiver_name, String receiver_image ) {
         String userId = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_ID, this);
         TwilioVoiceTokenService twilioVoiceTokenService = ApplicationRetrofitServices.getInstance().getTwilioTokenService();
         JsonObject jsonObject = new JsonObject();
@@ -229,7 +230,9 @@ public class ChatActivity extends AppCompatActivity implements APIResponseHandle
                     if (tokenResponse.getStatus() == AppCommonConstants.API_SUCCESS_STATUS_CODE) {
                         AppPreferencesManager.putString(AppConstant.PREFERENCE_KEYS.TWILIO_ACCESS_TOKEN, tokenResponse.getAccessToken(), ChatActivity.this);
                         Intent intent = new Intent(ChatActivity.this, VoiceActivity.class);
-                        intent.putExtra("Receiver Id","61fb782997cb15e782075e4d");
+                        intent.putExtra("Receiver Id",receiver_id);
+                        intent.putExtra("Receiver Name",receiver_name);
+                        intent.putExtra("Receiver Image",receiver_image);
                         startActivity(intent);
                         //startActivity(new Intent(ChatActivity.this, VoiceActivity.class));
                     }
