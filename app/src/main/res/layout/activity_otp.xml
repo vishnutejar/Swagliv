@@ -18,6 +18,7 @@
             android:layout_marginHorizontal="@dimen/dp10"
             android:layout_marginTop="@dimen/dp25"
             android:text="Enter OTP"
+            android:fontFamily="@font/salsa_regular"
             android:textColor="@color/sky_blue"
             android:textSize="@dimen/dp25" />
 
@@ -60,9 +61,10 @@
             android:gravity="end"
             android:text="@string/resend"
             android:textAllCaps="true"
-            android:textColor="@color/black"
+            android:textColor="@color/transparant_gray"
             android:textSize="@dimen/sp15"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/salsa_regular"/>
 
         <TextView
             android:id="@+id/verificationbtn"

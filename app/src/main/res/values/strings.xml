@@ -13,7 +13,7 @@
     <string name="menu_profile">Profile</string>
 
     <string name="nav_edit_profile">Edit Profile</string>
-    <string name="nav_search_filter">Search and Filter</string>
+    <string name="nav_search_filter">Search Crush</string>
     <string name="nav_go_premium">Go Premium</string>
     <string name="nav_purchase_history">Purchase History</string>
     <string name="nav_dark_mode">Dark Mode</string>
@@ -43,7 +43,7 @@ profile.</string>
     <string name="men_txt">Men </string>
     <string name="Women_txt">Women</string>
     <string name="sign_up_name">Sign Up</string>
-    <string name="conform_password">Conform password</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="profile_setting">Profile Setting</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -88,13 +88,13 @@ profile.</string>
     <string name="phone">Phone Number</string>
     <string name="subscription" tools:keep="@string/subscription">Subscription Plan</string>
     <string name="manage_subscription">Manage Subscription</string>
-    <string name="manage_connection">Manage Connection</string>
+    <string name="manage_connection">MANAGE CONNECTION</string>
     <string name="date">DD/MM/YY</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="match">Its a Match</string>
     <string name="send_message_txt">send a message</string>
     <string name="keep_swiping">keep swiping</string>
-    <string name="number_is">My number is</string>
+    <string name="number_is">My number is..</string>
     <string name="text">you and lili have killed each other</string>
     <string name="please_wait">Please wait...</string>
 
@@ -111,7 +111,7 @@ profile.</string>
     <string name="txt_app_info">App info</string>
     <string name="txt_product_name">Product Name</string>
     <string name="txt_rate">Rate</string>
-    <string name="txt_chat">Chat</string>
+    <string name="txt_chat">MESSAGES</string>
     <string name="txt_delivery_date">Delivery Date</string>
     <string name="txt_track_complaint">Track Complaint</string>
     <string name="txt_search_crush">Search Crush</string>

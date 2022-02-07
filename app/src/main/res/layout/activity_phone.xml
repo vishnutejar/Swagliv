@@ -20,6 +20,7 @@
             android:layout_marginTop="@dimen/dp45"
             android:text="@string/number_is"
             android:textColor="@color/sky_blue"
+            android:fontFamily="@font/salsa_regular"
             android:textSize="@dimen/dp25"
             android:textStyle="bold" />
 

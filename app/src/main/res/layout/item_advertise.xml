@@ -19,7 +19,7 @@
             android:id="@+id/subscriptionName_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/robot_font"
+            android:fontFamily="@font/salsa_regular"
             android:gravity="center"
             android:text="@{Subscription.subscriptionName}"
             android:textColor="#CDB38B0D"

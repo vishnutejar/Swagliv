@@ -47,6 +47,7 @@
                             android:layout_marginLeft="@dimen/dp12"
                             android:layout_marginTop="@dimen/dp10"
                             android:text="@string/sign_in"
+                            android:fontFamily="@font/salsa_regular"
                             android:textColor="@color/dark_pink"
                             android:textSize="@dimen/dp30" />
 
@@ -60,7 +61,8 @@
                             android:paddingLeft="@dimen/dp20"
                             android:singleLine="true"
                             android:textColor="@color/black"
-                            android:textColorHint="@color/black"
+                            android:textColorHint="@color/transparant_gray"
+                            android:fontFamily="@font/salsa_regular"
                             android:textSize="@dimen/dp15" />
 
                         <EditText
@@ -73,7 +75,8 @@
                             android:paddingVertical="@dimen/dp15"
                             android:paddingLeft="@dimen/dp20"
                             android:textColor="@color/black"
-                            android:textColorHint="@color/black"
+                            android:textColorHint="@color/transparant_gray"
+                            android:fontFamily="@font/salsa_regular"
                             android:textSize="@dimen/dp15" />
 
                         <TextView
@@ -82,6 +85,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
                             android:text="@string/forgot_password"
+                            android:fontFamily="@font/salsa_regular"
                             android:textColor="@color/sky_blue" />
 
                         <TextView
@@ -94,6 +98,7 @@
                             android:paddingHorizontal="@dimen/dp20"
                             android:paddingVertical="@dimen/dp15"
                             android:text="@string/sign_in"
+                            android:fontFamily="@font/salsa_regular"
                             android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="@dimen/dp20" />
