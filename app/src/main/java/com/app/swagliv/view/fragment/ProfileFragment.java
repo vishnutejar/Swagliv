@@ -104,6 +104,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
                 .setContext(getActivity())
                 .setMessage(getString(R.string.please_wait))
                 .build();
+
+
         profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
         profileViewModel.mutableLiveData.observe(getActivity(), new Observer<APIResponse>() {
             @Override
@@ -236,7 +238,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
                             .putExtra(UserDocumentUploadService.REFERENCE_FILE_NAME, file.toString())
                             .setAction(UserDocumentUploadService.ACTION_UPLOAD_DOCUMENTS));
                 } else {
-                    Utility.printLogs("log2", "onSetPersonalcallImage");
+                    Utility.printLogs("log2", "onSetPersonalImageFnCall");
                     setPersonalImages(list, null, 0);
                     for (PersonalImages uri :
                             picturesAttachmentAdapter.getSelectedPhotosList()) {
@@ -303,12 +305,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, D
                 break;
             case SUCCESS:
                 mProgressbar.dismiss();
+                Utility.printLogs("msg", "responseSuccesses");
                 switch (apiResponse.requestID) {
                     case AppCommonConstants.API_REQUEST.REQUEST_ID_1008:
-                        LoginResponseBaseModel registrationResponse = (LoginResponseBaseModel) apiResponse.data;
-                        if (registrationResponse != null) {
-                            Utility.printLogs("log4", "onResponce");
-                            AppInstance.getAppInstance().setAppUserInstance(registrationResponse.getUser(), getActivity());
+                        LoginResponseBaseModel removeImageResponse = (LoginResponseBaseModel) apiResponse.data;
+                        if (removeImageResponse != null) {
+                            Utility.printLogs("msg", "getResponse");
+                            AppInstance.getAppInstance().setAppUserInstance(removeImageResponse.getUser(), getActivity());
                         }
                         break;
                 }

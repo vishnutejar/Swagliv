@@ -87,6 +87,12 @@ public class EmailSignInActivity extends AppCompatActivity implements APIRespons
                 signIn();
             }
         });
+        mbinding.forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EmailSignInActivity.this, ForgotPasswordActivity.class));
+            }
+        });
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()

@@ -47,8 +47,11 @@ profile.</string>
     <string name="profile_setting">Profile Setting</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="forgot_password">Forgot Password</string>
     <string name="change_password">Change Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="new_password">New Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="retype_password">Retype Password</string>
     <string name="welcome">Welcome</string>
     <string name="send" tools:keep="@string/send">Send as many likes as you want</string>
     <string name="message" tools:keep="@string/message">Send a message</string>
@@ -97,6 +100,9 @@ profile.</string>
     <string name="number_is">My number is</string>
     <string name="text">you and lili have killed each other</string>
     <string name="please_wait">Please wait...</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="portfolio_txt">PORTFOLIO</string>
+    <string name="let_shop">LET&quot;S SHOP</string>
 
     <string name="title">Account Settings</string>
     <string name="txt_edit_profile">Edit Profile</string>
@@ -141,6 +147,7 @@ profile.</string>
     <string name="txt_profile">Profile</string>
     <string name="err_logout_failed">Session not close.</string>
     <string name="like_you_too">like you too</string>
+    <string name="text_forgotPasswordActivity">Your Confirmation link will be sent to your email address.</string>
 
     <!--IntroActivity-->
     <string name="title1">Make your profile</string>
@@ -191,4 +198,23 @@ profile.</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
+
+    <!--distance selection-->
+    <string-array name="distance">
+        <item>0km-10km</item>
+        <item>10km-20km</item>
+        <item>20km-30km</item>
+        <item>30km-40km</item>
+        <item>40km-50km</item>
+        <item>50km-90km</item>
+        <item>90km-110km</item>
+        <item>0km-150km</item>
+        <item>0km-120km</item>
+        <item>0km-180km</item>
+        <item>0km-200km</item>
+        <item>0km-280km</item>
+        <item>0km-290km</item>
+        <item>0km-300km</item>
+        <item>0km-350km</item>
+    </string-array>
 </resources>

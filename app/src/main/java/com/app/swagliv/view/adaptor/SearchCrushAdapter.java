@@ -1,7 +1,9 @@
 package com.app.swagliv.view.adaptor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,9 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.swagliv.R;
 import com.app.swagliv.databinding.ItemSearchBinding;
 import com.app.swagliv.model.login.pojo.User;
+import com.app.swagliv.view.activities.UserProfileActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchCrushAdapter extends RecyclerView.Adapter<SearchCrushAdapter.ViewHolder> {
     Context context;
@@ -40,8 +44,16 @@ public class SearchCrushAdapter extends RecyclerView.Adapter<SearchCrushAdapter.
                 .load(crushList.getProfileImages())
                 .placeholder(R.drawable.ic_blank_user_profile)
                 .into(holder.itemSearchBinding.pictures);
-
+        holder.itemSearchBinding.pictures.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, UserProfileActivity.class);
+                i.putExtra("crushList", crushList);
+                context.startActivity(i);
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
@@ -61,4 +73,5 @@ public class SearchCrushAdapter extends RecyclerView.Adapter<SearchCrushAdapter.
         this.mCrushList = users;
         notifyDataSetChanged();
     }
+
 }

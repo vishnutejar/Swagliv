@@ -12,10 +12,10 @@
 
 
     <LinearLayout
+        android:id="@+id/parentLayout"
         android:layout_width="@dimen/dp90"
         android:layout_height="@dimen/dp120"
         android:layout_marginHorizontal="@dimen/dp8"
-
         android:layout_marginVertical="@dimen/dp8"
         android:orientation="vertical">
 

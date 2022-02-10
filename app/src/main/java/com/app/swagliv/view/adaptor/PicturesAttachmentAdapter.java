@@ -74,7 +74,7 @@ public class PicturesAttachmentAdapter extends RecyclerView.Adapter<PicturesAtta
     }
 
     public void updateSelectedPhotosList(List<PersonalImages> uriList, String positionToRemoveItem) {
-        Utility.printLogs("log1","adapterselectimag");
+        Utility.printLogs("log1", "selectedImageToRemove");
         PersonalImages personalImages = null;
         if (positionToRemoveItem != null) {
             personalImages = photos.get(Integer.parseInt(positionToRemoveItem));

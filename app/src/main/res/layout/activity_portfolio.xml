@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.activities.PortfolioActivity">
+
+        <include
+            android:id="@+id/common_header"
+            layout="@layout/common_header" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_icon"
+                android:layout_width="@dimen/dp96"
+                android:layout_height="@dimen/dp96"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/dp20"
+                android:background="@drawable/ic_blank_user_profile" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:textColor="@color/sky_blue"
+                    android:textSize="@dimen/sp29"
+                    tools:text="rex" />
+
+                <TextView
+                    android:id="@+id/date_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dp20"
+                    android:textStyle="bold"
+                    tools:text="18-2-1997" />
+
+                <TextView
+                    android:id="@+id/address_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dp20"
+                    android:textStyle="bold"
+                    tools:text="nagpur" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp2"
+            android:layout_marginVertical="@dimen/dp20"
+            android:background="@color/gray_white" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp10">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/portfolioRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="@dimen/dp16"
+                android:backgroundTint="@color/faint_grey"
+                android:src="@drawable/add_floating_ic"/>
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>
