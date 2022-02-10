@@ -124,6 +124,7 @@
                 android:paddingVertical="@dimen/dp5"
                 android:text="@string/price_0"
                 android:textColor="@color/grey"
+                android:fontFamily="@font/salsa_regular"
                 android:textSize="@dimen/sp20" />
         </LinearLayout>
 

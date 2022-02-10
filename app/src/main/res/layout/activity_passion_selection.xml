@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp20"
                 android:text="@string/passion"
+                android:fontFamily="@font/salsa_regular"
                 android:textColor="@color/sky_blue"
                 android:textSize="@dimen/sp18" />
 
@@ -41,7 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/passion_activity_txt"
-                android:textColor="@color/black" />
+                android:textColor="@color/transparant_gray"
+                android:fontFamily="@font/salsa_regular"/>
         </LinearLayout>
 
         <com.app.chiprecycleview.MultiChipsRecyclerView

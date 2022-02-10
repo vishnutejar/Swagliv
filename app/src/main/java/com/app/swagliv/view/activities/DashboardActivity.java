@@ -135,7 +135,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
                                 i = new Intent(getApplicationContext(), HelpAndFaqActivity.class);
                                 startActivity(i);
                                 break;
-                            case "Search and Filter":
+                            case "Search Crush":
                                 i = new Intent(getApplicationContext(), SearchCrushActivity.class);
                                 startActivity(i);
                                 break;

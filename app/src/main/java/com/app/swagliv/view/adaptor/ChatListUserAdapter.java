@@ -62,7 +62,7 @@ public class ChatListUserAdapter extends RecyclerView.Adapter<ChatListUserAdapte
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), ChatActivity.class);
                 intent.putExtra("Receiver Profile Image",userChats.getProfileImage());
-                intent.putExtra("User Id", userChats.getId());
+                intent.putExtra("Receiver Id", userChats.getId());
                 intent.putExtra("Receiver Name", userChats.getUserName());
                 view.getContext().startActivity(intent);
             }
