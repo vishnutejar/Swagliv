@@ -36,4 +36,5 @@
     <color name="blue">#276CB8</color>
     <color name="voilate_txt_color">#247DCF</color>
     <color name="grey">#8E8E8E</color>
+    <color name="faint_grey">#E5E5E5</color>
 </resources>

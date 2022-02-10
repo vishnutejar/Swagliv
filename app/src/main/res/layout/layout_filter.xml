@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:id="@+id/filter"
@@ -59,22 +60,12 @@
             android:orientation="horizontal"
             android:padding="@dimen/dp8">
 
-            <TextView
+            <Spinner
+                android:id="@+id/spinner_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp5"
-                android:layout_weight="1"
-                android:hint="0km-100km"
-                android:textColor="@color/white"
-                android:textColorHint="@color/pink1"
-                android:textSize="@dimen/sp15" />
+                tools:text="100km_200km"></Spinner>
 
-            <ImageView
-                android:id="@+id/ic_drop"
-                android:layout_width="@dimen/dp30"
-                android:layout_height="@dimen/dp30"
-                android:background="@drawable/ic_baseline_keyboard_arrow_down_24"
-                android:backgroundTint="@color/white" />
         </LinearLayout>
 
 
@@ -87,6 +78,7 @@
             android:textColor="@color/sky_blue"
             android:textSize="@dimen/sp15" />
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,8 +90,11 @@
             <TextView
                 android:id="@+id/male_unselected"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="@dimen/dp2"
+                android:layout_marginLeft="@dimen/dp1"
                 android:layout_weight="1"
+                android:clickable="false"
                 android:gravity="center"
                 android:hint="@string/male"
                 android:padding="@dimen/dp8"
@@ -110,8 +105,10 @@
             <TextView
                 android:id="@+id/female_unselected_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/dp2"
                 android:layout_weight="1"
+                android:clickable="false"
                 android:gravity="center"
                 android:hint="@string/female"
                 android:padding="@dimen/dp8"
@@ -122,8 +119,11 @@
             <TextView
                 android:id="@+id/shemale_unselected_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="@dimen/dp2"
+                android:layout_marginRight="@dimen/dp1"
                 android:layout_weight="1"
+                android:clickable="false"
                 android:gravity="center"
                 android:hint="@string/shemale"
                 android:padding="@dimen/dp8"
@@ -138,9 +138,9 @@
             android:id="@+id/sliderRange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp15"
             android:layout_marginTop="@dimen/dp25"
             android:layout_marginBottom="@dimen/dp25"
-            android:layout_marginHorizontal="@dimen/dp15"
             android:theme="@style/MySliderTheme"
             android:valueFrom="0"
             android:valueTo="100"

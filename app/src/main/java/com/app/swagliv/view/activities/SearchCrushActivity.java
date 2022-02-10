@@ -1,5 +1,6 @@
 package com.app.swagliv.view.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -14,6 +15,7 @@ import com.app.common.interfaces.APIResponseHandler;
 import com.app.common.utils.Utility;
 import com.app.common.utils.api_response_handler.APIResponse;
 import com.app.swagliv.R;
+import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.ActivitySearchCrushBinding;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.view.adaptor.SearchCrushAdapter;
@@ -75,4 +77,5 @@ public class SearchCrushActivity extends AppCompatActivity implements APIRespons
         }
 
     }
+
 }

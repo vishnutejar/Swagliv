@@ -57,6 +57,7 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_profile);
+        User crush = getIntent().getParcelableExtra("crushList");
         User mSelectedUser = getIntent().getParcelableExtra("Selected_User");
         mUser = AppInstance.getAppInstance().getAppUserInstance(this);
         if (mSelectedUser != null) {
@@ -86,6 +87,21 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
             mProfileBinding.profileDateSelected.setEnabled(false);
             mProfileBinding.aboutMeTxt.setEnabled(false);
 
+        } else if (crush != null) {
+            mProfileBinding.setUser(crush);
+            Glide.with(this).load(crush.getProfileImages()).into(mProfileBinding.profileImage);
+            mProfileBinding.btnEditPofile.setVisibility(View.GONE);
+            mProfileBinding.profileContinueBtn.setVisibility(View.INVISIBLE);
+            mProfileBinding.addPasssionBtn.setVisibility(View.GONE);
+            mProfileBinding.changePassword.setVisibility(View.GONE);
+            mProfileBinding.hedderProfileName.setEnabled(false);
+            mProfileBinding.genderTxt.setEnabled(false);
+            mProfileBinding.profileDateSelected.setEnabled(false);
+            mProfileBinding.sliderRange.setEnabled(false);
+            mProfileBinding.CurrentLocation.setEnabled(false);
+            mProfileBinding.profileNameText.setEnabled(false);
+            mProfileBinding.profileDateSelected.setEnabled(false);
+            mProfileBinding.aboutMeTxt.setEnabled(false);
         } else {
             mProfileBinding.setUser(mUser);
         }
@@ -93,7 +109,6 @@ public class UserProfileActivity extends AppCompatActivity implements DatePicker
         if (mUser.getType() == AppCommonConstants.LOGIN_TYPE.GMAIL) {
             mProfileBinding.changePassword.setVisibility(View.GONE);
         }
-
         mProfileBinding.commonHeader.backBtn.setOnClickListener(this);
         mProfileBinding.addPasssionBtn.setOnClickListener(this);
         mProfileBinding.genderTxt.setOnClickListener(this);

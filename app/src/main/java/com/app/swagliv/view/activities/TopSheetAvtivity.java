@@ -21,7 +21,6 @@ public class TopSheetAvtivity extends AppCompatActivity implements View.OnClickL
         mTopsheetBinding.shemaleUnselectedText.setOnClickListener(this);
         mTopsheetBinding.filterBackBtn.setOnClickListener(this);
         mTopsheetBinding.filterCheckBtn.setOnClickListener(this);
-        mTopsheetBinding.icDrop.setOnClickListener(this);
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.app.swagliv.view.fragment;
 import static com.yuyakaido.android.cardstackview.Direction.Left;
 import static com.yuyakaido.android.cardstackview.Direction.Right;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,13 +12,14 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -68,6 +70,17 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
     private User mSelectedUser;
     private boolean isProfileSuperLiked = false;
 
+    private Spinner spin;
+    private String gender;
+
+
+    private String[] distance = new String[]{
+            "0km-100km", "100km-200km", "200km-300km", "300km-400km", "400km-500km", "500km-100km", "2000km-1100km", "0km-100km"
+    };
+
+
+    private Dialog dialog;
+
     public HomeFragment() {
         // Required empty public constructor prevent crash issue
     }
@@ -78,10 +91,12 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         initialize();
+        dialog = new Dialog(getContext());
         return mBinding.getRoot();
     }
 
     private void initialize() {
+
 
         mViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
         mViewModel.apiResponseMutableLiveData.observe(getActivity(), new Observer<APIResponse>() {
@@ -228,16 +243,7 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
                 mCardStackView.swipe();
                 break;
             case R.id.filter_icon:
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                ViewGroup viewGroup = getView().findViewById(R.id.content);
-                View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.layout_filter, viewGroup, false);
-                builder.setView(dialogView);
-                AlertDialog alertDialog = builder.create();
-                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                Window window = alertDialog.getWindow();
-                WindowManager.LayoutParams windowManager = window.getAttributes();
-                windowManager.gravity = Gravity.TOP;
-                alertDialog.show();
+                openDialog();
                 break;
             case R.id.drawerIcon:
                 DashboardActivity activity = (DashboardActivity) getActivity();
@@ -246,9 +252,65 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
                 //Intent i = new Intent(getActivity(), SideBarActivity.class);
                 //startActivity(i);
                 break;
-            case R.id.filter_back_btn:
 
         }
+    }
+
+    private void openDialog() {
+        dialog.setContentView(R.layout.layout_filter);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setGravity(Gravity.TOP);
+        dialog.show();
+        TextView male = dialog.findViewById(R.id.male_unselected);
+        TextView female = dialog.findViewById(R.id.female_unselected_text);
+        TextView other = dialog.findViewById(R.id.shemale_unselected_text);
+        ImageView back_btn = dialog.findViewById(R.id.filter_back_btn);
+        ImageView check_btn = dialog.findViewById(R.id.filter_check_btn);
+        spin = (Spinner) dialog.findViewById(R.id.spinner_txt);
+        ArrayAdapter<String> adapter_Distance = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, distance);
+        adapter_Distance.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(adapter_Distance);
+
+        male.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                male.setBackgroundResource(R.drawable.selected);
+                female.setBackgroundResource(R.drawable.unselected);
+                other.setBackgroundResource(R.drawable.unselected);
+                gender = "male";
+            }
+        });
+        female.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                female.setBackgroundResource(R.drawable.selected);
+                male.setBackgroundResource(R.drawable.unselected);
+                other.setBackgroundResource(R.drawable.unselected);
+                gender = "female";
+            }
+        });
+        other.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                other.setBackgroundResource(R.drawable.selected);
+                female.setBackgroundResource(R.drawable.unselected);
+                male.setBackgroundResource(R.drawable.unselected);
+                gender = "other";
+            }
+        });
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        check_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = spin.getSelectedItem().toString();
+                Utility.printLogs("texte", text);
+            }
+        });
     }
 
     @Override
