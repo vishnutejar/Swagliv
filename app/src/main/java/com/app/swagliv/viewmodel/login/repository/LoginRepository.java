@@ -121,7 +121,7 @@ public class LoginRepository {
         });
     }
 
-    public void doLoginWithEmail(String email, String password, int type, String socialAccountId, APIResponseListener apiResponseListener, Integer requestID) {
+    public void doLoginWithEmail(String email, String password, int type, String socialAccountId, APIResponseListener apiResponseListener, Integer requestID, String deviceId) {
         LoginService loginServices = ApplicationRetrofitServices.getInstance().getLoginService();
 
         JsonObject jsonObject = new JsonObject();
@@ -131,7 +131,7 @@ public class LoginRepository {
         }
         jsonObject.addProperty("socialAccountId", socialAccountId);
         jsonObject.addProperty("type", type);
-
+        jsonObject.addProperty("deviceId", deviceId);
         Utility.printLogs("loginRequestJSON", jsonObject.toString());
 
         Call<LoginResponseBaseModel> call = loginServices.doLogin(jsonObject);
