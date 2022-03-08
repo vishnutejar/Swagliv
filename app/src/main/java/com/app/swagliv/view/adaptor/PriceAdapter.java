@@ -40,17 +40,22 @@ public class PriceAdapter extends RecyclerView.Adapter<PriceAdapter.Viewholder> 
         // current view data
         Subscription subscription = priceList.get(position);
 
-        // initialize xml price object
-        holder.itemPriceBinding.setPrice(subscription);
-        holder.itemPriceBinding.monthNo.setText(subscription.getDurationInMonths().toString());
-        holder.itemPriceBinding.price.setText(context.getString(R.string.rupees) + subscription.getPricePerMonth().toString() + context.getString(R.string.per_month));
-
-        holder.itemPriceBinding.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOnItemClickListener.OnItemSelected(subscription);
+        if (subscription != null) {
+            // initialize xml price object
+            holder.itemPriceBinding.setPrice(subscription);
+            if (subscription.getDurationInMonths() != null) {
+                holder.itemPriceBinding.monthNo.setText(subscription.getDurationInMonths().toString());
             }
-        });
+            if (subscription.getPricePerMonth() != null)
+                holder.itemPriceBinding.price.setText(context.getString(R.string.rupees) + subscription.getPricePerMonth().toString() + context.getString(R.string.per_month));
+
+            holder.itemPriceBinding.parentLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.OnItemSelected(subscription);
+                }
+            });
+        }
     }
 
     @Override

@@ -367,7 +367,7 @@ public class HomeFragment extends Fragment implements CardStackListener, View.On
                 Date lastDate = Utility.convertStringToDate(dateStored, AppCommonConstants.DATE_FORMAT_DEFAULT);
                 Date latestDate = Utility.convertStringToDate(Utility.convertDateToString(new Date(), AppCommonConstants.DATE_FORMAT_DEFAULT), AppCommonConstants.DATE_FORMAT_DEFAULT);
                 if (latestDate.compareTo(lastDate) == 0) {
-                    startActivity(new Intent(getContext(), SubscriptionActivity.class));
+                   // startActivity(new Intent(getContext(), SubscriptionActivity.class));
                 }
             }
         }

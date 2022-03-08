@@ -97,7 +97,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_edit_profile, R.id.nav_search_filter, R.id.nav_go_premium, R.id.nav_purchase_history, R.id.nav_dark_mode, R.id.nav_help_faq, R.id.nav_sign_out)
+                R.id.nav_go_live, R.id.nav_edit_profile, R.id.nav_search_filter, R.id.nav_go_premium, R.id.nav_purchase_history, R.id.nav_dark_mode, R.id.nav_help_faq, R.id.nav_sign_out)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
@@ -106,12 +106,11 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
         navigationView.setItemIconTintList(null);
         View hView = navigationView.getHeaderView(0);
         TextView nav_user = (TextView) hView.findViewById(R.id.userName_navheader);
-        nav_user.setText( AppInstance.getAppInstance().getAppUserInstance(this).getName());
-        CircleImageView img_nav_header = (CircleImageView)hView.findViewById(R.id.imageView_navheader);
+        nav_user.setText(AppInstance.getAppInstance().getAppUserInstance(this).getName());
+        CircleImageView img_nav_header = (CircleImageView) hView.findViewById(R.id.imageView_navheader);
         Glide.with(this)
                 .load(AppInstance.getAppInstance().getAppUserInstance(this).getProfileImages())
                 .into(img_nav_header);
-
 
 
         navigationView.setNavigationItemSelectedListener(
@@ -145,6 +144,9 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
                                 break;
                             case "Edit Profile":
                                 i = new Intent(getApplicationContext(), EditProfileActivity.class);
+                                startActivity(i);
+                            case "Go Live":
+                                i = new Intent(getApplicationContext(), GoLiveActivity.class);
                                 startActivity(i);
                                 break;
                         }

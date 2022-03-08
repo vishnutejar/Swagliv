@@ -10,6 +10,25 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
 
     <application
         android:name=".SwagLivApplication"
@@ -22,6 +41,12 @@
         android:theme="@style/Theme.Swagliv.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
+        <activity
+            android:name=".view.activities.BroadcastPlayerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activities.GoLiveActivity"
+            android:exported="true" />
         <activity
             android:name=".view.activities.TrackComplaintActivity"
             android:exported="false" />
