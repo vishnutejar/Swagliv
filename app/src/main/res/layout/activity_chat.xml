@@ -1,192 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="3"
+    android:background="@drawable/girl_bg_image"
+    tools:context=".view.activities.ChatActivity">
 
-    <RelativeLayout
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:tint="@color/white" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/commentsLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingBottom="15dp"
+        android:weightSum="5"
+        android:windowSoftInputMode="adjustResize">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <View
+            android:id="@+id/commentsUpperLayout"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/dark_pink"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:layout_height="0dp"
+            android:layout_weight="2" />
 
-            <ImageView
-                android:id="@+id/back_btn"
-                android:layout_width="@dimen/dp30"
-                android:layout_height="@dimen/dp30"
-                android:layout_gravity="left"
-                android:src="@drawable/ic_baseline_arrow_back_24"
-                app:tint="@color/white" />
-
-        </androidx.appcompat.widget.Toolbar>
-
-
-        <LinearLayout
-            android:id="@+id/toolbarConstraintLayout"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/commentRecycleView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar">
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:overScrollMode="never">
 
 
+        </androidx.recyclerview.widget.RecyclerView>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/userProfileImage"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_blank_user_profile"
-                app:civ_border_color="@color/purple_700"
-                app:civ_border_width="2dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/bottomContainer"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="12dp">
 
-            <LinearLayout
+
+            <EditText
+                android:id="@+id/etComment"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvUserName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="22dp"
-                    android:text=""
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/salsa_regular"
-                    app:layout_constraintStart_toEndOf="@+id/userProfileImage"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/userStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text=""
-                    android:textColor="#ffffff"
-                    app:layout_constraintStart_toEndOf="@+id/userProfileImage"
-                    app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
-
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/video_btn"
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_gravity="center"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_videocam_pink" />
-
-            <ImageView
-                android:id="@+id/call_btn"
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_gravity="center"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_call_pink"/>
-
-        </LinearLayout>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/chatRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/linearLayout2"
-            android:layout_below="@+id/toolbarConstraintLayout" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="2dp"
-            android:background="#ffffff"
-            android:orientation="horizontal"
-            android:paddingVertical="@dimen/dp5"
-            android:weightSum="10">
+                android:background="@drawable/rounded_gradient_background"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="6dp" />
 
 
             <ImageView
-                android:id="@+id/ivAttachFile"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="start"
-                android:padding="8dp"
-                android:src="@drawable/ic_attach_file_white"
-                android:visibility="gone"
-                app:tint="@color/purple_700" />
+                android:layout_width="38dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_baseline_add_circle_24"
+                app:tint="@color/dark_pink" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:layout_weight="10"
-                android:background="@drawable/message_typing_bg"
-                android:backgroundTint="@color/black">
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/star_coin" />
 
-                <EditText
-                    android:id="@+id/inputMessage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/dp10"
-                    android:layout_marginRight="@dimen/dp2"
-                    android:maxLines="2"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="Type something..."
-                    android:paddingLeft="@dimen/dp10"
-                    android:paddingRight="@dimen/dp10" />
+            <!--            <ImageView-->
+            <!--                android:id="@+id/heart"-->
+            <!--                android:layout_width="32dp"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:layout_marginLeft="5dp"-->
+            <!--                android:src="@drawable/ic_baseline_favorite_24"-->
+            <!--                app:tint="@color/red" />-->
 
-                <ImageView
-                    android:id="@+id/ivSendMessage"
-                    android:layout_width="@dimen/dp30"
-                    android:layout_height="@dimen/dp45"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/dp2"
-                    android:layout_marginRight="@dimen/dp10"
-                    android:backgroundTint="@color/black"
-                    android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
-
-            </LinearLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dp8"
-                android:layout_gravity="center">
+                android:id="@+id/clone_container"
+                android:layout_width="32dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="match_parent">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/black_strock_bg"
-                    app:tint="@color/purple_700" />
-
-                <ImageView
-                    android:layout_width="@dimen/dp30"
-                    android:layout_height="@dimen/dp30"
-                    android:layout_gravity="center"
-                    android:background="@drawable/solid_black_btn" />
-
-                <ImageView
-                    android:layout_width="@dimen/dp20"
-                    android:layout_height="@dimen/dp20"
-                    android:layout_gravity="center"
-                    android:background="@drawable/gif" />
+                    android:id="@+id/heart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_favorite_24" />
             </FrameLayout>
 
-        </LinearLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-    </RelativeLayout>
-</layout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</RelativeLayout>
