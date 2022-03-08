@@ -2,6 +2,7 @@ package com.app.swagliv.view.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
@@ -236,7 +237,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         user.setId(mUserID);
 
         if (Utility.isNetworkAvailable(this)) {
-            loginViewModel.doLoginWithEmail(mEmail, null, mUserType, mUserID, AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
+            String deviceId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+
+            loginViewModel.doLoginWithEmail(mEmail, null, mUserType, mUserID, AppCommonConstants.API_REQUEST.REQUEST_ID_1001, deviceId);
         }
     }
 

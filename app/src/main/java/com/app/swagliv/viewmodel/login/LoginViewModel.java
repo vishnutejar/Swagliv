@@ -34,9 +34,9 @@ public class LoginViewModel extends ViewModel implements APIResponseListener {
         loginRepository.toVerifyOtp(otp, mobileNo, this, requestID);
     }
 
-    public void doLoginWithEmail(String email, String password, int type, String socialAccountId, Integer requestID) {
+    public void doLoginWithEmail(String email, String password, int type, String socialAccountId, Integer requestID, String deviceId) {
         responseMutableLiveData.setValue(APIResponse.loading(requestID));
-        loginRepository.doLoginWithEmail(email, password, type, socialAccountId, this, requestID);
+        loginRepository.doLoginWithEmail(email, password, type, socialAccountId, this, requestID, deviceId);
     }
 
     @Override
