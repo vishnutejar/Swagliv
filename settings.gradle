@@ -7,7 +7,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Swagliv"
-include ':app'
+include ':app', ':libbambuser'
 include ':common'
 include ':chiprecycleview'
 
