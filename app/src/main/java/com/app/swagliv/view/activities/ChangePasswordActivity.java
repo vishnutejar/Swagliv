@@ -25,7 +25,6 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.submit_btn:
-
         }
     }
 }

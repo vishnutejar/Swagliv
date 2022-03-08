@@ -1,6 +1,8 @@
 package com.app.swagliv.viewmodel.login.repository;
 
 
+import android.util.Log;
+
 import com.app.common.constant.AppCommonConstants;
 import com.app.common.interfaces.APIResponseListener;
 import com.app.common.utils.Utility;
@@ -139,6 +141,7 @@ public class LoginRepository {
             @Override
             public void onResponse(Call<LoginResponseBaseModel> call, Response<LoginResponseBaseModel> response) {
                 LoginResponseBaseModel loginResponse = response.body();
+                Log.d("TAG2", "onResponse: "+loginResponse);
                 if (response.isSuccessful() && loginResponse != null) {
                     if (loginResponse.getStatus() == AppCommonConstants.API_SUCCESS_STATUS_CODE) {
                         apiResponseListener.onSuccess(loginResponse, requestID);
