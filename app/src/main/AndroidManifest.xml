@@ -67,8 +67,15 @@
             android:exported="false" />
         <activity
             android:name=".view.activities.ChatActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.activities.SideBarActivity"
             android:exported="false"
@@ -83,12 +90,20 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activities.SearchCrushActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".view.activities.ManageConnectionActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".view.activities.SearchScreenActivity"
             android:exported="false"
@@ -108,7 +123,7 @@
         <activity
             android:name=".view.activities.TopSheetAvtivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" />=
         <activity
             android:name=".view.activities.PassionSelectionActivity"
             android:exported="false"
@@ -147,13 +162,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activities.SplashActivity"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".view.activities.DashboardActivity"
