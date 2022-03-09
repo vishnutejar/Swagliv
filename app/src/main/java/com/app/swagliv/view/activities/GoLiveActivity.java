@@ -19,8 +19,10 @@ import com.bambuser.broadcaster.BroadcastStatus;
 import com.bambuser.broadcaster.Broadcaster;
 import com.bambuser.broadcaster.CameraError;
 import com.bambuser.broadcaster.ConnectionError;
+import com.onesignal.OneSignal;
 
 public class GoLiveActivity extends AppCompatActivity {
+    private static final String ONESIGNAL_APP_ID = "00ebb454-9979-42c0-b206-52cd86fb62da";
     private static final String LOGTAG = "GoLiveActivity";
 
     private static final String APPLICATION_ID = "qndgxaaWOXMd4J1Bkie4ag";
@@ -32,6 +34,12 @@ public class GoLiveActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Enable verbose OneSignal logging to debug issues if needed.
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+        // OneSignal Initialization
+        OneSignal.initWithContext(this);
+        OneSignal.setAppId(ONESIGNAL_APP_ID);
+
         setContentView(R.layout.activity_go_live);
         mPreviewSurface = findViewById(R.id.PreviewSurfaceView);
         BroadcastButton = findViewById(R.id.BroadcastButton);
