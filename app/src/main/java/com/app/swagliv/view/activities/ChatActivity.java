@@ -9,6 +9,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -83,6 +85,7 @@ public class ChatActivity extends AppCompatActivity {
         dialog = builder.create();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.getWindow().setGravity(Gravity.TOP);
+        dialog.getWindow().getAttributes().y = 90;
         dialog.show();
 
         dialogBinding.btnDecline.setOnClickListener(new View.OnClickListener() {

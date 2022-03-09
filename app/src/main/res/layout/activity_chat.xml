@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="3"
-    android:background="@drawable/girl_bg_image"
-    tools:context=".view.activities.ChatActivity">
+    android:background="@drawable/girl_bg_image">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -15,6 +14,59 @@
         android:src="@drawable/ic_baseline_arrow_back_24"
         app:tint="@color/white" />
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/sensor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:padding="12dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/ic_baseline_person_24"
+            app:tint="@color/dark_pink" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/baseline_sensors_24"
+            app:tint="@color/dark_pink" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/ic_baseline_visibility_24"
+            app:tint="@color/dark_pink" />
+
+        <TextView
+            android:id="@+id/signals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/salsa_regular"
+            android:text="1000"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/gif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sensor"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:fontFamily="@font/salsa_regular"
+        android:text="GIF"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -86,6 +138,7 @@
         android:layout_width="50dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginRight="10dp"
         android:orientation="vertical"></LinearLayout>
 
