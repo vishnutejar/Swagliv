@@ -17,17 +17,15 @@
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/commentsLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="10dp"
         android:paddingBottom="15dp"
         android:weightSum="5"
-        android:windowSoftInputMode="adjustResize">
+        android:windowSoftInputMode="adjustPan">
 
         <View
-            android:id="@+id/commentsUpperLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2" />
@@ -49,16 +47,11 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="12dp">
 
-
             <EditText
-                android:id="@+id/etComment"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_gradient_background"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="6dp" />
-
+                android:background="@drawable/rounded_gradient_background" />
 
             <ImageView
                 android:layout_width="38dp"
@@ -68,33 +61,19 @@
                 app:tint="@color/dark_pink" />
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/coin"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:src="@drawable/star_coin" />
 
-            <!--            <ImageView-->
-            <!--                android:id="@+id/heart"-->
-            <!--                android:layout_width="32dp"-->
-            <!--                android:layout_height="match_parent"-->
-            <!--                android:layout_marginLeft="5dp"-->
-            <!--                android:src="@drawable/ic_baseline_favorite_24"-->
-            <!--                app:tint="@color/red" />-->
-
-
-            <FrameLayout
-                android:id="@+id/clone_container"
+            <ImageView
+                android:id="@+id/heart"
                 android:layout_width="32dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/heart"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_baseline_favorite_24" />
-            </FrameLayout>
+                android:src="@drawable/ic_baseline_favorite_24"
+                app:tint="@color/red" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -102,5 +81,12 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <LinearLayout
+        android:id="@+id/cloneContainer"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"></LinearLayout>
 
 </RelativeLayout>

@@ -1,71 +1,29 @@
 package com.app.swagliv.view.activities;
 
-import android.content.Intent;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.graphics.Path;
+import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.animation.Animator;
-import androidx.core.animation.ObjectAnimator;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.app.common.constant.AppCommonConstants;
-import com.app.common.interfaces.APIResponseHandler;
-import com.app.common.preference.AppPreferencesManager;
-import com.app.common.utils.Utility;
-import com.app.common.utils.api_response_handler.APIResponse;
-import com.app.swagliv.R;
-import com.app.swagliv.SocketChatApplication;
-import com.app.swagliv.constant.AppConstant;
-import com.app.swagliv.constant.AppInstance;
 import com.app.swagliv.databinding.ActivityChatBinding;
-import com.app.swagliv.model.call.api.TwilioVoiceTokenService;
-import com.app.swagliv.model.call.pojo.TwilioVoiceTokenResponseBaseModel;
-import com.app.swagliv.model.chat.pojo.chat.Message;
-import com.app.swagliv.model.chat.pojo.chatlist.UserChats;
-import com.app.swagliv.model.login.pojo.User;
-import com.app.swagliv.network.ApplicationRetrofitServices;
-import com.app.swagliv.twiliovoice.VoiceActivity;
+import com.app.swagliv.databinding.RequestDialogBinding;
 import com.app.swagliv.view.adaptor.ChatCommentsAdapter;
-import com.app.swagliv.view.adaptor.ChatListUserAdapter;
-import com.app.swagliv.view.adaptor.ChatMessagesAdapter;
-import com.app.swagliv.viewmodel.chats.ChatsViewModel;
-import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-import io.socket.client.Socket;
-import io.socket.emitter.Emitter;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import android.widget.ImageView;
-
-import androidx.fragment.app.Fragment;
 
 public class ChatActivity extends AppCompatActivity {
     private ChatCommentsAdapter adapter;
@@ -101,24 +59,94 @@ public class ChatActivity extends AppCompatActivity {
         adapter = new ChatCommentsAdapter(connectionsList);
         activityChatBinding.commentRecycleView.setAdapter(adapter);
 
-        //  activityChatBinding.etComment
+        activityChatBinding.heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                heartOnClick();
+            }
+        });
+
+        activityChatBinding.coin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRequestDialog();
+            }
+        });
     }
 
 
-    public void startLoadingDialog() {
+    public void openRequestDialog() {
+        RequestDialogBinding dialogBinding = RequestDialogBinding.inflate(getLayoutInflater());
         AlertDialog.Builder builder = new AlertDialog.Builder(ChatActivity.this);
-        LayoutInflater inflater = getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.request_dialog, null));
+        builder.setView(dialogBinding.getRoot());
         builder.setCancelable(false);
         dialog = builder.create();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.getWindow().setGravity(Gravity.TOP);
         dialog.show();
+
+        dialogBinding.btnDecline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialogBinding.btnAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
     }
 
-    public void dismissDialog() {
-        dialog.dismiss();
+
+    void heartOnClick() {
+
+        // Disable clips on all parent generations
+        disableAllParentsClip();
+
+        // Create clone
+        ImageView imageClone = cloneImage();
+
+        // Animate
+        animateFlying(imageClone);
+        animateFading(imageClone);
     }
+
+    private void disableAllParentsClip() {
+        LinearLayout parent = activityChatBinding.cloneContainer;
+        for (int i = 0; i < parent.getChildCount(); i++) {
+            View child = parent.getChildAt(i);
+            child.setEnabled(false);
+        }
+    }
+
+    private ImageView cloneImage() {
+        ImageView clone = new ImageView(ChatActivity.this);
+        clone.setLayoutParams(activityChatBinding.heart.getLayoutParams());
+        clone.setImageDrawable(activityChatBinding.heart.getDrawable());
+        activityChatBinding.cloneContainer.addView(clone);
+        return clone;
+    }
+
+
+    private void animateFlying(ImageView image) {
+        ObjectAnimator.ofFloat(image, View.TRANSLATION_Y, 300, -390f).setDuration(1000).start();
+    }
+
+    private void animateFading(ImageView image) {
+        image.animate()
+                .alpha(0f)
+                .setDuration(1000).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                activityChatBinding.cloneContainer.removeView(image);
+            }
+        });
+    }
+
 
 }
 
