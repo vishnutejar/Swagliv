@@ -29,10 +29,10 @@
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
 
         <LinearLayout
-             android:layout_width="match_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-             android:background="@color/transparant_light_gray"
+            android:background="@color/transparant_light_gray"
             android:gravity="center"
             android:orientation="vertical">
 

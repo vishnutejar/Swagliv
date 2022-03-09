@@ -39,19 +39,19 @@ public class SearchCrushAdapter extends RecyclerView.Adapter<SearchCrushAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         User crushList = mCrushList.get(position);
-        holder.itemSearchBinding.setCrushInfo(crushList);
-        Glide.with(context)
-                .load(crushList.getProfileImages())
-                .placeholder(R.drawable.ic_blank_user_profile)
-                .into(holder.itemSearchBinding.pictures);
-        holder.itemSearchBinding.pictures.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context, UserProfileActivity.class);
-                i.putExtra("crushList", crushList);
-                context.startActivity(i);
-            }
-        });
+//        holder.itemSearchBinding.setCrushInfo(crushList);
+//        Glide.with(context)
+//                .load(crushList.getProfileImages())
+//                .placeholder(R.drawable.ic_blank_user_profile)
+//                .into(holder.itemSearchBinding.pictures);
+//        holder.itemSearchBinding.pictures.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(context, UserProfileActivity.class);
+//                i.putExtra("crushList", crushList);
+//                context.startActivity(i);
+//            }
+//        });
     }
 
 
