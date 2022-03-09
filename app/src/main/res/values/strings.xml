@@ -1,5 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="conform_password">Conform Password</string>
     <string name="app_name">Dateflu</string>
     <string name="facebook_app_id">659451061882333</string>
     <string name="fb_login_protocol_scheme">fb659451061882333</string>

@@ -11,6 +11,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.app.swagliv.R;
@@ -26,25 +27,28 @@ public class GoLiveActivity extends AppCompatActivity {
     SurfaceView mPreviewSurface;
     Broadcaster mBroadcaster;
 
+    RelativeLayout BroadcastButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_go_live);
         mPreviewSurface = findViewById(R.id.PreviewSurfaceView);
+        BroadcastButton = findViewById(R.id.BroadcastButton);
         mBroadcaster = new Broadcaster(this, APPLICATION_ID, mBroadcasterObserver);
         mBroadcaster.setRotation(getWindowManager().getDefaultDisplay().getRotation());
-        findViewById(R.id.BroadcastButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mBroadcaster.canStartBroadcasting()) {
-                    mBroadcaster.startBroadcast();
-                    mBroadcaster.switchCamera();
-                }
-                else
-                    mBroadcaster.stopBroadcast();
-            }
+        BroadcastButton.setOnClickListener(view -> {
+            if (mBroadcaster.canStartBroadcasting()) {
+                mBroadcaster.startBroadcast();
+                mBroadcaster.switchCamera();
+            } else
+                mBroadcaster.stopBroadcast();
         });
-
+        findViewById(R.id.img_switch).setOnClickListener(view -> mBroadcaster.switchCamera());
+        findViewById(R.id.img_crossbutton).setOnClickListener(view -> {
+            mBroadcaster.stopBroadcast();
+            finish();
+        });
     }
 
 
@@ -89,7 +93,7 @@ public class GoLiveActivity extends AppCompatActivity {
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             if (broadcastStatus == BroadcastStatus.IDLE)
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-            ((Button) findViewById(R.id.BroadcastButton)).setText(broadcastStatus == BroadcastStatus.IDLE ? "Broadcast" : "Disconnect");
+            //((Button) findViewById(R.id.BroadcastButton)).setText(broadcastStatus == BroadcastStatus.IDLE ? "Broadcast" : "Disconnect");
         }
 
         @Override
@@ -120,12 +124,12 @@ public class GoLiveActivity extends AppCompatActivity {
 
         @Override
         public void onBroadcastInfoAvailable(String s, String s1) {
-           // Toast.makeText(GoLiveActivity.this, "onBroadcastInfoAvailable " + s + "  " + s1, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(GoLiveActivity.this, "onBroadcastInfoAvailable " + s + "  " + s1, Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onBroadcastIdAvailable(String s) {
-       //     Toast.makeText(GoLiveActivity.this, "onBroadcastIdAvailable " + s + "  ", Toast.LENGTH_SHORT).show();
+            //     Toast.makeText(GoLiveActivity.this, "onBroadcastIdAvailable " + s + "  ", Toast.LENGTH_SHORT).show();
         }
     };
 
