@@ -41,6 +41,7 @@ public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding activityChatBinding;
     AlertDialog dialog;
     boolean isFirstGrid = false;
+    int totalConnectedUser = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,12 +101,12 @@ public class ChatActivity extends AppCompatActivity {
         int count = parentLayout.getChildCount();
 
 
-        if (count < 2) {
-            parentLayout.setWeightSum(++count);
+        if (totalConnectedUser < 2) {
+            parentLayout.setWeightSum(++totalConnectedUser);
             activityChatBinding.streamingContainer.addView(getNewHorizontalView());
-        } else if (count == 2 & !isFirstGrid) {
+        } else if (totalConnectedUser == 2 & !isFirstGrid) {
 
-            parentLayout.setWeightSum(count);
+            parentLayout.setWeightSum(2);
             LinearLayout horizontalt = new LinearLayout(ChatActivity.this);
             horizontalt.setOrientation(LinearLayout.HORIZONTAL);
 
@@ -121,19 +122,42 @@ public class ChatActivity extends AppCompatActivity {
             parentLayout.addView(getNewHorizontalView());
 
             isFirstGrid = true;
-        }
-//        else {
-//            LinearLayout horizontalLayout = new LinearLayout(ChatActivity.this);
-//            horizontalLayout.setOrientation(LinearLayout.HORIZONTAL);
-//            horizontalLayout.setWeightSum(2);
-//            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, 0, 1);
-//            horizontalLayout.setLayoutParams(layoutParams);
-//
-//            horizontalLayout.addView(getNewVerticalView());
-        //    horizontalLayout.addView(getNewVerticalView());
+            totalConnectedUser++;
+        } else {
+            //  Even persons
+            if (totalConnectedUser % 2 == 0) {
+                parentLayout.setWeightSum(++count);
 
-        //    activityChatBinding.streamingContainer.addView(horizontalLayout);
-//        }
+                LinearLayout horizontalt = new LinearLayout(ChatActivity.this);
+                horizontalt.setOrientation(LinearLayout.HORIZONTAL);
+
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, 0, 2);
+                layoutParams.weight = 1;
+                horizontalt.setLayoutParams(layoutParams);
+
+                horizontalt.addView(getNewVerticalView());
+                parentLayout.addView(horizontalt);
+                totalConnectedUser++;
+            }
+            //odd persons
+            else {
+                parentLayout.removeViewAt(count - 1);
+                parentLayout.setWeightSum(count);
+
+                LinearLayout horizontalt = new LinearLayout(ChatActivity.this);
+                horizontalt.setOrientation(LinearLayout.HORIZONTAL);
+
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, 0, 2);
+                layoutParams.weight = 1;
+                horizontalt.setLayoutParams(layoutParams);
+
+                horizontalt.addView(getNewVerticalView());
+                horizontalt.addView(getNewVerticalView());
+
+                parentLayout.addView(horizontalt);
+                totalConnectedUser++;
+            }
+        }
     }
 
     View getNewHorizontalView() {
@@ -220,7 +244,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
     private void animateFlying(ImageView image) {
-        ObjectAnimator.ofFloat(image, View.TRANSLATION_Y, 300, -390f).setDuration(1000).start();
+        ObjectAnimator.ofFloat(image, View.TRANSLATION_Y, 800, -290f).setDuration(1000).start();
     }
 
     private void animateFading(ImageView image) {
