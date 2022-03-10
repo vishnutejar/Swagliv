@@ -1,14 +1,21 @@
 package com.app.swagliv.view.activities;
 
+import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.LayoutDirection;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -20,6 +27,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.app.swagliv.R;
 import com.app.swagliv.databinding.ActivityChatBinding;
 import com.app.swagliv.databinding.RequestDialogBinding;
 import com.app.swagliv.view.adaptor.ChatCommentsAdapter;
@@ -32,6 +40,7 @@ public class ChatActivity extends AppCompatActivity {
     private ArrayList<String> connectionsList = new ArrayList<>();
     ActivityChatBinding activityChatBinding;
     AlertDialog dialog;
+    boolean isFirstGrid = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,8 @@ public class ChatActivity extends AppCompatActivity {
 
         activityChatBinding = ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(activityChatBinding.getRoot());
+
+        addPersonToChat();
 
 
         //Fill Data
@@ -61,6 +72,13 @@ public class ChatActivity extends AppCompatActivity {
         adapter = new ChatCommentsAdapter(connectionsList);
         activityChatBinding.commentRecycleView.setAdapter(adapter);
 
+        activityChatBinding.addComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addPersonToChat();
+            }
+        });
+
         activityChatBinding.heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +92,73 @@ public class ChatActivity extends AppCompatActivity {
                 openRequestDialog();
             }
         });
+    }
+
+    private void addPersonToChat() {
+
+        LinearLayout parentLayout = findViewById(R.id.streamingContainer);
+        int count = parentLayout.getChildCount();
+
+
+        if (count < 2) {
+            parentLayout.setWeightSum(++count);
+            activityChatBinding.streamingContainer.addView(getNewHorizontalView());
+        } else if (count == 2 & !isFirstGrid) {
+
+            parentLayout.setWeightSum(count);
+            LinearLayout horizontalt = new LinearLayout(ChatActivity.this);
+            horizontalt.setOrientation(LinearLayout.HORIZONTAL);
+
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, 0, 2);
+            layoutParams.weight = 1;
+            horizontalt.setLayoutParams(layoutParams);
+
+            horizontalt.addView(getNewVerticalView());
+            horizontalt.addView(getNewVerticalView());
+
+            parentLayout.removeAllViews();
+            parentLayout.addView(horizontalt);
+            parentLayout.addView(getNewHorizontalView());
+
+            isFirstGrid = true;
+        }
+//        else {
+//            LinearLayout horizontalLayout = new LinearLayout(ChatActivity.this);
+//            horizontalLayout.setOrientation(LinearLayout.HORIZONTAL);
+//            horizontalLayout.setWeightSum(2);
+//            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, 0, 1);
+//            horizontalLayout.setLayoutParams(layoutParams);
+//
+//            horizontalLayout.addView(getNewVerticalView());
+        //    horizontalLayout.addView(getNewVerticalView());
+
+        //    activityChatBinding.streamingContainer.addView(horizontalLayout);
+//        }
+    }
+
+    View getNewHorizontalView() {
+        ImageView imageView = new ImageView(ChatActivity.this);
+        imageView.setImageResource(R.drawable.girl_bg_image);
+
+        LinearLayout.LayoutParams imageLayoutParam = new LinearLayout.LayoutParams(MATCH_PARENT, 0);
+        imageLayoutParam.weight = 1f;
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageView.setLayoutParams(imageLayoutParam);
+
+        return imageView;
+    }
+
+
+    View getNewVerticalView() {
+        ImageView imageView = new ImageView(ChatActivity.this);
+        imageView.setImageResource(R.drawable.girl_bg_image);
+
+        LinearLayout.LayoutParams imageLayoutParam = new LinearLayout.LayoutParams(0, MATCH_PARENT);
+        imageLayoutParam.weight = 1f;
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageView.setLayoutParams(imageLayoutParam);
+
+        return imageView;
     }
 
 
@@ -149,8 +234,6 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }
 
 

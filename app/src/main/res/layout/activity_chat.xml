@@ -4,8 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="3"
-    android:background="@drawable/girl_bg_image">
+    android:layout_weight="3">
+
+
+    <LinearLayout
+        android:id="@+id/streamingContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    </LinearLayout>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -87,10 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:overScrollMode="never">
-
-
-        </androidx.recyclerview.widget.RecyclerView>
+            android:overScrollMode="never" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/bottomContainer"
@@ -106,6 +111,7 @@
                 android:background="@drawable/rounded_gradient_background" />
 
             <ImageView
+                android:id="@+id/addComment"
                 android:layout_width="38dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
@@ -140,6 +146,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="10dp"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical" />
 
 </RelativeLayout>
