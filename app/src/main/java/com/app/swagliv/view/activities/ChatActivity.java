@@ -244,13 +244,13 @@ public class ChatActivity extends AppCompatActivity {
 
 
     private void animateFlying(ImageView image) {
-        ObjectAnimator.ofFloat(image, View.TRANSLATION_Y, 800, -290f).setDuration(1000).start();
+        ObjectAnimator.ofFloat(image, View.TRANSLATION_Y, 800, -290f).setDuration(1800).start();
     }
 
     private void animateFading(ImageView image) {
         image.animate()
                 .alpha(0f)
-                .setDuration(1000).setListener(new AnimatorListenerAdapter() {
+                .setDuration(2000).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
