@@ -1,18 +1,15 @@
 package com.app.swagliv.view.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.app.swagliv.R;
 import com.bambuser.broadcaster.BroadcastStatus;
@@ -21,8 +18,10 @@ import com.bambuser.broadcaster.CameraError;
 import com.bambuser.broadcaster.ConnectionError;
 import com.onesignal.OneSignal;
 
+import org.json.JSONObject;
+
 public class GoLiveActivity extends AppCompatActivity {
-    private static final String ONESIGNAL_APP_ID = "00ebb454-9979-42c0-b206-52cd86fb62da";
+    private static final String ONESIGNAL_APP_ID = "ca7f07ce-8f58-414c-bfad-2b4fa59a3c26";
     private static final String LOGTAG = "GoLiveActivity";
 
     private static final String APPLICATION_ID = "qndgxaaWOXMd4J1Bkie4ag";
@@ -30,7 +29,7 @@ public class GoLiveActivity extends AppCompatActivity {
     Broadcaster mBroadcaster;
 
     RelativeLayout BroadcastButton;
-
+//https://webhook.bambuser.io/events/93df93061a891c23
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +48,18 @@ public class GoLiveActivity extends AppCompatActivity {
             if (mBroadcaster.canStartBroadcasting()) {
                 mBroadcaster.startBroadcast();
                 mBroadcaster.switchCamera();
+                JSONObject jsonObject = new JSONObject();
+                OneSignal.postNotification(new JSONObject(), new OneSignal.PostNotificationResponseHandler() {
+                    @Override
+                    public void onSuccess(JSONObject jsonObject) {
+
+                    }
+
+                    @Override
+                    public void onFailure(JSONObject jsonObject) {
+
+                    }
+                });
             } else
                 mBroadcaster.stopBroadcast();
         });
@@ -57,6 +68,7 @@ public class GoLiveActivity extends AppCompatActivity {
             mBroadcaster.stopBroadcast();
             finish();
         });
+
     }
 
 
@@ -139,6 +151,7 @@ public class GoLiveActivity extends AppCompatActivity {
         public void onBroadcastIdAvailable(String s) {
             //     Toast.makeText(GoLiveActivity.this, "onBroadcastIdAvailable " + s + "  ", Toast.LENGTH_SHORT).show();
         }
+
     };
 
 }

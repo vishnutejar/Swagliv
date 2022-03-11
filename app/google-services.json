@@ -33,43 +33,6 @@
           ]
         }
       }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:820286335984:android:b2bb28ffbb6799dbb18b35",
-        "android_client_info": {
-          "package_name": "com.app.swagliv"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "820286335984-2vdk4ilqcprl6keina9iu49qt527q9kf.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.app.swagliv",
-            "certificate_hash": "611170997f7afaf3a7cbeb2d932f10407e0c90c5"
-          }
-        },
-        {
-          "client_id": "820286335984-buavdt1fbtke95tg8pgdvaqvek1c60ro.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAtGjHPTBcVcI5SAzQ5dAklgI2qs650QSY"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "820286335984-buavdt1fbtke95tg8pgdvaqvek1c60ro.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
     }
   ],
   "configuration_version": "1"
