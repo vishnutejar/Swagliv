@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical"
+    tools:context=".view.activities.SearchGIFActivity">
+
+
+    <include
+        android:id="@+id/common_header"
+        layout="@layout/common_header" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/search_bar"
+        android:drawableLeft="@drawable/ic_baseline_search_24"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/dp8"
+        android:singleLine="true"
+        android:textColor="@color/white" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_gif_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="7dp" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
