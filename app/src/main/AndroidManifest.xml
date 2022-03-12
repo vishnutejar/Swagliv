@@ -23,7 +23,7 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
         <activity
-            android:name=".view.activities.SearchGIFActivity"
+            android:name=".view.activities.SelectHostActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +31,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.activities.SearchGIFActivity"
+            android:exported="false" />
         <activity
             android:name=".view.activities.TrackComplaintActivity"
             android:exported="false" />
@@ -54,7 +57,6 @@
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing" />
-        android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".view.activities.SideBarActivity"
             android:exported="false"
@@ -70,7 +72,7 @@
         <activity
             android:name=".view.activities.SearchCrushActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.activities.ManageConnectionActivity"
             android:exported="false"

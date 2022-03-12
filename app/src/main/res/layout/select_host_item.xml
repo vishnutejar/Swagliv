@@ -1,0 +1,27 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="177dp"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="6dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/hostImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/girl_bg_image" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="3dp"
+            android:buttonTint="#E83587" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
