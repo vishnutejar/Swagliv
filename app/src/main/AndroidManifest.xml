@@ -52,13 +52,8 @@
             android:exported="true" />
         <activity
             android:name=".view.activities.SelectHostActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".view.activities.SearchGIFActivity"
             android:exported="false" />
