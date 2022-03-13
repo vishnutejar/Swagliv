@@ -1,15 +1,22 @@
 package com.app.swagliv.view.activities;
 
+import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.LayoutDirection;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
@@ -23,6 +30,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.app.swagliv.R;
 import com.app.swagliv.databinding.ActivityChatBinding;
 import com.app.swagliv.databinding.RequestDialogBinding;
 import com.app.swagliv.view.adaptor.ChatCommentsAdapter;
@@ -35,6 +43,8 @@ public class ChatActivity extends AppCompatActivity {
     private ArrayList<String> connectionsList = new ArrayList<>();
     ActivityChatBinding activityChatBinding;
     AlertDialog dialog;
+    boolean isFirstGrid = false;
+    int totalConnectedUser = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +52,8 @@ public class ChatActivity extends AppCompatActivity {
 
         activityChatBinding = ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(activityChatBinding.getRoot());
+
+        addPersonToChat();
 
 
         //Fill Data
@@ -63,6 +75,13 @@ public class ChatActivity extends AppCompatActivity {
         activityChatBinding.commentRecycleView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         adapter = new ChatCommentsAdapter(connectionsList);
         activityChatBinding.commentRecycleView.setAdapter(adapter);
+
+        activityChatBinding.addComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addPersonToChat();
+            }
+        });
 
         activityChatBinding.heart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +116,96 @@ public class ChatActivity extends AppCompatActivity {
             private void postComment() {
             }
         });
+    }
+
+    private void addPersonToChat() {
+
+        LinearLayout parentLayout = findViewById(R.id.streamingContainer);
+        int count = parentLayout.getChildCount();
+
+
+        if (totalConnectedUser < 2) {
+            parentLayout.setWeightSum(++totalConnectedUser);
+            activityChatBinding.streamingContainer.addView(getNewHorizontalView());
+        } else if (totalConnectedUser == 2 & !isFirstGrid) {
+
+            parentLayout.setWeightSum(2);
+            LinearLayout horizontalt = new LinearLayout(ChatActivity.this);
+            horizontalt.setOrientation(LinearLayout.HORIZONTAL);
+
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, 0, 2);
+            layoutParams.weight = 1;
+            horizontalt.setLayoutParams(layoutParams);
+
+            horizontalt.addView(getNewVerticalView());
+            horizontalt.addView(getNewVerticalView());
+
+            parentLayout.removeAllViews();
+            parentLayout.addView(horizontalt);
+            parentLayout.addView(getNewHorizontalView());
+
+            isFirstGrid = true;
+            totalConnectedUser++;
+        } else {
+            //  Even persons
+            if (totalConnectedUser % 2 == 0) {
+                parentLayout.setWeightSum(++count);
+
+                LinearLayout horizontalt = new LinearLayout(ChatActivity.this);
+                horizontalt.setOrientation(LinearLayout.HORIZONTAL);
+
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, 0, 2);
+                layoutParams.weight = 1;
+                horizontalt.setLayoutParams(layoutParams);
+
+                horizontalt.addView(getNewVerticalView());
+                parentLayout.addView(horizontalt);
+                totalConnectedUser++;
+            }
+            //odd persons
+            else {
+                parentLayout.removeViewAt(count - 1);
+                parentLayout.setWeightSum(count);
+
+                LinearLayout horizontalt = new LinearLayout(ChatActivity.this);
+                horizontalt.setOrientation(LinearLayout.HORIZONTAL);
+
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, 0, 2);
+                layoutParams.weight = 1;
+                horizontalt.setLayoutParams(layoutParams);
+
+                horizontalt.addView(getNewVerticalView());
+                horizontalt.addView(getNewVerticalView());
+
+                parentLayout.addView(horizontalt);
+                totalConnectedUser++;
+            }
+        }
+    }
+
+    View getNewHorizontalView() {
+        ImageView imageView = new ImageView(ChatActivity.this);
+        imageView.setImageResource(R.drawable.girl_bg_image);
+
+        LinearLayout.LayoutParams imageLayoutParam = new LinearLayout.LayoutParams(MATCH_PARENT, 0);
+        imageLayoutParam.weight = 1f;
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageView.setLayoutParams(imageLayoutParam);
+
+        return imageView;
+    }
+
+
+    View getNewVerticalView() {
+        ImageView imageView = new ImageView(ChatActivity.this);
+        imageView.setImageResource(R.drawable.girl_bg_image);
+
+        LinearLayout.LayoutParams imageLayoutParam = new LinearLayout.LayoutParams(0, MATCH_PARENT);
+        imageLayoutParam.weight = 1f;
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageView.setLayoutParams(imageLayoutParam);
+
+        return imageView;
     }
 
 
@@ -158,13 +267,13 @@ public class ChatActivity extends AppCompatActivity {
 
 
     private void animateFlying(ImageView image) {
-        ObjectAnimator.ofFloat(image, View.TRANSLATION_Y, 300, -390f).setDuration(1000).start();
+        ObjectAnimator.ofFloat(image, View.TRANSLATION_Y, 800, -290f).setDuration(1800).start();
     }
 
     private void animateFading(ImageView image) {
         image.animate()
                 .alpha(0f)
-                .setDuration(1000).setListener(new AnimatorListenerAdapter() {
+                .setDuration(2000).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
@@ -172,8 +281,6 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }
 
 

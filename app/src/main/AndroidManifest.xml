@@ -51,6 +51,18 @@
             android:name=".view.activities.GoLiveActivity"
             android:exported="true" />
         <activity
+            android:name=".view.activities.SelectHostActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.activities.SearchGIFActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activities.TrackComplaintActivity"
             android:exported="false" />
         <activity

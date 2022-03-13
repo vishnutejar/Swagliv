@@ -104,7 +104,6 @@ dependencies {
     // implements module
     implementation(project(':common'))
 
-
     // implements progress
     implementation(project(':progress'))
 
@@ -167,4 +166,7 @@ dependencies {
     implementation project(path: ':libbambuser')
     implementation platform('com.google.firebase:firebase-bom:29.1.0')
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+//gif drawable
+
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.24'
 }

@@ -200,6 +200,8 @@ profile.</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="go_live">Go Live</string>
     <string name="comments">Comments</string>
+    <string name="Search_GIF">Search GIF</string>
+    <string name="select_your_host">SELECT YOUR HOST</string>
 
 
     <!--distance selection-->
