@@ -12,6 +12,7 @@ import com.app.swagliv.model.login.pojo.LoginResponseBaseModel;
 import com.app.swagliv.model.login.pojo.User;
 import com.app.swagliv.network.ApplicationRetrofitServices;
 import com.google.gson.JsonObject;
+import com.onesignal.OneSignal;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -134,6 +135,7 @@ public class LoginRepository {
         jsonObject.addProperty("socialAccountId", socialAccountId);
         jsonObject.addProperty("type", type);
         jsonObject.addProperty("deviceId", deviceId);
+        jsonObject.addProperty("onesignalPlayerId", OneSignal.getDeviceState().getUserId());
         Utility.printLogs("loginRequestJSON", jsonObject.toString());
 
         Call<LoginResponseBaseModel> call = loginServices.doLogin(jsonObject);
@@ -141,7 +143,7 @@ public class LoginRepository {
             @Override
             public void onResponse(Call<LoginResponseBaseModel> call, Response<LoginResponseBaseModel> response) {
                 LoginResponseBaseModel loginResponse = response.body();
-                Log.d("TAG2", "onResponse: "+loginResponse);
+                Log.d("TAG2", "onResponse: " + loginResponse);
                 if (response.isSuccessful() && loginResponse != null) {
                     if (loginResponse.getStatus() == AppCommonConstants.API_SUCCESS_STATUS_CODE) {
                         apiResponseListener.onSuccess(loginResponse, requestID);

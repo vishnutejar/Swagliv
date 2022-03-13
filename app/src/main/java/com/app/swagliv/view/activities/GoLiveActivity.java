@@ -1,8 +1,13 @@
 package com.app.swagliv.view.activities;
 
+import static tvo.webrtc.ContextUtils.getApplicationContext;
+
 import android.Manifest;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.SurfaceView;
 import android.view.WindowManager;
@@ -12,16 +17,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.app.swagliv.R;
+import com.app.swagliv.model.livestream.OneSignalNotification;
+import com.app.swagliv.model.livestream.OneSignalNotificationSender;
 import com.bambuser.broadcaster.BroadcastStatus;
 import com.bambuser.broadcaster.Broadcaster;
 import com.bambuser.broadcaster.CameraError;
 import com.bambuser.broadcaster.ConnectionError;
+import com.onesignal.OSNotification;
 import com.onesignal.OneSignal;
 
 import org.json.JSONObject;
 
 public class GoLiveActivity extends AppCompatActivity {
-    private static final String ONESIGNAL_APP_ID = "ca7f07ce-8f58-414c-bfad-2b4fa59a3c26";
     private static final String LOGTAG = "GoLiveActivity";
 
     private static final String APPLICATION_ID = "qndgxaaWOXMd4J1Bkie4ag";
@@ -29,16 +36,11 @@ public class GoLiveActivity extends AppCompatActivity {
     Broadcaster mBroadcaster;
 
     RelativeLayout BroadcastButton;
-//https://webhook.bambuser.io/events/93df93061a891c23
+
+    //https://webhook.bambuser.io/events/93df93061a891c23
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Enable verbose OneSignal logging to debug issues if needed.
-        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
-        // OneSignal Initialization
-        OneSignal.initWithContext(this);
-        OneSignal.setAppId(ONESIGNAL_APP_ID);
-
         setContentView(R.layout.activity_go_live);
         mPreviewSurface = findViewById(R.id.PreviewSurfaceView);
         BroadcastButton = findViewById(R.id.BroadcastButton);
@@ -48,18 +50,7 @@ public class GoLiveActivity extends AppCompatActivity {
             if (mBroadcaster.canStartBroadcasting()) {
                 mBroadcaster.startBroadcast();
                 mBroadcaster.switchCamera();
-                JSONObject jsonObject = new JSONObject();
-                OneSignal.postNotification(new JSONObject(), new OneSignal.PostNotificationResponseHandler() {
-                    @Override
-                    public void onSuccess(JSONObject jsonObject) {
-
-                    }
-
-                    @Override
-                    public void onFailure(JSONObject jsonObject) {
-
-                    }
-                });
+                OneSignalNotificationSender.sendDeviceNotification(new OneSignalNotification());
             } else
                 mBroadcaster.stopBroadcast();
         });
@@ -68,7 +59,6 @@ public class GoLiveActivity extends AppCompatActivity {
             mBroadcaster.stopBroadcast();
             finish();
         });
-
     }
 
 

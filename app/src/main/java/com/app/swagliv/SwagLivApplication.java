@@ -2,7 +2,10 @@ package com.app.swagliv;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -15,9 +18,14 @@ import androidx.lifecycle.OnLifecycleEvent;
 import com.app.common.utils.Utility;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.constant.AppInstance;
+import com.app.swagliv.view.activities.BroadcastPlayerActivity;
+import com.app.swagliv.view.activities.ChatActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.onesignal.OSInAppMessageAction;
+import com.onesignal.OSNotification;
+import com.onesignal.OneSignal;
 
 import org.json.JSONObject;
 
@@ -58,7 +66,12 @@ public class SwagLivApplication extends Application implements LifecycleEventObs
 
             @Override
             public void onActivityResumed(@NonNull Activity activity) {
-
+                OneSignal.setNotificationOpenedHandler(
+                        result -> {
+                            Intent intent = new Intent(activity, ChatActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            activity.startActivity(intent);
+                        });
             }
 
             @Override

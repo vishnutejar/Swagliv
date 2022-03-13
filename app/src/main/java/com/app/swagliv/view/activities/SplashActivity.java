@@ -10,6 +10,7 @@ import com.app.common.preference.AppPreferencesManager;
 import com.app.swagliv.R;
 import com.app.swagliv.constant.AppConstant;
 import com.app.swagliv.databinding.ActivitySplashBinding;
+import com.onesignal.OneSignal;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -20,10 +21,16 @@ public class SplashActivity extends AppCompatActivity {
     private ActivitySplashBinding mBinding;
     private String mCurrentUserProfileStatus;
     private boolean mIsAppAlreadyOpen;
+    private static final String ONESIGNAL_APP_ID = "ca7f07ce-8f58-414c-bfad-2b4fa59a3c26";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+        // OneSignal Initialization
+        OneSignal.initWithContext(this);
+        OneSignal.setAppId(ONESIGNAL_APP_ID);
+
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
         mCurrentUserProfileStatus = AppPreferencesManager.getString(AppConstant.PREFERENCE_KEYS.CURRENT_USER_PROFILE_STATUS, this);
 

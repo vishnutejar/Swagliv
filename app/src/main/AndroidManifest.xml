@@ -41,6 +41,9 @@
         android:theme="@style/Theme.Swagliv.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
+        <!-- name doesn't change, value = your class fully name spaced-->
+        <meta-data android:name="com.onesignal.NotificationServiceExtension"
+            android:value="com.app.swagliv.model.livestream.NotificationServiceExtension" />
         <activity
             android:name=".view.activities.BroadcastPlayerActivity"
             android:exported="true" />
