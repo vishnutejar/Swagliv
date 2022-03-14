@@ -8,10 +8,14 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.InsetDrawable;
 import android.os.Bundle;
+import android.text.TextPaint;
 import android.util.LayoutDirection;
 import android.view.Gravity;
 import android.view.View;
@@ -22,6 +26,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,8 +34,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.app.swagliv.R;
 import com.app.swagliv.databinding.ActivityChatBinding;
+import com.app.swagliv.databinding.BottomsheetBinding;
 import com.app.swagliv.databinding.RequestDialogBinding;
+import com.app.swagliv.databinding.ThanksDialogBinding;
 import com.app.swagliv.view.adaptor.ChatCommentsAdapter;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 
@@ -49,8 +57,6 @@ public class ChatActivity extends AppCompatActivity {
 
         activityChatBinding = ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(activityChatBinding.getRoot());
-
-        addPersonToChat();
 
 
         //Fill Data
@@ -76,7 +82,7 @@ public class ChatActivity extends AppCompatActivity {
         activityChatBinding.addComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addPersonToChat();
+                openRequestDialog();
             }
         });
 
@@ -90,99 +96,56 @@ public class ChatActivity extends AppCompatActivity {
         activityChatBinding.coin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openRequestDialog();
+                showCoinsDialog();
             }
         });
     }
 
-    private void addPersonToChat() {
+    public void showCoinsDialog() {
+        final BottomSheetDialog dialog = new BottomSheetDialog(ChatActivity.this, R.style.BottomSheetMainStyle);
+        BottomsheetBinding binding = BottomsheetBinding.inflate(getLayoutInflater());
+        dialog.setContentView(binding.getRoot());
+        dialog.show();
 
-        LinearLayout parentLayout = findViewById(R.id.streamingContainer);
-        int count = parentLayout.getChildCount();
-
-
-        if (totalConnectedUser < 2) {
-            parentLayout.setWeightSum(++totalConnectedUser);
-            activityChatBinding.streamingContainer.addView(getNewHorizontalView());
-        } else if (totalConnectedUser == 2 & !isFirstGrid) {
-
-            parentLayout.setWeightSum(2);
-            LinearLayout horizontalt = new LinearLayout(ChatActivity.this);
-            horizontalt.setOrientation(LinearLayout.HORIZONTAL);
-
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, 0, 2);
-            layoutParams.weight = 1;
-            horizontalt.setLayoutParams(layoutParams);
-
-            horizontalt.addView(getNewVerticalView());
-            horizontalt.addView(getNewVerticalView());
-
-            parentLayout.removeAllViews();
-            parentLayout.addView(horizontalt);
-            parentLayout.addView(getNewHorizontalView());
-
-            isFirstGrid = true;
-            totalConnectedUser++;
-        } else {
-            //  Even persons
-            if (totalConnectedUser % 2 == 0) {
-                parentLayout.setWeightSum(++count);
-
-                LinearLayout horizontalt = new LinearLayout(ChatActivity.this);
-                horizontalt.setOrientation(LinearLayout.HORIZONTAL);
-
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, 0, 2);
-                layoutParams.weight = 1;
-                horizontalt.setLayoutParams(layoutParams);
-
-                horizontalt.addView(getNewVerticalView());
-                parentLayout.addView(horizontalt);
-                totalConnectedUser++;
+        binding.btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                openThanksDialog();
             }
-            //odd persons
-            else {
-                parentLayout.removeViewAt(count - 1);
-                parentLayout.setWeightSum(count);
+        });
 
-                LinearLayout horizontalt = new LinearLayout(ChatActivity.this);
-                horizontalt.setOrientation(LinearLayout.HORIZONTAL);
-
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, 0, 2);
-                layoutParams.weight = 1;
-                horizontalt.setLayoutParams(layoutParams);
-
-                horizontalt.addView(getNewVerticalView());
-                horizontalt.addView(getNewVerticalView());
-
-                parentLayout.addView(horizontalt);
-                totalConnectedUser++;
+        binding.btnAddMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                openThanksDialog();
             }
-        }
-    }
-
-    View getNewHorizontalView() {
-        ImageView imageView = new ImageView(ChatActivity.this);
-        imageView.setImageResource(R.drawable.girl_bg_image);
-
-        LinearLayout.LayoutParams imageLayoutParam = new LinearLayout.LayoutParams(MATCH_PARENT, 0);
-        imageLayoutParam.weight = 1f;
-        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        imageView.setLayoutParams(imageLayoutParam);
-
-        return imageView;
+        });
     }
 
 
-    View getNewVerticalView() {
-        ImageView imageView = new ImageView(ChatActivity.this);
-        imageView.setImageResource(R.drawable.girl_bg_image);
+    public void openThanksDialog() {
+        ThanksDialogBinding thanksDialogBinding = ThanksDialogBinding.inflate(getLayoutInflater());
+        AlertDialog.Builder builder = new AlertDialog.Builder(ChatActivity.this);
+        builder.setView(thanksDialogBinding.getRoot());
+        builder.setCancelable(true);
+        dialog = builder.create();
+        ColorDrawable back = new ColorDrawable(Color.TRANSPARENT);
+        InsetDrawable inset = new InsetDrawable(back, 50);
+        dialog.getWindow().setBackgroundDrawable(inset);
+        setTextViewColor(
+                thanksDialogBinding.thanks, Color.parseColor("#E83587"), Color.parseColor("#E83587"), Color.parseColor("#E83587"), Color.parseColor("#E83587"), Color.parseColor("#C14894"), Color.parseColor("#C14894"), Color.parseColor("#C14894"), Color.parseColor("#2900BBFF"), Color.parseColor("#2900BBFF")
+        );
+        dialog.show();
+    }
 
-        LinearLayout.LayoutParams imageLayoutParam = new LinearLayout.LayoutParams(0, MATCH_PARENT);
-        imageLayoutParam.weight = 1f;
-        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        imageView.setLayoutParams(imageLayoutParam);
-
-        return imageView;
+    public void setTextViewColor(TextView textView, int... color) {
+        TextPaint paint = textView.getPaint();
+        float width = paint.measureText(textView.getText().toString());
+        Shader shader = new LinearGradient(0, 0, 0, textView.getTextSize(), color, null, Shader.TileMode.CLAMP);
+        textView.getPaint().setShader(shader);
+        textView.setTextColor(color[0]);
     }
 
 

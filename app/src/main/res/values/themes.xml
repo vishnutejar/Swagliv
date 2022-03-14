@@ -63,4 +63,13 @@
     </style>
 
 
+    <style name="BottomSheetMainStyle" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.Test.BottomSheet.Modal</item>
+    </style>
+
+    <style name="Widget.Test.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+
+
 </resources>

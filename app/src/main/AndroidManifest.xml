@@ -22,15 +22,10 @@
         android:theme="@style/Theme.Swagliv.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
+
         <activity
             android:name=".view.activities.SelectHostActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".view.activities.SearchGIFActivity"
             android:exported="false" />
@@ -54,9 +49,15 @@
             android:exported="false" />
         <activity
             android:name=".view.activities.ChatActivity"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing" />
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.activities.SideBarActivity"
             android:exported="false"
