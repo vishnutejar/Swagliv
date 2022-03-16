@@ -56,27 +56,10 @@ public class ChatActivity extends AppCompatActivity {
         addPersonToChat();
 
 
-        //Fill Data
-        connectionsList.add("Test User");
-        connectionsList.add("Test User With Long name");
-        connectionsList.add("Test User with extra Long Name for texting length");
-        connectionsList.add("Test User");
-        connectionsList.add("Test User");
-        connectionsList.add("Test User");
-        connectionsList.add("Test User");
-        connectionsList.add("Test User");
-        connectionsList.add("Test User");
-        connectionsList.add("Test User");
-        connectionsList.add("Test User");
-        connectionsList.add("Test User");
-        connectionsList.add("Test User");
-        connectionsList.add("Test User");
-
         activityChatBinding.commentRecycleView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        adapter = new ChatCommentsAdapter(connectionsList);
         activityChatBinding.commentRecycleView.setAdapter(adapter);
 
-        activityChatBinding.addComment.setOnClickListener(new View.OnClickListener() {
+        activityChatBinding.imgAddConnections.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addPersonToChat();

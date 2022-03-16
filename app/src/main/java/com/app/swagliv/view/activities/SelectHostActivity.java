@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.os.Bundle;
+import android.view.View;
 
+import com.app.common.utils.Utility;
 import com.app.swagliv.R;
 import com.app.swagliv.databinding.ActivitySearchGifBinding;
 import com.app.swagliv.databinding.ActivitySelectHostBinding;
@@ -27,7 +29,18 @@ public class SelectHostActivity extends AppCompatActivity {
         setContentView(selectHostBinding.getRoot());
 
         selectHostBinding.commonHeader.headerTitle.setText(R.string.select_your_host);
-
+        selectHostBinding.commonHeader.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        selectHostBinding.btSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utility.showToast(SelectHostActivity.this, "Multiple hosts not accepted in trial version");
+            }
+        });
         hostsList.add("sfsd");
         hostsList.add("sfsd");
         hostsList.add("sfsd");

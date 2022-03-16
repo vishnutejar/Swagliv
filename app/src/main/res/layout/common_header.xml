@@ -29,6 +29,7 @@
                 android:layout_marginRight="@dimen/dp10"
                 android:layout_weight="8"
                 android:gravity="center"
+                android:fontFamily="@font/salsa_regular"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sp20"
                 tools:text="@string/feedback" />

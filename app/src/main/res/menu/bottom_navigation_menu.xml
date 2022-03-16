@@ -11,6 +11,10 @@
         android:id="@+id/navigation_like"
         android:icon="@drawable/ic_like"
         tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/navigation_livestream"
+        android:icon="@drawable/ic_livestreaming"
+        tools:ignore="MenuTitle" />
 
     <item
         android:id="@+id/navigation_message"

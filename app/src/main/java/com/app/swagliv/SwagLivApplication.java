@@ -52,6 +52,12 @@ public class SwagLivApplication extends Application implements LifecycleEventObs
         super.onCreate();
         ourInstance = this;
         isAppInForeground = true;
+        OneSignal.setNotificationOpenedHandler(
+                result -> {
+                    Intent intent = new Intent(this, BroadcastPlayerActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                });
 
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
@@ -66,12 +72,6 @@ public class SwagLivApplication extends Application implements LifecycleEventObs
 
             @Override
             public void onActivityResumed(@NonNull Activity activity) {
-                OneSignal.setNotificationOpenedHandler(
-                        result -> {
-                            Intent intent = new Intent(activity, ChatActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            activity.startActivity(intent);
-                        });
             }
 
             @Override

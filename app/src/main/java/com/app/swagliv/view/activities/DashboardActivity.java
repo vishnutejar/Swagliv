@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -84,10 +83,9 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_like, R.id.navigation_message, R.id.navigation_profile)
+                R.id.navigation_home, R.id.navigation_like, R.id.navigation_livestream, R.id.navigation_message, R.id.navigation_profile)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        // NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navigation, navController);
     }
 
@@ -97,7 +95,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_go_live, R.id.nav_edit_profile, R.id.nav_search_filter, R.id.nav_go_premium, R.id.nav_purchase_history, R.id.nav_dark_mode, R.id.nav_help_faq, R.id.nav_sign_out)
+                 R.id.nav_edit_profile, R.id.nav_search_filter, R.id.nav_go_premium, R.id.nav_purchase_history, R.id.nav_dark_mode, R.id.nav_help_faq, R.id.nav_sign_out)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
@@ -145,10 +143,7 @@ public class DashboardActivity extends AppCompatActivity implements GPSUtilsGetG
                             case "Edit Profile":
                                 i = new Intent(getApplicationContext(), EditProfileActivity.class);
                                 startActivity(i);
-                            case "Go Live":
-                                i = new Intent(getApplicationContext(), GoLiveActivity.class);
-                                startActivity(i);
-                                break;
+
                         }
                         return true;
                     }

@@ -26,6 +26,7 @@ public class AppConstant {
         public static final String IS_APP_ALREADY_OPEN = "IS_FIRST_TIME_APP_OPEN";
         public static final String APP_TOKEN = "APP_TOKEN";
         public static final String TWILIO_ACCESS_TOKEN = "TWILIO_ACCESS_TOKEN";
+        public static final String LiveStreamId = "LiveStreamId";
     }
 
     public class PROFILE_STATUS {
@@ -59,6 +60,9 @@ public class AppConstant {
         public static final String CreateConnection = "createConnection";
         public static final String ActionOnConnectionRequest = "actionOnConnectionRequest";
         public static final String GetConnectionsList = "getConnectionsList";
+        public static final String StartLiveStream = "startLiveStream";
+        public static final String GetAllLiveStreamComments = "getAllLiveStreamComments";
+        public static final String GetListOfActiveViewers = "getListOfActiveViewers";
     }
 
     public class SWIPE {

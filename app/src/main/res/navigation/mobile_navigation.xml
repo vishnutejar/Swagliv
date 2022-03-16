@@ -27,6 +27,11 @@
         android:name="com.app.swagliv.view.fragment.ProfileFragment"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_livestream"
+        android:name="com.app.swagliv.view.fragment.GoLiveActivity"
+        android:label="@string/menu_livestream"
+        tools:layout="@layout/activity_go_live" />
 
 
 </navigation>

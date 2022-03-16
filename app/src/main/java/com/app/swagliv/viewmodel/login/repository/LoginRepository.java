@@ -21,7 +21,7 @@ import retrofit2.Response;
 public class LoginRepository {
 
 
-    public void doUserRegistration(User user, int type, APIResponseListener apiResponseListener, Integer requestID) {
+    public void doUserRegistration(User user, int type, APIResponseListener apiResponseListener, Integer requestID, String deviceId) {
         LoginService loginServices = ApplicationRetrofitServices.getInstance().getLoginService();
 
         JsonObject jsonObject = new JsonObject();
@@ -32,6 +32,8 @@ public class LoginRepository {
         jsonObject.addProperty("email", user.getEmail());
         jsonObject.addProperty("password", user.getPassword());
         jsonObject.addProperty("type", type);
+        jsonObject.addProperty("deviceId", deviceId);
+        jsonObject.addProperty("onesignalPlayerId", OneSignal.getDeviceState().getUserId());
 
         Utility.printLogs("RequestJSON", jsonObject.toString());
 

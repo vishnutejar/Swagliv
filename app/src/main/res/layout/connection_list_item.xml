@@ -7,9 +7,10 @@
     android:paddingVertical="8dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_connectionprofile"
         android:layout_width="61dp"
         android:layout_height="61dp"
-        android:src="@drawable/draw_circle" />
+        android:src="@drawable/nav_drawer_pofile" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -25,19 +26,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textSize="18sp"
-                android:fontFamily="@font/salsa_regular"
                 android:layout_marginLeft="26dp"
-                android:text="Siliva" />
+                android:fontFamily="@font/salsa_regular"
+                android:text="Siliva"
+                android:textSize="18sp" />
 
             <CheckBox
+                android:id="@+id/checkbox_item"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_alignRight="@+id/name"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
-                android:button="@drawable/check_box_selector"
                 android:background="@drawable/check_box_selector"
+                android:button="@drawable/check_box_selector"
                 android:gravity="center_horizontal" />
         </RelativeLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>

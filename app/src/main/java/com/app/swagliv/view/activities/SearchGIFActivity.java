@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.app.swagliv.R;
 import com.app.swagliv.databinding.ActivitySearchGifBinding;
@@ -23,7 +24,7 @@ public class SearchGIFActivity extends AppCompatActivity {
         activitySearchGifBinding = ActivitySearchGifBinding.inflate(getLayoutInflater());
         setContentView(activitySearchGifBinding.getRoot());
 
-        activitySearchGifBinding.commonHeader.headerTitle.setText(R.string.Search_GIF);
+        //  activitySearchGifBinding.commonHeader.headerTitle.setText(R.string.Search_GIF);
 
         gifList.add(R.drawable.banana);
         gifList.add(R.drawable.click);
@@ -60,6 +61,13 @@ public class SearchGIFActivity extends AppCompatActivity {
         activitySearchGifBinding.searchGifRecycler.setLayoutManager(new GridLayoutManager(this, 3));
         adapter = new SearchGIFAdapter(gifList);
         activitySearchGifBinding.searchGifRecycler.setAdapter(adapter);
+
+        activitySearchGifBinding.commonHeader.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
     }
 }

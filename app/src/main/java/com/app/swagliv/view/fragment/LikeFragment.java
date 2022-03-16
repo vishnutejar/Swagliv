@@ -97,7 +97,9 @@ public class LikeFragment extends Fragment implements View.OnClickListener, APIR
                     case AppCommonConstants.API_REQUEST.REQUEST_ID_1001:
                         mPeopleLike = (ArrayList<User>) apiResponse.data;
                         likeAdapter.updateData(mPeopleLike);
-                        mBinding.likeTxt.setText(mPeopleLike.size() + " " + getString(R.string.title_Likes));
+                        if (mPeopleLike != null) {
+                            mBinding.likeTxt.setText(mPeopleLike.size() + " " + getActivity().getString(R.string.title_Likes));
+                        }
                 }
                 break;
             case ERROR:

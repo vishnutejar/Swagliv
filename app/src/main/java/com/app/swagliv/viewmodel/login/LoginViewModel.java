@@ -18,9 +18,9 @@ public class LoginViewModel extends ViewModel implements APIResponseListener {
         loginRepository = new LoginRepository();
     }
 
-    public void doUserRegistration(User user, int type, Integer requestID) {
+    public void doUserRegistration(User user, int type, Integer requestID, String deviceId) {
         responseMutableLiveData.setValue(APIResponse.loading(requestID));
-        loginRepository.doUserRegistration(user, type, this, requestID);
+        loginRepository.doUserRegistration(user, type, this, requestID, deviceId);
 
     }
 

@@ -48,9 +48,6 @@
             android:name=".view.activities.BroadcastPlayerActivity"
             android:exported="true" />
         <activity
-            android:name=".view.activities.GoLiveActivity"
-            android:exported="true" />
-        <activity
             android:name=".view.activities.SelectHostActivity"
             android:exported="true"/>
 
@@ -161,8 +158,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activities.SplashActivity"
-            android:exported="false"
+            
             android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

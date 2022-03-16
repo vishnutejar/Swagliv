@@ -10,7 +10,7 @@ public class AppCommonConstants {
     public final static String DATE_FORMAT = "yyMMddhhmmssMs";
     public static final String NOTIFICATION_READ = "NOTIFICATION_READ";
     public static final String PUSH_NOTIFICATION_RECEIVED = "PUSH_NOTIFICATION_RECEIVED";
-     public static final String DATE_FORMAT_DEFAULT = "yyyy-MM-dd";
+    public static final String DATE_FORMAT_DEFAULT = "yyyy-MM-dd";
     public static final String DATE_FORMAT_SHOW_UI = "dd MMM yyyy";
     public final static String BUILD_FLAVOR = "production";
     public static final String USER = "USER";
@@ -47,6 +47,11 @@ public class AppCommonConstants {
         public static final int REQUEST_ID_1018 = 1018;
         public static final int REQUEST_ID_1019 = 1019;
         public static final int REQUEST_ID_1020 = 1020;
+        public static final int REQUEST_ID_1021 = 1021;
+        public static final int REQUEST_ID_1022 = 1022;
+        public static final int REQUEST_ID_1023 = 1023;
+        public static final int REQUEST_ID_1024 = 1024;
+        public static final int REQUEST_ID_1025 = 1025;
     }
 
     public class ITEM_CLICK_REQUEST {

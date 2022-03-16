@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,7 +96,8 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
                                             user.setPassword(mSignupbinding.txtPassword.getText().toString());
 
                                             if (Utility.isNetworkAvailable(this)) {
-                                                loginViewModel.doUserRegistration(user, AppCommonConstants.LOGIN_TYPE.NORMAL, AppCommonConstants.API_REQUEST.REQUEST_ID_1001);
+                                                String deviceId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+                                                loginViewModel.doUserRegistration(user, AppCommonConstants.LOGIN_TYPE.NORMAL, AppCommonConstants.API_REQUEST.REQUEST_ID_1001, deviceId);
                                             }
                                         } else {
                                             Utility.showToast(SignUpActivity.this, getString(R.string.check_password));
